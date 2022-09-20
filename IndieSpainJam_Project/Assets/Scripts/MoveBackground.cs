@@ -6,14 +6,14 @@ public class MoveBackground : MonoBehaviour {
 	[SerializeField] private float parallaxMultiplier;
 	private Transform mainCameraTransform;
 	private Vector3 previousCameraPosition;
-	private float spriteWidth, startPosition;
+	private float spriteWidth, horizontalMovement, startPosition;
 
 	void Start()
 	{
 		mainCameraTransform = Camera.main.transform;
 		previousCameraPosition = mainCameraTransform.position;
 		spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x;
-		spriteWidth *= transform.localScale.x;
+		horizontalMovement = spriteWidth * 2;
 		startPosition = transform.position.x;
 	}
 	void LateUpdate()
@@ -24,12 +24,12 @@ public class MoveBackground : MonoBehaviour {
 		previousCameraPosition = mainCameraTransform.position;
 
 		if (moveAmount > startPosition + spriteWidth) {
-			transform.Translate(new Vector3(spriteWidth, 0, 0));
-			startPosition += spriteWidth;
+			transform.Translate(new Vector3(horizontalMovement, 0, 0));
+			startPosition += horizontalMovement;
 		}
 		else if (moveAmount < startPosition - spriteWidth) {
-			transform.Translate(new Vector3(-spriteWidth, 0, 0));
-			startPosition -= spriteWidth;
+			transform.Translate(new Vector3(-horizontalMovement, 0, 0));
+			startPosition -= horizontalMovement;
 		}
 
 	}
