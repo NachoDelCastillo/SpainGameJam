@@ -36,6 +36,13 @@ public class PlayerController_2D : MonoBehaviour
     float groundRemember = .2f;
     float groundRememberTimer = -1;
 
+    // Turret
+    bool currentlyInTurretWagon = false;
+    bool usingTurret = false;
+    bool enteringTurret = false;
+    [SerializeField] GameObject turret;
+    float turretEnteringRadius = 0.1f;
+
     // Ground checker
     [SerializeField] Transform groundCheck_tr;
     [SerializeField] LayerMask groundLayer;
@@ -49,9 +56,12 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] float screenMargin;
     float screenLimit;
 
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
 
         playerControl = new PlayerInputActions();
     }
@@ -60,6 +70,7 @@ public class PlayerController_2D : MonoBehaviour
     {
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
+        
     }
 
     void Update()
@@ -115,8 +126,24 @@ public class PlayerController_2D : MonoBehaviour
 
     public void Jump_Input(InputAction.CallbackContext context)
     {
+
         if (context.started)
+        {
             jumpRememberTimer = jumpRemember;
+            
+            // Solo se puede salir de la torreta si has pulsado la tecla después de haber entrado en ella o mientras se está subiendo
+            if (usingTurret || enteringTurret)
+            {
+                //Debug.Log("Salta de la torreta");
+                transform.SetParent(null);
+                rb.isKinematic = false;
+                usingTurret = false;
+                enteringTurret = false;
+            }
+
+        }
+
+        
 
         if (context.canceled && rb.velocity.y > 0 && input_ver >= 0)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .55f);
@@ -132,8 +159,52 @@ public class PlayerController_2D : MonoBehaviour
     {
         if (!context.started) return;
 
+
+
+        // Si está en la torreta, dispara
+        if (usingTurret)
+        {
+            //codigo disparar
+
+            return;
+        }
+
+        // Si se está subiendo a la torreta no recoge nada
+        if (enteringTurret)
+        {
+            return;
+        }
+
+        // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
+        if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
+        {
+            Debug.Log("Entra en torreta");
+            rb.isKinematic = true;
+            rb.velocity = new Vector2(0, 0);
+            enteringTurret = true;
+            return;
+        }
+
+        
+
+
+
+
+
+
         // Si se esta en el proceso de coger un objeto, no seguir
         if (grabbingAnItem || droppingAnItem) return;
+
+
+       
+        
+        
+        
+        // Si está USANDO la torreta pero no la está usando, dispara
+
+
+
+        //
 
         // Si ya se tiene un objeto en las manos
         if (grabbedItem != null)
@@ -244,12 +315,19 @@ public class PlayerController_2D : MonoBehaviour
     bool currentlyInCoalWagon;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<Turret>())
+            currentlyInTurretWagon = true;
+
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.GetComponent<Turret>())
+            currentlyInTurretWagon = false;
+        
+
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = false;
     }
@@ -299,6 +377,27 @@ public class PlayerController_2D : MonoBehaviour
         //    // And then smoothing it out and applying it to the character
         //    rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, .5f);
         //}
+
+        if (usingTurret)
+            return;
+
+
+        if (enteringTurret)
+        {
+            rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.1f);
+
+            if(Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
+            {
+                usingTurret = true;
+                transform.position = turret.transform.position;
+                transform.SetParent(turret.transform);
+                enteringTurret = false;
+            }
+
+            return;
+        }
+
+        
 
         Vector3 targetVelocity = new Vector2(input_hor * speed, rb.velocity.y);
 
