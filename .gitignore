@@ -37,3 +37,11 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.log
+
+/IndieSpainJam_Project/Library/
+/IndieSpainJam_Project/Temp/
+/IndieSpainJam_Project/Obj/
+/IndieSpainJam_Project/Build/
+/IndieSpainJam_Project/Builds/
+/IndieSpainJam_Project/Logs/
+/IndieSpainJam_Project/MemoryCaptures/
