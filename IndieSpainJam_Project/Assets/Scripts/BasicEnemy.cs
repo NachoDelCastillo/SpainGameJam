@@ -71,9 +71,9 @@ public class BasicEnemy : MonoBehaviour
     {
         WagonLogic wagon = collision.GetComponent<WagonLogic>();
 
-        Turret turret = collision.GetComponent<Turret>();
+        Bullet bullet = collision.GetComponent<Bullet>();
 
-        if (wagon == null && turret == null) return;
+        if (wagon == null && bullet == null) return;
 
         if (wagon != null) states = States.Attack;
         else states = States.Death;

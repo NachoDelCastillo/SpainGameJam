@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TrainManager : MonoBehaviour
@@ -10,6 +11,17 @@ public class TrainManager : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
+
+    //Health
+    [SerializeField] float health, maxHealth;
+    [SerializeField] Slider healthSlider;
+
+    private void Start()
+    {
+        health = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
+    }
 
     public void CoalDelivered(OnTriggerDelegation delegation)
     {
@@ -38,5 +50,13 @@ public class TrainManager : MonoBehaviour
     {
         MainVelocity += 5;
         MainVelocity_text.text = MainVelocity.ToString();
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+       
+        if (health <= 0) health = 0;
+        healthSlider.value = health;
     }
 }

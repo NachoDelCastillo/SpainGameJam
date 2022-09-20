@@ -14,6 +14,9 @@ public class LocalMultiplayerManager : MonoBehaviour
     // Empty object that contains all the players as childs
     [SerializeField] Transform playerContainer;
 
+    [SerializeField] Transform respawnPoint;
+    [SerializeField] float respawnTime;
+
     private void Awake()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -37,5 +40,17 @@ public class LocalMultiplayerManager : MonoBehaviour
         newPlayerController.transform.SetParent(playerContainer);
 
         allPlayers.Add(newPlayerController);
+    }
+
+    public void Respawn(PlayerController_2D player)
+    {
+        StartCoroutine(Respawn2(player, respawnTime));
+    }
+
+    IEnumerator Respawn2(PlayerController_2D player, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        player.transform.position = respawnPoint.position;
     }
 }
