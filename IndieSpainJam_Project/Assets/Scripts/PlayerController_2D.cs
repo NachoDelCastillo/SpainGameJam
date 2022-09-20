@@ -157,6 +157,20 @@ public class PlayerController_2D : MonoBehaviour
 
     public void Grab_Input(InputAction.CallbackContext context)
     {
+
+        // Si está en la torreta, dispara
+        if (usingTurret)
+        {
+            //permitir disparar o no
+            if (context.started)
+                turretControl.changeShooting(true);
+            else if (context.canceled)
+                turretControl.changeShooting(false);
+            return;
+        }
+
+
+        //A partir de ahora solo vale la pulsación inicial de tecla
         if (!context.started) return;
 
 
@@ -164,8 +178,11 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en la torreta, dispara
         if (usingTurret)
         {
-            //codigo disparar
-
+            //permitir disparar o no
+            if(context.started)
+                turretControl.changeShooting(true);
+            else if (context.canceled)
+                turretControl.changeShooting(false);
             return;
         }
 
