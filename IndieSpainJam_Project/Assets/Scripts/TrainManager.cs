@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TrainManager : MonoBehaviour
 {
+    int MainVelocity = 0;
+
+    [Header("Referencias")]
     [SerializeField] Transform deliverCoal;
-
-
+    [SerializeField] TMP_Text MainVelocity_text;
 
     public void CoalDelivered(OnTriggerDelegation delegation)
     {
@@ -27,5 +30,13 @@ public class TrainManager : MonoBehaviour
         yield return new WaitForSeconds(seconds + .1f);
         if (coal != null)
             Destroy(coal.gameObject);
+
+        AddVelocity();
+    }
+
+    void AddVelocity()
+    {
+        MainVelocity += 5;
+        MainVelocity_text.text = MainVelocity.ToString();
     }
 }
