@@ -25,6 +25,7 @@ public class TrainManager : MonoBehaviour
     IEnumerator DestroyCoal(GrabbableItem coal, float seconds)
     {
         yield return new WaitForSeconds(seconds + .1f);
-        Destroy(coal.gameObject);
+        if (coal != null)
+            Destroy(coal.gameObject);
     }
 }
