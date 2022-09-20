@@ -157,6 +157,20 @@ public class PlayerController_2D : MonoBehaviour
 
     public void Grab_Input(InputAction.CallbackContext context)
     {
+
+        // Si está en la torreta, dispara
+        if (usingTurret)
+        {
+            //permitir disparar o no
+            if (context.started)
+                turretControl.changeShooting(true);
+            else if (context.canceled)
+                turretControl.changeShooting(false);
+            return;
+        }
+
+
+        //A partir de ahora solo vale la pulsación inicial de tecla
         if (!context.started) return;
 
 
@@ -164,8 +178,11 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en la torreta, dispara
         if (usingTurret)
         {
-            //codigo disparar
-
+            //permitir disparar o no
+            if(context.started)
+                turretControl.changeShooting(true);
+            else if (context.canceled)
+                turretControl.changeShooting(false);
             return;
         }
 
@@ -487,7 +504,7 @@ public class PlayerController_2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
 
-            // AudioManager_PK.instance.Play("Jump", 1);
+            AudioManager_PK.instance.Play("Jump", Random.Range(0.5f, 0.8f));
         }
 
         if (jumpRememberTimer > 0 && canDoubleJump)
@@ -497,6 +514,8 @@ public class PlayerController_2D : MonoBehaviour
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
+
+            AudioManager_PK.instance.Play("Jump", Random.Range(1f, 1.5f));
         }
     }
 
