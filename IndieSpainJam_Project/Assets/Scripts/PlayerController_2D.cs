@@ -487,7 +487,7 @@ public class PlayerController_2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
 
-            // AudioManager_PK.instance.Play("Jump", 1);
+            AudioManager_PK.instance.Play("Jump", Random.Range(0.5f, 0.8f));
         }
 
         if (jumpRememberTimer > 0 && canDoubleJump)
@@ -497,6 +497,8 @@ public class PlayerController_2D : MonoBehaviour
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
+
+            AudioManager_PK.instance.Play("Jump", Random.Range(1f, 1.5f));
         }
     }
 
