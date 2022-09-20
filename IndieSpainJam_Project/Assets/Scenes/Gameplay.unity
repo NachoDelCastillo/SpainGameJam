@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deliverCoal: {fileID: 1832167579}
+  MainVelocity_text: {fileID: 1334281687}
 --- !u!4 &674391899
 Transform:
   m_ObjectHideFlags: 0
