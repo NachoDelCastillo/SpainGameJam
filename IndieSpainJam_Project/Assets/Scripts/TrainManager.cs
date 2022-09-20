@@ -49,7 +49,7 @@ public class TrainManager : MonoBehaviour
     void AddVelocity()
     {
         MainVelocity += 5;
-        MainVelocity_text.text = MainVelocity.ToString();
+        MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
     }
 
     public void TakeDamage(float amount)
