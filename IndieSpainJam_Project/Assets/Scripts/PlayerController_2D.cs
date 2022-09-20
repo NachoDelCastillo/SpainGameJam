@@ -42,6 +42,7 @@ public class PlayerController_2D : MonoBehaviour
     bool enteringTurret = false;
     [SerializeField] GameObject turret;
     float turretEnteringRadius = 0.1f;
+    Turret turretControl;
 
     // Ground checker
     [SerializeField] Transform groundCheck_tr;
@@ -61,9 +62,8 @@ public class PlayerController_2D : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-
         playerControl = new PlayerInputActions();
+        turretControl = turret.GetComponent<Turret>();
     }
 
     private void Start()
@@ -379,7 +379,10 @@ public class PlayerController_2D : MonoBehaviour
         //}
 
         if (usingTurret)
+        {
+            turretControl.RotateCannon(input_hor);
             return;
+        }
 
 
         if (enteringTurret)
