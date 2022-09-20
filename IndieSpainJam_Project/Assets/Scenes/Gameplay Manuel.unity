@@ -2068,8 +2068,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1109584165}
+  anim: {fileID: 0}
   speed: 5
   detectionRadius: 3
+  destroyTime: 0
   colliderDetection: {fileID: 1199477401}
 --- !u!212 &1199477397
 SpriteRenderer:
@@ -3262,6 +3264,14 @@ PrefabInstance:
     - target: {fileID: 7959920230405768150, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959920230405768150, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959920230405768150, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}

@@ -12,7 +12,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] float speed, detectionRadius, destroyTime;
     [SerializeField] CircleCollider2D colliderDetection;
 
-    enum States { Chase, Attack, Death}
+    enum States { Chase, Attack, Death }
     States states;
 
     float initialScale;
@@ -33,6 +33,7 @@ public class BasicEnemy : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) states = States.Death;
+        Debug.Log(states);
 
         switch (states)
         {
@@ -64,6 +65,7 @@ public class BasicEnemy : MonoBehaviour
 
         rb.velocity = direction * speed;
     }
+
 
     void Attack()
     {
