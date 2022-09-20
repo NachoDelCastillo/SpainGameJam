@@ -46,13 +46,20 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] Collision2D basicAttack_Side;
     [SerializeField] Collision2D basicAttack_Up;
 
-
+    [SerializeField] float screenMargin;
+    float screenLimit;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         playerControl = new PlayerInputActions();
+    }
+
+    private void Start()
+    {
+        Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        screenLimit = screenBounds.x - screenMargin;
     }
 
     void Update()
@@ -293,9 +300,7 @@ public class PlayerController_2D : MonoBehaviour
         //    rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, .5f);
         //}
 
-
         Vector3 targetVelocity = new Vector2(input_hor * speed, rb.velocity.y);
-
 
         WagonLogic wagonLogic = transform.GetComponentInParent<WagonLogic>();
         if (wagonLogic != null)
@@ -303,8 +308,22 @@ public class PlayerController_2D : MonoBehaviour
             targetVelocity += new Vector3(wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.x, wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.y);
         }
 
-        // And then smoothing it out and applying it to the character
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, smoothTime);
+        //check if in screen bounds
+        if ((transform.position.x >= screenLimit && targetVelocity.x > 0) ||
+            (transform.position.x <= -screenLimit && targetVelocity.x < 0))
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        else
+        {
+            // And then smoothing it out and applying it to the character
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, smoothTime);
+
+        }
+
+        //Clamp pos so you dont go out of bounds
+        //float x = Mathf.Clamp(transform.position.x, leftMargin.position.x, rightMargin.position.x);
+        //transform.position = new Vector2(x, transform.position.y);
     }
 
     void CheckGround()
