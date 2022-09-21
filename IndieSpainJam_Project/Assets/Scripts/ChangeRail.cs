@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ChangeRail : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    bool[] railWays;
+
+    [SerializeField] Transform[] railGfx;
+
+    private void Awake()
     {
-        
+        for (int i = 0; i < 3; i++)
+            railGfx[i].gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetRailWays(bool[] railWays_)
     {
-        
+        railWays = railWays_;
+
+
+        for (int i = 0; i < 3; i++)
+            railGfx[i].gameObject.SetActive(true);
     }
 }
