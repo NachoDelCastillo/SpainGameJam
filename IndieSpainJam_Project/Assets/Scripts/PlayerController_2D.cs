@@ -195,7 +195,7 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
-            Debug.Log("Entra en torreta");
+            //Debug.Log("Entra en torreta");
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
             enteringTurret = true;
