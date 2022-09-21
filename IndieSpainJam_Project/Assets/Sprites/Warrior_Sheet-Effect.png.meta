@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2246,17 +2246,17 @@ TextureImporter:
       Warrior_Sheet-Effect_96: 135912301
       Warrior_Sheet-Effect_83: 1566452407
       Warrior_Sheet-Effect_57: -1790843230
+      Warrior_Sheet-Effect_87: 1920965465
       Warrior_Sheet-Effect_2: 987403706
       Warrior_Sheet-Effect_14: -1278324743
-      Warrior_Sheet-Effect_87: 1920965465
       Warrior_Sheet-Effect_29: -923965791
       Warrior_Sheet-Effect_59: -782221584
       Warrior_Sheet-Effect_18: 897090639
       Warrior_Sheet-Effect_43: 2111803387
       Warrior_Sheet-Effect_51: -914614886
       Warrior_Sheet-Effect_33: 1384976269
-      Warrior_Sheet-Effect_52: 2047241032
       Warrior_Sheet-Effect_77: -1902638852
+      Warrior_Sheet-Effect_52: 2047241032
       Warrior_Sheet-Effect_49: 1891702488
       Warrior_Sheet-Effect_22: -1859873110
       Warrior_Sheet-Effect_48: 793303406
