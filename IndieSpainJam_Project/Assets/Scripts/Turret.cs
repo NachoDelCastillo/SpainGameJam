@@ -18,7 +18,6 @@ public class Turret : MonoBehaviour
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
-    float lastInput;
     void Start()
     {
         shooting = false;
@@ -64,13 +63,12 @@ public class Turret : MonoBehaviour
             return;
         }
 
-
         rotMultiplier += Time.deltaTime * rotIncrease;
         cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
         float z = cannonPivot.transform.localEulerAngles.z;
         z = Mathf.Clamp(z, 90, 270);
         cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
-        //cannonPivot.transform.eulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+
 
 
         //Version 2
@@ -80,9 +78,6 @@ public class Turret : MonoBehaviour
         //Debug.Log("TargetRotation " + targetRotation.z);
 
         //cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime);
-
-
     }
-
 
 }
