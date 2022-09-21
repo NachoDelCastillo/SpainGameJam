@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     static UIManager instance;
 
     [SerializeField] GameObject spawnTimerPrefab;
-    static UIManager GetInstance()
+    public static UIManager GetInstance()
     {
         return instance;
     }
@@ -26,9 +26,10 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void CreateSpawnTimer(Transform pos)
+    public void CreateSpawnTimer(Transform pos, float time)
     {
-        Instantiate(spawnTimerPrefab, pos);
+        GameObject timer = Instantiate(spawnTimerPrefab, pos.position, Quaternion.identity, transform);
+        timer.GetComponent<SpawnTimeUI>().SetTimeToRespawn(time);
     }
 
 
