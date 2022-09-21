@@ -57,6 +57,10 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] float screenMargin;
     float screenLimit;
 
+    [Header("Particle Systems")]
+    [SerializeField] ParticleSystem jumping;
+    [SerializeField] ParticleSystem landing1;
+    [SerializeField] ParticleSystem landing2;
 
 
     void Awake()
@@ -151,6 +155,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
     // Moves an item to a position in X seconds
+    [Space(12)]
     [SerializeField] AnimationCurve animationCurve;
     bool grabbingAnItem; // Devuelve true si se esta moviendo un objeto del suelo a las manos de este jugador
     bool droppingAnItem; // Devuelve true si se esta soltando un objeto
@@ -296,8 +301,10 @@ public class PlayerController_2D : MonoBehaviour
 
     #region GrabSystem
 
+
     GrabbableItem grabbedItem;
 
+    [Header("Grabbing Mechanic")]
     public List<GrabbableItem> reachableItems;
 
     [SerializeField] GameObject coalPrefab;
@@ -455,6 +462,11 @@ public class PlayerController_2D : MonoBehaviour
                 onGround = false;
             else
             {
+                if (!onGround)
+                {
+                    landing1.Play();
+                    landing2.Play();
+                }
                 onGround = true;
                 canDoubleJump = true;
 
@@ -504,7 +516,8 @@ public class PlayerController_2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
 
-            AudioManager_PK.instance.Play("Jump", Random.Range(0.5f, 0.8f));
+            AudioManager_PK.instance.Play("Jump", Random.Range(0.7f, 0.8f));
+            jumping.Play(true);
         }
 
         if (jumpRememberTimer > 0 && canDoubleJump)
@@ -515,7 +528,8 @@ public class PlayerController_2D : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce));
 
-            AudioManager_PK.instance.Play("Jump", Random.Range(1f, 1.5f));
+            AudioManager_PK.instance.Play("Jump", Random.Range(1.3f, 1.5f));
+            //jumping.Play(true);
         }
     }
 
