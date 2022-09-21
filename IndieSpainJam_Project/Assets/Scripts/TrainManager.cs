@@ -6,15 +6,30 @@ using TMPro;
 
 public class TrainManager : MonoBehaviour
 {
+    static TrainManager instance;
+
+    static TrainManager GetInstance()
+    { return instance; }
+
     int MainVelocity = 0;
 
     [Header("Referencias")]
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
 
+    [SerializeField] WagonLogic[] wagons;
+    [SerializeField] Transform[] columns;
+    [SerializeField] Transform[] rows;
+
     //Health
     [SerializeField] float health, maxHealth;
     [SerializeField] Slider healthSlider;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     private void Start()
     {
