@@ -56,14 +56,15 @@ public class TrainManager : MonoBehaviour
             yield return 0;
         }
 
-        Instantiate(changeRail_Prefab, rails);
+        ChangeRail changeRail = Instantiate(changeRail_Prefab, rails).GetComponent<ChangeRail>();
+
+        bool[] railsways_b = 
+            { true, false, true };
+
+        changeRail.SetRailWays(railsways_b);
 
         StartCoroutine(SpawnChangeRail());
     }
-
-
-
-
 
     #region wevadas
 

@@ -18,8 +18,7 @@ public class ChangeRail : MonoBehaviour
     {
         railWays = railWays_;
 
-
         for (int i = 0; i < 3; i++)
-            railGfx[i].gameObject.SetActive(true);
+            railGfx[i].gameObject.SetActive(railWays[i]);
     }
 }
