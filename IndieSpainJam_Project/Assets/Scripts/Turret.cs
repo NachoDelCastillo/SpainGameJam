@@ -11,21 +11,21 @@ public class Turret : MonoBehaviour
     [SerializeField] float rotationSpeed;
 
 
-    bool shooting;
+    bool shooting, startedMoving;
     [SerializeField] float fireRate = 5;
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
+    float rotMultiplier = 1, rotIncrease = 2;
+    float lastInput;
     void Start()
     {
         shooting = false;
-        timeBetweenShots = 1f / fireRate;
-        
+        timeBetweenShots = 1f / fireRate;      
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (shooting)
         {
             Debug.Log("Disparando");
@@ -35,7 +35,6 @@ public class Turret : MonoBehaviour
                 //disparar
                 Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, bulletsSpawnPoint.transform.rotation);
                 timeElaspedSinceLastShot = 0;
-
             }
         }
 
@@ -53,7 +52,21 @@ public class Turret : MonoBehaviour
     public void RotateCannon(float rotationInput)
     {
         // version 1
-        cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Time.deltaTime));
+        startedMoving = true;
+
+        if (rotationInput == 0)
+        {
+            rotMultiplier = 1;
+            return;
+        }
+
+
+        rotMultiplier += Time.deltaTime * rotIncrease;
+        cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
+        float z = cannonPivot.transform.localEulerAngles.z;
+        z = Mathf.Clamp(z, 90, 270);
+        cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+        //cannonPivot.transform.eulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
 
 
         //Version 2
