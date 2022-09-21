@@ -25,6 +25,11 @@ public class TrainManager : MonoBehaviour
     [SerializeField] float health, maxHealth;
     [SerializeField] Slider healthSlider;
 
+
+    // Manager
+    [SerializeField] Transform changeRail_Prefab;
+    [SerializeField] Transform rails;
+
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +42,30 @@ public class TrainManager : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
     }
+
+
+    float spawnTimer;
+    IEnumerator SpawnChangeRail()
+    {
+        spawnTimer = Random.Range(2, 6);
+
+        while (spawnTimer > 0)
+        {
+            spawnTimer -= Time.deltaTime;
+
+            yield return 0;
+        }
+
+        Instantiate(changeRail_Prefab, rails);
+
+        StartCoroutine(SpawnChangeRail());
+    }
+
+
+
+
+
+    #region wevadas
 
     public void CoalDelivered(OnTriggerDelegation delegation)
     {
@@ -74,4 +103,6 @@ public class TrainManager : MonoBehaviour
         if (health <= 0) health = 0;
         healthSlider.value = health;
     }
+
+    #endregion
 }
