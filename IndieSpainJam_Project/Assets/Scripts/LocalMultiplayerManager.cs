@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class LocalMultiplayerManager : MonoBehaviour
 {
+    static LocalMultiplayerManager instance;
+
+    public static LocalMultiplayerManager GetInstance()
+    { return instance; }
+
     PlayerInputManager playerInputManager;
 
     // A list with all the players
@@ -19,6 +24,9 @@ public class LocalMultiplayerManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         playerInputManager = GetComponent<PlayerInputManager>();
 
         allPlayers = new List<PlayerController_2D>();
@@ -43,9 +51,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     }
 
     public void Respawn(PlayerController_2D player)
-    {
-        StartCoroutine(Respawn2(player, respawnTime));
-    }
+    { StartCoroutine(Respawn2(player, respawnTime)); }
 
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
