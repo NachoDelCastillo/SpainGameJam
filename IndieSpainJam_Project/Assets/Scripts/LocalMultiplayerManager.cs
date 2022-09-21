@@ -55,8 +55,9 @@ public class LocalMultiplayerManager : MonoBehaviour
 
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
+        player.gameObject.SetActive(false); 
         yield return new WaitForSeconds(time);
-
+        player.gameObject.SetActive(true); 
         player.transform.position = respawnPoint.position;
     }
 }
