@@ -18,7 +18,7 @@ public class Turret : MonoBehaviour
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
-    float lastInput, anglesDrawBack = 15;
+    float lastInput, anglesDrawBack = 10;
     void Start()
     {
         shooting = false;
@@ -59,24 +59,32 @@ public class Turret : MonoBehaviour
 
         if(lastInput * rotationInput < 0) rotMultiplier = 1;
 
-        if (rotationInput == 0)
+        if (rotationInput == 0 && lastInput != 0)
         {
             drawBack = true;
-            //if (lastInput >= 0) StartCoroutine(DrawBack(1));
-            //else StartCoroutine(DrawBack(-1));        
+            rotMultiplier = 1;
+
+            if (lastInput >= 0) StartCoroutine(DrawBack(1));
+            else StartCoroutine(DrawBack(-1));
+
+            lastInput = rotationInput;
             return;
         }
 
-        drawBack = false;
-        StopCoroutine(DrawBack(1));
+        if(rotationInput != 0)
+        {
+            drawBack = false;
+            StopCoroutine(DrawBack(1));
 
-        rotMultiplier += Time.deltaTime * rotIncrease;
-        cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
-        float z = cannonPivot.transform.localEulerAngles.z;
-        z = Mathf.Clamp(z, 90, 270);
-        cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+            rotMultiplier += Time.deltaTime * rotIncrease;
+            cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
+            float z = cannonPivot.transform.localEulerAngles.z;
+            z = Mathf.Clamp(z, 90, 270);
+            cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
 
-        lastInput = rotationInput;
+            lastInput = rotationInput;
+        }
+
 
         //Version 2
         //Debug.Log("Rotation input " + rotationInput);
@@ -89,11 +97,26 @@ public class Turret : MonoBehaviour
 
     IEnumerator DrawBack(float lastDir)
     {
-        float changeAngle = 0;
-        while (drawBack && Mathf.Abs(changeAngle) < anglesDrawBack)
+        float initialZ = cannonPivot.transform.localEulerAngles.z;
+        float lastZ = cannonPivot.transform.localEulerAngles.z;
+        while (drawBack && Mathf.Abs(initialZ - lastZ) < anglesDrawBack)
         {
-            changeAngle += lastInput * rotationSpeed * Time.deltaTime;
-            cannonPivot.transform.Rotate(new Vector3(0, 0, changeAngle));
+            cannonPivot.transform.Rotate(new Vector3(0, 0, -lastDir * rotationSpeed * 5 * Time.deltaTime));
+            lastZ = cannonPivot.transform.localEulerAngles.z;
+            Debug.Log("initial z" + initialZ);
+            Debug.Log("last z" + lastZ);
+            yield return null;
+        }
+
+
+        initialZ = cannonPivot.transform.localEulerAngles.z;
+        lastZ = cannonPivot.transform.localEulerAngles.z;
+        while (drawBack && Mathf.Abs(initialZ - lastZ) < anglesDrawBack / 2)
+        {
+            cannonPivot.transform.Rotate(new Vector3(0, 0, lastDir * rotationSpeed * Time.deltaTime));
+            lastZ = cannonPivot.transform.localEulerAngles.z;
+            Debug.Log("initial z" + initialZ);
+            Debug.Log("last z" + lastZ);
             yield return null;
         }
     }
