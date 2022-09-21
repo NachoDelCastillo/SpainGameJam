@@ -33,7 +33,6 @@ public class BasicEnemy : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) states = States.Death;
-        Debug.Log(states);
 
         switch (states)
         {
@@ -53,8 +52,6 @@ public class BasicEnemy : MonoBehaviour
 
     void Chase()
     {
-        Debug.Log("Chase");
-
         anim.SetBool("Attacking", false);
 
         Vector3 direction = target.position - transform.position;
@@ -69,8 +66,6 @@ public class BasicEnemy : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("Attack");
-
         anim.SetBool("Attacking", true);
 
         rb.velocity = Vector2.zero;

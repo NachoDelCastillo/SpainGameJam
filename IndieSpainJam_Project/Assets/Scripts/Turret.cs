@@ -13,11 +13,12 @@ public class Turret : MonoBehaviour
 
 
 
-    bool shooting, startedMoving;
+    bool shooting, drawBack;
     [SerializeField] float fireRate = 5;
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
+    float lastInput, anglesDrawBack = 10;
     void Start()
     {
         shooting = false;
@@ -55,20 +56,34 @@ public class Turret : MonoBehaviour
     public void RotateCannon(float rotationInput)
     {
         // version 1
-        startedMoving = true;
 
-        if (rotationInput == 0)
+        if(lastInput * rotationInput < 0) rotMultiplier = 1;
+
+        if (rotationInput == 0 && lastInput != 0)
         {
+            drawBack = true;
             rotMultiplier = 1;
+
+            if (lastInput >= 0) StartCoroutine(DrawBack(1));
+            else StartCoroutine(DrawBack(-1));
+
+            lastInput = rotationInput;
             return;
         }
 
-        rotMultiplier += Time.deltaTime * rotIncrease;
-        cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
-        float z = cannonPivot.transform.localEulerAngles.z;
-        z = Mathf.Clamp(z, 90, 270);
-        cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+        if(rotationInput != 0)
+        {
+            drawBack = false;
+            StopCoroutine(DrawBack(1));
 
+            rotMultiplier += Time.deltaTime * rotIncrease;
+            cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
+            float z = cannonPivot.transform.localEulerAngles.z;
+            z = Mathf.Clamp(z, 90, 270);
+            cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+
+            lastInput = rotationInput;
+        }
 
 
         //Version 2
@@ -78,6 +93,32 @@ public class Turret : MonoBehaviour
         //Debug.Log("TargetRotation " + targetRotation.z);
 
         //cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime);
+    }
+
+    IEnumerator DrawBack(float lastDir)
+    {
+        float initialZ = cannonPivot.transform.localEulerAngles.z;
+        float lastZ = cannonPivot.transform.localEulerAngles.z;
+        while (drawBack && Mathf.Abs(initialZ - lastZ) < anglesDrawBack)
+        {
+            cannonPivot.transform.Rotate(new Vector3(0, 0, -lastDir * rotationSpeed * 5 * Time.deltaTime));
+            lastZ = cannonPivot.transform.localEulerAngles.z;
+            Debug.Log("initial z" + initialZ);
+            Debug.Log("last z" + lastZ);
+            yield return null;
+        }
+
+
+        initialZ = cannonPivot.transform.localEulerAngles.z;
+        lastZ = cannonPivot.transform.localEulerAngles.z;
+        while (drawBack && Mathf.Abs(initialZ - lastZ) < anglesDrawBack / 2)
+        {
+            cannonPivot.transform.Rotate(new Vector3(0, 0, lastDir * rotationSpeed * Time.deltaTime));
+            lastZ = cannonPivot.transform.localEulerAngles.z;
+            Debug.Log("initial z" + initialZ);
+            Debug.Log("last z" + lastZ);
+            yield return null;
+        }
     }
 
 }
