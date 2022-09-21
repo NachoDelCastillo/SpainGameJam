@@ -60,7 +60,6 @@ public class Turret : MonoBehaviour
         if (rotationInput == 0)
         {
             rotMultiplier = 1;
-            lastInput = 0;
             return;
         }
 
@@ -69,7 +68,6 @@ public class Turret : MonoBehaviour
         float z = cannonPivot.transform.localEulerAngles.z;
         z = Mathf.Clamp(z, 90, 270);
         cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
-        lastInput = rotationInput;
 
 
 
