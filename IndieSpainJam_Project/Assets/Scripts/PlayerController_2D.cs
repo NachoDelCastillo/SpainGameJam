@@ -143,6 +143,7 @@ public class PlayerController_2D : MonoBehaviour
                 rb.isKinematic = false;
                 usingTurret = false;
                 enteringTurret = false;
+                turretControl.changeShooting(false);
             }
 
         }

@@ -29,8 +29,8 @@ public class SpawnTimeUI : MonoBehaviour
 
 
         text.text = ((int)timeToRespawn - ((int)elapsedTime)).ToString();
+        timeTextPos.position += new Vector3(0, velocity * Time.deltaTime, 0);
         //timeTextPos.position += new Vector3(transform.position.x, velocity * Time.deltaTime, 0);
-
         //timeTextPos.position =  new Vector2(transform.position.x, transform.position.y + elapsedTime % ((int)elapsedTime));
     }
 
