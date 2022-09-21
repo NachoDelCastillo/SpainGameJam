@@ -40,8 +40,6 @@ public class Noise : MonoBehaviour
     [Range(0, 5)]
     public float noiseMultiplier = 0.25f, noiseFrecuency = 0.5f;
 
-    float threshold = 0.5f;
-
     // Start is called before the first frame update
     void Start()
     {
