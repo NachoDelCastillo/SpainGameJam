@@ -8,10 +8,18 @@ public class ChangeRail : MonoBehaviour
 
     [SerializeField] Transform[] railGfx;
 
+    private void Awake()
+    {
+        for (int i = 0; i < 3; i++)
+            railGfx[i].gameObject.SetActive(false);
+    }
+
     public void SetRailWays(bool[] railWays_)
     {
         railWays = railWays_;
 
-        railGfx[]
+
+        for (int i = 0; i < 3; i++)
+            railGfx[i].gameObject.SetActive(true);
     }
 }
