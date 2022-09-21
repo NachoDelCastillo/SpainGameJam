@@ -55,9 +55,33 @@ public class LocalMultiplayerManager : MonoBehaviour
 
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
-        player.gameObject.SetActive(false); 
+
+        // Todo esto es para desactivar el render específico del sprite
+        SpriteRenderer[] renderers = player.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer spRenderer = null;
+        for (int x = 0; x < renderers.Length; x++)
+        {
+            if (renderers[x].transform.CompareTag("Animator"))
+            {
+                //Debug.Log("Tag animator encontrado");
+                spRenderer = renderers[x];
+                continue;
+            }
+
+        }
+
+        if (spRenderer) spRenderer.enabled = false;
+        // y tmb desactivar PlayerController_2D para que no se instancie otro player cuando este está muerto
+        player.enabled = false;
+
+        UIManager.GetInstance().CreateSpawnTimer(player.gameObject.transform, time);
+
+
         yield return new WaitForSeconds(time);
-        player.gameObject.SetActive(true); 
+
+        if(spRenderer)spRenderer.enabled = true;
+
+        player.enabled = true; 
         player.transform.position = respawnPoint.position;
     }
 }

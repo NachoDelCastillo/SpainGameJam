@@ -143,6 +143,7 @@ public class PlayerController_2D : MonoBehaviour
                 rb.isKinematic = false;
                 usingTurret = false;
                 enteringTurret = false;
+                turretControl.changeShooting(false);
             }
 
         }
@@ -462,11 +463,11 @@ public class PlayerController_2D : MonoBehaviour
                 onGround = false;
             else
             {
-                if (!onGround)
-                {
-                    landing1.Play();
-                    landing2.Play();
-                }
+                //if (!onGround)
+                //{
+                //    landing1.Play();
+                //    landing2.Play();
+                //}
                 onGround = true;
                 canDoubleJump = true;
 
@@ -531,6 +532,11 @@ public class PlayerController_2D : MonoBehaviour
             AudioManager_PK.instance.Play("Jump", Random.Range(1.3f, 1.5f));
             //jumping.Play(true);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        landing1.Play();
+        landing2.Play();
     }
 
     private IEnumerator Dropping()

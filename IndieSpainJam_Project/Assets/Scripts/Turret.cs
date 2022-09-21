@@ -49,8 +49,6 @@ public class Turret : MonoBehaviour
     {
         shooting = newValue;
 
-        //para poder disparar ell mismo frame que se pulsa la tecla
-        timeElaspedSinceLastShot = timeBetweenShots;
     }
 
     public void RotateCannon(float rotationInput)
