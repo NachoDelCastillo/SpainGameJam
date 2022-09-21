@@ -88,7 +88,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Entrabalas");
+        //Debug.Log("Entrabalas");
         PlayerController_2D wagon = collision.GetComponent<PlayerController_2D>();
 
         Bullet bullet = collision.GetComponent<Bullet>();

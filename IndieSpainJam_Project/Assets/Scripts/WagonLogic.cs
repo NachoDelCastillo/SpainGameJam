@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WagonLogic : MonoBehaviour
 {
+    public int RailRow = 1;
+
     private void Update()
     {
         //GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
