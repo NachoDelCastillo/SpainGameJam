@@ -170,9 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   anim: {fileID: 3248124562668269690}
-  speed: 5
+  speed: 3
   detectionRadius: 3
-  destroyTime: 1.5
+  destroyTime: 0.5
   colliderDetection: {fileID: 3248124563058833529}
 --- !u!58 &3248124563058833528
 CircleCollider2D:
