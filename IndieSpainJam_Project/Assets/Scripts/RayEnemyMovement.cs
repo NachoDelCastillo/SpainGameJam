@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RayEnemyMovement : MonoBehaviour
 {
-    private enum State {GoingLocation, Loading, Shooting}
+
+    private enum State {GoingLocation, Loading, Shooting, Leaving}
 
     // Start is called before the first frame update
     [SerializeField] GameObject railsParent;
+    [SerializeField] GameObject particlesLoading;
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
 
@@ -34,6 +36,10 @@ public class RayEnemyMovement : MonoBehaviour
     float elapsedTimeToFire = 0;
 
 
+    // LeavingState
+    [SerializeField] int timesToShoot;
+    [SerializeField] GameObject leavingPoint;
+    int timesShot;
 
 
     void Start()
@@ -45,6 +51,9 @@ public class RayEnemyMovement : MonoBehaviour
         loadingLaser.SetActive(false);
         loadingSphere.SetActive(false);
         rayTrigger.SetActive(false);
+        particlesLoading.SetActive(false);
+        timesShot = 0;
+
     }
 
     // Update is called once per frame
@@ -64,6 +73,10 @@ public class RayEnemyMovement : MonoBehaviour
                 LoadingState();
                 break;
 
+            case State.Leaving:
+                LeavingState();
+                break;
+
         }
     }
 
@@ -72,10 +85,19 @@ public class RayEnemyMovement : MonoBehaviour
         switch (newState)
         {
             case State.GoingLocation:
-                int rnd = Random.Range(0, railsParent.transform.childCount);
-                currentDestination = railsParent.transform.GetChild(rnd).gameObject;
+                GameObject randomDestination;
+                do
+                {
+                    int rnd = Random.Range(0, railsParent.transform.childCount);
+                    randomDestination = railsParent.transform.GetChild(rnd).gameObject;
+                } while (currentDestination == randomDestination);
+
+                currentDestination = randomDestination;
+                
                 break;
             case State.Loading:
+                loadingSphere.transform.localScale = Vector3.zero;
+                particlesLoading.SetActive(true);
                 loadingSphere.SetActive(true);
                 elapsedTimeToReload = 0f;
                 loadingSphere.transform.localScale = Vector3.one*startingRadius;
@@ -84,7 +106,7 @@ public class RayEnemyMovement : MonoBehaviour
                 loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
                 elapsedTimeToFire = 0f;
-
+                timesShot++;
                 break;
         }
 
@@ -131,16 +153,18 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); ;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.1f);
 
-        if (elapsedTimeToReload >= timeToLoad / 2)
+        if (elapsedTimeToReload >= timeToLoad/2.5f)
         {
             loadingLaser.SetActive(true);
         }
 
         //Cambiar el srite de carga
-        loadingSphere.transform.localScale = Vector2.one * startingRadius * (timeToLoad - elapsedTimeToReload) / timeToLoad;
+        loadingSphere.transform.localScale = Vector2.one * startingRadius * (elapsedTimeToReload) / timeToLoad;
 
         if (elapsedTimeToReload >= timeToLoad)
         {
+            loadingSphere.SetActive(false);
+            particlesLoading.SetActive(false);
             ChangeState(State.Shooting);
         }
 
@@ -153,8 +177,38 @@ public class RayEnemyMovement : MonoBehaviour
         if(elapsedTimeToFire >= timeFiring)
         {
             rayTrigger.SetActive(false);
-            ChangeState(State.GoingLocation);
+            if(timesShot >= timesToShoot)
+            {
+                ChangeState(State.Leaving);
+            }
+            else
+            {
+                ChangeState(State.GoingLocation);
+            }
         }
 
+    }
+
+
+    private void LeavingState()
+    {
+        if (Vector2.Distance(transform.position, leavingPoint.transform.position) > 0.5)
+        {
+            Vector2 dir = leavingPoint.transform.position - transform.transform.position;
+            rb.position = Vector2.Lerp(rb.position, rb.position + dir * velocity * Time.fixedDeltaTime, 0.3f);
+
+
+            // Mirar al player
+            Vector2 direction = leavingPoint.transform.position - transform.position;
+            direction.Normalize();
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
+            transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
