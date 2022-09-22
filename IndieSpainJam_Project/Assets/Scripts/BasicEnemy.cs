@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    public Transform target;
+    [HideInInspector] public Transform target;
 
     Rigidbody2D rb;
     [SerializeField] Animator anim;
 
-    [SerializeField] float speed, detectionRadius, destroyTime, damage;
+    [SerializeField] float speed, detectionRadius, destroyTime, damage, attackFrecuency;
     [SerializeField] CircleCollider2D colliderDetection;
+
+    [HideInInspector] public EnemySpawner enemySpawner;
 
     enum States { Chase, Attack, Death }
     States states;
 
-    float initialScale;
+    float initialScale, attackCD;
+
+    bool attacked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +31,13 @@ public class BasicEnemy : MonoBehaviour
         states = States.Chase;
 
         initialScale = transform.localScale.x;
+
+        attackCD = attackFrecuency;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) states = States.Death;
-
         switch (states)
         {
             case States.Chase:
@@ -66,6 +70,20 @@ public class BasicEnemy : MonoBehaviour
 
     void Attack()
     {
+        if(!attacked)
+        {
+            attacked = true;
+            TrainManager.Instance.TakeDamage(damage);
+        }
+
+        attackCD -= Time.deltaTime;
+        if(attackCD <= 0)
+        {
+            attacked = false;
+            attackCD = attackFrecuency;
+        }
+
+
         anim.SetBool("Attacking", true);
 
         rb.velocity = Vector2.zero; 
@@ -78,17 +96,11 @@ public class BasicEnemy : MonoBehaviour
 
     void Death()
     {
-        Debug.Log("Death");
-
         rb.velocity = Vector2.zero;
 
         anim.SetTrigger("Death");
+        enemySpawner.enemysAlive.Remove(gameObject);
         Destroy(gameObject, destroyTime);
-    }
-
-    public void DestroyEnemy()
-    {
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -5,12 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb = null;
-    [SerializeField] float velocity;
+    [SerializeField] float velocity, timeForDestroy;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 2);
+        Destroy(gameObject, timeForDestroy);
     }
 
     // Update is called once per frame
@@ -18,7 +18,4 @@ public class Bullet : MonoBehaviour
     {
         rb.MovePosition((rb.position + (Vector2)transform.right * velocity * Time.fixedDeltaTime));
     }
-
-
-
 }
