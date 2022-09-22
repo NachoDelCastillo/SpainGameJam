@@ -67,8 +67,6 @@ public class RayEnemyMovement : MonoBehaviour
         }
     }
 
-
-
     private void ChangeState(State newState)
     {
         switch (newState)
@@ -147,7 +145,6 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
     }
-
 
     private void RayEnemyShootinState()
     {

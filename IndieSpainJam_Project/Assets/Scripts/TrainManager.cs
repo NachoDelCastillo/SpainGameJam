@@ -299,7 +299,7 @@ public class TrainManager : MonoBehaviour
         {
 
             //yield return new WaitForSeconds(1);
-            ShowResult(true);
+            StartCoroutine(ShowResult(true));
         }
     }
 
@@ -307,23 +307,32 @@ public class TrainManager : MonoBehaviour
     {
         Debug.Log("WIN ? = " + win);
 
+        string fullString;
         if (win)
         {
-            resultText.text = "SIUUUUUU";
+            fullString = "SIUUUUUU";
             resultPanel.color = winColor;
         }
         else
         {
-            resultText.text = "CAGASTE";
+            fullString = "CAGASTE";
             resultPanel.color = loseColor;
         }
-            
 
-        resultPanel.DOFade(1, 1);
+        resultPanel.DOFade(.1f, 1);
         yield return new WaitForSeconds(1);
 
-        resultText.DOFade(1, 1);
-        yield return new WaitForSeconds(1);
+
+        resultText.text = "";
+        int i = 0;
+        foreach (char s in fullString)
+        {
+            resultText.text += s;
+            i++;
+
+            yield return new WaitForSeconds(.1f);
+        }
+
 
         yield return new WaitForSeconds(1);
 
@@ -331,7 +340,7 @@ public class TrainManager : MonoBehaviour
         {
             // WIN
             yield return new WaitForSeconds(1);
-            GameManager.instance.ChangeScene("Gameplay");
+            GameManager.instance.ChangeScene("MainMenu");
         }
         else
         {
@@ -354,7 +363,11 @@ public class TrainManager : MonoBehaviour
         health -= amount;
 
         if (health <= 0) health = 0;
+
         healthSlider.value = health;
+
+        if (health <= 0)
+            StartCoroutine(ShowResult(false));
     }
 
     #endregion
