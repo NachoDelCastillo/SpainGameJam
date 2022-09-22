@@ -379,15 +379,17 @@ public class TrainManager : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        if (showingResults) return;
+        if (showingResults)
+            return;
 
-        health -= amount;
+        //health -= amount;
+        health -= 50;
 
         if (health <= 0) health = 0;
 
         healthSlider.value = health;
 
-        if (health <= 0)
+        if (health <= 0 && !showingResults)
             StartCoroutine(ShowResult(false));
     }
 

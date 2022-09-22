@@ -116,8 +116,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     private void GoingLocationState()
     {
-        
-        if (Vector2.Distance(transform.position, currentDestination.transform.position) > 0.5)
+        if (Vector2.Distance(transform.position, currentDestination.transform.position) > 0.5f)
         {
             Vector2 dir = currentDestination.transform.position - transform.transform.position; 
             rb.position = Vector2.Lerp(rb.position, rb.position + dir*velocity * Time.fixedDeltaTime, 0.3f);
@@ -130,20 +129,13 @@ public class RayEnemyMovement : MonoBehaviour
 
             Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); 
             transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
-
-
         }
-        else
-        {
-            ChangeState(State.Loading);
-        }
-
+        else ChangeState(State.Loading);
     }
 
 
     private void LoadingState()
     {
-
         elapsedTimeToReload += Time.fixedDeltaTime;
 
         Vector2 direction = new Vector2(1,0);
@@ -153,7 +145,7 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); ;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.1f);
 
-        if (elapsedTimeToReload >= timeToLoad/2.5f)
+        if (elapsedTimeToReload >= timeToLoad - 1)
         {
             loadingLaser.SetActive(true);
         }
@@ -196,7 +188,6 @@ public class RayEnemyMovement : MonoBehaviour
         {
             Vector2 dir = leavingPoint.transform.position - transform.transform.position;
             rb.position = Vector2.Lerp(rb.position, rb.position + dir * velocity * Time.fixedDeltaTime, 0.3f);
-
 
             // Mirar al player
             Vector2 direction = leavingPoint.transform.position - transform.position;
