@@ -1346,6 +1346,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deliverCoal: {fileID: 1832167579}
   MainVelocity_text: {fileID: 373835953}
+  resultText: {fileID: 0}
+  resultPanel: {fileID: 0}
+  pressAnything: {fileID: 0}
+  winColor: {r: 0, g: 0, b: 0, a: 0}
+  loseColor: {r: 0, g: 0, b: 0, a: 0}
   wagons: []
   columns: []
   rows: []
@@ -3000,6 +3005,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
+--- !u!1 &2057998013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057998014}
+  m_Layer: 0
+  m_Name: RayEnemyLeave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2057998014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057998013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.16, y: 3.7551084, z: -4.4632874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094084586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,6 +3286,14 @@ PrefabInstance:
       propertyPath: railsParent
       value: 
       objectReference: {fileID: 184793721}
+    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: leavingPoint
+      value: 
+      objectReference: {fileID: 2057998013}
+    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: timesToShoot
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy
