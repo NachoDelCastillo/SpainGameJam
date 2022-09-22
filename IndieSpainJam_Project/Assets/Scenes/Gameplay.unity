@@ -820,7 +820,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1895215292, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542995750953155798, guid: b16015d906ad0094186500792e8daf72, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485692226763854010, guid: b16015d906ad0094186500792e8daf72, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8485692226763854010, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_MatchWidthOrHeight
@@ -828,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8485692226763854010, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1920
+      value: 368.1
       objectReference: {fileID: 0}
     - target: {fileID: 8485692226763854010, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_ReferenceResolution.y
@@ -836,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8485692226985410822, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8485692228766801320, guid: b16015d906ad0094186500792e8daf72, type: 3}
       propertyPath: m_Name
@@ -1612,7 +1620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1137582938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1931,7 @@ PrefabInstance:
       objectReference: {fileID: 1428882617}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: winColor.a
-      value: 0.19607843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: winColor.b
@@ -1939,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: loseColor.a
-      value: 0.19607843
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: loseColor.b
@@ -1961,6 +1969,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 255504361}
+    - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: pressAnything
+      value: 
+      objectReference: {fileID: 1137582939}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: MainVelocity_text
       value: 
@@ -2151,7 +2163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SUUUUUUUUU
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}

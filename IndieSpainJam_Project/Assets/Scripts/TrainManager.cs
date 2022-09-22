@@ -11,6 +11,8 @@ public class TrainManager : MonoBehaviour
 {
     public static TrainManager Instance { get; private set; }
 
+    bool showingResults;
+
     int MainVelocity = 0;
 
     [Header("Referencias")]
@@ -167,6 +169,7 @@ public class TrainManager : MonoBehaviour
         RemoveRailChanges(1);
         RemoveRailChanges(2);
 
+
         //DebugRow(0);
         //DebugRow(1);
         //DebugRow(2);
@@ -295,35 +298,43 @@ public class TrainManager : MonoBehaviour
 
         AddVelocity();
 
-        if (MainVelocity >= 100)
+        if (MainVelocity >= 100 && !showingResults)
         {
-
             //yield return new WaitForSeconds(1);
-            ShowResult(true);
+            StartCoroutine(ShowResult(true));
         }
     }
 
     IEnumerator ShowResult(bool win)
     {
-        Debug.Log("WIN ? = " + win);
 
+        showingResults = true;
+
+        string fullString;
         if (win)
         {
-            resultText.text = "SIUUUUUU";
+            fullString = "SIUUUUUU";
             resultPanel.color = winColor;
         }
         else
         {
-            resultText.text = "CAGASTE";
+            fullString = "CAGASTE";
             resultPanel.color = loseColor;
         }
-            
 
-        resultPanel.DOFade(1, 1);
+        resultPanel.DOFade(.1f, 1);
         yield return new WaitForSeconds(1);
 
-        resultText.DOFade(1, 1);
-        yield return new WaitForSeconds(1);
+        resultText.text = "";
+        int i = 0;
+        foreach (char s in fullString)
+        {
+            resultText.text += s;
+            i++;
+
+            yield return new WaitForSeconds(.1f);
+        }
+
 
         yield return new WaitForSeconds(1);
 
@@ -331,7 +342,7 @@ public class TrainManager : MonoBehaviour
         {
             // WIN
             yield return new WaitForSeconds(1);
-            GameManager.instance.ChangeScene("Gameplay");
+            GameManager.instance.ChangeScene("MainMenu_Scene");
         }
         else
         {
@@ -341,20 +352,31 @@ public class TrainManager : MonoBehaviour
 
             //yield return new WaitForSeconds(1);
         }
+
+
+        showingResults = false;
     }
 
     void AddVelocity()
     {
+        if (showingResults) return;
+
         MainVelocity += 100;
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
     }
 
     public void TakeDamage(float amount)
     {
+        if (showingResults) return;
+
         health -= amount;
 
         if (health <= 0) health = 0;
+
         healthSlider.value = health;
+
+        if (health <= 0)
+            StartCoroutine(ShowResult(false));
     }
 
     #endregion

@@ -68,7 +68,7 @@ public class BasicEnemy : MonoBehaviour
     {
         anim.SetBool("Attacking", true);
 
-        rb.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero; 
     }
 
     public void Dmg()
