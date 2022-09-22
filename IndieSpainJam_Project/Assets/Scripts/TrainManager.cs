@@ -84,7 +84,7 @@ public class TrainManager : MonoBehaviour
 
         if (selectedRow == 0)
             railsways_b[0] = false;
-        else if (selectedRow == 1)
+        else if (selectedRow == 2)
             railsways_b[2] = false;
 
         newChangeRail.SetRailWays(railsways_b);
@@ -120,7 +120,6 @@ public class TrainManager : MonoBehaviour
     void CheckWagons()
     {
         // Comprobar la posicion y linea de todos los vagones para ver si estan en un cambio de via
-
         for (int i = 0; i < wagons.Length; i++)
         {
             // Comprobar que este vagon no se este cambiando de via justo en este momento
@@ -140,7 +139,7 @@ public class TrainManager : MonoBehaviour
             {
                 // Si en este frame este vagon a pasado a un cambio de via un cambio de via
                 if (changeRail.transform.position.x <= thisWagon.transform.position.x)
-                {
+                { 
                     // Si este vagon ya ha usado este cambio de via, ignorarlo
                     if (changeRail.wagonsThatAlreadyUsedThis.Contains(thisWagon)) continue;
 
@@ -154,7 +153,7 @@ public class TrainManager : MonoBehaviour
 
                     // Si la via a la que se quiere ir coinide con la via en la que ya se esta
                     // Mover el vagon a la via 
-                    if (selectedRow == wagonRailRow)
+                    if (selectedRow != wagonRailRow)
                         thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 1);
 
                     // Informar al vagon de que ha cambiado de via
