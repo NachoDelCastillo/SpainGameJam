@@ -5,15 +5,13 @@ using UnityEngine;
 public class MoveBackground : MonoBehaviour
 {
 	[SerializeField] private float parallaxMultiplier;
+	private float speed;
+	private float[] spriteWidths;
+	private Transform[] childrenTransforms;
 	private Vector2 screenBounds;
-	private float spriteWidth, doubleSpriteWidth, speed;
-	float[] spriteWidths;
-	Transform[] childrenTransforms;
 	void Start()
 	{
-		//spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x;
 		speed = -1f;
-		//doubleSpriteWidth = spriteWidth * 2;
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		childrenTransforms = new Transform[transform.childCount];
 		spriteWidths = new float[transform.childCount];
@@ -35,8 +33,5 @@ public class MoveBackground : MonoBehaviour
 			if (childrenTransforms[i].position.x < screenBounds.x - (spriteWidths[i] * 2))
 				childrenTransforms[i].position = new Vector3(screenBounds.x + spriteWidths[i], childrenTransforms[i].position.y, childrenTransforms[i].position.z);
 		}
-		
-
-		
 	}
 }
