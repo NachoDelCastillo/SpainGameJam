@@ -79,9 +79,9 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        if(spRenderer)spRenderer.enabled = true;
+        if (spRenderer)spRenderer.enabled = true;
 
-        player.enabled = true; 
+        player.enabled = true;
         player.transform.position = respawnPoint.position;
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21d4ca653d253ba4aaecd3bbf9693f86
+guid: da0cb7f467db00047a4a8d8281ebdfe2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,10 +44,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 13
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,29 +100,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SteamTrain_0
+      name: Laser_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 160
-        height: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa510af3d4892eb4b83ff04b97b5dd3c
-      internalID: -1290729024
+      spriteID: 62aab0a76a2ff684d950ae173741f133
+      internalID: -882440638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SteamTrain_1
+      name: Laser_1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
-        width: 160
-        height: 64
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +139,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c864eb03f9a480e45aa5f7158baa64af
-      internalID: -2003528414
+      spriteID: 15a0c354e7de9b34fb9d73c1ef0f27f4
+      internalID: 314041510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SteamTrain_2
+      name: Laser_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a99404cfd06eea49a2d9a7be9717112
+      internalID: -752486282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laser_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 160
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1459ec722fbbf1c42b9e1b45ec364e56
-      internalID: 1233929283
+      spriteID: 95098ad3690796a4181726d2d35b5b43
+      internalID: 1427288003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SteamTrain_3
+      name: Laser_4
       rect:
         serializedVersion: 2
-        x: 160
+        x: 32
         y: 0
-        width: 160
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +202,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38a6863d09971e34eac75ba1e2ef3d7f
-      internalID: -1207231089
+      spriteID: 5cb56d86d9c3e6c4285524e1e6ef82f4
+      internalID: -1565047432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laser_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa9676c36b79a1c47b7fa3e33304beb1
+      internalID: -1969978723
       vertices: []
       indices: 
       edges: []
@@ -210,10 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SteamTrain_3: -1207231089
-      SteamTrain_1: -2003528414
-      SteamTrain_0: -1290729024
-      SteamTrain_2: 1233929283
+      Laser_3: 1427288003
+      Laser_5: -1969978723
+      Laser_4: -1565047432
+      Laser_2: -752486282
+      Laser_0: -882440638
+      Laser_1: 314041510
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

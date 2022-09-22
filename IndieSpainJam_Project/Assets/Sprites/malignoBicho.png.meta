@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21d4ca653d253ba4aaecd3bbf9693f86
+guid: ff184140446b2744a976f52612c13697
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SteamTrain_0
+      name: malignoBicho_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 160
-        height: 64
+        x: 45
+        y: 119
+        width: 101
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa510af3d4892eb4b83ff04b97b5dd3c
-      internalID: -1290729024
+      spriteID: 0a0f21867069e5d4da75eb6daa2b83d2
+      internalID: 1819954804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SteamTrain_1
+      name: malignoBicho_1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
-        width: 160
-        height: 64
+        x: 2
+        y: 98
+        width: 19
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c864eb03f9a480e45aa5f7158baa64af
-      internalID: -2003528414
+      spriteID: 83ce46c8339e6954593075b09efd14f6
+      internalID: 387126363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SteamTrain_2
+      name: malignoBicho_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 160
-        height: 64
+        x: 64
+        y: 6
+        width: 89
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,29 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1459ec722fbbf1c42b9e1b45ec364e56
-      internalID: 1233929283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SteamTrain_3
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 160
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38a6863d09971e34eac75ba1e2ef3d7f
-      internalID: -1207231089
+      spriteID: 7d62135a545fab34ca63b91602d82d2d
+      internalID: -488595566
       vertices: []
       indices: 
       edges: []
@@ -210,10 +189,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SteamTrain_3: -1207231089
-      SteamTrain_1: -2003528414
-      SteamTrain_0: -1290729024
-      SteamTrain_2: 1233929283
+      malignoBicho_1: 387126363
+      malignoBicho_0: 1819954804
+      malignoBicho_2: -488595566
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

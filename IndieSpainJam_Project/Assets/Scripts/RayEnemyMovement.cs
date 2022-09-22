@@ -23,6 +23,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     // LoadingState
     [SerializeField] float timeToLoad = 4f;
+    [SerializeField] GameObject loadingLaser;
     [SerializeField] GameObject loadingSphere;
     float elapsedTimeToReload = 0;
     float startingRadius = 0.5f;
@@ -42,6 +43,7 @@ public class RayEnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ChangeState(State.GoingLocation);
         player = GameObject.FindGameObjectWithTag("Player");
+        loadingLaser.SetActive(false);
         loadingSphere.SetActive(false);
         rayTrigger.SetActive(false);
         particlesLoading.SetActive(false);
@@ -86,6 +88,7 @@ public class RayEnemyMovement : MonoBehaviour
                 loadingSphere.transform.localScale = Vector3.one*startingRadius;
                 break;
             case State.Shooting:
+                loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
                 elapsedTimeToFire = 0f;
 
@@ -93,7 +96,6 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
         state = newState;
-        Debug.Log(state);
     }
 
 
@@ -136,6 +138,10 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); ;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.1f);
 
+        if (elapsedTimeToReload >= timeToLoad / 2)
+        {
+            loadingLaser.SetActive(true);
+        }
 
         //Cambiar el srite de carga
         loadingSphere.transform.localScale = Vector2.one * startingRadius * (elapsedTimeToReload) / timeToLoad;
