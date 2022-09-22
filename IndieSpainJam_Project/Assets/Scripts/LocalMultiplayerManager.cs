@@ -72,6 +72,7 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         if (spRenderer) spRenderer.enabled = false;
         // y tmb desactivar PlayerController_2D para que no se instancie otro player cuando este está muerto
+        player.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         player.enabled = false;
 
         UIManager.GetInstance().CreateSpawnTimer(player.gameObject.transform, time);
@@ -79,9 +80,10 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        if(spRenderer)spRenderer.enabled = true;
+        if (spRenderer)spRenderer.enabled = true;
 
-        player.enabled = true; 
+        player.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        player.enabled = true;
         player.transform.position = respawnPoint.position;
     }
 }

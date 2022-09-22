@@ -1706,6 +1706,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029109946610292005, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029109946610292026, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029109946610292026, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029109946610292026, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833968801920011724, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
 --- !u!4 &1270637808 stripped
