@@ -322,7 +322,6 @@ public class TrainManager : MonoBehaviour
         resultPanel.DOFade(.1f, 1);
         yield return new WaitForSeconds(1);
 
-
         resultText.text = "";
         int i = 0;
         foreach (char s in fullString)
