@@ -1706,10 +1706,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainManager (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5029109946610292005, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5029109946610292026, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode
       value: 0
