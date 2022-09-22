@@ -33,6 +33,6 @@ public class WagonLogic : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("BRUH");
+
     }
 }

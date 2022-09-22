@@ -91,7 +91,6 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
         state = newState;
-        Debug.Log(state);
     }
 
 

@@ -17,6 +17,13 @@ public class TrainManager : MonoBehaviour
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
 
+    [SerializeField] TMP_Text resultText;
+    [SerializeField] Image resultPanel;
+    [SerializeField] TMP_Text pressAnything;
+    [SerializeField] Color winColor;
+    [SerializeField] Color loseColor;
+
+
     [SerializeField] WagonLogic[] wagons;
     [SerializeField] Transform[] columns;
     [SerializeField] Transform[] rows;
@@ -132,7 +139,6 @@ public class TrainManager : MonoBehaviour
         } while (!correctBools);
 
 
-
         ChangeRail newChangeRail = Instantiate(changeRail_Prefab, rows[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
 
         // Meter el cambio de via en la lista de cambio de via correspondiente
@@ -161,9 +167,9 @@ public class TrainManager : MonoBehaviour
         RemoveRailChanges(1);
         RemoveRailChanges(2);
 
-        DebugRow(0);
-        DebugRow(1);
-        DebugRow(2);
+        //DebugRow(0);
+        //DebugRow(1);
+        //DebugRow(2);
     }
 
     // Se encarga de comprobar cada una de las posiciones de los vagones
@@ -252,7 +258,6 @@ public class TrainManager : MonoBehaviour
         }
     }
 
-
     void DebugRow(int i)
     {
         string s = "";
@@ -271,7 +276,6 @@ public class TrainManager : MonoBehaviour
 
     public void CoalDelivered(OnTriggerDelegation delegation)
     {
-
         if (!delegation.Other.CompareTag("Coal")) return;
 
         GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
@@ -290,11 +294,58 @@ public class TrainManager : MonoBehaviour
             Destroy(coal.gameObject);
 
         AddVelocity();
+
+        if (MainVelocity >= 100)
+        {
+
+            //yield return new WaitForSeconds(1);
+            ShowResult(true);
+        }
+    }
+
+    IEnumerator ShowResult(bool win)
+    {
+        Debug.Log("WIN ? = " + win);
+
+        if (win)
+        {
+            resultText.text = "SIUUUUUU";
+            resultPanel.color = winColor;
+        }
+        else
+        {
+            resultText.text = "CAGASTE";
+            resultPanel.color = loseColor;
+        }
+            
+
+        resultPanel.DOFade(1, 1);
+        yield return new WaitForSeconds(1);
+
+        resultText.DOFade(1, 1);
+        yield return new WaitForSeconds(1);
+
+        yield return new WaitForSeconds(1);
+
+        if (win)
+        {
+            // WIN
+            yield return new WaitForSeconds(1);
+            GameManager.instance.ChangeScene("Gameplay");
+        }
+        else
+        {
+            // LOSE
+            pressAnything.DOFade(1, 1);
+            yield return new WaitForSeconds(1);
+
+            //yield return new WaitForSeconds(1);
+        }
     }
 
     void AddVelocity()
     {
-        MainVelocity += 5;
+        MainVelocity += 100;
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
     }
 
