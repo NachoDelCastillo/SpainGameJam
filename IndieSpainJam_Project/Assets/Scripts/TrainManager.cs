@@ -15,6 +15,8 @@ public class TrainManager : MonoBehaviour
 
     int MainVelocity = 0;
 
+    Vector3[] initialPosOfWagons;
+
     [Header("Referencias")]
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
@@ -70,6 +72,10 @@ public class TrainManager : MonoBehaviour
         healthSlider.value = health;
 
         StartCoroutine(SpawnChangeRail());
+
+        initialPosOfWagons = new Vector3[4];
+        for (int i = 0; i < wagons.Length; i++)
+            initialPosOfWagons[i] = wagons[i].transform.position;
     }
 
     float spawnTimer;
@@ -161,6 +167,8 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (showingResults) return;
+
         // Mover vagones
         CheckWagons();
 
@@ -307,7 +315,6 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator ShowResult(bool win)
     {
-
         showingResults = true;
 
         string fullString;
@@ -315,6 +322,11 @@ public class TrainManager : MonoBehaviour
         {
             fullString = "SIUUUUUU";
             resultPanel.color = winColor;
+
+            // Poner todos los vagones en fila
+
+            for (int j = 0; j < wagons.Length; j++)
+                wagons[j].transform.DOMove(initialPosOfWagons[j], 1);
         }
         else
         {
