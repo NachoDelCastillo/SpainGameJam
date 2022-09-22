@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ChangeRail : MonoBehaviour
 {
+    [SerializeField] public int thisRow;
+
     // Si esta a true puede moverse a esa posicion
-    bool[] railWays;
+    [SerializeField] bool[] railWays;
 
     [SerializeField] Transform[] railGfx;
 
@@ -23,8 +25,10 @@ public class ChangeRail : MonoBehaviour
         transform.Translate(new Vector3(-10 * Time.deltaTime, 0));
     }
 
-    public void SetRailWays(bool[] railWays_)
+    public void SetRailWays(int thisRow_, bool[] railWays_)
     {
+        thisRow = thisRow_;
+
         railWays = railWays_;
 
         for (int i = 0; i < 3; i++)
@@ -37,7 +41,17 @@ public class ChangeRail : MonoBehaviour
 
         for (int i = 0; i < railWays.Length; i++)
             if (railWays[i])
-                possibleRailWays.Add(i);
+            {
+                int numI = - 1;
+                if (thisRow == 0)
+                    numI = i - 1;
+                else if (thisRow == 1)
+                    numI = i;
+                else if (thisRow == 2)
+                    numI = i + 1;
+
+                possibleRailWays.Add(numI);
+            }
 
         return possibleRailWays.ToArray();
     }

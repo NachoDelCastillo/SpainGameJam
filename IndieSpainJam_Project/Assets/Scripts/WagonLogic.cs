@@ -30,4 +30,9 @@ public class WagonLogic : MonoBehaviour
 
         collision.transform.SetParent(null);
     }
+
+    private void OnDestroy()
+    {
+        Debug.Log("BRUH");
+    }
 }

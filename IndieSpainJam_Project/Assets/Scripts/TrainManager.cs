@@ -1,9 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+
 
 public class TrainManager : MonoBehaviour
 {
@@ -68,26 +70,70 @@ public class TrainManager : MonoBehaviour
             yield return 0;
         }
 
-        int selectedRow = Random.Range(0, 3);
+
+        int[] possibleRows = new int[4] {
+            wagons[0].RailRow,
+            wagons[1].RailRow,
+            wagons[2].RailRow,
+            wagons[3].RailRow
+        };
+
+        Debug.Log("possibleRows = " + possibleRows);
+
+        int selectedRow = possibleRows[Random.Range(0, 4)];
+
+        bool[] railsways_b =
+        { false, false, false };
+
+        bool correctBools;
+        do
+        {
+            correctBools = true;
+
+            RandomRail(ref railsways_b[0]);
+            RandomRail(ref railsways_b[1]);
+            RandomRail(ref railsways_b[2]);
+
+            if (selectedRow == 0)
+                railsways_b[0] = false;
+            else if (selectedRow == 2)
+                railsways_b[2] = false;
+
+
+            bool selectedRowIsOccupied = false;
+            int numOfWays = 0;
+            for (int i = 0; i < railsways_b.Length; i++)
+            {
+                // Si el rail de enfrente es true, poner esta variable a true
+                if (i == 1)
+                    selectedRowIsOccupied = railsways_b[i];
+
+                if (railsways_b[i])
+                    numOfWays++;
+            }
+
+            // Si solo hay una via, y justo es la que va recta, no aceptarla
+            if (selectedRowIsOccupied && numOfWays == 1) correctBools = false;
+
+            if (numOfWays == 0) correctBools = false;
+
+            // Si hay un rail que va de frente, 
+            if (railsways_b[1] == true)
+                if (Random.Range(0, 2) == 0)
+                    correctBools = false;
+
+            if (!railsways_b[0] && !railsways_b[1] && !railsways_b[2]) correctBools = false;
+
+        } while (!correctBools);
+
+
 
         ChangeRail newChangeRail = Instantiate(changeRail_Prefab, rows[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
 
         // Meter el cambio de via en la lista de cambio de via correspondiente
         changeRail_Lists[selectedRow].Add(newChangeRail);
 
-        bool[] railsways_b =
-        { true, false, true };
-
-        RandomRail(ref railsways_b[0]);
-        RandomRail(ref railsways_b[1]);
-        RandomRail(ref railsways_b[2]);
-
-        if (selectedRow == 0)
-            railsways_b[0] = false;
-        else if (selectedRow == 2)
-            railsways_b[2] = false;
-
-        newChangeRail.SetRailWays(railsways_b);
+        newChangeRail.SetRailWays(selectedRow, railsways_b);
 
         StartCoroutine(SpawnChangeRail());
     }
@@ -138,8 +184,12 @@ public class TrainManager : MonoBehaviour
             foreach (ChangeRail changeRail in changeRailsInThisRow)
             {
                 // Si en este frame este vagon a pasado a un cambio de via un cambio de via
-                if (changeRail.transform.position.x <= thisWagon.transform.position.x)
-                { 
+                if (changeRail.transform.position.x - 2 < thisWagon.transform.position.x
+                    && thisWagon.transform.position.x < changeRail.transform.position.x + 2)
+                {
+                    //if (changeRail.)
+
+
                     // Si este vagon ya ha usado este cambio de via, ignorarlo
                     if (changeRail.wagonsThatAlreadyUsedThis.Contains(thisWagon)) continue;
 
@@ -147,14 +197,23 @@ public class TrainManager : MonoBehaviour
                     // Seleccionar a la via a la que se va a mover este vagon
                     int[] possibleRailWays = changeRail.GetPossibleRailWays();
 
+                    int selectedRow;
                     if (possibleRailWays.Length == 0)
                         continue;
-                    int selectedRow = possibleRailWays[Random.Range(0, possibleRailWays.Length-1)];
+                    else if (possibleRailWays.Length == 1)
+                        selectedRow = possibleRailWays[0];
+                    else
+                        selectedRow = possibleRailWays[Random.Range(0, possibleRailWays.Length)];
 
                     // Si la via a la que se quiere ir coinide con la via en la que ya se esta
                     // Mover el vagon a la via 
+
                     if (selectedRow != wagonRailRow)
+                    {
+                        //if (selectedRow == 2) Debug.Log("dv");
+                        //else
                         thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 1);
+                    }
 
                     // Informar al vagon de que ha cambiado de via
                     thisWagon.RailRow = selectedRow;

@@ -94,7 +94,6 @@ public class PlayerController_2D : MonoBehaviour
         //    rb.velocity = new Vector2(rb.velocity.x, 21);
 
 
-
         // Update animator
         if (input_hor > .1f || input_hor < -.1f)
             anim.SetFloat("HorVel", Mathf.Abs(rb.velocity.x));
@@ -431,9 +430,7 @@ public class PlayerController_2D : MonoBehaviour
 
         WagonLogic wagonLogic = transform.GetComponentInParent<WagonLogic>();
         if (wagonLogic != null)
-        {
-            targetVelocity += new Vector3(wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.x, wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.y);
-        }
+            targetVelocity += new Vector3(wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.x, wagonLogic.transform.GetComponent<Rigidbody2D>().velocity.y + 10 * Time.deltaTime);
 
         //check if in screen bounds
         if ((transform.position.x >= screenLimit && targetVelocity.x > 0) ||

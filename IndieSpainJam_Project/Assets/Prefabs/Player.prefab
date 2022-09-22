@@ -4970,7 +4970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3995636422682302806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49, z: 0}
+  m_LocalPosition: {x: 0, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5035,13 +5035,13 @@ MonoBehaviour:
   gfx: {fileID: 4391568662358387163}
   anim: {fileID: 3995636423522328657}
   grabSpot: {fileID: 1837162518}
-  jumpForce: 2000
+  jumpForce: 2700
   turret: {fileID: 0}
   groundCheck_tr: {fileID: 3995636422682302807}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  screenMargin: 0
+  screenMargin: 1
   jumping: {fileID: 978896105596404126}
   landing1: {fileID: 9160305474341144574}
   landing2: {fileID: 5152556046472793109}
@@ -5236,7 +5236,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.36497545}
+  m_Offset: {x: 0, y: -0.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5247,7 +5247,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73914057, y: 1.7956166}
+  m_Size: {x: 0.73914057, y: 1.8}
   m_EdgeRadius: 0
 --- !u!50 &3995636423290284417
 Rigidbody2D:
@@ -5296,7 +5296,7 @@ Transform:
   m_GameObject: {fileID: 3995636423522328685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.05, y: 0.6799998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3665121030528174193}
@@ -5348,7 +5348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5938953463041924506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
