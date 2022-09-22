@@ -8,6 +8,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     // Start is called before the first frame update
     [SerializeField] GameObject railsParent;
+    [SerializeField] GameObject particlesLoading;
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
 
@@ -43,6 +44,8 @@ public class RayEnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         loadingSphere.SetActive(false);
         rayTrigger.SetActive(false);
+        particlesLoading.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -76,6 +79,8 @@ public class RayEnemyMovement : MonoBehaviour
                 currentDestination = railsParent.transform.GetChild(rnd).gameObject;
                 break;
             case State.Loading:
+                loadingSphere.transform.localScale = Vector3.zero;
+                particlesLoading.SetActive(true);
                 loadingSphere.SetActive(true);
                 elapsedTimeToReload = 0f;
                 loadingSphere.transform.localScale = Vector3.one*startingRadius;
@@ -133,10 +138,12 @@ public class RayEnemyMovement : MonoBehaviour
 
 
         //Cambiar el srite de carga
-        loadingSphere.transform.localScale = Vector2.one * startingRadius * (timeToLoad - elapsedTimeToReload) / timeToLoad;
+        loadingSphere.transform.localScale = Vector2.one * startingRadius * (elapsedTimeToReload) / timeToLoad;
 
         if (elapsedTimeToReload >= timeToLoad)
         {
+            loadingSphere.SetActive(false);
+            particlesLoading.SetActive(false);
             ChangeState(State.Shooting);
         }
 
