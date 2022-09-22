@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 171590804945527070, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 292186862905691304, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -258,13 +262,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4215687775345366588, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5344991517947535292, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6356782315223975300, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6356782315245110118, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782315245110137, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6356782315283208323, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782315844828779, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 6356782316026564924, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_IsActive
@@ -298,9 +322,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6356782317091098790, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782317091098791, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005029316129433657, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238609295868612395, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322479733399271098, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634982272803325062, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: parallaxMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9030766339778741718, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_Name
       value: Parallax objects
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6356782315844828778, guid: e3e39a80e98645141a314a0d66792265, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3e39a80e98645141a314a0d66792265, type: 3}
