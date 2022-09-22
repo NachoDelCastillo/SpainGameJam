@@ -171,9 +171,10 @@ MonoBehaviour:
   target: {fileID: 0}
   anim: {fileID: 3248124562668269690}
   speed: 3
-  detectionRadius: 3
+  detectionRadius: 1
   destroyTime: 0.5
   damage: 2
+  attackFrecuency: 1
   colliderDetection: {fileID: 3248124563058833529}
   enemySpawner: {fileID: 0}
 --- !u!58 &3248124563058833528
