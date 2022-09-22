@@ -258,6 +258,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6356782315223975300, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782315283208323, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316026564924, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316207054653, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316565838836, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316815337710, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316831118083, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316888263142, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316916782665, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356782316980277769, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9030766339778741718, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_Name
       value: Parallax objects

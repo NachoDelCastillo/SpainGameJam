@@ -10,7 +10,7 @@ public class MoveBackground : MonoBehaviour
 	void Start()
 	{
 		spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x;
-		speed = 0.01f;
+		speed = -1f;
 		doubleSpriteWidth = spriteWidth * 2;
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 	}
@@ -22,7 +22,7 @@ public class MoveBackground : MonoBehaviour
 
 		//Si la posicion horizontal es mas grande que la pantalla mas el ancho del sprite
 		//Mueve el objeto al inicio de la pantalla, es decir el ancho de la pantalla - el ancho del sprite por dos
-		if (transform.position.x > screenBounds.x + spriteWidth)
-			transform.position = new Vector3(screenBounds.x - doubleSpriteWidth, transform.position.y, transform.position.z);
+		if (transform.position.x < screenBounds.x - doubleSpriteWidth)
+			transform.position = new Vector3(screenBounds.x + spriteWidth, transform.position.y, transform.position.z);
 	}
 }
