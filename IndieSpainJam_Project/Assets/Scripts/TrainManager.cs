@@ -9,10 +9,7 @@ using UnityEngine.UI;
 
 public class TrainManager : MonoBehaviour
 {
-    static TrainManager instance;
-
-    static TrainManager GetInstance()
-    { return instance; }
+    public static TrainManager Instance { get; private set; }
 
     int MainVelocity = 0;
 
@@ -39,14 +36,22 @@ public class TrainManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
 
         changeRail_Lists = new List<ChangeRail>[3];
 
         changeRail_Lists[0] = new List<ChangeRail>();
         changeRail_Lists[1] = new List<ChangeRail>();
-        changeRail_Lists[2] = new List<ChangeRail>();
+        changeRail_Lists[2] = new List<ChangeRail>(); 
     }
 
     private void Start()

@@ -76,9 +76,11 @@ public class Turret : MonoBehaviour
 
             rotMultiplier += Time.deltaTime * rotIncrease;
             cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
-            float z = cannonPivot.transform.localEulerAngles.z;
-            z = Mathf.Clamp(z, 90, 270);
-            cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
+            
+            //no dejar rotar
+            //float z = cannonPivot.transform.localEulerAngles.z;
+            //z = Mathf.Clamp(z, 90, 270);
+            //cannonPivot.transform.localEulerAngles = new Vector3(cannonPivot.transform.eulerAngles.x, cannonPivot.transform.eulerAngles.y, z);
 
             lastInput = rotationInput;
         }

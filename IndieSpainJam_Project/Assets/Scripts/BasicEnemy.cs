@@ -9,7 +9,7 @@ public class BasicEnemy : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] Animator anim;
 
-    [SerializeField] float speed, detectionRadius, destroyTime;
+    [SerializeField] float speed, detectionRadius, destroyTime, damage;
     [SerializeField] CircleCollider2D colliderDetection;
 
     enum States { Chase, Attack, Death }
@@ -69,6 +69,11 @@ public class BasicEnemy : MonoBehaviour
         anim.SetBool("Attacking", true);
 
         rb.velocity = Vector2.zero;
+    }
+
+    public void Dmg()
+    {
+        TrainManager.Instance.TakeDamage(damage);
     }
 
     void Death()
