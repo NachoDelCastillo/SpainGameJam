@@ -49,7 +49,7 @@ public class Turret : MonoBehaviour
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
                 Vector3 desiredAngle = bulletsSpawnPoint.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, Quaternion.Euler(desiredAngle));
-                shootPart.Play();
+                //shootPart.Play();
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
 
@@ -112,6 +112,8 @@ public class Turret : MonoBehaviour
         //cannonPivot.transform.rotation = Quaternion.Lerp(cannonPivot.transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime);
     }
 
+
+    
     IEnumerator DrawBack(float lastDir)
     {
         float initialZ = cannonPivot.transform.localEulerAngles.z;
@@ -138,4 +140,24 @@ public class Turret : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        Debug.Log("Entra en torretaaaaaaaaaaa");
+        if (collision.gameObject.CompareTag("Coal"))
+        {
+            Debug.Log("Entra es coal");
+
+            currentAmmo += maxAmmo / 3;
+            if(currentAmmo > maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+            }
+            imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
+            imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+            Destroy(collision.gameObject);
+
+        }
+    }
 }

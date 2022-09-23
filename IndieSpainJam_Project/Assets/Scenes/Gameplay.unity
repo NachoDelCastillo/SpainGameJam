@@ -7051,6 +7051,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82698376270874265, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 113919401620612281, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7062,6 +7066,18 @@ PrefabInstance:
     - target: {fileID: 2711162477562396052, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_SortingOrder
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151866213657794297, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151866213657794300, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: capMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029109945093923918, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: resultPanel
@@ -7127,6 +7143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029109945143274835, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5029109946718253696, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7136,9 +7156,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -785237565
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
 --- !u!4 &1270637808 stripped

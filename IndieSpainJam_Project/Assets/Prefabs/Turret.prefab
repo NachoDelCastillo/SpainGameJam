@@ -1137,7 +1137,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 2
+        scalar: 1
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5282,11 +5282,13 @@ MonoBehaviour:
   cannonPivot: {fileID: 6429206773132891237}
   bulletsSpawnPoint: {fileID: 5751305637327534687}
   bulletPrefab: {fileID: 7661619938141800130, guid: 6f78d63c06f12ac4fa0064201eb5cc8e, type: 3}
+  shootPart: {fileID: 344756975776517925}
   rotationSpeed: 15
   coneAngle: 8
   fireRate: 5
+  capMultiplier: 0
   ammoIndicator: {fileID: 825390576674929684}
-  maxAmmo: 200
+  maxAmmo: 60
 --- !u!1 &5751305637327534687
 GameObject:
   m_ObjectHideFlags: 0
