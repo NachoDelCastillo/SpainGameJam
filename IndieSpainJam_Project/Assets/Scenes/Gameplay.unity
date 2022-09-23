@@ -24434,10 +24434,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4303165076119651760, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4303165076119651762, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_SortingOrder
       value: 14
@@ -25431,12 +25427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelNeon: {fileID: 621825778}
-<<<<<<< Updated upstream
-=======
-  maxIntensity: 500
-  normalIntensity: 30
-  timeToReachMax: 0.5
->>>>>>> Stashed changes
   smoke: {fileID: 6423273255871304014}
   deliverCoal: {fileID: 5029109945100699262}
   MainVelocity_text: {fileID: 373835953}
