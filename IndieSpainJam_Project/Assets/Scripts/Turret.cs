@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
@@ -19,16 +20,25 @@ public class Turret : MonoBehaviour
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
     float lastInput, anglesDrawBack = 10;
+
+    //Ammo
+    [SerializeField] GameObject ammoIndicator;
+    [SerializeField] int maxAmmo;
+    int currentAmmo;
+    Image imageToFill;
+
     void Start()
     {
         shooting = false;
-        timeBetweenShots = 1f / fireRate;      
+        timeBetweenShots = 1f / fireRate;
+        imageToFill = ammoIndicator.GetComponent<Image>();
+        currentAmmo = (int) (maxAmmo * 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shooting)
+        if (shooting && currentAmmo > 0)
         {
             //Debug.Log("Disparando");
             timeElaspedSinceLastShot += Time.deltaTime;
@@ -38,7 +48,11 @@ public class Turret : MonoBehaviour
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
                 Vector3 desiredAngle = bulletsSpawnPoint.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, Quaternion.Euler(desiredAngle));
+                currentAmmo--;
                 timeElaspedSinceLastShot = 0;
+
+                imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
+                imageToFill.color = (imageToFill.fillAmount > 0.5 ) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f)*2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
         }
 
