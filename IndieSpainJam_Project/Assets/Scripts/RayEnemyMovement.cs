@@ -123,12 +123,12 @@ public class RayEnemyMovement : MonoBehaviour
             
 
             // Mirar al player
-            Vector2 direction = player.transform.position - transform.position;
-            direction.Normalize();
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //Vector2 direction = player.transform.position - transform.position;
+            //direction.Normalize();
+            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); 
-            transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
+            //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); 
+            //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
         else ChangeState(State.Loading);
     }

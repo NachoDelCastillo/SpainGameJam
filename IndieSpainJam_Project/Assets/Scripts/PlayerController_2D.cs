@@ -40,7 +40,7 @@ public class PlayerController_2D : MonoBehaviour
     bool currentlyInTurretWagon = false;
     bool usingTurret = false;
     bool enteringTurret = false;
-    [SerializeField] GameObject turret;
+    [SerializeField] public GameObject turret;
     float turretEnteringRadius = 0.1f;
     Turret turretControl;
 
@@ -67,6 +67,7 @@ public class PlayerController_2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerControl = new PlayerInputActions();
+        turret = FindObjectOfType<Turret>().gameObject;
         turretControl = turret.GetComponent<Turret>();
     }
 
@@ -495,7 +496,7 @@ public class PlayerController_2D : MonoBehaviour
             groundRememberTimer = 0;
 
 
-        if (jumpRememberTimer > 0 && onGround && input_ver < 0 && !isDropping)
+        if (jumpRememberTimer > 0 && onGround && input_ver < -.8f && !isDropping)
         {
             jumpRememberTimer = 0;
             groundRememberTimer = 0;

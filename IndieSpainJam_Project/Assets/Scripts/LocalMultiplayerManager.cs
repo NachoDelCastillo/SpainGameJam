@@ -30,8 +30,15 @@ public class LocalMultiplayerManager : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
 
         allPlayers = new List<PlayerController_2D>();
-        //playerInputManager.JoinPlayer(1);
 
+        //int numPlayers = GameManager.numPlayersPlaying;
+        //numPlayers = 4;
+        //for (int i = 0; i < numPlayers; i++)
+        //    playerInputManager.JoinPlayer(i);
+
+
+        playerInputManager.JoinPlayer(1);
+        playerInputManager.JoinPlayer(2);
         //playerInputManager.JoinPlayer();
         //playerInputManager.JoinPlayer(2);
     }
@@ -46,6 +53,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         int playerIndex = playerInputManager.playerCount - 1;
         newPlayerController.playerIndex = playerIndex;
         newPlayerController.transform.SetParent(playerContainer);
+        newPlayerController.turret = FindObjectOfType<Turret>().gameObject;
 
         allPlayers.Add(newPlayerController);
     }
