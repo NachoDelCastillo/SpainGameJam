@@ -7119,6 +7119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
 --- !u!4 &1270637808 stripped
