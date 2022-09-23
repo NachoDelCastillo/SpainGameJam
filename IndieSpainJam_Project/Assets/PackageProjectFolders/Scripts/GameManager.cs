@@ -8,6 +8,8 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    static public int numPlayersPlaying;
+
     // TRANSITION STUFF
     [SerializeField] RectTransform left;
     [SerializeField] RectTransform right;
