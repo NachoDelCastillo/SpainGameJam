@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Utils : MonoBehaviour
@@ -18,6 +19,19 @@ public class Utils : MonoBehaviour
             c += (Time.deltaTime / seconds);
             c = Mathf.Clamp(c, 0, 1);
             yield return new WaitForSeconds(0);
+        }
+    }
+
+    static public IEnumerator WriteThis(string fulltext, TMP_Text text_, float secondsBetweenLetters)
+    {
+        text_.text = "";
+        int i = 0;
+        foreach (char s in fulltext)
+        {
+            text_.text += s;
+            i++;
+
+            yield return new WaitForSeconds(secondsBetweenLetters);
         }
     }
 }

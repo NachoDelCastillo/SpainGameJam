@@ -167,6 +167,9 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.anyKeyDown)
+            pressAnything_b = true;
+
         if (showingResults) return;
 
         // Mover vagones
@@ -315,8 +318,6 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator ShowResult(bool win)
     {
-        Debug.Log("rfethj");
-
         showingResults = true;
 
         string fullString;
@@ -339,15 +340,7 @@ public class TrainManager : MonoBehaviour
         resultPanel.DOFade(.1f, 1);
         yield return new WaitForSeconds(1);
 
-        resultText.text = "";
-        int i = 0;
-        foreach (char s in fullString)
-        {
-            resultText.text += s;
-            i++;
-
-            yield return new WaitForSeconds(.1f);
-        }
+        StartCoroutine(Utils.WriteThis(fullString, resultText, .15f));
 
 
         yield return new WaitForSeconds(1);
@@ -361,15 +354,43 @@ public class TrainManager : MonoBehaviour
         else
         {
             // LOSE
-            pressAnything.DOFade(1, 1);
-            yield return new WaitForSeconds(1);
+            float timeBetweenLetters = .05f;
+            string s = "Press anything to try again";
+            StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
+            yield return new WaitForSeconds(timeBetweenLetters * s.Length);
 
-            GameManager.instance.ChangeScene("MainMenu_Scene");
+
             //yield return new WaitForSeconds(1);
+
+            ShowAnyKeyButton();
+
+            pressAnything_b = false;
+
+            while (!pressAnything_b)
+                yield return 0;
+
+            CancelInvoke();
+            GameManager.instance.ChangeScene("Gameplay");
         }
 
 
         showingResults = false;
+    }
+
+    bool pressAnything_b;
+
+    void ShowAnyKeyButton()
+    {
+        pressAnything.gameObject.SetActive(true);
+
+        Invoke("RemoveAnyKeyButton", .5f);
+    }
+
+    void RemoveAnyKeyButton()
+    {
+        pressAnything.gameObject.SetActive(false);
+
+        Invoke("ShowAnyKeyButton", .5f);
     }
 
     void AddVelocity()

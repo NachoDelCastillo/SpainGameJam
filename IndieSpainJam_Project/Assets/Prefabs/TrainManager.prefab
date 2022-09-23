@@ -91,8 +91,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109945093923892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9371164, y: -0.69267744, z: 0}
-  m_LocalScale: {x: 2.4918373, y: 0.32984638, z: 1}
+  m_LocalPosition: {x: -16.187117, y: -2.9426775, z: 0}
+  m_LocalScale: {x: 8.483958, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3151866213657794296}
@@ -152,7 +152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -319,7 +319,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -446,6 +446,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deliverCoal: {fileID: 5029109946300555921}
   MainVelocity_text: {fileID: 0}
+  resultText: {fileID: 0}
+  resultPanel: {fileID: 0}
+  pressAnything: {fileID: 0}
+  winColor: {r: 0, g: 0.94064164, b: 1, a: 0}
+  loseColor: {r: 1, g: 0, b: 0, a: 0}
   wagons:
   - {fileID: 5029109945093923913}
   - {fileID: 5029109946958770223}
@@ -461,7 +466,7 @@ MonoBehaviour:
   - {fileID: 5029109946288619104}
   - {fileID: 5029109947130842676}
   health: 0
-  maxHealth: 50
+  maxHealth: 100
   healthSlider: {fileID: 0}
   changeRail_Prefab: {fileID: 6622836723093552908, guid: 4d76fa9bdc0e4f3478b39d89d7e07bdd, type: 3}
   rails: {fileID: 5029109947068823376}
@@ -1099,7 +1104,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1275,7 +1280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109946958770197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -3, z: 0}
+  m_LocalPosition: {x: -6.75, y: -3, z: 0}
   m_LocalScale: {x: 8.483958, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1336,7 +1341,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1601,6 +1606,14 @@ PrefabInstance:
     - target: {fileID: 4434166056738015602, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434166056738015603, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: fireRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434166056738015603, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: coneAngle
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4434166056738015607, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_RootOrder
