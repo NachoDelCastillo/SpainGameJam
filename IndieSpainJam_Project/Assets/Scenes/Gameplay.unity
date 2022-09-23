@@ -7051,6 +7051,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 113919401620612281, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130450300021316253, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2711162477562396052, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_SortingOrder
       value: 21
@@ -7118,6 +7126,14 @@ PrefabInstance:
     - target: {fileID: 5029109945143274835, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_Name
       value: TrainManager (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029109946718253696, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032835722315840514, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6623624086789981865, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: m_Materials.Array.data[0]

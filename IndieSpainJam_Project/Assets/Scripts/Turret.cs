@@ -16,7 +16,7 @@ public class Turret : MonoBehaviour
 
 
     bool shooting, drawBack;
-    [SerializeField] float fireRate = 5;
+    [SerializeField] float fireRate = 5, capMultiplier;
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
@@ -91,6 +91,7 @@ public class Turret : MonoBehaviour
             StopCoroutine(DrawBack(1));
 
             rotMultiplier += Time.deltaTime * rotIncrease;
+            rotMultiplier = Mathf.Clamp(rotMultiplier, 1, capMultiplier);
             cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
             
             //no dejar rotar
