@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1413364094205463793
 Transform:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1858146824681076675
 Transform:
   m_ObjectHideFlags: 0
@@ -6825,7 +6825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4338779353787102832
 Transform:
   m_ObjectHideFlags: 0
@@ -7259,6 +7259,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5029109945093923912}
     m_Modifications:
+    - target: {fileID: 3723075008087417371, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 4434166056738015602, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_Name
       value: Turret
@@ -7271,9 +7275,13 @@ PrefabInstance:
       propertyPath: coneAngle
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4434166056738015603, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
+      propertyPath: capMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4434166056738015606, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4434166056738015607, guid: 2d1a5f1d94087bb4cbc87ec3fd73cde2, type: 3}
       propertyPath: m_RootOrder
