@@ -23,6 +23,7 @@ public class MoveBackground : MonoBehaviour
 	void LateUpdate()
 	{
 		speed = TrainManager.Instance.GetmainVelocity();
+		if (speed > 0) speed *= -1;
 		//Cantidad que se mueve, es decir velocidad
 		float xSpeedMovement = speed * parallaxMultiplier * Time.deltaTime;
         for (int i = 0; i < transform.childCount; i++)
