@@ -25427,6 +25427,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelNeon: {fileID: 621825778}
+<<<<<<< Updated upstream
+=======
+  maxIntensity: 500
+  normalIntensity: 30
+  timeToReachMax: 0.5
+>>>>>>> Stashed changes
   smoke: {fileID: 6423273255871304014}
   deliverCoal: {fileID: 5029109945100699262}
   MainVelocity_text: {fileID: 373835953}
