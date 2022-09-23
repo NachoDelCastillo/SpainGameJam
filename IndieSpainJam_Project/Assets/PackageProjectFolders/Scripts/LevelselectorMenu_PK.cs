@@ -18,7 +18,12 @@ public class LevelselectorMenu_PK : MenuManager_PK
         if (index == nButtons-1) allMenuManager.BackButton();
 
         else
-            GameManager.GetInstance().ChangeScene(index+1);
+        {
+            // Informar al gamemanager del numero actual de jugadores
+            GameManager.numPlayersPlaying = index + 1;
+
+            GameManager.GetInstance().ChangeScene("Gameplay");
+        }
     }
 
 }
