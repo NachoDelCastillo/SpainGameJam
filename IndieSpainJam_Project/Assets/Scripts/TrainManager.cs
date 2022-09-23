@@ -18,6 +18,7 @@ public class TrainManager : MonoBehaviour
     Vector3[] initialPosOfWagons;
 
     [Header("Referencias")]
+    [SerializeField] ParticleSystem smoke;
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
 
@@ -419,6 +420,9 @@ public class TrainManager : MonoBehaviour
 
         MainVelocity += 10;
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
+
+        smoke.transform.Rotate(Vector3.forward * ((float)MainVelocity / 100f) * 80f);
+        smoke.startSpeed += 0.5f;
     }
 
     public void TakeDamage(float amount)
