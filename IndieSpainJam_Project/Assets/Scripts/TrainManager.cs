@@ -17,6 +17,10 @@ public class TrainManager : MonoBehaviour
 
     Vector3[] initialPosOfWagons;
 
+    [SerializeField] SpriteRenderer wheelNeon;
+    Material wheelMaterial;
+    Vector4 wheelColor, wheelBaseColor;
+
     [Header("Referencias")]
     [SerializeField] ParticleSystem smoke;
     [SerializeField] Transform deliverCoal;
@@ -79,6 +83,11 @@ public class TrainManager : MonoBehaviour
         initialPosOfWagons = new Vector3[4];
         for (int i = 0; i < wagons.Length; i++)
             initialPosOfWagons[i] = wagons[i].transform.position;
+
+        wheelMaterial = wheelNeon.material;
+        wheelColor = wheelMaterial.GetColor("_Color");
+        wheelBaseColor = new Vector4(wheelColor.x / 4, wheelColor.y / 4, wheelColor.z / 4, wheelColor.w);
+        
     }
 
     float spawnTimer;
@@ -170,6 +179,11 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddIntensityColor();
+        }
+
         RotateWheel();
 
         if (Input.anyKeyDown)
@@ -289,6 +303,11 @@ public class TrainManager : MonoBehaviour
         Debug.Log(s);
     }
 
+    void AddIntensityColor()
+    {
+        wheelColor = new Vector4(wheelBaseColor.x * 9, wheelBaseColor.y * 9, wheelBaseColor.z * 9, wheelBaseColor.w);
+        wheelMaterial.SetColor("_Color", wheelColor);
+    }
 
     #region wevadas
 
