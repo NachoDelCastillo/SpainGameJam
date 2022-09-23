@@ -25427,6 +25427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelNeon: {fileID: 0}
+  maxIntensity: 0
+  normalIntensity: 0
+  timeToReachMax: 0
   smoke: {fileID: 6423273255871304014}
   deliverCoal: {fileID: 5029109945100699262}
   MainVelocity_text: {fileID: 373835953}
@@ -30820,12 +30823,12 @@ SpriteRenderer:
   m_SortingLayerID: -785237565
   m_SortingLayer: 1
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: ae72f083958da7f4489a1115efb06f3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 923076635832ca7438b31fda402f6411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 12.909091, y: 9.818182}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
