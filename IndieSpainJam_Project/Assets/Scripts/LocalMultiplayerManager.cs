@@ -21,6 +21,8 @@ public class LocalMultiplayerManager : MonoBehaviour
 
     [SerializeField] Transform respawnPoint;
     [SerializeField] float respawnTime;
+    [SerializeField] ParticleSystem pSystem;
+    
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
 
         allPlayers = new List<PlayerController_2D>();
+      
     }
 
     // This function is called everytime a player joined
@@ -53,6 +56,13 @@ public class LocalMultiplayerManager : MonoBehaviour
     public void Respawn(PlayerController_2D player)
     { StartCoroutine(Respawn2(player, respawnTime)); }
 
+    //IEnumerator scaleDownparticles()
+    //{
+    //    while{
+
+    //        return;
+    //    }
+    //}
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
 
@@ -69,6 +79,10 @@ public class LocalMultiplayerManager : MonoBehaviour
             }
 
         }
+        var dur = pSystem.main;
+        dur.startLifetime = respawnTime;
+
+        pSystem.Play();
 
         if (spRenderer) spRenderer.enabled = false;
         // y tmb desactivar PlayerController_2D para que no se instancie otro player cuando este está muerto
