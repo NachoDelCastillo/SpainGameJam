@@ -11922,6 +11922,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
+      propertyPath: resultText
+      value: 
+      objectReference: {fileID: 1428882617}
+    - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: resultPanel
       value: 
       objectReference: {fileID: 978823979}
@@ -11932,7 +11936,7 @@ PrefabInstance:
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: pressAnything
       value: 
-      objectReference: {fileID: 1428882617}
+      objectReference: {fileID: 1137582939}
     - target: {fileID: 5029109945143274832, guid: 64feb86e3c74f03469ea4cda095bb529, type: 3}
       propertyPath: MainVelocity_text
       value: 

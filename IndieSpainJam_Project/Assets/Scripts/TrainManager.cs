@@ -384,6 +384,7 @@ public class TrainManager : MonoBehaviour
             StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
             yield return new WaitForSeconds(timeBetweenLetters * s.Length);
 
+            yield return new WaitForSeconds(1);
 
             ShowAnyKeyButton();
 
@@ -425,7 +426,7 @@ public class TrainManager : MonoBehaviour
             smoke.Play();
         }
 
-        MainVelocity += 10;
+        MainVelocity += 100;
 
         var aux = smoke.emission;
         aux.rateOverTime = 2 + (((float)MainVelocity / 100f) * 18f);
