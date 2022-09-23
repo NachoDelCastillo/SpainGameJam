@@ -11,7 +11,6 @@ public class MoveBackground : MonoBehaviour
 	private Vector2 screenBounds;
 	void Start()
 	{
-		speed = -1f;
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		childrenTransforms = new Transform[transform.childCount];
 		spriteWidths = new float[transform.childCount];
@@ -23,6 +22,7 @@ public class MoveBackground : MonoBehaviour
 	}
 	void LateUpdate()
 	{
+		speed = TrainManager.Instance.GetmainVelocity();
 		//Cantidad que se mueve, es decir velocidad
 		float xSpeedMovement = speed * parallaxMultiplier * Time.deltaTime;
         for (int i = 0; i < transform.childCount; i++)
