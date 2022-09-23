@@ -62,7 +62,7 @@ public class TrainManager : MonoBehaviour
 
         changeRail_Lists[0] = new List<ChangeRail>();
         changeRail_Lists[1] = new List<ChangeRail>();
-        changeRail_Lists[2] = new List<ChangeRail>(); 
+        changeRail_Lists[2] = new List<ChangeRail>();
     }
 
     private void Start()
@@ -167,6 +167,8 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        RotateWheel();
+
         if (Input.anyKeyDown)
             pressAnything_b = true;
 
@@ -179,7 +181,6 @@ public class TrainManager : MonoBehaviour
         RemoveRailChanges(0);
         RemoveRailChanges(1);
         RemoveRailChanges(2);
-
 
         //DebugRow(0);
         //DebugRow(1);
@@ -288,9 +289,31 @@ public class TrainManager : MonoBehaviour
 
     #region wevadas
 
+    [SerializeField] Transform wheel;
+    [SerializeField] Transform innerWheel;
+    [SerializeField] float initialWheelVelocity;
+    [SerializeField] float maxWheelVelocity;
+
+    void RotateWheel()
+    {
+        float speed = (maxWheelVelocity / 100) * maxWheelVelocity;
+
+        float rotateMainVelocity = -(speed + initialWheelVelocity) * Time.deltaTime;
+
+        Debug.Log("rotateMainVelocity = " + rotateMainVelocity);
+        wheel.Rotate(new Vector3(0, 0, rotateMainVelocity));
+    }
+
+    void RotateWheelFast()
+    {
+        innerWheel.DORotate(new Vector3(0, 0, -1080), 3 - (maxWheelVelocity / 100), RotateMode.FastBeyond360);
+    }
+
     public void CoalDelivered(OnTriggerDelegation delegation)
     {
         if (!delegation.Other.CompareTag("Coal")) return;
+
+        RotateWheelFast();
 
         GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
         coal.ItemGrabbed(null);
@@ -342,7 +365,6 @@ public class TrainManager : MonoBehaviour
 
         StartCoroutine(Utils.WriteThis(fullString, resultText, .15f));
 
-
         yield return new WaitForSeconds(1);
 
         if (win)
@@ -359,8 +381,6 @@ public class TrainManager : MonoBehaviour
             StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
             yield return new WaitForSeconds(timeBetweenLetters * s.Length);
 
-
-            //yield return new WaitForSeconds(1);
 
             ShowAnyKeyButton();
 
@@ -397,7 +417,7 @@ public class TrainManager : MonoBehaviour
     {
         if (showingResults) return;
 
-        MainVelocity += 100;
+        MainVelocity += 10;
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
     }
 
@@ -407,7 +427,7 @@ public class TrainManager : MonoBehaviour
             return;
 
         //health -= amount;
-        health -= 50;
+        health -= 0;
 
         if (health <= 0) health = 0;
 

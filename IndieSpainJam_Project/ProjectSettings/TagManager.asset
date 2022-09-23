@@ -44,9 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
-    uniqueID: 2047470109
-    locked: 0
   - name: Train
     uniqueID: 3509729731
     locked: 0
@@ -55,6 +52,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1826236665
+    locked: 0
+  - name: Items
+    uniqueID: 1273588293
+    locked: 0
+  - name: Foreground
+    uniqueID: 2047470109
     locked: 0
   - name: GameManagerTransitions
     uniqueID: 111649161
