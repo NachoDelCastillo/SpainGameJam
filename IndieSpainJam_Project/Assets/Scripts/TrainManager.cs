@@ -72,6 +72,8 @@ public class TrainManager : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
 
+        smoke.Pause();
+
         StartCoroutine(SpawnChangeRail());
 
         initialPosOfWagons = new Vector3[4];
@@ -301,7 +303,7 @@ public class TrainManager : MonoBehaviour
 
         float rotateMainVelocity = -(speed + initialWheelVelocity) * Time.deltaTime;
 
-        Debug.Log("rotateMainVelocity = " + rotateMainVelocity);
+        //Debug.Log("rotateMainVelocity = " + rotateMainVelocity);
         wheel.Rotate(new Vector3(0, 0, rotateMainVelocity));
     }
 
@@ -418,11 +420,28 @@ public class TrainManager : MonoBehaviour
     {
         if (showingResults) return;
 
+        if (MainVelocity == 0)
+        {
+            smoke.Play();
+        }
+
         MainVelocity += 10;
+
+        var aux = smoke.emission;
+        aux.rateOverTime = 2 + (((float)MainVelocity / 100f) * 18f);
+
+        ParticleSystem.MinMaxCurve a = new();
+
+        a = smoke.velocityOverLifetime.x;
+
+        a.curveMultiplier = 0.5f + (((float)MainVelocity / 100f) * 50f);
+
+        var aux2 = smoke.velocityOverLifetime;
+
+        aux2.x = a;
+
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
 
-        smoke.transform.Rotate(Vector3.forward * ((float)MainVelocity / 100f) * 80f);
-        smoke.startSpeed += 0.5f;
     }
 
     public void TakeDamage(float amount)
