@@ -45,7 +45,10 @@ public class TrainManager : MonoBehaviour
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
 
-
+    public float GetmainVelocity()
+    {
+        return MainVelocity;    
+    }
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.

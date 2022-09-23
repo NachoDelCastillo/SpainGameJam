@@ -175,6 +175,7 @@ MonoBehaviour:
   destroyTime: 0.5
   damage: 2
   attackFrecuency: 1
+  sparksPrefab: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   colliderDetection: {fileID: 3248124563058833529}
   enemySpawner: {fileID: 0}
 --- !u!58 &3248124563058833528
