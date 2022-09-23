@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour
     //Ammo
     [SerializeField] GameObject ammoIndicator;
     [SerializeField] int maxAmmo;
+    CameraShake cameraShake;
     int currentAmmo;
     Image imageToFill;
 
@@ -34,6 +35,7 @@ public class Turret : MonoBehaviour
         timeBetweenShots = 1f / fireRate;
         imageToFill = ammoIndicator.GetComponent<Image>();
         currentAmmo = (int) (maxAmmo * 1);
+        cameraShake = GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class Turret : MonoBehaviour
         if (shooting && currentAmmo > 0)
         {
             //Debug.Log("Disparando");
+            cameraShake.ShakeIt();
             timeElaspedSinceLastShot += Time.deltaTime;
             if (timeElaspedSinceLastShot >= timeBetweenShots)
             {

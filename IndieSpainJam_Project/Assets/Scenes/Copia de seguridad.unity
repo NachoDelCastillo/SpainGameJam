@@ -24565,6 +24565,7 @@ GameObject:
   - component: {fileID: 3151866214638989845}
   - component: {fileID: 3151866214638989844}
   - component: {fileID: 3151866214638989843}
+  - component: {fileID: 3151866214638989848}
   m_Layer: 8
   m_Name: Turret
   m_TagString: CoalWagon
@@ -24710,6 +24711,21 @@ Transform:
   m_Father: {fileID: 5029109946307395751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3151866214638989848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151866214638989842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b2adbe59a9954285e187e436451de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 0.05
+  shakeTime: 0.02
+  mainCamera: {fileID: 750174532}
 --- !u!212 &3277740855365238561
 SpriteRenderer:
   m_ObjectHideFlags: 0
