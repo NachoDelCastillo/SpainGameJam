@@ -49,7 +49,7 @@ public class Turret : MonoBehaviour
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
                 Vector3 desiredAngle = bulletsSpawnPoint.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, Quaternion.Euler(desiredAngle));
-                //shootPart.Play();
+                shootPart.Play();
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
 
