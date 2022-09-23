@@ -117,7 +117,11 @@ public class BasicEnemy : MonoBehaviour
         if (wagon == null && bullet == null) return;
 
         if (wagon != null) states = States.Attack;
-        else states = States.Death;
+        else
+        {
+            Destroy(bullet.gameObject);
+            states = States.Death;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
