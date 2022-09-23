@@ -30,22 +30,13 @@ public class LocalMultiplayerManager : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
 
         allPlayers = new List<PlayerController_2D>();
-
-        //int numPlayers = GameManager.numPlayersPlaying;
-        //numPlayers = 4;
-        //for (int i = 0; i < numPlayers; i++)
-        //    playerInputManager.JoinPlayer(i);
-
-
-        playerInputManager.JoinPlayer(1);
-        playerInputManager.JoinPlayer(2);
-        //playerInputManager.JoinPlayer();
-        //playerInputManager.JoinPlayer(2);
     }
 
     // This function is called everytime a player joined
     public void PlayerJoined(PlayerInput newplayer)
     {
+        Debug.Log("NEW PLAYER = " + newplayer);
+
         // Get a reference
         PlayerController_2D newPlayerController = newplayer.GetComponent<PlayerController_2D>();
 
@@ -53,9 +44,10 @@ public class LocalMultiplayerManager : MonoBehaviour
         int playerIndex = playerInputManager.playerCount - 1;
         newPlayerController.playerIndex = playerIndex;
         newPlayerController.transform.SetParent(playerContainer);
-        newPlayerController.turret = FindObjectOfType<Turret>().gameObject;
 
         allPlayers.Add(newPlayerController);
+
+
     }
 
     public void Respawn(PlayerController_2D player)
