@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject cannonPivot;
     [SerializeField] GameObject bulletsSpawnPoint;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] ParticleSystem shootPart;
     [SerializeField] float rotationSpeed;
     [SerializeField] float coneAngle;
 
@@ -48,6 +49,7 @@ public class Turret : MonoBehaviour
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
                 Vector3 desiredAngle = bulletsSpawnPoint.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, Quaternion.Euler(desiredAngle));
+                shootPart.Play();
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
 
