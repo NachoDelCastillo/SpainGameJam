@@ -315,6 +315,8 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator ShowResult(bool win)
     {
+        Debug.Log("rfethj");
+
         showingResults = true;
 
         string fullString;
@@ -362,6 +364,7 @@ public class TrainManager : MonoBehaviour
             pressAnything.DOFade(1, 1);
             yield return new WaitForSeconds(1);
 
+            GameManager.instance.ChangeScene("MainMenu_Scene");
             //yield return new WaitForSeconds(1);
         }
 
