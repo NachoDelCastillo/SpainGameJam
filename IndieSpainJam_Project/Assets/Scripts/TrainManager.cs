@@ -20,6 +20,7 @@ public class TrainManager : MonoBehaviour
     [SerializeField] SpriteRenderer wheelNeon;
     Material wheelMaterial;
     Vector4 wheelColor, wheelBaseColor;
+    [SerializeField] float maxIntensity, normalIntensity, timeToReachMax;
 
     [Header("Referencias")]
     [SerializeField] ParticleSystem smoke;
@@ -89,7 +90,7 @@ public class TrainManager : MonoBehaviour
 
         wheelMaterial = wheelNeon.material;
         wheelColor = wheelMaterial.GetColor("_Color");
-        wheelBaseColor = new Vector4(wheelColor.x / 4, wheelColor.y / 4, wheelColor.z / 4, wheelColor.w);
+        wheelBaseColor = new Vector4(wheelColor.x, wheelColor.y, wheelColor.z, wheelColor.w);
         
     }
 
@@ -184,7 +185,7 @@ public class TrainManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            AddIntensityColor();
+            StartCoroutine(AddIntensityColor());
         }
 
         RotateWheel();
@@ -306,10 +307,25 @@ public class TrainManager : MonoBehaviour
         Debug.Log(s);
     }
 
-    void AddIntensityColor()
+    IEnumerator AddIntensityColor()
     {
-        wheelColor = new Vector4(wheelBaseColor.x * 9, wheelBaseColor.y * 9, wheelBaseColor.z * 9, wheelBaseColor.w);
-        wheelMaterial.SetColor("_Color", wheelColor);
+        float i = normalIntensity;
+        while (i < maxIntensity)
+        {
+            wheelColor = new Vector4(wheelBaseColor.x * i, wheelBaseColor.y * i, wheelBaseColor.z * i, wheelBaseColor.w);
+            wheelMaterial.SetColor("_Color", wheelColor);
+            i += (maxIntensity-normalIntensity) / 10;
+            yield return new WaitForSeconds(timeToReachMax / 10);
+        }
+
+        i = maxIntensity;
+        while(i > normalIntensity)
+        {
+            wheelColor = new Vector4(wheelBaseColor.x * i, wheelBaseColor.y * i, wheelBaseColor.z * i, wheelBaseColor.w);
+            wheelMaterial.SetColor("_Color", wheelColor);
+            i -= (maxIntensity - normalIntensity) / 10;
+            yield return new WaitForSeconds(timeToReachMax / 10);
+        }
     }
 
     #region wevadas
