@@ -13,6 +13,7 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
 
+    CameraShake cameraShake;
     State state;
     Rigidbody2D rb;
     GameObject player;
@@ -44,7 +45,6 @@ public class RayEnemyMovement : MonoBehaviour
 
     void Start()
     {
-        
         rb = GetComponent<Rigidbody2D>();
         ChangeState(State.GoingLocation);
         player = GameObject.FindGameObjectWithTag("Player");
@@ -53,7 +53,7 @@ public class RayEnemyMovement : MonoBehaviour
         rayTrigger.SetActive(false);
         particlesLoading.SetActive(false);
         timesShot = 0;
-
+        cameraShake = GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -157,6 +157,8 @@ public class RayEnemyMovement : MonoBehaviour
         {
             loadingSphere.SetActive(false);
             particlesLoading.SetActive(false);
+            //Dispare
+            cameraShake.ShakeIt();
             ChangeState(State.Shooting);
         }
 

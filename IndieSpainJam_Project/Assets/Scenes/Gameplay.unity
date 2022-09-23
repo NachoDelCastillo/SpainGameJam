@@ -24104,6 +24104,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: shakeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 750174532}
+    - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: shakeMagnitude
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: railsParent
       value: 

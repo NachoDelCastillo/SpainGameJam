@@ -26,7 +26,7 @@ public class CameraShake : MonoBehaviour
     void StopCameraShaking()
     {
         CancelInvoke("StartCameraShaking");
-        mainCamera.transform.position = cameraInitialPosition; 
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraInitialPosition, 0.5f * Time.deltaTime);
     }
     
 }
