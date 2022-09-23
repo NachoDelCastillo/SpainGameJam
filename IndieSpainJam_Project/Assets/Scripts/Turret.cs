@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour
                 timeElaspedSinceLastShot = 0;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-                imageToFill.color = (imageToFill.fillAmount > 0.5 ) ? Color.Lerp(Color.yellow, Color.green, imageToFill.fillAmount - Mathf.Abs(0.5f - imageToFill.fillAmount)) : Color.Lerp(Color.yellow, Color.red, imageToFill.fillAmount - Mathf.Abs(0.5f - imageToFill.fillAmount));
+                imageToFill.color = (imageToFill.fillAmount > 0.5 ) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f)*2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
         }
 
