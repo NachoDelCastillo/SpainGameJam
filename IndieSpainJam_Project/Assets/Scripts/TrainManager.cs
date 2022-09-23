@@ -427,7 +427,7 @@ public class TrainManager : MonoBehaviour
             return;
 
         //health -= amount;
-        health -= 0;
+        health -= 5;
 
         if (health <= 0) health = 0;
 
