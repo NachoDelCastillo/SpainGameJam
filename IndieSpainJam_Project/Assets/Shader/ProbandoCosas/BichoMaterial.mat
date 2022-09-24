@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1190274301038243726
+--- !u!114 &-5870220140465116584
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bicho
-  m_Shader: {fileID: -6465566751694194690, guid: 9179d1559ebed904fbef6bc291e6738a, type: 3}
+  m_Name: BichoMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 452bf0f5dac4d824c9a402fd14c99d7b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -38,7 +38,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: ff184140446b2744a976f52612c13697, type: 3}
+        m_Texture: {fileID: 2800000, guid: eeef14a97d563164691f4b1d62e26d36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -58,5 +58,5 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1.0717734, g: 0, b: 0.5548004, a: 0}
+    - _Color: {r: 5.5908804, g: 0, b: 0.11708651, a: 1}
   m_BuildTextureStacks: []
