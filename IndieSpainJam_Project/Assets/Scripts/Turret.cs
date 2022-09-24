@@ -152,6 +152,8 @@ public class Turret : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Coal"))
         {
+            TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
+
             collision.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
             collision.transform.GetChild(0).DOScale(0, 1);
             collision.transform.DOMove(cannonPivot.transform.position, 1);
