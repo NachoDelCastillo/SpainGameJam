@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_PixelShaderArt
-  m_Shader: {fileID: -6465566751694194690, guid: cd51ddc3ff5632f47b22605c5b731ab6, type: 3}
+  m_Name: Trail
+  m_Shader: {fileID: -6465566751694194690, guid: c4ebd594779af9944a0df3302ed3e28e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 73f5f6b246bea694eaa5630d94a01f69, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -38,11 +38,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Bits: 32
+    - _DissolveScale: 9.92
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 6.498019, g: 1.1976742, b: 0, a: 1}
+    - _Color01: {r: 8, g: 0, b: 0.7529412, a: 1}
+    - _Color02: {r: 0, g: 0.8156863, b: 5.4588237, a: 1}
+    - _DissolveSpeed: {r: -0.17, g: 0, b: 0, a: 0}
+    - _MainTexSpeed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &4306547578759046130
+--- !u!114 &380615685930389464
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
