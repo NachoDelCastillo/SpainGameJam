@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -151,7 +152,9 @@ public class Turret : MonoBehaviour
         Debug.Log("Entra en torretaaaaaaaaaaa");
         if (collision.gameObject.CompareTag("Coal"))
         {
-            Debug.Log("Entra es coal");
+            collision.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
+            collision.transform.GetChild(0).DOScale(0, 1);
+            collision.transform.DOMove(cannonPivot.transform.position, 1);
 
             currentAmmo += maxAmmo / 3;
             if(currentAmmo > maxAmmo)
@@ -160,8 +163,7 @@ public class Turret : MonoBehaviour
             }
             imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
             imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
-            Destroy(collision.gameObject);
-
         }
+        //            Destroy(collision.gameObject);
     }
 }

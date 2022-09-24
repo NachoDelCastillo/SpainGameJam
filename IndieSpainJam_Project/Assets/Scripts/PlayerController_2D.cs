@@ -276,9 +276,12 @@ public class PlayerController_2D : MonoBehaviour
 
                 // Smooooooooooooooooooooth
                 SpriteRenderer sp = grabbedItem.GetComponentInChildren<SpriteRenderer>();
-                sp.color = Color.clear;
-                sp.color = Color.white;
+                sp.color = new Color(1, 1, 1, 0);
                 sp.DOFade(1, 1);
+
+                grabbedItem.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
+                grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
+                grabbedItem.transform.GetChild(0).DOScale(1, 1);
             }
             // Si no se esta intentando cojer ningun objeto del vagon del carbon
             // Comprobar si se quiere cojer un objeto del suelo
@@ -441,7 +444,7 @@ public class PlayerController_2D : MonoBehaviour
 
         if (enteringTurret)
         {
-            rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.1f);
+            rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
             if(Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
             {
