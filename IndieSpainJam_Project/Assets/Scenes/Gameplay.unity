@@ -11436,7 +11436,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11446,8 +11446,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -11464,6 +11464,7 @@ MonoBehaviour:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}
   - {fileID: 5029109945756948078}
+  multiplier: 0
   enemysAlive: []
 --- !u!4 &559840269
 Transform:
