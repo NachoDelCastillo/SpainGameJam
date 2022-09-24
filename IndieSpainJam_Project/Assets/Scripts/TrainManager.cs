@@ -390,14 +390,14 @@ public class TrainManager : MonoBehaviour
         coal.transform.GetChild(0).DOScale(0, 1);
 
         // Deliver time
-        float deliverTime = .3f;
+        float deliverTime = .05f;
         StartCoroutine(Utils.MoveItemSmooth(coal.transform, deliverCoal, deliverTime));
         StartCoroutine(DestroyCoal(coal, deliverTime));
     }
 
     IEnumerator DestroyCoal(GrabbableItem coal, float seconds)
     {
-        yield return new WaitForSeconds(seconds + .1f);
+        yield return new WaitForSeconds(.05f);
         if (coal != null)
             Destroy(coal.gameObject);
 
