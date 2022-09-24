@@ -46,6 +46,7 @@ public class TrainManager : MonoBehaviour
     // Manager
     [SerializeField] Transform changeRail_Prefab;
     [SerializeField] Transform rails;
+    [SerializeField] Transform[] spawnChangeRails;
 
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
@@ -98,7 +99,7 @@ public class TrainManager : MonoBehaviour
     float spawnTimer;
     IEnumerator SpawnChangeRail()
     {
-        spawnTimer = Random.Range(2, 3);
+        spawnTimer = Random.Range(8, 10);
 
         while (spawnTimer > 0)
         {
@@ -107,15 +108,12 @@ public class TrainManager : MonoBehaviour
             yield return 0;
         }
 
-
         int[] possibleRows = new int[4] {
             wagons[0].RailRow,
             wagons[1].RailRow,
             wagons[2].RailRow,
             wagons[3].RailRow
         };
-
-        Debug.Log("possibleRows = " + possibleRows);
 
         int selectedRow = possibleRows[Random.Range(0, 4)];
 
@@ -164,7 +162,7 @@ public class TrainManager : MonoBehaviour
         } while (!correctBools);
 
 
-        ChangeRail newChangeRail = Instantiate(changeRail_Prefab, rows[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
+        ChangeRail newChangeRail = Instantiate(changeRail_Prefab, spawnChangeRails[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
 
         // Meter el cambio de via en la lista de cambio de via correspondiente
         changeRail_Lists[selectedRow].Add(newChangeRail);
@@ -208,6 +206,8 @@ public class TrainManager : MonoBehaviour
         //DebugRow(1);
         //DebugRow(2);
     }
+
+    [SerializeField] 
 
     // Se encarga de comprobar cada una de las posiciones de los vagones
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
@@ -490,7 +490,7 @@ public class TrainManager : MonoBehaviour
             return;
 
         //health -= amount;
-        health -= 5;
+        health -= .5f;
 
         if (health <= 0) health = 0;
 
