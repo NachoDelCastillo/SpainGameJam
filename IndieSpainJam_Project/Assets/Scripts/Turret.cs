@@ -8,15 +8,20 @@ public class Turret : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject cannonPivot;
-    [SerializeField] GameObject bulletsSpawnPoint;
+    [SerializeField] GameObject bulletsSpawnPointLeft;
+    [SerializeField] GameObject bulletsSpawnPointRight;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] ParticleSystem shootPart;
+    [SerializeField] ParticleSystem shootPartLeft;
+    [SerializeField] ParticleSystem shootPartRight;
     [SerializeField] float rotationSpeed;
     [SerializeField] float coneAngle;
+    [SerializeField] GameObject turretSprite;
+    [SerializeField] AnimationCurve knockbackCurve;
 
 
 
     bool shooting, drawBack;
+    bool shootRight;
     [SerializeField] float fireRate = 5, capMultiplier;
     float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
@@ -37,30 +42,37 @@ public class Turret : MonoBehaviour
         imageToFill = ammoIndicator.GetComponent<Image>();
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
 
     void Update()
     {
+        timeElaspedSinceLastShot += Time.deltaTime;
         if (shooting && currentAmmo > 0)
         {
             //Debug.Log("Disparando");
             cameraShake.ShakeIt();
-            timeElaspedSinceLastShot += Time.deltaTime;
             if (timeElaspedSinceLastShot >= timeBetweenShots)
             {
                 //disparar
+
+                GameObject whereToShot = (shootRight) ? bulletsSpawnPointRight : bulletsSpawnPointLeft;
+                ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
-                Vector3 desiredAngle = bulletsSpawnPoint.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
-                Instantiate(bulletPrefab, bulletsSpawnPoint.transform.position, Quaternion.Euler(desiredAngle));
-                shootPart.Play();
+                Vector3 desiredAngle = whereToShot.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
+                Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
+                partSys.Play();
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
+                shootRight = !shootRight;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
                 imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
+
+            turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
         }
 
 
@@ -69,7 +81,7 @@ public class Turret : MonoBehaviour
     public void changeShooting(bool newValue)
     {
         shooting = newValue;
-
+        turretSprite.transform.localPosition = new Vector2(0, 0);
     }
 
     public void RotateCannon(float rotationInput)
@@ -148,8 +160,6 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
         if (collision.gameObject.CompareTag("Coal"))
         {
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
