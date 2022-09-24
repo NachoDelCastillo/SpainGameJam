@@ -501,7 +501,14 @@ public class TrainManager : MonoBehaviour
         healthSlider.value = health;
 
         if (health <= 0 && !showingResults)
+        {
             StartCoroutine(ShowResult(false));
+
+            foreach (WagonLogic wagon in wagons)
+            {
+                wagon.Died();
+            }
+        }
     }
 
     #endregion
