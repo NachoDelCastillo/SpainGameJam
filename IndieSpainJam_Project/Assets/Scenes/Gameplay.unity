@@ -25780,6 +25780,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
+    - target: {fileID: 3330685883569148297, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4303165074325188409, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -25809,9 +25813,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1047064077}
     - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_Size.x
+      value: 7.769231
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1819954804, guid: ff184140446b2744a976f52612c13697, type: 3}
+    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy

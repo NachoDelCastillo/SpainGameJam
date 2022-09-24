@@ -5254,7 +5254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   railsParent: {fileID: 0}
   defaultSprite: {fileID: 1819954804, guid: ff184140446b2744a976f52612c13697, type: 3}
-  shootingSprite: {fileID: -488595566, guid: ff184140446b2744a976f52612c13697, type: 3}
+  loadAndShootSprite: {fileID: -488595566, guid: ff184140446b2744a976f52612c13697, type: 3}
   particlesLoading: {fileID: 4205439701795236163}
   velocity: 2
   rotationSpeed: 1

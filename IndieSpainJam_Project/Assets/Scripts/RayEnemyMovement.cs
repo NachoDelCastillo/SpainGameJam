@@ -10,7 +10,7 @@ public class RayEnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] GameObject railsParent;
     [SerializeField] Sprite defaultSprite;
-    [SerializeField] Sprite shootingSprite;
+    [SerializeField] Sprite loadAndShootSprite;
     [SerializeField] GameObject particlesLoading;
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
@@ -19,7 +19,9 @@ public class RayEnemyMovement : MonoBehaviour
     State state;
     Rigidbody2D rb;
     GameObject player;
-    
+    SpriteRenderer spriteRenderer;
+
+
     // GoingLocation variables
     GameObject currentDestination;
 
@@ -44,6 +46,11 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] GameObject leavingPoint;
     int timesShot;
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = defaultSprite;
+    }
 
     void Start()
     {
@@ -51,12 +58,12 @@ public class RayEnemyMovement : MonoBehaviour
         ChangeState(State.GoingLocation);
         player = GameObject.FindGameObjectWithTag("Player");
         loadingLaser.SetActive(false);
+        startingRadius = loadingSphere.transform.localScale.x;
         loadingSphere.SetActive(false);
         rayTrigger.SetActive(false);
         particlesLoading.SetActive(false);
         timesShot = 0;
         cameraShake = GetComponent<CameraShake>();
-        startingRadius = loadingSphere.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -88,6 +95,7 @@ public class RayEnemyMovement : MonoBehaviour
         switch (newState)
         {
             case State.GoingLocation:
+                spriteRenderer.sprite = defaultSprite;
                 GameObject randomDestination;
                 do
                 {
@@ -99,11 +107,11 @@ public class RayEnemyMovement : MonoBehaviour
                 
                 break;
             case State.Loading:
-                loadingSphere.transform.localScale = Vector3.zero;
                 particlesLoading.SetActive(true);
                 loadingSphere.SetActive(true);
+                loadingSphere.transform.localScale = Vector3.zero;
+                spriteRenderer.sprite = loadAndShootSprite;
                 elapsedTimeToReload = 0f;
-                loadingSphere.transform.localScale = Vector3.one*startingRadius;
                 break;
             case State.Shooting:
                 loadingLaser.SetActive(false);
@@ -114,6 +122,7 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
         state = newState;
+        Debug.Log("Current State = " + state);
     }
 
 
@@ -156,16 +165,18 @@ public class RayEnemyMovement : MonoBehaviour
 
         if (elapsedTimeToReload >= timeToLoad)
         {
+            loadingSphere.transform.localScale = Vector3.zero;
             loadingSphere.SetActive(false);
             particlesLoading.SetActive(false);
             //Dispare
             cameraShake.ShakeIt();
+
             ChangeState(State.Shooting);
         }
         else
         {
             //Cambiar el srite de carga
-            loadingSphere.transform.localScale = Vector2.one * (startingRadius - 1) * (elapsedTimeToReload) / timeToLoad;
+            loadingSphere.transform.localScale = Vector2.one * (startingRadius) * (elapsedTimeToReload) / timeToLoad;
         }
 
     }
@@ -198,7 +209,7 @@ public class RayEnemyMovement : MonoBehaviour
             rb.position = Vector2.Lerp(rb.position, rb.position + dir * velocity * Time.fixedDeltaTime, 0.3f);
 
             // Mirar al player
-            Vector2 direction = leavingPoint.transform.position - transform.position;
+            Vector2 direction = Vector2.right;
             direction.Normalize();
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
