@@ -11433,15 +11433,33 @@ MonoBehaviour:
   - {fileID: 3248124563058833523, guid: ea12a86540f21084d9db73af597e0260, type: 3}
   animationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   timeBetweenEnemys: 0.5
-  minTimeForNextWave: 0
-  maxTimeForNextWave: 0
-  minEnemys: 3
-  maxEnemys: 7
+  minTimeForNextWave: 10
+  maxTimeForNextWave: 15
+  minEnemys: 8
+  maxEnemys: 10
   targetWagons:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}
@@ -25781,37 +25799,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2164706160879361830, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
-    - target: {fileID: 3330685883569148297, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4303165074325188409, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.42
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: railsParent
@@ -25821,22 +25815,6 @@ PrefabInstance:
       propertyPath: leavingPoint
       value: 
       objectReference: {fileID: 1047064077}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Size.x
-      value: 7.769231
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Size.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1819954804, guid: ff184140446b2744a976f52612c13697, type: 3}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy
@@ -25888,26 +25866,6 @@ PrefabInstance:
     - target: {fileID: 4303165076119651761, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2d40994e079387544803f20347c53ddb, type: 2}
-    - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 53.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
@@ -26927,7 +26885,6 @@ MonoBehaviour:
   - {fileID: 844436529}
   - {fileID: 1087738705}
   - {fileID: 760816024}
-  sparkSys: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30

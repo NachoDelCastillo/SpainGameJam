@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wheel
-  m_Shader: {fileID: -6465566751694194690, guid: ef1895f77eed7804dba3185d47dbd0bb, type: 3}
+  m_Name: Coal
+  m_Shader: {fileID: -6465566751694194690, guid: e9b1acfe128dad84ba854d330b8165ca, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -43,5 +43,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0, g: 1.027451, b: 1.4980392, a: 1}
+    - _Color: {r: 0, g: 2.4685757, b: 3.4596095, a: 1}
   m_BuildTextureStacks: []

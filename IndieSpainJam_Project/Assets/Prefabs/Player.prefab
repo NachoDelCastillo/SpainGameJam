@@ -5053,7 +5053,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   reachableItems: []
-  coalPrefab: {fileID: 6032127909329864579, guid: 54323ae01c0885443abf79b637733001, type: 3}
+  coalPrefab: {fileID: 5304732037480943059, guid: 54323ae01c0885443abf79b637733001, type: 3}
 --- !u!114 &4320341645608881833
 MonoBehaviour:
   m_ObjectHideFlags: 0
