@@ -19,8 +19,6 @@ public class Turret : MonoBehaviour
     [SerializeField] AnimationCurve knockbackCurve;
     [SerializeField] Color[] colorFadeHUD;
 
-
-
     bool shooting, drawBack;
     bool shootRight;
     [SerializeField] float fireRate = 5, capMultiplier;
@@ -117,6 +115,9 @@ public class Turret : MonoBehaviour
             rotMultiplier = Mathf.Clamp(rotMultiplier, 1, capMultiplier);
             cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
 
+            if (!AudioManager_PK.instance.sounds[10].source.isPlaying)
+                AudioManager_PK.instance.Play("TurretRotate", Random.Range(0.55f, 0.65f));
+
             //no dejar rotar
             //float z = cannonPivot.transform.localEulerAngles.z;
             //z = Mathf.Clamp(z, 90, 270);
@@ -124,7 +125,10 @@ public class Turret : MonoBehaviour
 
             lastInput = rotationInput;
         }
-
+        else
+        {
+            AudioManager_PK.instance.Stop("TurretRotate");
+        }
 
         //Version 2
         //Debug.Log("Rotation input " + rotationInput);
@@ -189,6 +193,6 @@ public class Turret : MonoBehaviour
     IEnumerator DestroyCoal(Transform coal)
     {
         yield return new WaitForSeconds(1);
-        Destroy(coal.gameObject);
+        if(coal.gameObject != null) Destroy(coal.gameObject);
     }
 }
