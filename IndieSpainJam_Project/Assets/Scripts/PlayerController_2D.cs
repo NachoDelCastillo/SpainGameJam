@@ -103,6 +103,7 @@ public class PlayerController_2D : MonoBehaviour
         rb.isKinematic = false;
         usingTurret = false;
         enteringTurret = false;
+        turretOutline.SetActive(false);
         turretControl.changeShooting(false);
 
         gfx.enabled = true;
@@ -447,6 +448,7 @@ public class PlayerController_2D : MonoBehaviour
 
         if (enteringTurret)
         {
+            turretOutline.SetActive(true);
             rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
             if(Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)

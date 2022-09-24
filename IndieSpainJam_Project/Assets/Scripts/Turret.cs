@@ -42,6 +42,7 @@ public class Turret : MonoBehaviour
         imageToFill = ammoIndicator.GetComponent<Image>();
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
