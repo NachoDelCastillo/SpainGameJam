@@ -89,9 +89,10 @@ public class TrainManager : MonoBehaviour
             initialPosOfWagons[i] = wagons[i].transform.position;
 
         wheelMaterial = wheelNeon.material;
-        wheelColor = wheelMaterial.GetColor("_Color");
-        wheelBaseColor = new Vector4(wheelColor.x, wheelColor.y, wheelColor.z, wheelColor.w);
-        
+        wheelBaseColor = wheelMaterial.GetColor("_Color");
+        wheelColor = new Vector4(wheelBaseColor.x * normalIntensity, wheelBaseColor.y * normalIntensity, wheelBaseColor.z * normalIntensity, wheelBaseColor.w);
+        wheelMaterial.SetColor("_Color", wheelColor);
+
     }
 
     float spawnTimer;
