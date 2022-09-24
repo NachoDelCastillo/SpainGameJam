@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using System;
 using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
     // Fases del tutorial
-    public enum TutPhases { agarrarCarbonParaTorreta, meterCarbonEnTorreta, 
+    public enum tutPhases { agarrarCarbonParaTorreta, meterCarbonEnTorreta, 
         meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor, meterCarbonEnMotor,
         trenEnMarcha}
 
     // El currentPhase muestra lo que el jugador necesita hacer
-    TutPhases currentPhase = TutPhases.agarrarCarbonParaTorreta;
+    tutPhases currentPhase = tutPhases.agarrarCarbonParaTorreta;
 
 
     [Serializable]
-    public struct tutorialItems
+    public struct tutItems
     {
-        public TutPhases phase;
-        public SpriteRenderer panels;
+        public tutPhases phase;
+        public SpriteRenderer panel;
         public SpriteRenderer[] infoPanels;
         public TMP_Text[] texts;
     }
-    [SerializeField] tutorialItems[] TutorialElements;
+    [SerializeField] tutItems[] TutorialElements;
 
 
     private void Awake()
@@ -37,11 +38,11 @@ public class TutorialManager : MonoBehaviour
 
         // TUTORIAL DE AGARRAR EL CARBON
 
-        yield return new WaitUntil(() => currentPhase == TutPhases.meterCarbonEnTorreta);
+        yield return new WaitUntil(() => currentPhase == tutPhases.meterCarbonEnTorreta);
 
         // TUTORIAL DE METER CARBON EN LA TORRETA
 
-        yield return new WaitUntil(() => currentPhase == TutPhases.meterseEnTorreta);
+        yield return new WaitUntil(() => currentPhase == tutPhases.meterseEnTorreta);
 
         // TUTORIAL DE COMO METERSE EN LA TORRETA
 
@@ -49,7 +50,7 @@ public class TutorialManager : MonoBehaviour
 
 
     // Este metodo se llama cuando se realiza alguna de las acciones necesarias para completar el tutorial
-    public void TryToChangePhase(TutPhases phaseDone)
+    public void TryToChangePhase(tutPhases phaseDone)
     {
         if (currentPhase == phaseDone)
             currentPhase++;
@@ -58,10 +59,27 @@ public class TutorialManager : MonoBehaviour
         //if (currentPhase = TutPhases.trenEnMarcha)
     }
 
-    //void ShowTutorialItems(TutPhases)
-    //{
+    IEnumerator ShowTutorialItems(tutItems phaseItem)
+    {
+        // Tiempo que tarda en aparecer el panel
+        float panelShowTime = 1;
 
-    //}
+        // Tiempo que tarda en aparecer la informacion del panel (texxtos e imagenes)
+        float infoPanelShowTime = .5f;
+
+
+
+        // Panel
+        Vector3 panelPosition = phaseItem.panel.transform.position;
+        phaseItem.panel.transform.position = 
+            new Vector3(panelPosition.x, panelPosition.y - 1);
+        phaseItem.panel.transform.DOMoveY(panelPosition.y, panelShowTime);
+
+
+        yield return new WaitForSeconds(panelShowTime);
+
+        // Info in the Panel
+    }
 
 
     // Cambios graficos en la escena
