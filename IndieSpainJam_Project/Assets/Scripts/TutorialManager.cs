@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class TutorialManager : MonoBehaviour
 
     // El currentPhase muestra lo que el jugador necesita hacer
     TutPhases currentPhase = TutPhases.agarrarCarbonParaTorreta;
+
+
+    public struct tutorialItems
+    {
+        public SpriteRenderer[] panels;
+        public TMP_Text[] texts;
+    }
+
+    [SerializeField] public tutorialItems tutItems;
 
     private void Awake()
     {
