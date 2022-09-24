@@ -7116,6 +7116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bfddd62c78a14d95b7f40f8ebf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duringTutorial: 0
   tutorialElements:
   - phase: 0
     panel: {fileID: 1621507601}
@@ -12000,7 +12001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013580, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_RootOrder

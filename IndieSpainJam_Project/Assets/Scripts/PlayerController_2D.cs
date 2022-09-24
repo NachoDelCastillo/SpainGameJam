@@ -228,6 +228,10 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
+            if (TutorialManager.GetInstance().duringTutorial &&
+            TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterseEnTorreta)
+                return;
+
             //Debug.Log("Entra en torreta");
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
 
@@ -450,7 +454,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
         if (enteringTurret)
-        {         
+        {
             rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
             if (Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
