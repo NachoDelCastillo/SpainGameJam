@@ -16,6 +16,7 @@ public class TrainManager : MonoBehaviour
 
     bool showingResults;
 
+    [SerializeField]
     int MainVelocity = 0;
 
     Vector3[] initialPosOfWagons;

@@ -5253,14 +5253,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   railsParent: {fileID: 0}
   defaultSprite: {fileID: 1819954804, guid: ff184140446b2744a976f52612c13697, type: 3}
+  defaultEyesSprite: {fileID: 0}
   loadAndShootSprite: {fileID: -488595566, guid: ff184140446b2744a976f52612c13697, type: 3}
+  loadAndShootingEyesSprite: {fileID: 0}
   particlesLoading: {fileID: 4205439701795236163}
   velocity: 2
   rotationSpeed: 1
-  timeToLoad: 4
+  eyesSpriteRenderer: {fileID: 0}
+  timeToLoad: 3.6
   loadingLaser: {fileID: 3330685883569148297}
   loadingSphere: {fileID: 4303165074325188409}
-  timeFiring: 1.5
+  loadingSpehereScaleoverTime:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timeFiring: 1.2
   rayTrigger: {fileID: 1006753961420609265}
   timesToShoot: 2
   leavingPoint: {fileID: 0}
