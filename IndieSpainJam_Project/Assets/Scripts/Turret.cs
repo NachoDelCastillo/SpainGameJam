@@ -179,14 +179,7 @@ public class Turret : MonoBehaviour
             }
             imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
             imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
-            StartCoroutine(DestroyCoal(collision.transform));
+            Destroy(collision.gameObject, 1);
         }
-    }
-
-
-    IEnumerator DestroyCoal(Transform coal)
-    {
-        yield return new WaitForSeconds(1);
-        if(coal.gameObject != null) Destroy(coal.gameObject);
     }
 }
