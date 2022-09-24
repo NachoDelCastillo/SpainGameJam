@@ -5,12 +5,13 @@ using UnityEngine;
 public class MoveBackground : MonoBehaviour
 {
 	[SerializeField] private float parallaxMultiplier;
-	private float speed;
+	private float speed, engineForce;
 	private float[] spriteWidths;
 	private Transform[] childrenTransforms;
 	private Vector2 screenBounds;
 	void Start()
 	{
+		engineForce = 2;
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		childrenTransforms = new Transform[transform.childCount];
 		spriteWidths = new float[transform.childCount];
@@ -22,12 +23,22 @@ public class MoveBackground : MonoBehaviour
 	}
 	void LateUpdate()
 	{
-		speed = TrainManager.Instance.GetmainVelocity();
+		float actualTrainSpeed = TrainManager.Instance.GetmainVelocity();
+		if(actualTrainSpeed != speed && speed < actualTrainSpeed) {
+			speed -= engineForce;
+			Debug.Log(speed);
+			Debug.Log(actualTrainSpeed);
+			if (speed * -1 > actualTrainSpeed) speed = actualTrainSpeed;
+		}
+        else
+        {
+			speed = actualTrainSpeed;
+		}
 		if (speed > 0) speed *= -1;
 		//Cantidad que se mueve, es decir velocidad
 		float xSpeedMovement = speed * parallaxMultiplier * Time.deltaTime;
-        for (int i = 0; i < transform.childCount; i++)
-        {
+		for (int i = 0; i < transform.childCount; i++)
+		{
 			childrenTransforms[i].Translate(new Vector3(xSpeedMovement, 0, 0));
 			//Si la posicion horizontal es mas grande que la pantalla mas el ancho del sprite
 			//Mueve el objeto al inicio de la pantalla, es decir el ancho de la pantalla - el ancho del sprite por dos

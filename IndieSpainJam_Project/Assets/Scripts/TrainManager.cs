@@ -465,7 +465,7 @@ public class TrainManager : MonoBehaviour
             smoke.Play();
         }
 
-        MainVelocity += 100;
+        MainVelocity += 20;
 
         var aux = smoke.emission;
         aux.rateOverTime = 2 + (((float)MainVelocity / 100f) * 18f);
