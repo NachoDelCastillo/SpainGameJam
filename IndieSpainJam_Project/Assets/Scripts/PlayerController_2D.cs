@@ -63,6 +63,9 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] ParticleSystem landing2;
 
 
+
+    bool dead;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,11 +78,28 @@ public class PlayerController_2D : MonoBehaviour
     {
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
-        
+        dead = false;
+
     }
 
+    private void LeaveTurret()
+    {
+        transform.SetParent(null);
+        rb.isKinematic = false;
+        usingTurret = false;
+        enteringTurret = false;
+        turretControl.changeShooting(false);
+    }
+    public void GotKilled()
+    {
+        Debug.Log("C murió");
+        LeaveTurret();
+
+
+    }
     void Update()
     {
+
         UpdateFlipGfx();
 
         Jump_check();
@@ -139,11 +159,7 @@ public class PlayerController_2D : MonoBehaviour
             if (usingTurret || enteringTurret)
             {
                 //Debug.Log("Salta de la torreta");
-                transform.SetParent(null);
-                rb.isKinematic = false;
-                usingTurret = false;
-                enteringTurret = false;
-                turretControl.changeShooting(false);
+                LeaveTurret();
             }
 
         }
