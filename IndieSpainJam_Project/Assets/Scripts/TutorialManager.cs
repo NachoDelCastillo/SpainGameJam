@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class TutorialManager : MonoBehaviour
@@ -14,13 +15,15 @@ public class TutorialManager : MonoBehaviour
     TutPhases currentPhase = TutPhases.agarrarCarbonParaTorreta;
 
 
-    //public struct tutorialItems
-    //{
-    //    public SpriteRenderer[] panels;
-    //    public TMP_Text[] texts;
-    //}
-
-    [SerializeField] public tutorialItems tutItems;
+    [Serializable]
+    public struct tutorialItems
+    {
+        public TutPhases phase;
+        public SpriteRenderer panels;
+        public SpriteRenderer[] infoPanels;
+        public TMP_Text[] texts;
+    }
+    [SerializeField] tutorialItems[] TutorialElements;
 
 
     private void Awake()
@@ -55,6 +58,11 @@ public class TutorialManager : MonoBehaviour
         //if (currentPhase = TutPhases.trenEnMarcha)
     }
 
+    void ShowTutorialItems(TutPhases)
+    {
+
+    }
+
 
     // Cambios graficos en la escena
 
@@ -67,10 +75,4 @@ public class TutorialManager : MonoBehaviour
     {
 
     }
-}
-
-public class tutorialItems
-{
-    public SpriteRenderer[] panels;
-    public TMP_Text[] texts;
 }
