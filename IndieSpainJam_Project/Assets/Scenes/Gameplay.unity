@@ -13353,15 +13353,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[1].b
-      value: 0.11764706
+      value: 0.65882355
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[1].g
-      value: 0.8666667
+      value: 0.8901961
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[1].r
-      value: 0.98039216
+      value: 0.9411765
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[2].a
@@ -13369,7 +13369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[2].b
-      value: 0.57254905
+      value: 0.3529412
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: colorFadeHUD.Array.data[2].g
