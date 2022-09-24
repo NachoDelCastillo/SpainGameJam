@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour
     // El currentPhase muestra lo que el jugador necesita hacer
     tutPhases currentPhase = tutPhases.agarrarCarbonParaTorreta;
 
+    [HideInInspector] public bool duringTutorial;
 
     [Serializable]
     public struct tutItems
@@ -41,7 +42,12 @@ public class TutorialManager : MonoBehaviour
 
         HideEverything();
 
-        StartCoroutine(DoTutorial());
+        //StartCoroutine(DoTutorial());
+
+        duringTutorial = true;
+
+        // Empezar primera parte del tutorial
+        ShowTutorialItems((tutPhases)0);
     }
 
     void HideEverything()
@@ -94,12 +100,12 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public tutPhases GetCurrentPhase()
+    { return currentPhase; }
+
     // Este metodo se llama cuando se realiza alguna de las acciones necesarias para completar el tutorial
     public void TryToChangePhase(tutPhases phaseDone)
-    {
-        //StopAllCoroutines();
-        StartCoroutine(TryToChangePhase_IEnumerator(phaseDone));
-    }
+    { StartCoroutine(TryToChangePhase_IEnumerator(phaseDone)); }
 
     // Devuelve true si se esta pasando de fase en este momento
     bool changingPhase;
@@ -121,9 +127,9 @@ public class TutorialManager : MonoBehaviour
             //STOP
             if (currentPhase == tutPhases.trenEnMarcha)
             {
-
+                duringTutorial = false;
+                yield break;
             }
-
 
             //Si no es el final, mostrar el siguiente
             ShowTutorialItems(currentPhase);
@@ -216,18 +222,5 @@ public class TutorialManager : MonoBehaviour
         // Position
         Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
-    }
-
-
-    // Cambios graficos en la escena
-
-    void AgarrarCarbonParaTorreta()
-    {
-
-    }
-
-    void MeterCarbonEnTorreta()
-    {
-
     }
 }

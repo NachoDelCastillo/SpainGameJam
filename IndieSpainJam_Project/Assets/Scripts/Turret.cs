@@ -66,6 +66,7 @@ public class Turret : MonoBehaviour
                 Vector3 desiredAngle = whereToShot.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
                 partSys.Play();
+                AudioManager_PK.instance.Play("Shoot", Random.Range(0.8f, 1.2f));
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
                 shootRight = !shootRight;
