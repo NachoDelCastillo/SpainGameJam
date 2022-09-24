@@ -28,7 +28,11 @@ public class EnemySpawner : MonoBehaviour
             spawnPoints[i] = transform.GetChild(i);
         }
 
-        Invoke("CreateEnemys", 1);
+
+
+        //Invoke("CreateEnemys", 1);
+
+        AddEnemy();
     }
 
     // Update is called once per frame
@@ -39,28 +43,31 @@ public class EnemySpawner : MonoBehaviour
 
     void CreateEnemys()
     {
-
-
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 
         for (int i = 0; i < numEnmy; i++)
-        {
-            int rand = Random.Range(0, enemyPrefabs.Length);
-            GameObject clon = Instantiate(enemyPrefabs[rand]);
-
-            BasicEnemy basicEnemy = clon.GetComponent<BasicEnemy>();
-            if (basicEnemy != null)
-            {
-                basicEnemy.target = targetWagons[Random.Range(0, targetWagons.Length)];
-                basicEnemy.enemySpawner = this;
-            }
-
-            int randPos = Random.Range(0, spawnPoints.Length);
-            clon.transform.position = spawnPoints[randPos].position;
-
-            enemysAlive.Add(clon);
-        }
+            AddEnemy();
 
         Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
+    }
+
+    BasicEnemy AddEnemy()
+    {
+        int rand = Random.Range(0, enemyPrefabs.Length);
+        GameObject clon = Instantiate(enemyPrefabs[rand]);
+
+        BasicEnemy basicEnemy = clon.GetComponent<BasicEnemy>();
+        if (basicEnemy != null)
+        {
+            basicEnemy.target = targetWagons[Random.Range(0, targetWagons.Length)];
+            basicEnemy.enemySpawner = this;
+        }
+
+        int randPos = Random.Range(0, spawnPoints.Length);
+        clon.transform.position = spawnPoints[randPos].position;
+
+        enemysAlive.Add(clon);
+
+        return basicEnemy;
     }
 }

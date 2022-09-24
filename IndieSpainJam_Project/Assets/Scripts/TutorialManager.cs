@@ -97,19 +97,30 @@ public class TutorialManager : MonoBehaviour
     // Este metodo se llama cuando se realiza alguna de las acciones necesarias para completar el tutorial
     public void TryToChangePhase(tutPhases phaseDone)
     {
+        StartCoroutine(TryToChangePhase_IEnumerator(phaseDone));
+    }
+
+    IEnumerator TryToChangePhase_IEnumerator(tutPhases phaseDone)
+    {
         if (currentPhase == phaseDone)
         {
-            // Encontrar las referencias de los items de la parte del tutorial actual
+
+            StopAllCoroutines();
+            //Encontrar las referencias de los items de la parte del tutorial actual
             HideTutorialItems(currentPhase);
 
             currentPhase++;
 
-            // STOP
+            yield return new WaitForSeconds(1);
+            //STOP
             //if (currentPhase == tutPhases.trenEnMarcha)
 
-            // Si no es el final, mostrar el siguiente
+
+            //Si no es el final, mostrar el siguiente
             ShowTutorialItems(currentPhase);
         }
+
+        yield return new WaitForSeconds(1);
     }
 
     void ShowTutorialItems(tutPhases tutPhase)

@@ -199,7 +199,6 @@ public class PlayerController_2D : MonoBehaviour
             //permitir disparar o no
             if (context.started)
             {
-                TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
                 turretControl.changeShooting(true);
             }
             else if (context.canceled)
@@ -225,6 +224,7 @@ public class PlayerController_2D : MonoBehaviour
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
             //Debug.Log("Entra en torreta");
+            TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
 
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
