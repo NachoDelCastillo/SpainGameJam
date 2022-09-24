@@ -46,6 +46,7 @@ public class TrainManager : MonoBehaviour
     // Manager
     [SerializeField] Transform changeRail_Prefab;
     [SerializeField] Transform rails;
+    [SerializeField] Transform[] spawnChangeRails;
 
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
@@ -164,7 +165,7 @@ public class TrainManager : MonoBehaviour
         } while (!correctBools);
 
 
-        ChangeRail newChangeRail = Instantiate(changeRail_Prefab, rows[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
+        ChangeRail newChangeRail = Instantiate(changeRail_Prefab, spawnChangeRails[selectedRow].position + new Vector3(30, 0), Quaternion.identity, rails).GetComponent<ChangeRail>();
 
         // Meter el cambio de via en la lista de cambio de via correspondiente
         changeRail_Lists[selectedRow].Add(newChangeRail);
@@ -208,6 +209,8 @@ public class TrainManager : MonoBehaviour
         //DebugRow(1);
         //DebugRow(2);
     }
+
+    [SerializeField] 
 
     // Se encarga de comprobar cada una de las posiciones de los vagones
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
