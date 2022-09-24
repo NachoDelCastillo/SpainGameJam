@@ -103,6 +103,8 @@ public class BasicEnemy : MonoBehaviour
 
     void Death()
     {
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.matarEnemigoTorreta);
+
         rb.velocity = Vector2.zero;
 
         anim.SetTrigger("Death");

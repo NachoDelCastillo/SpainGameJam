@@ -382,6 +382,8 @@ public class TrainManager : MonoBehaviour
     {
         if (!delegation.Other.CompareTag("Coal")) return;
 
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnMotor);
+
         RotateWheelFast();
 
         GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
@@ -497,7 +499,7 @@ public class TrainManager : MonoBehaviour
             smoke.Play();
         }
 
-        MainVelocity += 20;
+        MainVelocity += 5;
         GameObject clon = Instantiate(sparkSys, wheel.position, Quaternion.identity);
         clon.transform.parent = wheel;
         StartCoroutine(GlowWheel());

@@ -43,6 +43,7 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] public GameObject turret;
     float turretEnteringRadius = 0.1f;
     Turret turretControl;
+    GameObject turretOutline;
 
     // Ground checker
     [SerializeField] Transform groundCheck_tr;
@@ -73,6 +74,7 @@ public class PlayerController_2D : MonoBehaviour
         playerControl = new PlayerInputActions();
         turret = FindObjectOfType<Turret>().gameObject;
         turretControl = turret.GetComponent<Turret>();
+        turretOutline = turretControl.outline;
         killable = true;
     }
 
@@ -86,6 +88,8 @@ public class PlayerController_2D : MonoBehaviour
 
     private void LeaveTurret(bool muerto = false)
     {
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.salirDeTorreta);
+
         if (!muerto)
         {
             jumpRemember = .2f;
@@ -101,6 +105,7 @@ public class PlayerController_2D : MonoBehaviour
         rb.isKinematic = false;
         usingTurret = false;
         enteringTurret = false;
+        turretOutline.SetActive(false);
         turretControl.changeShooting(false);
 
         gfx.enabled = true;
@@ -215,10 +220,7 @@ public class PlayerController_2D : MonoBehaviour
         
 
         // Si se está subiendo a la torreta no recoge nada
-        if (enteringTurret)
-        {
-            return;
-        }
+        if (enteringTurret) return;
 
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
@@ -444,11 +446,12 @@ public class PlayerController_2D : MonoBehaviour
 
 
         if (enteringTurret)
-        {
+        {         
             rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
             if(Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
             {
+                turretOutline.SetActive(true);
                 usingTurret = true;
                 transform.position = turret.transform.position;
                 transform.SetParent(turret.transform);

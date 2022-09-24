@@ -28,6 +28,7 @@ public class Turret : MonoBehaviour
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
     float lastInput, anglesDrawBack = 10;
+    public GameObject outline;
 
     //Ammo
     [SerializeField] GameObject ammoIndicator;
@@ -43,6 +44,7 @@ public class Turret : MonoBehaviour
         imageToFill = ammoIndicator.GetComponent<Image>();
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
+        outline.SetActive(false);
     }
 
     // Update is called once per frame

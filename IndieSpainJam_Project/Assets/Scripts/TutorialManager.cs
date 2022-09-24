@@ -119,7 +119,10 @@ public class TutorialManager : MonoBehaviour
             changingPhase = false;
 
             //STOP
-            //if (currentPhase == tutPhases.trenEnMarcha)
+            if (currentPhase == tutPhases.trenEnMarcha)
+            {
+
+            }
 
 
             //Si no es el final, mostrar el siguiente
