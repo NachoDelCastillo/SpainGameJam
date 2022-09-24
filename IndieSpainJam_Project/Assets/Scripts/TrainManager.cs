@@ -502,17 +502,12 @@ public class TrainManager : MonoBehaviour
         clon.transform.parent = wheel;
         StartCoroutine(GlowWheel());
         var aux = smoke.emission;
-        
         aux.rateOverTime = 2 + (((float)MainVelocity / 100f) * 18f);
 
         ParticleSystem.MinMaxCurve a = new();
-
         a = smoke.velocityOverLifetime.x;
-
         a.curveMultiplier = 0.5f + (((float)MainVelocity / 100f) * 50f);
-
         var aux2 = smoke.velocityOverLifetime;
-
         aux2.x = a;
 
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
@@ -535,7 +530,15 @@ public class TrainManager : MonoBehaviour
         {
             StartCoroutine(ShowResult(false));
 
+            MainVelocity = 0;
+
             AudioManager_PK.instance.sounds[6].source.mute = true;
+
+            ParticleSystem.MinMaxCurve a = new();
+            a = smoke.velocityOverLifetime.x;
+            a.curveMultiplier = 0;
+            var aux2 = smoke.velocityOverLifetime;
+            aux2.x = a;
 
             foreach (WagonLogic wagon in wagons)
             {
