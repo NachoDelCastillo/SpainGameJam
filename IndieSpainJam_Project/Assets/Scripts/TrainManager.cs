@@ -197,11 +197,10 @@ public class TrainManager : MonoBehaviour
             if (elapsedTime > 0.1f)
             {
                 elapsedTime = 0;
-                AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 timeToMuteExplosions -= Time.deltaTime;
-                if (timeToMuteExplosions <= 0)
+                if (timeToMuteExplosions >= 0)
                 {
-                    AudioManager_PK.instance.sounds[7].source.mute = true;
+                    AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 }
                 return;
             }
