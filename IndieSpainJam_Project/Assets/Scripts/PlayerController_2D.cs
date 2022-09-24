@@ -88,6 +88,8 @@ public class PlayerController_2D : MonoBehaviour
 
     private void LeaveTurret(bool muerto = false)
     {
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.salirDeTorreta);
+
         if (!muerto)
         {
             jumpRemember = .2f;
@@ -218,10 +220,7 @@ public class PlayerController_2D : MonoBehaviour
         
 
         // Si se está subiendo a la torreta no recoge nada
-        if (enteringTurret)
-        {
-            return;
-        }
+        if (enteringTurret) return;
 
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
