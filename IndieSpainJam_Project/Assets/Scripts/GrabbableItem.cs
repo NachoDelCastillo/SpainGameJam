@@ -20,6 +20,9 @@ public class GrabbableItem : MonoBehaviour
 
     public void ItemGrabbed(PlayerController_2D playerGrabbingThis_)
     {
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaTorreta);
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaMotor);
+
         playerGrabbingThis = playerGrabbingThis_;
 
         rb.isKinematic = true;

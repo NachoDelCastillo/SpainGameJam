@@ -7,6 +7,10 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
+    static TutorialManager instance;
+    public static TutorialManager GetInstance()
+    { return instance; }
+
     // Fases del tutorial
     public enum tutPhases
     {
@@ -32,6 +36,9 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+
         HideEverything();
 
         StartCoroutine(DoTutorial());

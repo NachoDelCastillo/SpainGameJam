@@ -199,6 +199,7 @@ public class PlayerController_2D : MonoBehaviour
             //permitir disparar o no
             if (context.started)
             {
+                TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
                 turretControl.changeShooting(true);
             }
             else if (context.canceled)

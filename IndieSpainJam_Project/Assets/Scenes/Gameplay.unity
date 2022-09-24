@@ -26410,6 +26410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RayEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013580, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -27454,6 +27458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030897bfd4ebd514caaedefd7bba8a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainVelocity: 0
   wheelNeon: {fileID: 621825778}
   maxIntensity: 500
   normalIntensity: 30
