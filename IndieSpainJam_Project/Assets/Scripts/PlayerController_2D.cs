@@ -84,6 +84,13 @@ public class PlayerController_2D : MonoBehaviour
 
     private void LeaveTurret()
     {
+        jumpRemember = .2f;
+        jumpRememberTimer = 1;
+        canDoubleJump = true;
+        onGround = true;
+        groundRemember = .2f;
+        groundRememberTimer = 1;
+
         transform.SetParent(null);
         rb.isKinematic = false;
         usingTurret = false;
@@ -92,10 +99,7 @@ public class PlayerController_2D : MonoBehaviour
     }
     public void GotKilled()
     {
-        Debug.Log("C murió");
         LeaveTurret();
-
-
     }
     void Update()
     {
