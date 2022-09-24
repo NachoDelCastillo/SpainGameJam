@@ -65,7 +65,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
     //muerte
-    [HideInInspector]public bool killable;
+    [HideInInspector] public bool killable;
 
 
     void Awake()
@@ -88,6 +88,10 @@ public class PlayerController_2D : MonoBehaviour
 
     private void LeaveTurret(bool muerto = false)
     {
+        if (TutorialManager.GetInstance().duringTutorial &&
+            TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.salirDeTorreta)
+            return;
+
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.salirDeTorreta);
         AudioManager_PK.instance.Stop("TurretRotate");
 
@@ -100,7 +104,6 @@ public class PlayerController_2D : MonoBehaviour
             groundRemember = .2f;
             groundRememberTimer = 1;
         }
-        
 
         transform.SetParent(null);
         rb.isKinematic = false;
@@ -176,7 +179,7 @@ public class PlayerController_2D : MonoBehaviour
         if (context.started)
         {
             jumpRememberTimer = jumpRemember;
-            
+
             // Solo se puede salir de la torreta si has pulsado la tecla después de haber entrado en ella o mientras se está subiendo
             if (usingTurret || enteringTurret)
             {
@@ -218,7 +221,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-        
+
 
         // Si se está subiendo a la torreta no recoge nada
         if (enteringTurret) return;
@@ -226,6 +229,10 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
+            if (TutorialManager.GetInstance().duringTutorial &&
+            TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterseEnTorreta)
+                return;
+
             //Debug.Log("Entra en torreta");
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
 
@@ -235,7 +242,7 @@ public class PlayerController_2D : MonoBehaviour
             return;
         }
 
-        
+
 
 
 
@@ -246,10 +253,10 @@ public class PlayerController_2D : MonoBehaviour
         if (grabbingAnItem || droppingAnItem) return;
 
 
-       
-        
-        
-        
+
+
+
+
         // Si está USANDO la torreta pero no la está usando, dispara
 
 
@@ -271,28 +278,12 @@ public class PlayerController_2D : MonoBehaviour
         // Si no se tiene un objeto en las manos
         else
         {
-            // Comprobar si se esta intentando agarrar uno del vagon del carbon
-            if (currentlyInCoalWagon)
-            {
-                // Crear el carbon y ponerlo en las manos de este jugador
-                grabbedItem = Instantiate(coalPrefab, grabSpot).GetComponent<GrabbableItem>();
-                grabbedItem.ItemGrabbed(this);
-
-                // Smooooooooooooooooooooth
-                SpriteRenderer sp = grabbedItem.GetComponentInChildren<SpriteRenderer>();
-                sp.color = new Color(1, 1, 1, 0);
-                sp.DOFade(1, 1);
-
-                grabbedItem.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
-                grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
-                grabbedItem.transform.GetChild(0).DOScale(1, 1);
-            }
             // Si no se esta intentando cojer ningun objeto del vagon del carbon
             // Comprobar si se quiere cojer un objeto del suelo
-            else
+            if (reachableItems.Count != 0)
             {
-                // Si no hay ningun objeto cerca, no seguir
-                if (reachableItems.Count == 0) return;
+                //// Si no hay ningun objeto cerca, no seguir
+                //if (reachableItems.Count == 0) return;
 
                 GrabbableItem nearestItem = reachableItems[0];
                 if (reachableItems.Count == 1)
@@ -323,6 +314,23 @@ public class PlayerController_2D : MonoBehaviour
                 StartCoroutine(Utils.MoveItemSmooth(nearestItem.transform, grabSpot.transform, grabTime));
                 grabbingAnItem = true;
                 Invoke("EndGrabbing", grabTime + .1f);
+            }
+
+            // Comprobar si se esta intentando agarrar uno del vagon del carbon
+            else if (currentlyInCoalWagon)
+            {
+                // Crear el carbon y ponerlo en las manos de este jugador
+                grabbedItem = Instantiate(coalPrefab, grabSpot).GetComponent<GrabbableItem>();
+                grabbedItem.ItemGrabbed(this);
+
+                // Smooooooooooooooooooooth
+                SpriteRenderer sp = grabbedItem.GetComponentInChildren<SpriteRenderer>();
+                sp.color = new Color(1, 1, 1, 0);
+                sp.DOFade(1, 1);
+
+                grabbedItem.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
+                grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
+                grabbedItem.transform.GetChild(0).DOScale(1, 1);
             }
         }
     }
@@ -387,7 +395,7 @@ public class PlayerController_2D : MonoBehaviour
     {
         if (collision.GetComponent<Turret>())
             currentlyInTurretWagon = false;
-        
+
 
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = false;
@@ -447,10 +455,10 @@ public class PlayerController_2D : MonoBehaviour
 
 
         if (enteringTurret)
-        {         
+        {
             rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
-            if(Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
+            if (Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
             {
                 turretOutline.SetActive(true);
                 usingTurret = true;
@@ -464,7 +472,7 @@ public class PlayerController_2D : MonoBehaviour
             return;
         }
 
-        
+
 
         Vector3 targetVelocity = new Vector2(input_hor * speed, rb.velocity.y);
 
