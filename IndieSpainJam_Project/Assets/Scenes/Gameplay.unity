@@ -24982,6 +24982,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2164706160879361830, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b384608c7357dd6408c76b2975dfebc5, type: 2}
     - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: shakeTime
       value: 1.5
@@ -25073,6 +25077,10 @@ PrefabInstance:
     - target: {fileID: 7343239125389817977, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_SortingOrder
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_LocalPosition.x
