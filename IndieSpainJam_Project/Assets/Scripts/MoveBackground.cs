@@ -11,7 +11,7 @@ public class MoveBackground : MonoBehaviour
 	private Vector2 screenBounds;
 	void Start()
 	{
-		engineForce = 2;
+		engineForce = 0.1f;
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		childrenTransforms = new Transform[transform.childCount];
 		spriteWidths = new float[transform.childCount];
@@ -24,16 +24,11 @@ public class MoveBackground : MonoBehaviour
 	void LateUpdate()
 	{
 		float actualTrainSpeed = TrainManager.Instance.GetmainVelocity();
-		if(actualTrainSpeed != speed && speed < actualTrainSpeed) {
+		if(actualTrainSpeed != speed && (speed * -1) < actualTrainSpeed)
 			speed -= engineForce;
-			Debug.Log(speed);
-			Debug.Log(actualTrainSpeed);
-			if (speed * -1 > actualTrainSpeed) speed = actualTrainSpeed;
-		}
-        else
-        {
-			speed = actualTrainSpeed;
-		}
+        else speed = actualTrainSpeed;
+		
+
 		if (speed > 0) speed *= -1;
 		//Cantidad que se mueve, es decir velocidad
 		float xSpeedMovement = speed * parallaxMultiplier * Time.deltaTime;
