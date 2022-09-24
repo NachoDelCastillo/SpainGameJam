@@ -116,6 +116,8 @@ public class RayEnemyMovement : MonoBehaviour
             case State.Shooting:
                 loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
+                loadingSphere.SetActive(true);
+                loadingSphere.transform.localScale = Vector3.one * startingRadius;
                 elapsedTimeToFire = 0f;
                 timesShot++;
                 break;
@@ -188,7 +190,8 @@ public class RayEnemyMovement : MonoBehaviour
         if(elapsedTimeToFire >= timeFiring)
         {
             rayTrigger.SetActive(false);
-            if(timesShot >= timesToShoot)
+            loadingSphere.SetActive(false);
+            if (timesShot >= timesToShoot)
             {
                 ChangeState(State.Leaving);
             }

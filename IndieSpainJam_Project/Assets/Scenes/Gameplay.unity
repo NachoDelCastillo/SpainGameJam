@@ -11431,13 +11431,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3248124563058833523, guid: ea12a86540f21084d9db73af597e0260, type: 3}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   timeBetweenEnemys: 0.5
+  minTimeForNextWave: 0
+  maxTimeForNextWave: 0
   minEnemys: 3
   maxEnemys: 7
   targetWagons:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}
   - {fileID: 5029109945756948078}
+  multiplier: 0
   enemysAlive: []
 --- !u!4 &559840269
 Transform:
@@ -25898,7 +25907,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2d40994e079387544803f20347c53ddb, type: 2}
     - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.1
+      value: 53.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
@@ -26918,6 +26927,7 @@ MonoBehaviour:
   - {fileID: 844436529}
   - {fileID: 1087738705}
   - {fileID: 760816024}
+  sparkSys: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30

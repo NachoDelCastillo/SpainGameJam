@@ -51,6 +51,9 @@ public class TrainManager : MonoBehaviour
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
 
+
+
+    [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
     {
         return MainVelocity;    
@@ -184,7 +187,8 @@ public class TrainManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(AddIntensityColor());
+
+            StartCoroutine(GlowWheel());
         }
 
         RotateWheel();
@@ -309,7 +313,7 @@ public class TrainManager : MonoBehaviour
         Debug.Log(s);
     }
 
-    IEnumerator AddIntensityColor()
+    IEnumerator GlowWheel()
     {
         float i = normalIntensity;
         while (i < maxIntensity)
@@ -470,8 +474,10 @@ public class TrainManager : MonoBehaviour
         }
 
         MainVelocity += 20;
-
+        Instantiate(sparkSys, wheel.position, Quaternion.identity);
+        StartCoroutine(GlowWheel());
         var aux = smoke.emission;
+        
         aux.rateOverTime = 2 + (((float)MainVelocity / 100f) * 18f);
 
         ParticleSystem.MinMaxCurve a = new();
