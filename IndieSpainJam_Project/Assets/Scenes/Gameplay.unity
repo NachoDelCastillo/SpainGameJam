@@ -11828,7 +11828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760816023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5998, y: -11.900001, z: 0}
+  m_LocalPosition: {x: -1.5998, y: -11.34, z: 0}
   m_LocalScale: {x: 2.8729136, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11917,7 +11917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844436528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5998, y: 3.1000001, z: 0}
+  m_LocalPosition: {x: -1.5998, y: 4.340001, z: 0}
   m_LocalScale: {x: 2.8729136, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12910,7 +12910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087738704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5998, y: -4.48, z: 0}
+  m_LocalPosition: {x: -1.5998, y: -3.77, z: 0}
   m_LocalScale: {x: 2.8729136, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25607,7 +25607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109945121299084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.99, z: 0}
+  m_LocalPosition: {x: 0, y: -2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25689,7 +25689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109945610543734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26125,7 +26125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109945881225944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.410002, z: 0}
+  m_LocalPosition: {x: 0, y: -9.700002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26156,7 +26156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029109945894259548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.4600005, z: 0}
+  m_LocalPosition: {x: 0, y: 6.1700006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26360,6 +26360,10 @@ MonoBehaviour:
   healthSlider: {fileID: 255504361}
   changeRail_Prefab: {fileID: 6622836723093552908, guid: 4d76fa9bdc0e4f3478b39d89d7e07bdd, type: 3}
   rails: {fileID: 5029109945817617343}
+  spawnChangeRails:
+  - {fileID: 844436529}
+  - {fileID: 1087738705}
+  - {fileID: 760816024}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30
