@@ -17,6 +17,7 @@ public class Turret : MonoBehaviour
     [SerializeField] float coneAngle;
     [SerializeField] GameObject turretSprite;
     [SerializeField] AnimationCurve knockbackCurve;
+    [SerializeField] Color[] colorFadeHUD;
 
 
 
@@ -65,12 +66,14 @@ public class Turret : MonoBehaviour
                 Vector3 desiredAngle = whereToShot.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
                 Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
                 partSys.Play();
+                AudioManager_PK.instance.Play("Shoot", Random.Range(0.8f, 1.2f));
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
                 shootRight = !shootRight;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+
+                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1],colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
 
             turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
@@ -175,7 +178,7 @@ public class Turret : MonoBehaviour
                 currentAmmo = maxAmmo;
             }
             imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-            imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+            imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             StartCoroutine(DestroyCoal(collision.transform));
         }
     }
