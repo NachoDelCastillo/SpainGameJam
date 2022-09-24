@@ -25798,10 +25798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2164706160879361830, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: mainCamera
       value: 
@@ -25809,22 +25805,6 @@ PrefabInstance:
     - target: {fileID: 4303165074325188409, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.3400002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165074325188411, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.42
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: railsParent
@@ -25834,10 +25814,6 @@ PrefabInstance:
       propertyPath: leavingPoint
       value: 
       objectReference: {fileID: 1047064077}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1819954804, guid: ff184140446b2744a976f52612c13697, type: 3}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy
@@ -25889,26 +25865,6 @@ PrefabInstance:
     - target: {fileID: 4303165076119651761, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2d40994e079387544803f20347c53ddb, type: 2}
-    - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
