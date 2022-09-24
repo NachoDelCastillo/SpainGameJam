@@ -5035,7 +5035,7 @@ MonoBehaviour:
   gfx: {fileID: 4391568662358387163}
   anim: {fileID: 3995636423522328657}
   grabSpot: {fileID: 1837162518}
-  jumpForce: 2700
+  jumpForce: 2800
   turret: {fileID: 0}
   groundCheck_tr: {fileID: 3995636422682302807}
   groundLayer:
@@ -5045,6 +5045,7 @@ MonoBehaviour:
   jumping: {fileID: 978896105596404126}
   landing1: {fileID: 9160305474341144574}
   landing2: {fileID: 5152556046472793109}
+  killable: 0
   animationCurve:
     serializedVersion: 2
     m_Curve: []
