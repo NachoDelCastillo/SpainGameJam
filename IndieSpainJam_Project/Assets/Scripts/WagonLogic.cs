@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WagonLogic : MonoBehaviour
 {
+    [SerializeField] ParticleSystem dead;
     public int RailRow = 1;
-
     private void Update()
     {
         //GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
@@ -29,6 +29,11 @@ public class WagonLogic : MonoBehaviour
             player.transform.SetParent(null);
 
         collision.transform.SetParent(null);
+    }
+
+    public void Died()
+    {
+        dead.gameObject.SetActive(true);
     }
 
     private void OnDestroy()
