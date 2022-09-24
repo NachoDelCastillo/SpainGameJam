@@ -495,7 +495,8 @@ public class TrainManager : MonoBehaviour
         }
 
         MainVelocity += 20;
-        Instantiate(sparkSys, wheel.position, Quaternion.identity);
+        GameObject clon = Instantiate(sparkSys, wheel.position, Quaternion.identity);
+        clon.transform.parent = wheel;
         StartCoroutine(GlowWheel());
         var aux = smoke.emission;
         
