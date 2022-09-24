@@ -382,7 +382,13 @@ public class TrainManager : MonoBehaviour
     {
         if (!delegation.Other.CompareTag("Coal")) return;
 
+
+        if (TutorialManager.GetInstance().duringTutorial &&
+        TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterCarbonEnMotor)
+            return;
+
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnMotor);
+
 
         RotateWheelFast();
 
