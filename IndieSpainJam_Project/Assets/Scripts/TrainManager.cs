@@ -99,7 +99,7 @@ public class TrainManager : MonoBehaviour
     float spawnTimer;
     IEnumerator SpawnChangeRail()
     {
-        spawnTimer = Random.Range(2, 3);
+        spawnTimer = Random.Range(8, 10);
 
         while (spawnTimer > 0)
         {
@@ -108,15 +108,12 @@ public class TrainManager : MonoBehaviour
             yield return 0;
         }
 
-
         int[] possibleRows = new int[4] {
             wagons[0].RailRow,
             wagons[1].RailRow,
             wagons[2].RailRow,
             wagons[3].RailRow
         };
-
-        Debug.Log("possibleRows = " + possibleRows);
 
         int selectedRow = possibleRows[Random.Range(0, 4)];
 
