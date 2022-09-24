@@ -17,27 +17,25 @@ public class Turret : MonoBehaviour
 
     bool shooting, drawBack;
     [SerializeField] float fireRate = 5, capMultiplier;
-    float minTimeBetweenShots = 0;
-    float currentTimeBetweenShots = 0;
+    float timeBetweenShots = 0;
     float timeElaspedSinceLastShot = 0;
     float rotMultiplier = 1, rotIncrease = 2;
     float lastInput, anglesDrawBack = 10;
 
-
-
     //Ammo
     [SerializeField] GameObject ammoIndicator;
     [SerializeField] int maxAmmo;
+    CameraShake cameraShake;
     int currentAmmo;
     Image imageToFill;
 
     void Start()
     {
         shooting = false;
-        minTimeBetweenShots = 1f / fireRate;
+        timeBetweenShots = 1f / fireRate;
         imageToFill = ammoIndicator.GetComponent<Image>();
         currentAmmo = (int) (maxAmmo * 1);
-        currentTimeBetweenShots = minTimeBetweenShots * 4;
+        cameraShake = GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -47,8 +45,9 @@ public class Turret : MonoBehaviour
         if (shooting && currentAmmo > 0)
         {
             //Debug.Log("Disparando");
+            cameraShake.ShakeIt();
             timeElaspedSinceLastShot += Time.deltaTime;
-            if (timeElaspedSinceLastShot >= currentTimeBetweenShots)
+            if (timeElaspedSinceLastShot >= timeBetweenShots)
             {
                 //disparar
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
@@ -57,8 +56,6 @@ public class Turret : MonoBehaviour
                 shootPart.Play();
                 currentAmmo--;
                 timeElaspedSinceLastShot = 0;
-                if (currentTimeBetweenShots > minTimeBetweenShots)
-                    currentTimeBetweenShots *= 0.75f;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
                 imageToFill.color = (imageToFill.fillAmount > 0.5 ) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f)*2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
@@ -71,7 +68,6 @@ public class Turret : MonoBehaviour
     public void changeShooting(bool newValue)
     {
         shooting = newValue;
-        currentTimeBetweenShots = minTimeBetweenShots * 4;
 
     }
 
