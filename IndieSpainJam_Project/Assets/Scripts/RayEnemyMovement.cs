@@ -7,10 +7,15 @@ public class RayEnemyMovement : MonoBehaviour
 
     private enum State {GoingLocation, Loading, Shooting, Leaving}
 
+   
+
     // Start is called before the first frame update
     [SerializeField] GameObject railsParent;
     [SerializeField] Sprite defaultSprite;
+    [SerializeField] Sprite defaultEyesSprite;
     [SerializeField] Sprite loadAndShootSprite;
+    [SerializeField] Sprite loadAndShootingEyesSprite;
+
     [SerializeField] GameObject particlesLoading;
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
@@ -20,6 +25,7 @@ public class RayEnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     GameObject player;
     SpriteRenderer spriteRenderer;
+    [SerializeField]SpriteRenderer eyesSpriteRenderer;
 
 
     // GoingLocation variables
@@ -31,6 +37,7 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] float timeToLoad = 4f;
     [SerializeField] GameObject loadingLaser;
     [SerializeField] GameObject loadingSphere;
+    [SerializeField] AnimationCurve loadingSpehereScaleoverTime;
     float elapsedTimeToReload = 0;
     float startingRadius = 0.5f;
 
@@ -64,6 +71,9 @@ public class RayEnemyMovement : MonoBehaviour
         particlesLoading.SetActive(false);
         timesShot = 0;
         cameraShake = GetComponent<CameraShake>();
+
+        spriteRenderer.sprite = defaultSprite;
+        eyesSpriteRenderer.sprite = defaultEyesSprite; ;
     }
 
     // Update is called once per frame
@@ -95,7 +105,6 @@ public class RayEnemyMovement : MonoBehaviour
         switch (newState)
         {
             case State.GoingLocation:
-                spriteRenderer.sprite = defaultSprite;
                 GameObject randomDestination;
                 do
                 {
@@ -111,15 +120,19 @@ public class RayEnemyMovement : MonoBehaviour
                 loadingSphere.SetActive(true);
                 loadingSphere.transform.localScale = Vector3.zero;
                 spriteRenderer.sprite = loadAndShootSprite;
+                eyesSpriteRenderer.sprite = loadAndShootingEyesSprite;
                 elapsedTimeToReload = 0f;
                 break;
             case State.Shooting:
                 loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
                 loadingSphere.SetActive(true);
-                loadingSphere.transform.localScale = Vector3.one * startingRadius;
                 elapsedTimeToFire = 0f;
                 timesShot++;
+                break;
+            case State.Leaving:
+                loadingLaser.SetActive(false);
+                loadingSphere.SetActive(false);spriteRenderer.sprite = defaultSprite;
                 break;
         }
 
@@ -159,27 +172,22 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); ;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.1f);
 
-        if (elapsedTimeToReload >= timeToLoad - 1)
+        
+
+
+        if (elapsedTimeToReload <= timeToLoad)
         {
-            loadingLaser.SetActive(true);
+            loadingSphere.transform.localScale = Vector2.one * (startingRadius) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad));
         }
-
-
-        if (elapsedTimeToReload >= timeToLoad)
+        else if (elapsedTimeToReload >= timeToLoad)
         {
-            loadingSphere.transform.localScale = Vector3.zero;
-            loadingSphere.SetActive(false);
             particlesLoading.SetActive(false);
             //Dispare
             cameraShake.ShakeIt();
 
             ChangeState(State.Shooting);
         }
-        else
-        {
-            //Cambiar el srite de carga
-            loadingSphere.transform.localScale = Vector2.one * (startingRadius) * (elapsedTimeToReload) / timeToLoad;
-        }
+        
 
     }
 
@@ -199,6 +207,8 @@ public class RayEnemyMovement : MonoBehaviour
             {
                 ChangeState(State.GoingLocation);
             }
+            spriteRenderer.sprite = defaultSprite;
+            eyesSpriteRenderer.sprite = defaultEyesSprite;
         }
 
     }
