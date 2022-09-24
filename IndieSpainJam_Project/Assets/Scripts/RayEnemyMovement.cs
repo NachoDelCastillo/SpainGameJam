@@ -9,6 +9,8 @@ public class RayEnemyMovement : MonoBehaviour
 
     // Start is called before the first frame update
     [SerializeField] GameObject railsParent;
+    [SerializeField] Sprite defaultSprite;
+    [SerializeField] Sprite shootingSprite;
     [SerializeField] GameObject particlesLoading;
     [SerializeField] float velocity;
     [SerializeField] float rotationSpeed;
