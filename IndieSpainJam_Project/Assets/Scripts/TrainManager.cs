@@ -220,7 +220,6 @@ public class TrainManager : MonoBehaviour
         {
             // Comprobar que este vagon no se este cambiando de via justo en este momento
 
-
             WagonLogic thisWagon = wagons[i];
 
             // Fila en la que se encuentra este vagon

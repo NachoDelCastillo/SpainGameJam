@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-//using DG.Tweening;
+using DG.Tweening;
 using Random = UnityEngine.Random;
 
 public class PlayerController_2D : MonoBehaviour
@@ -164,7 +164,6 @@ public class PlayerController_2D : MonoBehaviour
 
 
     #region Input
-
     public void Jump_Input(InputAction.CallbackContext context)
     {
 
@@ -178,10 +177,7 @@ public class PlayerController_2D : MonoBehaviour
                 //Debug.Log("Salta de la torreta");
                 LeaveTurret();
             }
-
         }
-
-        
 
         if (context.canceled && rb.velocity.y > 0 && input_ver >= 0)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .55f);
@@ -277,6 +273,12 @@ public class PlayerController_2D : MonoBehaviour
                 // Crear el carbon y ponerlo en las manos de este jugador
                 grabbedItem = Instantiate(coalPrefab, grabSpot).GetComponent<GrabbableItem>();
                 grabbedItem.ItemGrabbed(this);
+
+                // Smooooooooooooooooooooth
+                SpriteRenderer sp = grabbedItem.GetComponentInChildren<SpriteRenderer>();
+                sp.color = Color.clear;
+                sp.color = Color.white;
+                sp.DOFade(1, 1);
             }
             // Si no se esta intentando cojer ningun objeto del vagon del carbon
             // Comprobar si se quiere cojer un objeto del suelo
