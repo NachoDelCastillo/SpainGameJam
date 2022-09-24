@@ -99,7 +99,7 @@ public class TrainManager : MonoBehaviour
     float spawnTimer;
     IEnumerator SpawnChangeRail()
     {
-        spawnTimer = Random.Range(2, 3);
+        spawnTimer = Random.Range(8, 10);
 
         while (spawnTimer > 0)
         {
@@ -108,15 +108,12 @@ public class TrainManager : MonoBehaviour
             yield return 0;
         }
 
-
         int[] possibleRows = new int[4] {
             wagons[0].RailRow,
             wagons[1].RailRow,
             wagons[2].RailRow,
             wagons[3].RailRow
         };
-
-        Debug.Log("possibleRows = " + possibleRows);
 
         int selectedRow = possibleRows[Random.Range(0, 4)];
 
@@ -216,6 +213,8 @@ public class TrainManager : MonoBehaviour
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
     void CheckWagons()
     {
+        if (MainVelocity <= 0) return;
+
         // Comprobar la posicion y linea de todos los vagones para ver si estan en un cambio de via
         for (int i = 0; i < wagons.Length; i++)
         {
@@ -263,7 +262,7 @@ public class TrainManager : MonoBehaviour
                     {
                         //if (selectedRow == 2) Debug.Log("dv");
                         //else
-                        thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 1);
+                        thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 4);
                     }
 
                     // Informar al vagon de que ha cambiado de via
@@ -493,7 +492,7 @@ public class TrainManager : MonoBehaviour
             return;
 
         //health -= amount;
-        health -= 5;
+        health -= .5f;
 
         if (health <= 0) health = 0;
 
