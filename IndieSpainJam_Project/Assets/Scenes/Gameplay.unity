@@ -209,14 +209,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_text
-      value: Lanzar carbon con K
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065805225218613, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 750174532}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
 --- !u!114 &55748536 stripped
@@ -316,6 +308,7 @@ Transform:
   m_Children:
   - {fileID: 558872793}
   - {fileID: 55748537}
+  - {fileID: 532761748}
   m_Father: {fileID: 603573638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11493,6 +11486,108 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &532761747
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 171901968}
+    m_Modifications:
+    - target: {fileID: 2965065803891172262, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_Name
+      value: MeterseEnTorreta
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_text
+      value: Lanzar carbon con K
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065805225218613, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 750174532}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+--- !u!4 &532761748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 532761747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &532761749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 440045623576002363, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 532761747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &532761750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 532761747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &532761751 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2965065804853230817, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 532761747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &532761752 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2965065804980086127, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 532761747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543086842
 GameObject:
   m_ObjectHideFlags: 0
@@ -11674,6 +11769,13 @@ MonoBehaviour:
     - {fileID: 55748538}
     infoTexts:
     - {fileID: 55748536}
+  - phase: 2
+    panel: {fileID: 532761752}
+    infoImages:
+    - {fileID: 532761751}
+    infoTexts:
+    - {fileID: 532761750}
+    - {fileID: 532761749}
 --- !u!1 &621825776
 GameObject:
   m_ObjectHideFlags: 0
@@ -26022,6 +26124,10 @@ PrefabInstance:
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_text
+      value: AGARRAR ENERGIA
       objectReference: {fileID: 0}
     - target: {fileID: 2965065805225218613, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_Camera
