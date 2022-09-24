@@ -89,6 +89,7 @@ public class PlayerController_2D : MonoBehaviour
     private void LeaveTurret(bool muerto = false)
     {
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.salirDeTorreta);
+        AudioManager_PK.instance.Stop("TurretRotate");
 
         if (!muerto)
         {
