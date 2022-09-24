@@ -361,6 +361,9 @@ public class TrainManager : MonoBehaviour
         GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
         coal.ItemGrabbed(null);
 
+        coal.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
+        coal.transform.GetChild(0).DOScale(0, 1);
+
         // Deliver time
         float deliverTime = .3f;
         StartCoroutine(Utils.MoveItemSmooth(coal.transform, deliverCoal, deliverTime));
