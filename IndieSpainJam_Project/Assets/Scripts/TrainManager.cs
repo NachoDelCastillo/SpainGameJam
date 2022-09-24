@@ -213,6 +213,8 @@ public class TrainManager : MonoBehaviour
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
     void CheckWagons()
     {
+        if (MainVelocity <= 0) return;
+
         // Comprobar la posicion y linea de todos los vagones para ver si estan en un cambio de via
         for (int i = 0; i < wagons.Length; i++)
         {
