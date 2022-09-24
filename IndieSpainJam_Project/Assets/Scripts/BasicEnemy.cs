@@ -116,7 +116,7 @@ public class BasicEnemy : MonoBehaviour
 
         if (wagon == null && bullet == null) return;
 
-        if (wagon != null) states = States.Attack;
+        if (wagon != null && wagon.transform.GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
         else
         {
             Destroy(bullet.gameObject);
