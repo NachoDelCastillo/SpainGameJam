@@ -12,7 +12,7 @@ public class TrainManager : MonoBehaviour
     public static TrainManager Instance { get; private set; }
 
     float elapsedTime = 0;
-    float timeToMuteExplosions = 2.5f;
+    float timeToMuteExplosions = 5f;
 
     bool showingResults;
 
@@ -196,14 +196,14 @@ public class TrainManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if (elapsedTime > 0.1f)
             {
+                timeToMuteExplosions -= elapsedTime;
                 elapsedTime = 0;
-                timeToMuteExplosions -= Time.deltaTime;
-                if (timeToMuteExplosions >= 0)
+                if (timeToMuteExplosions > 0)
                 {
                     AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 }
-                return;
             }
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -390,18 +390,20 @@ public class TrainManager : MonoBehaviour
         coal.transform.GetChild(0).DOScale(0, 1);
 
         // Deliver time
-        float deliverTime = .3f;
+        float deliverTime = .05f;
         StartCoroutine(Utils.MoveItemSmooth(coal.transform, deliverCoal, deliverTime));
         StartCoroutine(DestroyCoal(coal, deliverTime));
     }
 
     IEnumerator DestroyCoal(GrabbableItem coal, float seconds)
     {
-        yield return new WaitForSeconds(seconds + .1f);
+        yield return new WaitForSeconds(.05f);
         if (coal != null)
             Destroy(coal.gameObject);
 
         AddVelocity();
+
+        AudioManager_PK.instance.Play("Combust", 0.8f + ((float)MainVelocity / 100f) * 0.5f);
 
         if (MainVelocity >= 100 && !showingResults)
         {
