@@ -31,6 +31,7 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] float timeToLoad = 4f;
     [SerializeField] GameObject loadingLaser;
     [SerializeField] GameObject loadingSphere;
+    [SerializeField] AnimationCurve loadingSpehereScaleoverTime;
     float elapsedTimeToReload = 0;
     float startingRadius = 0.5f;
 
@@ -117,9 +118,12 @@ public class RayEnemyMovement : MonoBehaviour
                 loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
                 loadingSphere.SetActive(true);
-                loadingSphere.transform.localScale = Vector3.one * startingRadius;
                 elapsedTimeToFire = 0f;
                 timesShot++;
+                break;
+            case State.Leaving:
+                loadingLaser.SetActive(false);
+                loadingSphere.SetActive(false);spriteRenderer.sprite = defaultSprite;
                 break;
         }
 
@@ -159,27 +163,22 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); ;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.1f);
 
-        if (elapsedTimeToReload >= timeToLoad - 1)
+        
+
+
+        if (elapsedTimeToReload <= timeToLoad)
         {
-            loadingLaser.SetActive(true);
+            loadingSphere.transform.localScale = Vector2.one * (startingRadius) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad));
         }
-
-
-        if (elapsedTimeToReload >= timeToLoad)
+        else if (elapsedTimeToReload >= timeToLoad)
         {
-            loadingSphere.transform.localScale = Vector3.zero;
-            loadingSphere.SetActive(false);
             particlesLoading.SetActive(false);
             //Dispare
             cameraShake.ShakeIt();
 
             ChangeState(State.Shooting);
         }
-        else
-        {
-            //Cambiar el srite de carga
-            loadingSphere.transform.localScale = Vector2.one * (startingRadius) * (elapsedTimeToReload) / timeToLoad;
-        }
+        
 
     }
 
