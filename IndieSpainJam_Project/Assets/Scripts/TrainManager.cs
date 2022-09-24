@@ -382,6 +382,8 @@ public class TrainManager : MonoBehaviour
     {
         if (!delegation.Other.CompareTag("Coal")) return;
 
+        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnMotor);
+
         RotateWheelFast();
 
         GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
