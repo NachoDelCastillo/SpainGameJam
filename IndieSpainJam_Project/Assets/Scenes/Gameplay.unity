@@ -11598,11 +11598,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bfddd62c78a14d95b7f40f8ebf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialElements:
+  tutorialElements:
   - phase: 0
-    panel: {fileID: 0}
-    infoImages: []
-    infoTexts: []
+    panel: {fileID: 1621507601}
+    infoImages:
+    - {fileID: 1748494239}
+    infoTexts:
+    - {fileID: 1840662605}
 --- !u!1 &621825776
 GameObject:
   m_ObjectHideFlags: 0
@@ -19801,7 +19803,7 @@ GameObject:
   - component: {fileID: 1748494238}
   - component: {fileID: 1748494239}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonsImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
