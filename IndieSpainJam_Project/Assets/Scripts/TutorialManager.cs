@@ -14,13 +14,14 @@ public class TutorialManager : MonoBehaviour
     TutPhases currentPhase = TutPhases.agarrarCarbonParaTorreta;
 
 
-    public struct tutorialItems
-    {
-        public SpriteRenderer[] panels;
-        public TMP_Text[] texts;
-    }
+    //public struct tutorialItems
+    //{
+    //    public SpriteRenderer[] panels;
+    //    public TMP_Text[] texts;
+    //}
 
     [SerializeField] public tutorialItems tutItems;
+
 
     private void Awake()
     {
@@ -66,4 +67,10 @@ public class TutorialManager : MonoBehaviour
     {
 
     }
+}
+
+public class tutorialItems
+{
+    public SpriteRenderer[] panels;
+    public TMP_Text[] texts;
 }
