@@ -161,6 +161,21 @@ public class TutorialManager : MonoBehaviour
         float infoHideTime = .5f;
 
 
+        // INFO IN THE PANEL
+        SpriteRenderer[] infoImages = phaseItem.infoImages;
+        TMP_Text[] infoTexts = phaseItem.infoTexts;
+
+        foreach (SpriteRenderer infoImage in infoImages)
+            infoImage.DOFade(0, infoHideTime);
+
+        foreach (TMP_Text infoText in infoTexts)
+            infoText.DOFade(0, infoHideTime);
+
+
+
+        yield return new WaitForSeconds(infoHideTime);
+
+
         // PANEL
 
         // Fade
@@ -170,19 +185,6 @@ public class TutorialManager : MonoBehaviour
         // Position
         Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
-
-
-        yield return new WaitForSeconds(panelHideTime);
-
-        // Info in the Panel
-        SpriteRenderer[] infoImages = phaseItem.infoImages;
-        TMP_Text[] infoTexts = phaseItem.infoTexts;
-
-        foreach (SpriteRenderer infoImage in infoImages)
-            infoImage.DOFade(0, infoHideTime);
-
-        foreach (TMP_Text infoText in infoTexts)
-            infoText.DOFade(0, infoHideTime);
     }
 
 
