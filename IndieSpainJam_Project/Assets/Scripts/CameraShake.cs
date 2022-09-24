@@ -20,12 +20,7 @@ public class CameraShake : MonoBehaviour
             mainCamera.transform.position = cameraInitialPosition;
         }
         if (cameraReturningOriginalPos)
-        {
             mainCamera.transform.localPosition = Vector3.Lerp(mainCamera.transform.localPosition, cameraInitialPosition, 10 * Time.deltaTime);
-            Debug.Log(mainCamera.transform.localPosition);
-            Debug.Log(mainCamera.transform.position);
-            //Debug.Log(mainCamera.transform.localPosition == cameraInitialPosition);
-        }
     }
     public void ShakeIt()
     {

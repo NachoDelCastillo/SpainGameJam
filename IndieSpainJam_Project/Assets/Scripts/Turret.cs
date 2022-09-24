@@ -35,12 +35,12 @@ public class Turret : MonoBehaviour
         shooting = false;
         timeBetweenShots = 1f / fireRate;
         imageToFill = ammoIndicator.GetComponent<Image>();
-        currentAmmo = (int) (maxAmmo * 1);
+        currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
         if (shooting && currentAmmo > 0)
@@ -59,7 +59,7 @@ public class Turret : MonoBehaviour
                 timeElaspedSinceLastShot = 0;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-                imageToFill.color = (imageToFill.fillAmount > 0.5 ) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f)*2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
         }
 
@@ -76,7 +76,7 @@ public class Turret : MonoBehaviour
     {
         // version 1
 
-        if(lastInput * rotationInput < 0) rotMultiplier = 1;
+        if (lastInput * rotationInput < 0) rotMultiplier = 1;
 
         if (rotationInput == 0 && lastInput != 0)
         {
@@ -90,7 +90,7 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        if(rotationInput != 0)
+        if (rotationInput != 0)
         {
             drawBack = false;
             StopCoroutine(DrawBack(1));
@@ -98,7 +98,7 @@ public class Turret : MonoBehaviour
             rotMultiplier += Time.deltaTime * rotIncrease;
             rotMultiplier = Mathf.Clamp(rotMultiplier, 1, capMultiplier);
             cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
-            
+
             //no dejar rotar
             //float z = cannonPivot.transform.localEulerAngles.z;
             //z = Mathf.Clamp(z, 90, 270);
@@ -118,7 +118,7 @@ public class Turret : MonoBehaviour
     }
 
 
-    
+
     IEnumerator DrawBack(float lastDir)
     {
         float initialZ = cannonPivot.transform.localEulerAngles.z;
@@ -157,13 +157,20 @@ public class Turret : MonoBehaviour
             collision.transform.DOMove(cannonPivot.transform.position, 1);
 
             currentAmmo += maxAmmo / 3;
-            if(currentAmmo > maxAmmo)
+            if (currentAmmo > maxAmmo)
             {
                 currentAmmo = maxAmmo;
             }
             imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
             imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(Color.yellow, Color.green, (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(Color.yellow, Color.red, Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+            StartCoroutine(DestroyCoal(collision.transform));
         }
-        //            Destroy(collision.gameObject);
+    }
+
+
+    IEnumerator DestroyCoal(Transform coal)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(coal.gameObject);
     }
 }
