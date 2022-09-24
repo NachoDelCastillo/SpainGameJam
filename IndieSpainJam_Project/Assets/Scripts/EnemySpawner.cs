@@ -16,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] Transform[] targetWagons;
 
+    [SerializeField] float multiplier;
+
     [HideInInspector] public List<GameObject> enemysAlive = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -32,12 +34,12 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        multiplier = animationCurve.Evaluate(TrainManager.Instance.GetmainVelocity() / 100);
     }
 
     void CreateEnemys()
     {
-        float multiplier = animationCurve.Evaluate(TrainManager.Instance.GetmainVelocity() / 100);
+
 
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 
