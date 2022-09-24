@@ -25304,7 +25304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannonPivot: {fileID: 5696453647688625925}
   bulletsSpawnPoint: {fileID: 6477373731549315391}
-  bulletPrefab: {fileID: 7661619938141800130, guid: 6f78d63c06f12ac4fa0064201eb5cc8e, type: 3}
+  bulletPrefab: {fileID: 4137521248761585890, guid: 41ac2645ee2483b459bf806469a66de6, type: 3}
   shootPart: {fileID: 1368018633285252165}
   rotationSpeed: 15
   coneAngle: 25
