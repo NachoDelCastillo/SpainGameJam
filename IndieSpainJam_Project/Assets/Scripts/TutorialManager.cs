@@ -58,10 +58,10 @@ public class TutorialManager : MonoBehaviour
         //if (currentPhase = TutPhases.trenEnMarcha)
     }
 
-    void ShowTutorialItems(TutPhases)
-    {
+    //void ShowTutorialItems(TutPhases)
+    //{
 
-    }
+    //}
 
 
     // Cambios graficos en la escena
