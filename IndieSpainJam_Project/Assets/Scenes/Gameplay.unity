@@ -25867,6 +25867,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -4.43
       objectReference: {fileID: 0}
+    - target: {fileID: 7272636577656294198, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb4c7c174a4077e459649e22f59c6027, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
 --- !u!1 &4485165229524687519
@@ -26885,6 +26889,7 @@ MonoBehaviour:
   - {fileID: 844436529}
   - {fileID: 1087738705}
   - {fileID: 760816024}
+  sparkSys: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30

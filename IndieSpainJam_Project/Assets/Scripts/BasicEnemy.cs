@@ -75,9 +75,9 @@ public class BasicEnemy : MonoBehaviour
         {
             attacked = true;
             TrainManager.Instance.TakeDamage(damage);
-            GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
-            var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
-            velosidad.curveMultiplier = velosidad.curveMultiplier * TrainManager.Instance.GetmainVelocity() / 100f;
+            //GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
+            //var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
+            //velosidad.curveMultiplier = velosidad.curveMultiplier * TrainManager.Instance.GetmainVelocity() / 100f;
         }
 
         attackCD -= Time.deltaTime;

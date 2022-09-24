@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -805,7 +805,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 270
+      value: 360
       mode: 0
       spread: 0
       speed:
@@ -1364,7 +1364,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
-        key1: {r: 1, g: 0.8387873, b: 0.09411764, a: 0.015686275}
+        key1: {r: 1, g: 0.8387873, b: 0.09411764, a: 1}
         key2: {r: 1, g: 0.39452392, b: 0.0009835324, a: 0}
         key3: {r: 1, g: 0.35928944, b: 0.0024240557, a: 0}
         key4: {r: 1, g: 0, b: 0.017113209, a: 0}
@@ -1375,12 +1375,12 @@ ParticleSystem:
         ctime1: 6939
         ctime2: 27178
         ctime3: 35466
-        ctime4: 40092
+        ctime4: 41634
         ctime5: 40092
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 47224
+        atime1: 65535
         atime2: 0
         atime3: 0
         atime4: 0
@@ -1547,8 +1547,8 @@ ParticleSystem:
     enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 5
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1600,8 +1600,8 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 4.0560846
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1671,8 +1671,8 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 5.236781
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2774,7 +2774,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 1
+    enabled: 0
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -3314,7 +3314,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   SizeBySpeedModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
