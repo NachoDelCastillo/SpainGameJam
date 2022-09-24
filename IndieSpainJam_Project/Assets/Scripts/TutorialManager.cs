@@ -21,8 +21,8 @@ public class TutorialManager : MonoBehaviour
     {
         public tutPhases phase;
         public SpriteRenderer panel;
-        public SpriteRenderer[] infoPanels;
-        public TMP_Text[] texts;
+        public SpriteRenderer[] infoImages;
+        public TMP_Text[] infoTexts;
     }
     [SerializeField] tutItems[] TutorialElements;
 
@@ -70,7 +70,14 @@ public class TutorialManager : MonoBehaviour
 
 
         // Panel
-        Vector3 panelPosition = phaseItem.panel.transform.position;
+
+        // Fade
+        SpriteRenderer panel = phaseItem.panel;
+        panel.color = new Color(1, 1, 1, 0);
+        panel.DOFade(1, panelShowTime);
+
+        // Position
+        Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.position = 
             new Vector3(panelPosition.x, panelPosition.y - 1);
         phaseItem.panel.transform.DOMoveY(panelPosition.y, panelShowTime);
@@ -79,6 +86,20 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(panelShowTime);
 
         // Info in the Panel
+        SpriteRenderer[] infoImages = phaseItem.infoImages;
+        TMP_Text[] infoTexts = phaseItem.infoTexts;
+
+        foreach (SpriteRenderer infoImage in infoImages)
+        {
+            infoImage.color = new Color(1, 1, 1, 0);
+            infoImage.DOFade(1, panelShowTime);
+        }
+
+        foreach (TMP_Text infoText in infoTexts)
+        {
+            infoText.color = new Color(1, 1, 1, 0);
+            infoText.DOFade(1, panelShowTime);
+        }
     }
 
 

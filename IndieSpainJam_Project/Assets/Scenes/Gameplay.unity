@@ -11600,10 +11600,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialElements:
   - phase: 0
-    panels: {fileID: 1621507601}
-    infoPanels: []
-    texts:
-    - {fileID: 1840662605}
+    panel: {fileID: 0}
+    infoImages: []
+    infoTexts: []
 --- !u!1 &621825776
 GameObject:
   m_ObjectHideFlags: 0
@@ -14032,7 +14031,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -19496,7 +19495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1621507600}
   - component: {fileID: 1621507601}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19801,7 +19800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748494238}
   - component: {fileID: 1748494239}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20110,8 +20109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.4, y: 0.12}
+  m_SizeDelta: {x: 4.556, y: 1.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840662605
 MonoBehaviour:
@@ -20135,8 +20134,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
+  m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20160,8 +20159,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 6.6
+  m_fontSizeBase: 6.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
