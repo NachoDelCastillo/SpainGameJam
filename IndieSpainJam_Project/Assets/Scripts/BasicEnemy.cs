@@ -75,16 +75,19 @@ public class BasicEnemy : MonoBehaviour
         {
             attacked = true;
             TrainManager.Instance.TakeDamage(damage);
+
             //GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
             //var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
             //velosidad.curveMultiplier = velosidad.curveMultiplier * TrainManager.Instance.GetmainVelocity() / 100f;
+            
+            AudioManager_PK.instance.Play("EnemyHit", UnityEngine.Random.Range(0.9f, 1.2f));
         }
 
         attackCD -= Time.deltaTime;
         if(attackCD <= 0)
         {
             attacked = false;
-            attackCD = attackFrecuency;
+            attackCD = attackFrecuency + Random.Range(-0.1f, 0.1f);
         }
 
 

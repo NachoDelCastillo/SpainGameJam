@@ -11,6 +11,9 @@ public class TrainManager : MonoBehaviour
 {
     public static TrainManager Instance { get; private set; }
 
+    float elapsedTime = 0;
+    float timeToMuteExplosions = 2.5f;
+
     bool showingResults;
 
     int MainVelocity = 0;
@@ -70,6 +73,9 @@ public class TrainManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        AudioManager_PK.instance.sounds[6].source.mute = false;
+        AudioManager_PK.instance.sounds[7].source.mute = false;
 
         changeRail_Lists = new List<ChangeRail>[3];
 
@@ -185,6 +191,22 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime > 0.1f)
+            {
+                elapsedTime = 0;
+                AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
+                timeToMuteExplosions -= Time.deltaTime;
+                if (timeToMuteExplosions <= 0)
+                {
+                    AudioManager_PK.instance.sounds[7].source.mute = true;
+                }
+                return;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
 
@@ -509,6 +531,8 @@ public class TrainManager : MonoBehaviour
         if (health <= 0 && !showingResults)
         {
             StartCoroutine(ShowResult(false));
+
+            AudioManager_PK.instance.sounds[6].source.mute = true;
 
             foreach (WagonLogic wagon in wagons)
             {
