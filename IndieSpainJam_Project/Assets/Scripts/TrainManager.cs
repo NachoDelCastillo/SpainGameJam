@@ -260,7 +260,7 @@ public class TrainManager : MonoBehaviour
                     {
                         //if (selectedRow == 2) Debug.Log("dv");
                         //else
-                        thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 1);
+                        thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 4);
                     }
 
                     // Informar al vagon de que ha cambiado de via
