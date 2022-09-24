@@ -62,6 +62,9 @@ TagManager:
   - name: Foreground
     uniqueID: 2047470109
     locked: 0
+  - name: TutorialUI
+    uniqueID: 3523339659
+    locked: 0
   - name: GameManagerTransitions
     uniqueID: 111649161
     locked: 0
