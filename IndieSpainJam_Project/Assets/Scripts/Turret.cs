@@ -39,6 +39,7 @@ public class Turret : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
         if (shooting && currentAmmo > 0)
@@ -125,8 +126,8 @@ public class Turret : MonoBehaviour
         {
             cannonPivot.transform.Rotate(new Vector3(0, 0, -lastDir * rotationSpeed * 5 * Time.deltaTime));
             lastZ = cannonPivot.transform.localEulerAngles.z;
-            Debug.Log("initial z" + initialZ);
-            Debug.Log("last z" + lastZ);
+            //Debug.Log("initial z" + initialZ);
+            //Debug.Log("last z" + lastZ);
             yield return null;
         }
 
@@ -137,8 +138,8 @@ public class Turret : MonoBehaviour
         {
             cannonPivot.transform.Rotate(new Vector3(0, 0, lastDir * rotationSpeed * Time.deltaTime));
             lastZ = cannonPivot.transform.localEulerAngles.z;
-            Debug.Log("initial z" + initialZ);
-            Debug.Log("last z" + lastZ);
+            //Debug.Log("initial z" + initialZ);
+            //Debug.Log("last z" + lastZ);
             yield return null;
         }
     }

@@ -66,7 +66,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
 
-        // Todo esto es para desactivar el render específico del sprite
+        // Todo esto es para desactivar el render específico del sprite, se busca y se guarda, ya uqe tiene varios
         SpriteRenderer[] renderers = player.GetComponentsInChildren<SpriteRenderer>();
         SpriteRenderer spRenderer = null;
         for (int x = 0; x < renderers.Length; x++)
@@ -79,23 +79,37 @@ public class LocalMultiplayerManager : MonoBehaviour
             }
 
         }
+
+
+        //Sistema de particulas de raparición
         var dur = pSystem.main;
         dur.startLifetime = respawnTime;
-
         pSystem.Play();
 
+
+        //Desactivar renderer, movimiento y collider del player
         if (spRenderer) spRenderer.enabled = false;
         // y tmb desactivar PlayerController_2D para que no se instancie otro player cuando este está muerto
+        Debug.Log("C murió respawn2(LocalMultiplayere)");
+        player.GotKilled();
         player.enabled = false;
+        player.GetComponent<BoxCollider2D>().enabled = false;
 
+
+        //Crear marcador en la UI con el tiempo que queda
         UIManager.GetInstance().CreateSpawnTimer(player.gameObject.transform, time);
 
 
         yield return new WaitForSeconds(time);
 
+
+
+        //reactivar renderer, movimiento y collider
         if (spRenderer)spRenderer.enabled = true;
 
-        player.enabled = true;
         player.transform.position = respawnPoint.position;
+        player.enabled = true;
+        player.GetComponent<BoxCollider2D>().enabled = true;
+
     }
 }

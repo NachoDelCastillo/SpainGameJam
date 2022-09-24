@@ -5422,7 +5422,7 @@ GameObject:
   - component: {fileID: 293666168}
   - component: {fileID: 293666169}
   - component: {fileID: 293666170}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: DestroyerBelow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11810,15 +11810,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.08627448, g: 0.76019144, b: 0.9607843, a: 1}
+  m_Material: {fileID: 2100000, guid: ce219f53b325b984c9162db14ea00b38, type: 2}
+  m_Color: {r: 0, g: 0.77130055, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 6ae56215a590aad4bba5b9874d92e363, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25310,25 +25310,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2164706160879361830, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Size.x
-      value: 19.531195
-      objectReference: {fileID: 0}
-    - target: {fileID: 2164706160879361830, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: shakeTime
-      value: 1.5
+    - target: {fileID: 1004926969895598816, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
-    - target: {fileID: 2289875339474678972, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: shakeMagnitude
-      value: 0.06
+    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: velocity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: timeFiring
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: timeToLoad
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: railsParent
@@ -25338,14 +25338,6 @@ PrefabInstance:
       propertyPath: leavingPoint
       value: 
       objectReference: {fileID: 1047064077}
-    - target: {fileID: 4303165075218013554, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: timesToShoot
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165075218013555, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy
@@ -25394,25 +25386,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4303165076119651762, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165076130092606, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Size.x
-      value: 2.4706693
-      objectReference: {fileID: 0}
-    - target: {fileID: 4303165076130092606, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.73533463
-      objectReference: {fileID: 0}
-    - target: {fileID: 7343239125389817977, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_SortingOrder
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 8226951518399584491, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.70521
+      propertyPath: m_LocalScale.y
+      value: 1.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
