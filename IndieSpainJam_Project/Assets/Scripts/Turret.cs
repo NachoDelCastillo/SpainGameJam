@@ -187,6 +187,6 @@ public class Turret : MonoBehaviour
     IEnumerator DestroyCoal(Transform coal)
     {
         yield return new WaitForSeconds(1);
-        Destroy(coal.gameObject);
+        if(coal.gameObject != null) Destroy(coal.gameObject);
     }
 }
