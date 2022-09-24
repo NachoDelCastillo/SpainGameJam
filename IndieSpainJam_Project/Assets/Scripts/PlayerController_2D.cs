@@ -80,7 +80,7 @@ public class PlayerController_2D : MonoBehaviour
     {
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
-        killable = false;
+        killable = true;
 
     }
 

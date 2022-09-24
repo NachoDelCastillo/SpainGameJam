@@ -149,7 +149,7 @@ public class Turret : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Debug.Log("Entra en torretaaaaaaaaaaa");
+
         if (collision.gameObject.CompareTag("Coal"))
         {
             collision.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);

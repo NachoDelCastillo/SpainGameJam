@@ -68,7 +68,7 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         if (!player.killable)
         {
-            StopCoroutine(Respawn2(player, respawnTime));
+            yield break;
         }
 
         //// Todo esto es para desactivar el render específico del sprite, se busca y se guarda, ya uqe tiene varios
@@ -122,7 +122,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         player.GetComponent<BoxCollider2D>().enabled = true;
 
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         player.killable = true;
 
     }
