@@ -11431,9 +11431,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3248124563058833523, guid: ea12a86540f21084d9db73af597e0260, type: 3}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   timeBetweenEnemys: 0.5
-  minEnemys: 3
-  maxEnemys: 7
+  minTimeForNextWave: 10
+  maxTimeForNextWave: 15
+  minEnemys: 8
+  maxEnemys: 10
   targetWagons:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}

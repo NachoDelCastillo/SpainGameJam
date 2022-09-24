@@ -6,9 +6,11 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
 
+    [SerializeField] AnimationCurve animationCurve;
+
     Transform[] spawnPoints;
 
-    [SerializeField] float timeBetweenEnemys;
+    [SerializeField] float timeBetweenEnemys, minTimeForNextWave, maxTimeForNextWave;
 
     [SerializeField] int minEnemys, maxEnemys;
 
@@ -23,20 +25,21 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnPoints[i] = transform.GetChild(i);
         }
+
+        Invoke("CreateEnemys", 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(enemysAlive.Count <= 0)
-        {
-            CreateEnemys();
-        }
+
     }
 
     void CreateEnemys()
     {
-        int numEnmy = Random.Range(minEnemys, maxEnemys);
+        float multiplier = animationCurve.Evaluate(TrainManager.Instance.GetmainVelocity() / 100);
+
+        int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 
         for (int i = 0; i < numEnmy; i++)
         {
@@ -54,8 +57,8 @@ public class EnemySpawner : MonoBehaviour
             clon.transform.position = spawnPoints[randPos].position;
 
             enemysAlive.Add(clon);
-
-            //yield return new WaitForSeconds(timeBetweenEnemys);
         }
+
+        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
     }
 }
