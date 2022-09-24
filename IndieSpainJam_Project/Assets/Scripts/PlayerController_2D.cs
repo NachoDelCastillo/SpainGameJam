@@ -63,8 +63,9 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] ParticleSystem landing2;
 
 
+    //muerte
+    [HideInInspector]public bool killable;
 
-    bool dead;
 
     void Awake()
     {
@@ -72,34 +73,46 @@ public class PlayerController_2D : MonoBehaviour
         playerControl = new PlayerInputActions();
         turret = FindObjectOfType<Turret>().gameObject;
         turretControl = turret.GetComponent<Turret>();
+        killable = true;
     }
 
     private void Start()
     {
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
-        dead = false;
+        killable = false;
 
     }
 
-    private void LeaveTurret()
+    private void LeaveTurret(bool muerto = false)
     {
-        jumpRemember = .2f;
-        jumpRememberTimer = 1;
-        canDoubleJump = true;
-        onGround = true;
-        groundRemember = .2f;
-        groundRememberTimer = 1;
+        if (!muerto)
+        {
+            jumpRemember = .2f;
+            jumpRememberTimer = 1;
+            canDoubleJump = true;
+            onGround = true;
+            groundRemember = .2f;
+            groundRememberTimer = 1;
+        }
+        
 
         transform.SetParent(null);
         rb.isKinematic = false;
         usingTurret = false;
         enteringTurret = false;
         turretControl.changeShooting(false);
+
+        gfx.enabled = true;
     }
     public void GotKilled()
     {
-        LeaveTurret();
+        LeaveTurret(true);
+    }
+
+    public SpriteRenderer GetGFX()
+    {
+        return gfx;
     }
     void Update()
     {
@@ -189,7 +202,9 @@ public class PlayerController_2D : MonoBehaviour
         {
             //permitir disparar o no
             if (context.started)
+            {
                 turretControl.changeShooting(true);
+            }
             else if (context.canceled)
                 turretControl.changeShooting(false);
             return;
@@ -201,16 +216,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-        // Si está en la torreta, dispara
-        if (usingTurret)
-        {
-            //permitir disparar o no
-            if(context.started)
-                turretControl.changeShooting(true);
-            else if (context.canceled)
-                turretControl.changeShooting(false);
-            return;
-        }
+        
 
         // Si se está subiendo a la torreta no recoge nada
         if (enteringTurret)
@@ -222,6 +228,7 @@ public class PlayerController_2D : MonoBehaviour
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
             //Debug.Log("Entra en torreta");
+
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
             enteringTurret = true;
@@ -440,6 +447,8 @@ public class PlayerController_2D : MonoBehaviour
                 transform.position = turret.transform.position;
                 transform.SetParent(turret.transform);
                 enteringTurret = false;
+                gfx.enabled = false;
+
             }
 
             return;
