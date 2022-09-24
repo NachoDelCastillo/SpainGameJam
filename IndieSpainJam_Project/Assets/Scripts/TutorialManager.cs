@@ -129,6 +129,8 @@ public class TutorialManager : MonoBehaviour
 
     void ShowTutorialItems(tutPhases tutPhase)
     {
+        if (changingPhase) return;
+
         // Encontrar las referencias de los items de la parte del tutorial actual
         tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhase);
         StartCoroutine(ShowTutorialItems(tutItem));
@@ -157,19 +159,24 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(panelShowTime);
 
-        // Info in the Panel
-        SpriteRenderer[] infoImages = phaseItem.infoImages;
-        TMP_Text[] infoTexts = phaseItem.infoTexts;
+        if (!changingPhase)
+        {
+            // Info in the Panel
+            SpriteRenderer[] infoImages = phaseItem.infoImages;
+            TMP_Text[] infoTexts = phaseItem.infoTexts;
 
-        foreach (SpriteRenderer infoImage in infoImages)
-            infoImage.DOFade(1, infoPanelShowTime);
+            foreach (SpriteRenderer infoImage in infoImages)
+                infoImage.DOFade(1, infoPanelShowTime);
 
-        foreach (TMP_Text infoText in infoTexts)
-            infoText.DOFade(1, infoPanelShowTime);
+            foreach (TMP_Text infoText in infoTexts)
+                infoText.DOFade(1, infoPanelShowTime);
+        }
     }
 
     void HideTutorialItems(tutPhases tutPhase)
     {
+        if (changingPhase) return;
+
         // Encontrar las referencias de los items de la parte del tutorial actual
         tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhase);
         StartCoroutine(HideTutorialItems(tutItem));
@@ -197,16 +204,18 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(infoHideTime);
 
+        if (!changingPhase)
+        {
+            // PANEL
 
-        // PANEL
+            // Fade
+            SpriteRenderer panel = phaseItem.panel;
+            panel.DOFade(0, panelHideTime);
 
-        // Fade
-        SpriteRenderer panel = phaseItem.panel;
-        panel.DOFade(0, panelHideTime);
-
-        // Position
-        Vector3 panelPosition = panel.transform.position;
-        phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
+            // Position
+            Vector3 panelPosition = panel.transform.position;
+            phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
+        }
     }
 
 

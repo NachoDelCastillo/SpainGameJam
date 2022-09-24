@@ -11554,7 +11554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_text
-      value: Lanzar carbon con K
+      value: METERSE EN TORRETA
       objectReference: {fileID: 0}
     - target: {fileID: 2965065805225218613, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_Camera
