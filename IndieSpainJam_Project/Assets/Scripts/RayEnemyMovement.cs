@@ -54,6 +54,7 @@ public class RayEnemyMovement : MonoBehaviour
         particlesLoading.SetActive(false);
         timesShot = 0;
         cameraShake = GetComponent<CameraShake>();
+        startingRadius = loadingSphere.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -150,8 +151,6 @@ public class RayEnemyMovement : MonoBehaviour
             loadingLaser.SetActive(true);
         }
 
-        //Cambiar el srite de carga
-        loadingSphere.transform.localScale = Vector2.one * startingRadius * (elapsedTimeToReload) / timeToLoad;
 
         if (elapsedTimeToReload >= timeToLoad)
         {
@@ -160,6 +159,11 @@ public class RayEnemyMovement : MonoBehaviour
             //Dispare
             cameraShake.ShakeIt();
             ChangeState(State.Shooting);
+        }
+        else
+        {
+            //Cambiar el srite de carga
+            loadingSphere.transform.localScale = Vector2.one * (startingRadius - 1) * (elapsedTimeToReload) / timeToLoad;
         }
 
     }
