@@ -204,18 +204,15 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(infoHideTime);
 
-        if (!changingPhase)
-        {
-            // PANEL
+        // PANEL
 
-            // Fade
-            SpriteRenderer panel = phaseItem.panel;
-            panel.DOFade(0, panelHideTime);
+        // Fade
+        SpriteRenderer panel = phaseItem.panel;
+        panel.DOFade(0, panelHideTime);
 
-            // Position
-            Vector3 panelPosition = panel.transform.position;
-            phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
-        }
+        // Position
+        Vector3 panelPosition = panel.transform.position;
+        phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
     }
 
 
