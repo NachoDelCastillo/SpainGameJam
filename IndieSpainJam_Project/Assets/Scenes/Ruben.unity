@@ -6113,6 +6113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 0}
   RailRow: 1
 --- !u!4 &514796534
 Transform:
@@ -6191,13 +6192,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3248124563058833523, guid: ea12a86540f21084d9db73af597e0260, type: 3}
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   timeBetweenEnemys: 0.5
+  minTimeForNextWave: 0
+  maxTimeForNextWave: 0
   minEnemys: 3
   maxEnemys: 7
   targetWagons:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}
   - {fileID: 5029109945756948078}
+  multiplier: 0
   enemysAlive: []
 --- !u!4 &559840269
 Transform:
@@ -8484,6 +8494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   railsParent: {fileID: 184793721}
+  defaultSprite: {fileID: 0}
+  loadAndShootSprite: {fileID: 0}
   particlesLoading: {fileID: 138293234677130319}
   velocity: 2
   rotationSpeed: 1
@@ -20015,6 +20027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 0}
   RailRow: 1
 --- !u!1 &5029109945775050348
 GameObject:
@@ -20185,6 +20198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 0}
   RailRow: 1
 --- !u!251 &5029109946061427908
 PlatformEffector2D:
@@ -20368,6 +20382,7 @@ MonoBehaviour:
   changeRail_Prefab: {fileID: 6622836723093552908, guid: 4d76fa9bdc0e4f3478b39d89d7e07bdd, type: 3}
   rails: {fileID: 5029109945817617343}
   spawnChangeRails: []
+  sparkSys: {fileID: 0}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30
@@ -20517,6 +20532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 0}
   RailRow: 1
 --- !u!251 &5029109946307395745
 PlatformEffector2D:
@@ -20570,6 +20586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 0}
   RailRow: 1
 --- !u!4 &5029109946307395751
 Transform:
