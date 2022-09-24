@@ -89,8 +89,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: EnemyHit
     clip: {fileID: 8300000, guid: fb228b22899e21e41a3557969189957e, type: 3}
-    volume: 1
-    maxVolume: 0.2
+    volume: 0.25
+    maxVolume: 0.05
     pitch: 1
     music: 0
     source: {fileID: 0}
@@ -106,5 +106,12 @@ MonoBehaviour:
     volume: 1
     maxVolume: 1
     pitch: 2
+    music: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 57c9e9dabea54214aa2180c9032a27be, type: 3}
+    volume: 1
+    maxVolume: 0.1
+    pitch: 1
     music: 0
     source: {fileID: 0}
