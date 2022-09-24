@@ -43,6 +43,7 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] public GameObject turret;
     float turretEnteringRadius = 0.1f;
     Turret turretControl;
+    GameObject turretOutline;
 
     // Ground checker
     [SerializeField] Transform groundCheck_tr;
@@ -72,6 +73,7 @@ public class PlayerController_2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerControl = new PlayerInputActions();
         turret = FindObjectOfType<Turret>().gameObject;
+        turretOutline = turret.transform.GetChild(0).gameObject;
         turretControl = turret.GetComponent<Turret>();
         killable = true;
     }
