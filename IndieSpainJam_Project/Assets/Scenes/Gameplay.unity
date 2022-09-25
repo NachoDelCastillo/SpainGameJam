@@ -4692,14 +4692,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3337171315973414225, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 3337171315973414225, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421224, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Name
       value: TrainManager
@@ -4749,6 +4741,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: maxWater
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1428882617}
@@ -4768,14 +4764,14 @@ PrefabInstance:
       propertyPath: MainVelocity_text
       value: 
       objectReference: {fileID: 373835953}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: dmgWhenWater0PerSecond
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5910312318434763212, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
-    - target: {fileID: 8770769216959207524, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4783,10 +4779,6 @@ PrefabInstance:
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770769217654460640, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_Color.a
-      value: 0.43137255
       objectReference: {fileID: 0}
     - target: {fileID: 8770769217846926932, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Camera

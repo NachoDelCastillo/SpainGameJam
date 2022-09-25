@@ -5168,6 +5168,7 @@ MonoBehaviour:
   dead: {fileID: 5660743581741287082}
   RailRow: 1
   RailColumn: 1
+  locomotora: 0
 --- !u!50 &4355813150702421778
 Rigidbody2D:
   serializedVersion: 4
@@ -5384,6 +5385,7 @@ MonoBehaviour:
   dead: {fileID: 5660743582709666851}
   RailRow: 1
   RailColumn: 1
+  locomotora: 0
 --- !u!212 &4355813150940841406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6171,6 +6173,7 @@ MonoBehaviour:
   dead: {fileID: 5660743582444081159}
   RailRow: 1
   RailColumn: 1
+  locomotora: 0
 --- !u!50 &4355813152543178977
 Rigidbody2D:
   serializedVersion: 4
@@ -6288,6 +6291,7 @@ MonoBehaviour:
   dead: {fileID: 5660743581365723864}
   RailRow: 1
   RailColumn: 1
+  locomotora: 0
 --- !u!50 &4355813152571429745
 Rigidbody2D:
   serializedVersion: 4
@@ -6496,9 +6500,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentWater: 0
-  maxWater: 10
+  maxWater: 6
   waterSubstracPerSecond: 1
-  dmgWhenWater0PerSecond: 5
+  dmgWhenWater0PerSecond: 3
   waterColorSlider:
   - {r: 0, g: 1, b: 0.9300573, a: 1}
   - {r: 1, g: 0.80093634, b: 0, a: 1}
@@ -13772,7 +13776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8762193, b: 1, a: 0}
+  m_Color: {r: 0, g: 0.8762193, b: 1, a: 0.43137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14971,6 +14975,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8770769217859207659}
     m_Modifications:
+    - target: {fileID: 1092104023827256230, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092104023827256230, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092104023827256230, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2800536283327060923, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: m_Color.a
       value: 0.654902
@@ -14986,6 +15002,18 @@ PrefabInstance:
     - target: {fileID: 2800536283327060923, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: m_Color.r
       value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113576751709940501, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113576751709940501, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113576751709940501, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6212256262033878145, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: m_IsActive
@@ -15279,7 +15307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.707
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
       propertyPath: m_LocalPosition.z
