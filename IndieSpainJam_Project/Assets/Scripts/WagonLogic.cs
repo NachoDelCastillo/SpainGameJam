@@ -8,6 +8,9 @@ public class WagonLogic : MonoBehaviour
     public int RailRow = 1;
     public int RailColumn = 1;
 
+    public bool locomotora;
+
+
     private void Update()
     {
         //GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);

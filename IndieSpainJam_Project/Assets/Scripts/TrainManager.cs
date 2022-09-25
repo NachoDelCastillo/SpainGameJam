@@ -128,6 +128,8 @@ public class TrainManager : MonoBehaviour
             wagons[i].RailColumn = i;
         }
 
+        wagons[3].locomotora = true;
+
         wheelMaterial = wheelNeon.material;
         wheelBaseColor = wheelMaterial.GetColor("_Color");
         wheelColor = new Vector4(wheelBaseColor.x * normalIntensity, wheelBaseColor.y * normalIntensity, wheelBaseColor.z * normalIntensity, wheelBaseColor.w);
