@@ -107,7 +107,7 @@ public class TrainManager : MonoBehaviour
     private void Start()
     {
         cameraShake = GetComponent<CameraShake>();
-        gameLost = false; 
+        gameLost = false;
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
@@ -122,7 +122,7 @@ public class TrainManager : MonoBehaviour
 
         smoke.Pause();
 
-        StartCoroutine(SpawnChangeRail());
+       // StartCoroutine(SpawnChangeRail());
 
         initialPosOfWagons = new Vector3[4];
         for (int i = 0; i < wagons.Length; i++)
@@ -140,9 +140,10 @@ public class TrainManager : MonoBehaviour
     }
 
     float spawnTimer;
-    IEnumerator SpawnChangeRail()
+    public IEnumerator SpawnChangeRail()
     {
-        spawnTimer = Random.Range(8, 10);
+        //spawnTimer = Random.Range(8, 10);
+        spawnTimer = 3;
 
         while (spawnTimer > 0)
         {
@@ -217,60 +218,80 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator MoveWagonsHorizontally()
     {
-        // Elegir un vagon aleatoriamente
-        WagonLogic wagon = wagons[Random.Range(0, 4)];
 
-        int currentwWagonIndex = wagon.wagonIndex;
+        int currentwWagonIndex = Random.Range(0, 4);
+        int numberOfWagonsTried = 0;
 
-        // Elegir direccion a la que se puede mover
-        int wagonColumn = wagon.RailColumn;
+        // Informacion importante
+        WagonLogic wagon;
+        int finalDirectionOfTheWagon = 0;
+        int wagonColumn;
 
-        // Averiguar si este vagon no tiene posibilidad de moverse
-        bool canGoLeft, canGoRight;
-
-        // Bordes
-        if (wagonColumn == 0) canGoLeft = false;
-        if (wagonColumn == 3) canGoRight = false;
-
-        foreach (WagonLogic thisWagon in wagons)
+        do
         {
-            // Comprobar que no es el mismo
-            if (wagon != thisWagon)
+            numberOfWagonsTried++;
+
+            currentwWagonIndex++;
+            if (currentwWagonIndex >= 4)
+                currentwWagonIndex = 0;
+
+            wagon = wagons[currentwWagonIndex];
+
+            // Elegir direccion a la que se puede mover
+            wagonColumn = wagon.RailColumn;
+
+            // Averiguar si este vagon no tiene posibilidad de moverse
+            bool canGoLeft = true, canGoRight = true;
+
+            // Bordes
+            if (wagonColumn == 0) canGoLeft = false;
+            if (wagonColumn == 3) canGoRight = false;
+
+            foreach (WagonLogic thisWagon in wagons)
             {
-                // Misma linea
-                if (wagon.RailRow == thisWagon.RailRow)
+                // Comprobar que no es el mismo
+                if (wagon != thisWagon)
                 {
-                    // Los dos lados
-                    if (wagonColumn - 1 == thisWagon.RailColumn)
-                        canGoLeft = false;
-                    if (wagonColumn + 1 == thisWagon.RailColumn)
-                        canGoRight = false;
+                    // Misma linea
+                    if (wagon.RailRow == thisWagon.RailRow)
+                    {
+                        // Comprobar los dos lados
+                        if (wagonColumn - 1 == thisWagon.RailColumn)
+                            canGoLeft = false;
+                        if (wagonColumn + 1 == thisWagon.RailColumn)
+                            canGoRight = false;
+
+                    }
                 }
             }
-        }
+
+            // Si se puede para alguno de los lados, seleccionarlo
+            if (canGoLeft && !canGoRight)
+                finalDirectionOfTheWagon = -1;
+            else if (!canGoLeft && canGoRight)
+                finalDirectionOfTheWagon = 1;
+            else if (canGoLeft && canGoRight)
+            {
+                // Si se puede ir para los dos lados, elegir uno aleatoriamente
+                if (Random.Range(0, 2) == 0)
+                    finalDirectionOfTheWagon = 1;
+                else finalDirectionOfTheWagon = -1;
+            }
+
+            // Si el vagon tiene direccion y no se han llegado a intentar todos los vagones, seguir
+        } while (finalDirectionOfTheWagon != 0 || numberOfWagonsTried <= 3);
 
 
+        int goToThisColumnIndex = wagonColumn + finalDirectionOfTheWagon;
+        Vector3 goToThisPosition = columns[goToThisColumnIndex].position;
+
+        // Con el vagon ya seleccionado, lo movemos
+        wagon.transform.DOMoveX(goToThisPosition.x, 1);
 
 
-        int moveToThisColumn;
-        if (wagonColumn == 0)
-            moveToThisColumn = 1;
-        else if (wagonColumn == 3)
-            moveToThisColumn = 2;
-        else
-        {
-            // Elegir uno de los dos lados aleatoriamente
-            int k;
-            if (Random.Range(0, 2) == 0)
-                k = 1;
-            else k = -1;
-            moveToThisColumn = wagonColumn + k;
-        }
-            
+        yield return new WaitForSeconds(1);
 
-        yield return new WaitForSeconds(5);
-
-        StartCoroutine(MoveWagonsHorizontally());
+        //StartCoroutine(MoveWagonsHorizontally());
     }
 
     void RandomRail(ref bool railway_b)
@@ -283,6 +304,9 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+            StartCoroutine(MoveWagonsHorizontally());
+
         if (health <= 0)
         {
             elapsedTime += Time.deltaTime;
@@ -388,7 +412,7 @@ public class TrainManager : MonoBehaviour
                 var main = waterParticles.main;
                 main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
             }
-            else if(waterParticles.isPlaying) waterParticles.Stop();
+            else if (waterParticles.isPlaying) waterParticles.Stop();
 
             if (currentWater >= maxWater)
             {
@@ -422,7 +446,7 @@ public class TrainManager : MonoBehaviour
     void WaterDown()
     {
         waterTimer += Time.deltaTime;
-        if(waterCurve.Evaluate(waterTimer) * maxWater <= currentWater) currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
+        if (waterCurve.Evaluate(waterTimer) * maxWater <= currentWater) currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
         waterSlider.value = currentWater;
 
         if (waterTimer >= timeForWaterDown)
@@ -748,7 +772,7 @@ public class TrainManager : MonoBehaviour
         MainVelocity += velocityGainedByCoal;
         float add = 0;
 
-        while(add <= velocityGainedByCoal)
+        while (add <= velocityGainedByCoal)
         {
             add += Time.deltaTime * velocityGainedByCoal;
             int text = lastMainVel + Mathf.RoundToInt(add);

@@ -240,5 +240,6 @@ public class TutorialManager : MonoBehaviour
     void EndTutorial()
     {
         FindObjectOfType<EnemySpawner>().CreateEnemys();
+        StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
     }
 }
