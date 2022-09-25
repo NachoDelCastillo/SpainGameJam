@@ -61,7 +61,13 @@ public class TrainManager : MonoBehaviour
 
     //Agua
     [SerializeField] Slider waterSlider;
+<<<<<<< Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
+=======
+    [SerializeField] float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
+    [SerializeField] Color[] waterColorSlider;
+    [SerializeField] Image waterFillImage;
+>>>>>>> Stashed changes
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -97,7 +103,7 @@ public class TrainManager : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
 
-        currentWater = maxWater;
+        currentWater = 0;
         waterSlider.maxValue = maxWater;
         waterSlider.value = currentWater;
 
@@ -217,8 +223,12 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
+<<<<<<< Updated upstream
         if (!TutorialManager.GetInstance().duringTutorial)
             RestWater();
+=======
+        UpdateWater();
+>>>>>>> Stashed changes
 
         RotateWheel();
 
@@ -240,23 +250,30 @@ public class TrainManager : MonoBehaviour
         //DebugRow(2);
     }
 
-    void RestWater()
+    void UpdateWater()
     {
+<<<<<<< Updated upstream
         // Si el tren esta quieto no joder el vagon de agua
         if (MainVelocity <= 0) return;
 
         currentWater -= waterSubstracPerSecond * Time.deltaTime;
+=======
+        currentWater += waterSubstracPerSecond * Time.deltaTime;
+>>>>>>> Stashed changes
         currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-        if (currentWater <= 0) health -= dmgWhenWater0PerSecond * Time.deltaTime;
+        if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
         TakeDamage(0);
+
+        float value = currentWater / maxWater;
+        waterFillImage.color = (value > 0.5) ? Color.Lerp(waterColorSlider[1], waterColorSlider[2], (value - 0.5f) * 2) : Color.Lerp(waterColorSlider[1], waterColorSlider[0], Mathf.Abs(value - 0.5f) * 2);
 
         waterSlider.value = currentWater;
     }
 
     public void RechargeWater()
     {
-        currentWater = maxWater;
+        currentWater = 0;
         waterSlider.value = currentWater;
     }
 

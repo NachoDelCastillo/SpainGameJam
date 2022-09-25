@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - Bullet
   - Destroyer
-  - 
+  - DistortionEffect
   - 
   - 
   - 
@@ -68,4 +68,7 @@ TagManager:
     locked: 0
   - name: GameManagerTransitions
     uniqueID: 111649161
+    locked: 0
+  - name: Distortion
+    uniqueID: 1641253601
     locked: 0
