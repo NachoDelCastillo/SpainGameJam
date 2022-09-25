@@ -15,8 +15,8 @@ public class TutorialManager : MonoBehaviour
     public enum tutPhases
     {
         agarrarCarbonParaTorreta, meterCarbonEnTorreta,
-        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor, meterCarbonEnMotor,
-        trenEnMarcha
+        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor, 
+        meterCarbonEnMotor, trenEnMarcha
     }
 
     // El currentPhase muestra lo que el jugador necesita hacer

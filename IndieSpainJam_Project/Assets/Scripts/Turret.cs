@@ -19,8 +19,6 @@ public class Turret : MonoBehaviour
     [SerializeField] AnimationCurve knockbackCurve;
     [SerializeField] Color[] colorFadeHUD;
 
-
-
     bool shooting, drawBack;
     bool shootRight;
     [SerializeField] float fireRate = 5, capMultiplier;
@@ -59,7 +57,6 @@ public class Turret : MonoBehaviour
             if (timeElaspedSinceLastShot >= timeBetweenShots)
             {
                 //disparar
-
                 GameObject whereToShot = (shootRight) ? bulletsSpawnPointRight : bulletsSpawnPointLeft;
                 ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
                 float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
@@ -67,13 +64,16 @@ public class Turret : MonoBehaviour
                 Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
                 partSys.Play();
                 AudioManager_PK.instance.Play("Shoot", Random.Range(0.8f, 1.2f));
-                currentAmmo--;
+
+                // Si se esta durante el tutorial, no gastar balas
+                if (!TutorialManager.GetInstance().duringTutorial)
+                    currentAmmo--;
                 timeElaspedSinceLastShot = 0;
                 shootRight = !shootRight;
 
                 imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
 
-                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1],colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             }
 
             turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
@@ -115,6 +115,9 @@ public class Turret : MonoBehaviour
             rotMultiplier = Mathf.Clamp(rotMultiplier, 1, capMultiplier);
             cannonPivot.transform.Rotate(new Vector3(0, 0, -rotationInput * rotationSpeed * Mathf.Pow(rotMultiplier, 2) * Time.deltaTime));
 
+            if (!AudioManager_PK.instance.sounds[10].source.isPlaying)
+                AudioManager_PK.instance.Play("TurretRotate", Random.Range(0.55f, 0.65f));
+
             //no dejar rotar
             //float z = cannonPivot.transform.localEulerAngles.z;
             //z = Mathf.Clamp(z, 90, 270);
@@ -122,7 +125,10 @@ public class Turret : MonoBehaviour
 
             lastInput = rotationInput;
         }
-
+        else
+        {
+            AudioManager_PK.instance.Stop("TurretRotate");
+        }
 
         //Version 2
         //Debug.Log("Rotation input " + rotationInput);
@@ -187,6 +193,6 @@ public class Turret : MonoBehaviour
     IEnumerator DestroyCoal(Transform coal)
     {
         yield return new WaitForSeconds(1);
-        Destroy(coal.gameObject);
+        if(coal.gameObject != null) Destroy(coal.gameObject);
     }
 }

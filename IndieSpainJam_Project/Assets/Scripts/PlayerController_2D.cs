@@ -93,6 +93,7 @@ public class PlayerController_2D : MonoBehaviour
             return;
 
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.salirDeTorreta);
+        AudioManager_PK.instance.Stop("TurretRotate");
 
         if (!muerto)
         {
@@ -228,6 +229,10 @@ public class PlayerController_2D : MonoBehaviour
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
         if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
         {
+            if (TutorialManager.GetInstance().duringTutorial &&
+            TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterseEnTorreta)
+                return;
+
             //Debug.Log("Entra en torreta");
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
 
@@ -327,6 +332,11 @@ public class PlayerController_2D : MonoBehaviour
                 grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
                 grabbedItem.transform.GetChild(0).DOScale(1, 1);
             }
+
+            else if(currentlyInWaterWagon)
+            {
+                TrainManager.Instance.RechargeWater();
+            }
         }
     }
 
@@ -377,6 +387,7 @@ public class PlayerController_2D : MonoBehaviour
     // Comporbar si se entra en el vagon del carbon
 
     bool currentlyInCoalWagon;
+    bool currentlyInWaterWagon;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Turret>())
@@ -384,6 +395,9 @@ public class PlayerController_2D : MonoBehaviour
 
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = true;
+
+        if (collision.CompareTag("WaterWagon"))
+            currentlyInWaterWagon = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -394,6 +408,9 @@ public class PlayerController_2D : MonoBehaviour
 
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = false;
+
+        if (collision.CompareTag("WaterWagon"))
+            currentlyInWaterWagon = false;
     }
 
     #endregion
@@ -450,7 +467,7 @@ public class PlayerController_2D : MonoBehaviour
 
 
         if (enteringTurret)
-        {         
+        {
             rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
 
             if (Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)

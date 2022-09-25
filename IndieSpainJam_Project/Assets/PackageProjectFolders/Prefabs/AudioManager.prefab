@@ -115,3 +115,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: TurretRotate
+    clip: {fileID: 8300000, guid: a274ca6d6cf9e8d4a8f91974d4ee4a1c, type: 3}
+    volume: 1
+    maxVolume: 0.3
+    pitch: 1
+    music: 1
+    source: {fileID: 0}
