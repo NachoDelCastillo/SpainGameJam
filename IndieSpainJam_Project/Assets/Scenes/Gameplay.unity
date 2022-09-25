@@ -4919,6 +4919,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 581589685401405750, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 750174532}
     - target: {fileID: 4355813152788421224, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Name
       value: TrainManager
