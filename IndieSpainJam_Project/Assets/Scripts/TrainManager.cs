@@ -55,7 +55,9 @@ public class TrainManager : MonoBehaviour
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
 
-
+    //Agua
+    [SerializeField] Slider waterSlider;
+    [SerializeField] float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -90,6 +92,10 @@ public class TrainManager : MonoBehaviour
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
+
+        currentWater = maxWater;
+        waterSlider.maxValue = maxWater;
+        waterSlider.value = currentWater;
 
         smoke.Pause();
 
@@ -207,11 +213,7 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-
-            StartCoroutine(GlowWheel());
-        }
+        RestWater();
 
         RotateWheel();
 
@@ -231,6 +233,23 @@ public class TrainManager : MonoBehaviour
         //DebugRow(0);
         //DebugRow(1);
         //DebugRow(2);
+    }
+
+    void RestWater()
+    {
+        currentWater -= waterSubstracPerSecond * Time.deltaTime;
+        currentWater = Mathf.Clamp(currentWater, 0, maxWater);
+
+        if (currentWater <= 0) health -= dmgWhenWater0PerSecond * Time.deltaTime;
+        TakeDamage(0);
+
+        waterSlider.value = currentWater;
+    }
+
+    public void RechargeWater()
+    {
+        currentWater = maxWater;
+        waterSlider.value = currentWater;
     }
 
     [SerializeField] 
@@ -527,8 +546,7 @@ public class TrainManager : MonoBehaviour
         if (showingResults)
             return;
 
-        //health -= amount;
-        health -= .5f;
+        health -= amount;
 
         if (health <= 0) health = 0;
 

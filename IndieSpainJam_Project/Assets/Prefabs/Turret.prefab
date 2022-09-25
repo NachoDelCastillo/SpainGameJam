@@ -5010,7 +5010,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 7e6b8fa119d3fc74faf18fc2c33d30ca, type: 3}
-  m_Color: {r: 0.8679245, g: 0.15065858, b: 0.7691176, a: 1}
+  m_Color: {r: 0.8962264, g: 0.71359915, b: 0.87146336, a: 0.654902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10295,13 +10295,44 @@ MonoBehaviour:
   shootPartRight: {fileID: 1144789635455482973}
   rotationSpeed: 15
   coneAngle: 25
-  turretSprite: {fileID: 0}
+  turretSprite: {fileID: 6212256262033878145}
   knockbackCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.0389342
+      outSlope: 1.0389342
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.13147938
+    - serializedVersion: 3
+      time: 0.3182314
+      value: 0.1940664
+      inSlope: -0.054166056
+      outSlope: -0.04083254
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.56837094
+      outWeight: 0.31683347
+    - serializedVersion: 3
+      time: 1.0041809
+      value: -0.0022888184
+      inSlope: -0.71791655
+      outSlope: -0.71791655
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08539585
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  colorFadeHUD:
+  - {r: 0.09803922, g: 0.94509804, b: 0.96862745, a: 1}
+  - {r: 0.98039216, g: 0.8862745, b: 0.35686275, a: 1}
+  - {r: 0.96862745, g: 0, b: 0.65882355, a: 1}
   fireRate: 10
   capMultiplier: 4
   outline: {fileID: 1103983008067777820}

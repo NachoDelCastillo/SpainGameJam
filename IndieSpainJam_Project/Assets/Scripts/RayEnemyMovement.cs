@@ -178,6 +178,7 @@ public class RayEnemyMovement : MonoBehaviour
         if (elapsedTimeToReload <= timeToLoad)
         {
             loadingSphere.transform.localScale = Vector2.one * (startingRadius) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad));
+            
         }
         else if (elapsedTimeToReload >= timeToLoad)
         {
