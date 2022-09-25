@@ -901,7 +901,7 @@ public class TrainManager : MonoBehaviour
         {
             add += Time.deltaTime * velocityGainedByCoal;
             int text = lastMainVel + Mathf.RoundToInt(add);
-            MainVelocity_text.text = text.ToString() + " / 100 Km";
+            MainVelocity_text.text = text.ToString() + " / 100 Km/h";
             yield return null;
         }
 

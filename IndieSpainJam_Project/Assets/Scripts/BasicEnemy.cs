@@ -85,7 +85,6 @@ public class BasicEnemy : MonoBehaviour
         {
             attacked = true;
             TrainManager.Instance.TakeDamage(damage);
-            TrainManager.Instance.setGlobalLightColor(Color.red);
 
             GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
             var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
