@@ -116,7 +116,6 @@ public class TrainManager : MonoBehaviour
         wheelBaseColor = wheelMaterial.GetColor("_Color");
         wheelColor = new Vector4(wheelBaseColor.x * normalIntensity, wheelBaseColor.y * normalIntensity, wheelBaseColor.z * normalIntensity, wheelBaseColor.w);
         wheelMaterial.SetColor("_Color", wheelColor);
-
     }
 
     float spawnTimer;
@@ -246,9 +245,12 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
+
         //Updated upstream
         // Si el tren esta quieto no joder el vagon de agua
-        if (MainVelocity <= 0) return;
+        //if (MainVelocity <= 0) return;
+
+        Debug.Log("currentWater = " + currentWater);
 
         currentWater += waterSubstracPerSecond * Time.deltaTime;
 
