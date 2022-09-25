@@ -95,7 +95,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         AudioManager_PK.instance.Play("PDeath", Random.Range(0.8f, 1f));
 
         //Desactivar renderer, movimiento y collider del player
-        
+
         // y tmb desactivar PlayerController_2D para que no se instancie otro player cuando este está muerto
         Debug.Log("C murió respawn2(LocalMultiplayere)");
         player.GotKilled();//Esto reactiva el sprite, cuidado
@@ -113,7 +113,7 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-
+        AudioManager_PK.instance.Play("Respawn", Random.Range(0.8f, 1f));
 
         //reactivar renderer, movimiento y collider
         player.GetGFX().enabled = true;
