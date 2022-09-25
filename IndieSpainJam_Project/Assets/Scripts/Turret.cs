@@ -52,31 +52,53 @@ public class Turret : MonoBehaviour
     void Update()
     {
         timeElaspedSinceLastShot += Time.deltaTime;
-        if (shooting && currentAmmo > 0)
+        if (shooting)
         {
             //Debug.Log("Disparando");
-            cameraShake.ShakeIt();
-            if (timeElaspedSinceLastShot >= timeBetweenShots)
+            if (currentAmmo > 0)
             {
-                //disparar
-                GameObject whereToShot = (shootRight) ? bulletsSpawnPointRight : bulletsSpawnPointLeft;
-                ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
-                float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
-                Vector3 desiredAngle = whereToShot.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
-                Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
-                partSys.Play();
-                AudioManager_PK.instance.Play("Shoot", Random.Range(0.8f, 1.2f));
+                cameraShake.ShakeIt();
+                if (timeElaspedSinceLastShot >= timeBetweenShots)
+                {
+                    //disparar
+                    GameObject whereToShot = (shootRight) ? bulletsSpawnPointRight : bulletsSpawnPointLeft;
+                    ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
+                    float angleToAdd = Random.Range(-coneAngle / 2f, coneAngle / 2);
+                    Vector3 desiredAngle = whereToShot.transform.rotation.eulerAngles + new Vector3(0, 0, angleToAdd);
+                    Instantiate(bulletPrefab, whereToShot.transform.position, Quaternion.Euler(desiredAngle));
+                    partSys.Play();
 
-                // Si se esta durante el tutorial, no gastar balas
-                if (!TutorialManager.GetInstance().duringTutorial)
-                    currentAmmo--;
-                timeElaspedSinceLastShot = 0;
-                shootRight = !shootRight;
+                    float pitchToAdd = 0;
 
-                UpdateAmmoSlider();
+                    if (currentAmmo < 15)
+                    {
+                        pitchToAdd = 0.4f;
+                    }
+
+                    AudioManager_PK.instance.Play("Shoot", Random.Range((shootRight) ? 0.8f + pitchToAdd : 0.6f + pitchToAdd, (shootRight) ? 1f + pitchToAdd : 0.8f + pitchToAdd));
+
+                    // Si se esta durante el tutorial, no gastar balas
+                    if (!TutorialManager.GetInstance().duringTutorial)
+                        currentAmmo--;
+                    timeElaspedSinceLastShot = 0;
+                    shootRight = !shootRight;
+                    
+                    UpdateAmmoSlider();
+                }
+
+                turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
             }
-
-            turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
+            else
+            {
+                if (timeElaspedSinceLastShot >= timeBetweenShots * 4f)
+                {
+                    ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
+                    partSys.Play();
+                    AudioManager_PK.instance.Play("NoAmmo", Random.Range(0.8f, 0.85f));
+                    timeElaspedSinceLastShot = 0;
+                    shootRight = !shootRight;
+                }
+            }
         }
     }
 
