@@ -165,7 +165,7 @@ public class PlayerController_2D : MonoBehaviour
             else
             {
                 foreach (GrabbableItem item in reachableItems)
-                    s += item.name + ", ";
+                    if(item != null) s += item.name + ", ";
                 //Debug.Log(s);
             }
         }
@@ -307,15 +307,19 @@ public class PlayerController_2D : MonoBehaviour
                 }
 
                 // Coger el objeto
-                nearestItem.transform.SetParent(grabSpot);
-                grabbedItem = nearestItem;
-                grabbedItem.ItemGrabbed(this);
-
-                // Mover el objeto
-                float grabTime = .2f;
-                StartCoroutine(Utils.MoveItemSmooth(nearestItem.transform, grabSpot.transform, grabTime));
-                grabbingAnItem = true;
-                Invoke("EndGrabbing", grabTime + .1f);
+                if (nearestItem != null)
+                {
+                    nearestItem.transform.SetParent(grabSpot);
+                    grabbedItem = nearestItem;
+                    grabbedItem.ItemGrabbed(this);
+                }
+                    // Mover el objeto
+                    float grabTime = .2f;
+                if(nearestItem !=null)
+                    StartCoroutine(Utils.MoveItemSmooth(nearestItem.transform, grabSpot.transform, grabTime));
+                    grabbingAnItem = true;
+                    Invoke("EndGrabbing", grabTime + .1f);
+                
             }
 
             // Comprobar si se esta intentando agarrar uno del vagon del carbon

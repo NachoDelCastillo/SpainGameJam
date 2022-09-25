@@ -33,8 +33,6 @@ public class EnemySpawner : MonoBehaviour
 
 
         //Invoke("CreateEnemys", 1);
-
-        AddEnemy(1).transform.position = new Vector3(4, 10, 0);
     }
 
     // Update is called once per frame
@@ -43,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         multiplier = animationCurve.Evaluate(TrainManager.Instance.GetmainVelocity() / 100);
     }
 
-    void CreateEnemys()
+    public void CreateEnemys()
     {
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 
@@ -100,7 +98,7 @@ public class EnemySpawner : MonoBehaviour
         rayEnemy.GetComponent<CameraShake>().mainCamera = Camera.main;
     }
 
-    BasicEnemy AddEnemy(int targetIndex)
+    public BasicEnemy AddEnemy(int targetIndex)
     {
         int rand = Random.Range(0, enemyPrefabs.Length);
         GameObject clon = Instantiate(enemyPrefabs[0]);
@@ -110,7 +108,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (targetIndex == -1)
                 basicEnemy.target = targetWagons[Random.Range(0, targetWagons.Length)];
-            else 
+            else
                 basicEnemy.target = targetWagons[targetIndex];
 
             basicEnemy.enemySpawner = this;
