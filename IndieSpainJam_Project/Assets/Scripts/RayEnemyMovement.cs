@@ -10,7 +10,7 @@ public class RayEnemyMovement : MonoBehaviour
    
 
     // Start is called before the first frame update
-    [SerializeField] GameObject railsParent;
+    public GameObject railsParent;
     [SerializeField] Sprite defaultSprite;
     [SerializeField] Sprite defaultEyesSprite;
     [SerializeField] Sprite loadAndShootSprite;
@@ -34,7 +34,7 @@ public class RayEnemyMovement : MonoBehaviour
 
 
     // LoadingState
-    [SerializeField] float timeToLoad = 4f;
+    public float timeToLoad = 4f;
     [SerializeField] GameObject loadingLaser;
     [SerializeField] GameObject loadingSphere;
     [SerializeField] AnimationCurve loadingSpehereScaleoverTime;
@@ -43,14 +43,14 @@ public class RayEnemyMovement : MonoBehaviour
 
 
     // ShootingState
-    [SerializeField] float timeFiring = 1.5f;
+    public float timeFiring = 1.5f;
     [SerializeField] GameObject rayTrigger;
     float elapsedTimeToFire = 0;
 
 
     // LeavingState
-    [SerializeField] int timesToShoot;
-    [SerializeField] GameObject leavingPoint;
+    public int timesToShoot;
+    public GameObject leavingPoint;
     int timesShot;
 
     private void Awake()
