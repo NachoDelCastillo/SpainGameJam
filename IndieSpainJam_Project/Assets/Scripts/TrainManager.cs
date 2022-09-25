@@ -65,6 +65,15 @@ public class TrainManager : MonoBehaviour
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
     [SerializeField] Image waterFillImage;
+<<<<<<< Updated upstream
+=======
+    [SerializeField] float timeForWaterDown;
+    [SerializeField] Transform waterDanger, waterDangerIniPos, waterDangerFinalPos;
+    Vector3 waterDangerTarget;
+    bool rotateRight;
+    public bool waterDown;
+    float waterTimer;
+>>>>>>> Stashed changes
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -259,8 +268,53 @@ public class TrainManager : MonoBehaviour
 
         currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
+<<<<<<< Updated upstream
         if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
         TakeDamage(0);
+=======
+            currentWater = Mathf.Clamp(currentWater, 0, maxWater);
+
+            if(currentWater >= maxWater * 0.5f)
+            {
+                //rotacion slider -5 -- 5 en z 
+                if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 85)
+                {
+                    rotateRight = true;
+                    
+                }
+                else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 95)
+                {
+                    rotateRight = false;
+                }
+
+                if(rotateRight) waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 2));
+                else waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 2));
+            }
+            else
+            {
+                if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 90)
+                {
+                    waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 1.5f));
+                }
+                else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 90)
+                {
+                    waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 1.5f));
+                }
+                //si la rotacion en z no es 0 hacer rotacion volver a 0 en z smooth
+            }
+
+            if (currentWater >= maxWater)
+            {
+                health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                TakeDamage(0);
+                WaterDanger();
+            }
+            else waterDanger.gameObject.SetActive(false);
+
+
+            waterSlider.value = currentWater;
+        }
+>>>>>>> Stashed changes
 
         ColorWater();
 
