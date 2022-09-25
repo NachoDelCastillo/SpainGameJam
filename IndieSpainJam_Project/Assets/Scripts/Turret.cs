@@ -51,6 +51,7 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
+        UpdateAmmoSlider();
         timeElaspedSinceLastShot += Time.deltaTime;
         if (shooting)
         {
@@ -104,7 +105,7 @@ public class Turret : MonoBehaviour
 
     public void UpdateAmmoSlider()
     {
-        imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
+        imageToFill.fillAmount = Mathf.Lerp(imageToFill.fillAmount, (float)currentAmmo / (float)maxAmmo , 0.05f);
         imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
     }
 
@@ -213,8 +214,8 @@ public class Turret : MonoBehaviour
             {
                 currentAmmo = maxAmmo;
             }
-            imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-            imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+            //imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
+            //imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             Destroy(collision.gameObject, 1);
         }
     }
