@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &17679638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030897bfd4ebd514caaedefd7bba8a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &47279493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 171590804945527070, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
     - target: {fileID: 292186862905691304, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2479,6 +2494,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4215687775345366588, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 4755181840333175011, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 5344991517947535292, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 5718723576621450672, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
     - target: {fileID: 6356782315208403987, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_Color.b
       value: 0.6698113
@@ -2963,6 +2994,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 7005029316129433657, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 7238609295868612395, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 7322479733399271098, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 7634982272803325062, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
+    - target: {fileID: 8341950705023642614, guid: e3e39a80e98645141a314a0d66792265, type: 3}
+      propertyPath: trainManager
+      value: 
+      objectReference: {fileID: 17679638}
     - target: {fileID: 9030766339778741718, guid: e3e39a80e98645141a314a0d66792265, type: 3}
       propertyPath: m_Name
       value: Parallax objects

@@ -13,7 +13,7 @@ public class TrainManager : MonoBehaviour
 
     float elapsedTime = 0;
     float timeToMuteExplosions = 5f;
-
+    public bool gameLost = false;
     bool showingResults;
 
     [SerializeField]
@@ -105,6 +105,7 @@ public class TrainManager : MonoBehaviour
 
     private void Start()
     {
+        gameLost = false; 
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
@@ -593,6 +594,7 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
+            gameLost = true;
             fullString = "CAGASTE";
             resultPanel.color = loseColor;
         }

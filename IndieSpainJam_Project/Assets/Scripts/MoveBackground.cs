@@ -9,6 +9,7 @@ public class MoveBackground : MonoBehaviour
 	private float[] spriteWidths;
 	private Transform[] childrenTransforms;
 	private Vector2 screenBounds;
+	[SerializeField] TrainManager trainManager;
 	void Start()
 	{
 		engineForce = 0.1f;
@@ -30,12 +31,19 @@ public class MoveBackground : MonoBehaviour
 	void LateUpdate()
 	{
 		float actualTrainSpeed = TrainManager.Instance.GetmainVelocity() * 2f;
-		if(actualTrainSpeed != speed && (speed * -1) < actualTrainSpeed)
-			speed -= engineForce;
-        else speed = actualTrainSpeed;
-		
-
-		if (speed > 0) speed *= -1;
+		if (!trainManager.gameLost)
+        {
+	
+			if (actualTrainSpeed != speed && (speed * -1) < actualTrainSpeed)
+				speed -= engineForce;
+			else speed = actualTrainSpeed;
+			if (speed > 0) speed *= -1;
+		}
+        else
+        {
+			if (speed < 0) speed += engineForce * 4;
+			else speed = 0;
+		}
 		//Cantidad que se mueve, es decir velocidad
 		float xSpeedMovement = speed * parallaxMultiplier * Time.deltaTime;
 		for (int i = 0; i < transform.childCount; i++)
