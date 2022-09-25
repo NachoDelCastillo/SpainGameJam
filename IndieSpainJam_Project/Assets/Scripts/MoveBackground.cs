@@ -17,13 +17,19 @@ public class MoveBackground : MonoBehaviour
 		spriteWidths = new float[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++)
 		{
+			transform.GetChild(i).gameObject.transform.position = 
+				new Vector3(
+				(-transform.GetChild(0).GetComponent<SpriteRenderer>().bounds.size.x + 
+				(float)i * transform.GetChild(0).GetComponent<SpriteRenderer>().bounds.size.x),
+				transform.GetChild(i).gameObject.transform.position.y);
+
 			childrenTransforms[i] = transform.GetChild(i).gameObject.transform;
 			spriteWidths[i] = transform.GetChild(i).GetComponent<SpriteRenderer>().bounds.size.x;
 		}
 	}
 	void LateUpdate()
 	{
-		float actualTrainSpeed = TrainManager.Instance.GetmainVelocity();
+		float actualTrainSpeed = TrainManager.Instance.GetmainVelocity() * 2f;
 		if(actualTrainSpeed != speed && (speed * -1) < actualTrainSpeed)
 			speed -= engineForce;
         else speed = actualTrainSpeed;
@@ -37,8 +43,8 @@ public class MoveBackground : MonoBehaviour
 			childrenTransforms[i].Translate(new Vector3(xSpeedMovement, 0, 0));
 			//Si la posicion horizontal es mas grande que la pantalla mas el ancho del sprite
 			//Mueve el objeto al inicio de la pantalla, es decir el ancho de la pantalla - el ancho del sprite por dos
-			if (childrenTransforms[i].position.x < screenBounds.x - (spriteWidths[i] * 2))
-				childrenTransforms[i].position = new Vector3(screenBounds.x + spriteWidths[i], childrenTransforms[i].position.y, childrenTransforms[i].position.z);
+			if (childrenTransforms[i].position.x < screenBounds.x - (spriteWidths[i] * 2f))
+				childrenTransforms[i].position = new Vector3(childrenTransforms[(i + 2) % 3].position.x + spriteWidths[i] - (0.02f * actualTrainSpeed), childrenTransforms[i].position.y, childrenTransforms[i].position.z);
 		}
 	}
 }
