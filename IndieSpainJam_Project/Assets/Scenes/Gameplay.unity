@@ -14880,6 +14880,14 @@ PrefabInstance:
       value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: fireRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
+      propertyPath: coneAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012315263094640535, guid: e0ab0cfcbfd32c341ac3f0a58c00a829, type: 3}
       propertyPath: turretSprite
       value: 
       objectReference: {fileID: 2079339367426117893}
