@@ -54,8 +54,8 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < numEnmy; i++)
             AddEnemy(-1);
 
-        //Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
-        Invoke("CreateEnemys", 5);
+        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
+        //Invoke("CreateEnemys", 5);
     }
 
 

@@ -6500,9 +6500,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentWater: 0
-  maxWater: 6
+  maxWater: 8
   waterSubstracPerSecond: 1
-  dmgWhenWater0PerSecond: 3
+  dmgWhenWater0PerSecond: 1
   waterColorSlider:
   - {r: 0, g: 1, b: 0.9300573, a: 1}
   - {r: 1, g: 0.80093634, b: 0, a: 1}

@@ -1723,7 +1723,7 @@ MonoBehaviour:
   timeBetweenEnemys: 0.5
   minTimeForNextWave: 10
   maxTimeForNextWave: 15
-  minEnemys: 8
+  minEnemys: 5
   maxEnemys: 10
   targetWagons:
   - {fileID: 5029109946061427909}
@@ -4742,7 +4742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: maxWater
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultText
@@ -4766,7 +4766,7 @@ PrefabInstance:
       objectReference: {fileID: 373835953}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: dmgWhenWater0PerSecond
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5910312318434763212, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: mainCamera
