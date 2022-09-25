@@ -17,6 +17,7 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] SpriteRenderer gfx;
     [SerializeField] Animator anim;
     [SerializeField] Transform grabSpot;
+    [SerializeField] Color colorRespawn;
 
     PlayerInputActions playerControl;
 
@@ -180,6 +181,9 @@ public class PlayerController_2D : MonoBehaviour
                 //Debug.Log(s);
             }
         }
+
+
+
 
         //Debug.Log("grabbedItem = " + grabbedItem);
     }
@@ -647,5 +651,28 @@ public class PlayerController_2D : MonoBehaviour
         Physics2D.IgnoreCollision(playerCol, platformCol, false);
     }
 
+
+
+
+
     #endregion
+
+
+
+    public IEnumerator RespawnColor(float respawnTime)
+    {
+        float timePassed = 0;
+        gfx.color = colorRespawn;
+        while (timePassed < respawnTime)
+        {
+            // Code to go left here
+            timePassed += Time.deltaTime;
+            gfx.color = Color.Lerp(gfx.color, Color.white, timePassed/respawnTime);
+
+            yield return null;
+        }
+
+        killable = true;
+
+    }
 }

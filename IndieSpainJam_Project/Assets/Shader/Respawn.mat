@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_PixelShaderArt
+  m_Name: Respawn
   m_Shader: {fileID: -6465566751694194690, guid: cd51ddc3ff5632f47b22605c5b731ab6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7396e75ee857e054eaa1fdc18cde6a13, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab427197bfdb9af4396de9031ffbd64b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -38,20 +38,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Bits: 32
+    - _Bits: 8
     m_Colors:
-    - _Color: {r: 10.076063, g: 0.5675648, b: 0, a: 1}
+    - _Color: {r: 0.23529412, g: 3.1529412, b: 4, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4306547578759046130
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
