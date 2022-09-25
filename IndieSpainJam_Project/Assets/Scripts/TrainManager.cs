@@ -42,6 +42,10 @@ public class TrainManager : MonoBehaviour
     [SerializeField] Transform[] columns;
     [SerializeField] Transform[] rows;
 
+
+
+    [SerializeField] int velocityGainedByCoal = 5;
+
     //Health
     [SerializeField] float health, maxHealth;
     [SerializeField] Slider healthSlider;
@@ -524,7 +528,7 @@ public class TrainManager : MonoBehaviour
             smoke.Play();
         }
 
-        MainVelocity += 5;
+        MainVelocity += velocityGainedByCoal;
         GameObject clon = Instantiate(sparkSys, wheel.position, Quaternion.identity);
         clon.transform.parent = wheel;
         StartCoroutine(GlowWheel());

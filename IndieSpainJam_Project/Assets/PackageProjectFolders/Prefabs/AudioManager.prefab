@@ -55,7 +55,7 @@ MonoBehaviour:
   - name: Gameplay_Music
     clip: {fileID: 8300000, guid: d4d100328caea794f90ed4f040a62aef, type: 3}
     volume: 0.25
-    maxVolume: 0.25
+    maxVolume: 0
     pitch: 1
     music: 1
     source: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   - name: SmallExplosion
     clip: {fileID: 8300000, guid: accb35055a018f34f87060a24d9d8ff7, type: 3}
     volume: 1
-    maxVolume: 0.1
+    maxVolume: 0.05
     pitch: 1
     music: 0
     source: {fileID: 0}
@@ -121,4 +121,11 @@ MonoBehaviour:
     maxVolume: 0.3
     pitch: 1
     music: 1
+    source: {fileID: 0}
+  - name: Reload
+    clip: {fileID: 8300000, guid: 50ca03427d7378f41874281941da4493, type: 3}
+    volume: 1
+    maxVolume: 0.75
+    pitch: 1
+    music: 0
     source: {fileID: 0}

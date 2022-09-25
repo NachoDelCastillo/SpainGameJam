@@ -18,6 +18,7 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject turretSprite;
     [SerializeField] AnimationCurve knockbackCurve;
     [SerializeField] Color[] colorFadeHUD;
+    public bool beingUsed;
 
     bool shooting, drawBack;
     bool shootRight;
@@ -43,6 +44,7 @@ public class Turret : MonoBehaviour
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
         outline.SetActive(false);
+        beingUsed = false;
     }
 
     // Update is called once per frame
@@ -173,6 +175,9 @@ public class Turret : MonoBehaviour
         if (collision.gameObject.CompareTag("Coal"))
         {
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
+
+            if (!AudioManager_PK.instance.sounds[11].source.isPlaying)
+                AudioManager_PK.instance.Play("Reload", Random.Range(0.9f, 1f));
 
             collision.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
             collision.transform.GetChild(0).DOScale(0, 1);

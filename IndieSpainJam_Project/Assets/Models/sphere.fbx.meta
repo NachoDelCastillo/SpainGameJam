@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 0eb4bab912ded2c419b54f4b9173bad4
+<<<<<<<< HEAD:IndieSpainJam_Project/Assets/Models/Sphere.blend.meta
+guid: c647e6a21a3cf5e4596a9b681442d935
+========
+guid: d2d8dc27f407ebe44bbea19479c0176b
+>>>>>>>> d4216825531ce4526558946f88cc7c1b2a71d0ba:IndieSpainJam_Project/Assets/Models/sphere.fbx.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
