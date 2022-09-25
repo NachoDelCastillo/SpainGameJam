@@ -242,12 +242,21 @@ public class RayEnemyMovement : MonoBehaviour
 
             ChangeState(State.Shooting);
         }
-        
+
+
+        if (elapsedTimeToReload >= timeToLoad - 0.1f)
+        {
+            if (!AudioManager_PK.instance.sounds[18].source.isPlaying)
+            {
+                AudioManager_PK.instance.Play("BigLaser", Random.Range(0.9f, 1f));
+            }
+        }
 
     }
 
     private void RayEnemyShootinState()
     {
+
         elapsedTimeToFire += Time.fixedDeltaTime;
 
         if(elapsedTimeToFire >= timeFiring)
@@ -264,6 +273,8 @@ public class RayEnemyMovement : MonoBehaviour
             }
             spriteRenderer.sprite = defaultSprite;
             eyesSpriteRenderer.sprite = defaultEyesSprite;
+
+            AudioManager_PK.instance.Stop("BigLaser");
         }
 
     }
