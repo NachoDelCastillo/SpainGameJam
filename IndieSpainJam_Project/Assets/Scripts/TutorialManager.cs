@@ -8,7 +8,7 @@ using TMPro;
 public class TutorialManager : MonoBehaviour
 {
     // Si esta a true, haces el tutorial
-    bool doTutorial = true;
+    [HideInInspector] public bool doTutorial = false;
 
 
     static TutorialManager instance;
@@ -19,7 +19,7 @@ public class TutorialManager : MonoBehaviour
     public enum tutPhases
     {
         agarrarCarbonParaTorreta, meterCarbonEnTorreta,
-        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor, 
+        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor,
         meterCarbonEnMotor, trenEnMarcha
     }
 
@@ -99,7 +99,10 @@ public class TutorialManager : MonoBehaviour
 
     // Este metodo se llama cuando se realiza alguna de las acciones necesarias para completar el tutorial
     public void TryToChangePhase(tutPhases phaseDone)
-    { StartCoroutine(TryToChangePhase_IEnumerator(phaseDone)); }
+    {
+        if (doTutorial)
+            StartCoroutine(TryToChangePhase_IEnumerator(phaseDone));
+    }
 
     // Devuelve true si se esta pasando de fase en este momento
     bool changingPhase;
