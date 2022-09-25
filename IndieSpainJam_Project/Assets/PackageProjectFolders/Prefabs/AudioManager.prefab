@@ -164,3 +164,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: Charging
+    clip: {fileID: 8300000, guid: c0a4116ca2f117d45abfa2a646383830, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
