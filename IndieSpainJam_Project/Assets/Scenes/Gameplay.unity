@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.76
+      value: 4.95
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -964,11 +964,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.96
+      value: 11.59
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2439,7 +2439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666, y: 18}
+  m_AnchoredPosition: {x: -666, y: 18.000002}
   m_SizeDelta: {x: 112.6, y: 102.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811225598
@@ -5293,6 +5293,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 2047470109
       objectReference: {fileID: 0}
+    - target: {fileID: 8770769216959207547, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.018
+      objectReference: {fileID: 0}
     - target: {fileID: 8770769216966187858, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5311,6 +5315,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217654460640, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8770769217846926932, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
