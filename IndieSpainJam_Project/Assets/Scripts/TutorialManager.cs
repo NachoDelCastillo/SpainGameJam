@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
 
         //StartCoroutine(DoTutorial());
 
-        doTutorial = false;
+        doTutorial = true;
 
         if (doTutorial)
         {
