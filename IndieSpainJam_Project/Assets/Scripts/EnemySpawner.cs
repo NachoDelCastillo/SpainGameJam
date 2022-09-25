@@ -47,12 +47,15 @@ public class EnemySpawner : MonoBehaviour
 
     public void CreateEnemys()
     {
+        Debug.Log("CreateEnemys()");
+
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 
         for (int i = 0; i < numEnmy; i++)
             AddEnemy(-1);
 
-        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
+        //Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
+        Invoke("CreateEnemys", 5);
     }
 
 
