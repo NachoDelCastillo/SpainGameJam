@@ -147,14 +147,12 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
         state = newState;
-        Debug.Log("Current State = " + state);
     }
 
     void updateShield()
     {
         if (!player) return;
 
-        Debug.Log("Apunta player");
         Vector2 direction = player.transform.position - shieldGO.transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
