@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WagonLogic : MonoBehaviour
 {
+    [SerializeField] public int wagonIndex;
+
     [SerializeField] ParticleSystem dead;
     public int RailRow = 1;
     public int RailColumn = 1;
