@@ -5165,6 +5165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonIndex: 1
   dead: {fileID: 5660743581741287082}
   RailRow: 1
   RailColumn: 1
@@ -5382,6 +5383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonIndex: 3
   dead: {fileID: 5660743582709666851}
   RailRow: 1
   RailColumn: 1
@@ -6170,6 +6172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonIndex: 2
   dead: {fileID: 5660743582444081159}
   RailRow: 1
   RailColumn: 1
@@ -6288,6 +6291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonIndex: 0
   dead: {fileID: 5660743581365723864}
   RailRow: 1
   RailColumn: 1
@@ -6440,6 +6444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLost: 0
   MainVelocity: 0
+  cameraShake: {fileID: 0}
   wheelNeon: {fileID: 8770769216860560678}
   maxIntensity: 500
   normalIntensity: 30
