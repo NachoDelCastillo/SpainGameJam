@@ -7,6 +7,10 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
+    // Si esta a true, haces el tutorial
+    [HideInInspector] public bool doTutorial = false;
+
+
     static TutorialManager instance;
     public static TutorialManager GetInstance()
     { return instance; }
@@ -15,7 +19,7 @@ public class TutorialManager : MonoBehaviour
     public enum tutPhases
     {
         agarrarCarbonParaTorreta, meterCarbonEnTorreta,
-        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor, 
+        meterseEnTorreta, matarEnemigoTorreta, salirDeTorreta, agarrarCarbonParaMotor,
         meterCarbonEnMotor, trenEnMarcha
     }
 
@@ -44,10 +48,18 @@ public class TutorialManager : MonoBehaviour
 
         //StartCoroutine(DoTutorial());
 
-        duringTutorial = true;
 
-        // Empezar primera parte del tutorial
-        ShowTutorialItems((tutPhases)0);
+        if (doTutorial)
+        {
+            duringTutorial = true;
+
+            // Empezar primera parte del tutorial
+            ShowTutorialItems((tutPhases)0);
+        }
+        else
+        {
+            EndTutorial();
+        }
     }
 
     void HideEverything()
@@ -73,31 +85,8 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    IEnumerator DoTutorial()
-    {
-        ShowTutorialItems((tutPhases)0);
-
-        yield return new WaitForSeconds(1);
-
-        // TUTORIAL DE AGARRAR EL CARBON
-
-        yield return new WaitUntil(() => currentPhase == tutPhases.meterCarbonEnTorreta);
-
-        // TUTORIAL DE METER CARBON EN LA TORRETA
-
-        yield return new WaitUntil(() => currentPhase == tutPhases.meterseEnTorreta);
-
-        // TUTORIAL DE COMO METERSE EN LA TORRETA
-
-    }
-
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            for (int i = ((int)tutPhases.trenEnMarcha) - 1; i >= 0; i--)
-                TryToChangePhase((tutPhases)i);
-        }
     }
 
     public tutPhases GetCurrentPhase()
@@ -105,7 +94,10 @@ public class TutorialManager : MonoBehaviour
 
     // Este metodo se llama cuando se realiza alguna de las acciones necesarias para completar el tutorial
     public void TryToChangePhase(tutPhases phaseDone)
-    { StartCoroutine(TryToChangePhase_IEnumerator(phaseDone)); }
+    {
+        if (doTutorial)
+            StartCoroutine(TryToChangePhase_IEnumerator(phaseDone));
+    }
 
     // Devuelve true si se esta pasando de fase en este momento
     bool changingPhase;
@@ -124,10 +116,15 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             changingPhase = false;
 
+
+            if (currentPhase == tutPhases.matarEnemigoTorreta)
+                FindObjectOfType<EnemySpawner>().AddEnemy(1).transform.position = new Vector3(4, 10, 0);
+
             //STOP
             if (currentPhase == tutPhases.trenEnMarcha)
             {
                 duringTutorial = false;
+                EndTutorial();
                 yield break;
             }
 
@@ -222,5 +219,12 @@ public class TutorialManager : MonoBehaviour
         // Position
         Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
+    }
+
+
+
+    void EndTutorial()
+    {
+        FindObjectOfType<EnemySpawner>().CreateEnemys();
     }
 }
