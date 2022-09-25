@@ -13,13 +13,14 @@ public class TrainManager : MonoBehaviour
 
     float elapsedTime = 0;
     float timeToMuteExplosions = 5f;
-
+    public bool gameLost = false;
     bool showingResults;
 
     [SerializeField]
     int MainVelocity = 0;
 
     Vector3[] initialPosOfWagons;
+    [SerializeField] CameraShake cameraShake;
 
     [SerializeField] SpriteRenderer wheelNeon;
     Material wheelMaterial;
@@ -105,6 +106,8 @@ public class TrainManager : MonoBehaviour
 
     private void Start()
     {
+        cameraShake = GetComponent<CameraShake>();
+        gameLost = false; 
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
@@ -339,7 +342,11 @@ public class TrainManager : MonoBehaviour
 
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-            if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
+            if (currentWater >= maxWater)
+            {
+                health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                cameraShake.ShakeIt();
+            }
             TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
@@ -651,6 +658,7 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
+            gameLost = true;
             fullString = "CAGASTE";
             resultPanel.color = loseColor;
         }
@@ -682,11 +690,13 @@ public class TrainManager : MonoBehaviour
 
             pressAnything_b = false;
 
+            pressAnything_b = Input.anyKey;
+
             while (!pressAnything_b)
                 yield return 0;
 
             CancelInvoke();
-            GameManager.instance.ChangeScene("Gameplay");
+            GameManager.instance.ChangeScene("MainMenu_Scene");
         }
 
 
