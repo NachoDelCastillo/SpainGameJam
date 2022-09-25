@@ -25,7 +25,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] GameObject sangrePart;
     
-    [SerializeField] TMP_Text
+    //[SerializeField] TMP_Text
 
     private void Awake()
     {
