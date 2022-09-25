@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public delegate void MyDelegate();
+    public static MyDelegate myDelegate;
+
+
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] GameObject rayEnemyDestination;
     [SerializeField] GameObject rayEnemyLeavingPoint;
@@ -30,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             spawnPoints[i] = transform.GetChild(i);
         }
 
-
+        myDelegate = CheckEnemiesOnSpeedChange;
 
         //Invoke("CreateEnemys", 1);
     }
@@ -52,32 +56,34 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    public void CheckEnemiesOnSpeedChange()
+    void CheckEnemiesOnSpeedChange()
     {
         switch (TrainManager.Instance.GetmainVelocity())
         {
-            case <= 10:
+            case 10:
                 break;
-            case <= 20:
+            case 20:
                 break;
-            case <= 30:
+            case 30:
                 CreateRayEnemy(1, 3, 0.8f);
                 break;
-            case <= 40:
+            case 40:
                 break;
-            case <= 50:
+            case 50:
                 break;
-            case <= 60:
+            case 60:
                 CreateRayEnemy(3, 2, 1.2f);
                 break;
-            case <= 70:
+            case 70:
                 break;
-            case <= 80:
+            case 80:
                 CreateRayEnemy(3, 1.8f, 1.2f);
                 break;
-            case <= 90:
+            case 90:
                 CreateRayEnemy(5, 1.5f, 1.5f);
+                break;
 
+            default:
                 break;
         }
 

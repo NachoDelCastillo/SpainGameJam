@@ -106,7 +106,7 @@ public class PlayerController_2D : MonoBehaviour
         }
 
 
-
+        turretControl.beingUsed = false;
         transform.SetParent(null);
         rb.isKinematic = false;
         usingTurret = false;
@@ -119,6 +119,17 @@ public class PlayerController_2D : MonoBehaviour
     public void GotKilled()
     {
         LeaveTurret(true);
+
+        //si teiene un objeto lo suelta
+        if (grabbedItem != null)
+        {
+            // Lanzar el objeto
+            grabbedItem.ItemDropped();
+            grabbedItem.rb.velocity = new Vector2(10 * dir, 15);
+            grabbedItem.transform.SetParent(null);
+            grabbedItem = null;
+            droppingAnItem = false;
+        }
     }
 
     public SpriteRenderer GetGFX()
@@ -165,7 +176,7 @@ public class PlayerController_2D : MonoBehaviour
             else
             {
                 foreach (GrabbableItem item in reachableItems)
-                    if(item != null) s += item.name + ", ";
+                    if (item != null) s += item.name + ", ";
                 //Debug.Log(s);
             }
         }
@@ -229,7 +240,7 @@ public class PlayerController_2D : MonoBehaviour
         if (enteringTurret) return;
 
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
-        if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
+        if (currentlyInTurretWagon && !usingTurret && !enteringTurret && !turretControl.beingUsed)
         {
             if (TutorialManager.GetInstance().duringTutorial &&
             TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterseEnTorreta)
@@ -237,17 +248,12 @@ public class PlayerController_2D : MonoBehaviour
 
             //Debug.Log("Entra en torreta");
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
-
+            turretControl.beingUsed = true;
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
             enteringTurret = true;
             return;
         }
-
-
-
-
-
 
 
 
@@ -257,13 +263,6 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-
-
-        // Si está USANDO la torreta pero no la está usando, dispara
-
-
-
-        //
 
         // Si ya se tiene un objeto en las manos
         if (grabbedItem != null)
@@ -280,19 +279,42 @@ public class PlayerController_2D : MonoBehaviour
         // Si no se tiene un objeto en las manos
         else
         {
+            int operativeCoals = 0;
+            foreach (GrabbableItem item in reachableItems)
+                if (item != null)
+                    operativeCoals++;
+
+            //GrabbableItem deleteThis = null;
+            //foreach (GrabbableItem item in reachableItems)
+            //    if (item == null)
+            //        deleteThis = item;
+            //if (deleteThis != null)
+            //    reachableItems.Remove(deleteThis);
+
             // Si no se esta intentando cojer ningun objeto del vagon del carbon
             // Comprobar si se quiere cojer un objeto del suelo
-            if (reachableItems.Count != 0)
+            if (operativeCoals != 0)
             {
                 //// Si no hay ningun objeto cerca, no seguir
                 //if (reachableItems.Count == 0) return;
 
+
                 GrabbableItem nearestItem = reachableItems[0];
+
                 if (reachableItems.Count == 1)
-                    nearestItem = reachableItems[0];
+                {
+                    if (reachableItems[0] == null)
+                        return;
+                    else
+                        nearestItem = reachableItems[0];
+                }
+
 
                 else
                 {
+                    if (nearestItem == null)
+                        nearestItem = reachableItems[1];
+
                     for (int i = 0; i < reachableItems.Count; i++)
                     {
                         if (reachableItems[i] == null) continue;
@@ -313,13 +335,13 @@ public class PlayerController_2D : MonoBehaviour
                     grabbedItem = nearestItem;
                     grabbedItem.ItemGrabbed(this);
                 }
-                    // Mover el objeto
-                    float grabTime = .2f;
-                if(nearestItem !=null)
+                // Mover el objeto
+                float grabTime = .2f;
+                if (nearestItem != null)
                     StartCoroutine(Utils.MoveItemSmooth(nearestItem.transform, grabSpot.transform, grabTime));
-                    grabbingAnItem = true;
-                    Invoke("EndGrabbing", grabTime + .1f);
-                
+                grabbingAnItem = true;
+                Invoke("EndGrabbing", grabTime + .1f);
+
             }
 
             // Comprobar si se esta intentando agarrar uno del vagon del carbon
@@ -339,7 +361,7 @@ public class PlayerController_2D : MonoBehaviour
                 grabbedItem.transform.GetChild(0).DOScale(1, 1);
             }
 
-            else if(currentlyInWaterWagon)
+            else if (currentlyInWaterWagon)
             {
                 TrainManager.Instance.RechargeWater();
             }

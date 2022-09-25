@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: d2d8dc27f407ebe44bbea19479c0176b
+<<<<<<<< HEAD:IndieSpainJam_Project/Assets/Models/sphere.fbx.meta
+guid: 4d8490229515e6046b9502099e32740c
+========
+guid: 93512572a06ab0f489320f6eddebd521
+>>>>>>>> f0c866da492161d2b120f7da8abdf5d55519b1f4:IndieSpainJam_Project/Assets/Models/Sphere.blend.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -32,12 +36,12 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -49,7 +53,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    keepQuads: 0
+    keepQuads: 1
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
