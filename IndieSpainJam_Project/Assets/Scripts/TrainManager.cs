@@ -122,6 +122,8 @@ public class TrainManager : MonoBehaviour
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
         waterParticles.Stop();
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
 
         AudioManager_PK.instance.sounds[6].source.mute = false;
         AudioManager_PK.instance.sounds[7].source.mute = false;
@@ -404,8 +406,6 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
-        waterSlider.maxValue = maxWater;
         UpdateWater();
 
 
@@ -431,7 +431,8 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
         if (waterDown)
         {
             WaterDown();
