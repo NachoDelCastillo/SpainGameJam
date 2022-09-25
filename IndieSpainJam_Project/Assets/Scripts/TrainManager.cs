@@ -63,6 +63,7 @@ public class TrainManager : MonoBehaviour
     //Agua
     [SerializeField] public Slider waterSlider;
     [SerializeField] AnimationCurve waterCurve;
+    [SerializeField] AnimationCurve waterCurveMax;
     //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
@@ -121,6 +122,8 @@ public class TrainManager : MonoBehaviour
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
         waterParticles.Stop();
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
 
         AudioManager_PK.instance.sounds[6].source.mute = false;
         AudioManager_PK.instance.sounds[7].source.mute = false;
@@ -386,7 +389,6 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-
         if (health <= 0)
         {
             elapsedTime += Time.deltaTime;
@@ -403,7 +405,6 @@ public class TrainManager : MonoBehaviour
                 GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
         }
-
 
         UpdateWater();
 
@@ -430,7 +431,8 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
         if (waterDown)
         {
             WaterDown();
