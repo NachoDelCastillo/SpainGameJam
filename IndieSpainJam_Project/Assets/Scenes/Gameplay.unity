@@ -237,6 +237,16 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2965065804980086127, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
   m_PrefabInstance: {fileID: 55748535}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &81340060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+  m_PrefabInstance: {fileID: 781051806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &81340062 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6334325534931937562, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+  m_PrefabInstance: {fileID: 781051806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &91559867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3978658045501465009, guid: cc2ed8e5e551f064e8c048bf4c7148b9, type: 3}
@@ -8397,6 +8407,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &781051806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2067842288}
+    m_Modifications:
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334325534931937636, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
+      propertyPath: m_Name
+      value: WaterParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
 --- !u!198 &801665055 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3978658045501465023, guid: cc2ed8e5e551f064e8c048bf4c7148b9, type: 3}
@@ -12518,6 +12585,7 @@ Transform:
   - {fileID: 849124164}
   - {fileID: 816681731}
   - {fileID: 414354146}
+  - {fileID: 81340060}
   m_Father: {fileID: 1269768466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14576,7 +14644,7 @@ MonoBehaviour:
   waterDanger: {fileID: 849124164}
   waterDangerIniPos: {fileID: 816681731}
   waterDangerFinalPos: {fileID: 414354146}
-  waterParticles: {fileID: 0}
+  waterParticles: {fileID: 81340062}
   waterDown: 0
   sparkSys: {fileID: 5961624223375900008, guid: 6e4926bc0f7d3a049bdb45dc7de1fa35, type: 3}
   dangerSprite: {fileID: 0}
