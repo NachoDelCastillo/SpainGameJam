@@ -59,6 +59,8 @@ public class PlayerController_2D : MonoBehaviour
     [SerializeField] float screenMargin;
     float screenLimit;
 
+    CoalWagon coalWagon;
+
     [Header("Particle Systems")]
     [SerializeField] ParticleSystem jumping;
     [SerializeField] ParticleSystem landing1;
@@ -77,6 +79,7 @@ public class PlayerController_2D : MonoBehaviour
         turretControl = turret.GetComponent<Turret>();
         turretOutline = turretControl.outline;
         killable = true;
+        coalWagon = FindObjectOfType<CoalWagon>();
     }
 
     private void Start()
@@ -286,7 +289,7 @@ public class PlayerController_2D : MonoBehaviour
         {
             int operativeCoals = 0;
             foreach (GrabbableItem item in reachableItems)
-                if (item != null)
+                if (item != null && (Vector3.Distance(item.createdPos, item.transform.position) >= 0.25f))
                     operativeCoals++;
 
             //GrabbableItem deleteThis = null;
@@ -336,9 +339,12 @@ public class PlayerController_2D : MonoBehaviour
                 // Coger el objeto
                 if (nearestItem != null)
                 {
+                    if (!nearestItem.coalReady) return;
+
                     nearestItem.transform.SetParent(grabSpot);
                     grabbedItem = nearestItem;
                     grabbedItem.ItemGrabbed(this);
+
                 }
                 // Mover el objeto
                 float grabTime = .2f;
@@ -352,18 +358,16 @@ public class PlayerController_2D : MonoBehaviour
             // Comprobar si se esta intentando agarrar uno del vagon del carbon
             else if (currentlyInCoalWagon)
             {
-                // Crear el carbon y ponerlo en las manos de este jugador
-                grabbedItem = Instantiate(coalPrefab, grabSpot).GetComponent<GrabbableItem>();
+                if (!coalWagon.coalReady) return;
+
+                coalWagon.clon.transform.parent = grabSpot;
+                StartCoroutine(Utils.MoveItemSmooth(coalWagon.clon.transform, grabSpot.transform, 0.2f));
+                grabbedItem = coalWagon.clon.GetComponent<GrabbableItem>();
+                grabbedItem.col.isTrigger = false;
                 grabbedItem.ItemGrabbed(this);
-
-                // Smooooooooooooooooooooth
-                SpriteRenderer sp = grabbedItem.GetComponentInChildren<SpriteRenderer>();
-                sp.color = new Color(1, 1, 1, 0);
-                sp.DOFade(1, 1);
-
-                grabbedItem.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
-                grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
-                grabbedItem.transform.GetChild(0).DOScale(1, 1);
+                coalWagon.coalReady = false;
+                grabbingAnItem = true;
+                Invoke("EndGrabbing", 0.2f + .1f);
             }
 
             else if (currentlyInWaterWagon)
@@ -381,6 +385,17 @@ public class PlayerController_2D : MonoBehaviour
                 AudioManager_PK.instance.Play("WaterDown", Random.Range(0.9f, 1f));
             }
         }
+    }
+
+    IEnumerator MoveCoal(GameObject coal)
+    {
+        while(Vector3.Distance(coal.transform.localPosition, grabSpot.localPosition) >= 0.1f)
+        {
+            coal.transform.localPosition = Vector3.MoveTowards(coal.transform.localPosition, grabSpot.localPosition, 6 * Time.deltaTime);
+            yield return 0;
+        }
+
+        coal.transform.localPosition = grabSpot.localPosition;
     }
 
     void EndGrabbing()
