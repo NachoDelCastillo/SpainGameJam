@@ -129,3 +129,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: NoAmmo
+    clip: {fileID: 8300000, guid: 77f720a38e22f6540a8ea3a78c647912, type: 3}
+    volume: 1
+    maxVolume: 0.75
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
