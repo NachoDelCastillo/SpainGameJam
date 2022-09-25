@@ -2438,7 +2438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666, y: 18}
+  m_AnchoredPosition: {x: -666, y: 18.000002}
   m_SizeDelta: {x: 112.6, y: 102.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811225598
@@ -4787,30 +4787,6 @@ PrefabInstance:
     - target: {fileID: 7349765566202119486, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2503d82c75a7c624fb9376ea2a210f4a, type: 3}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].name
-      value: Charging
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].music
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[18].maxVolume
-      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
