@@ -4409,7 +4409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.58431375}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4996,6 +4996,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: maxWater
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1428882617}
@@ -5008,9 +5012,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 255504361}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: maxIntensity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: pressAnything
       value: 
       objectReference: {fileID: 1137582939}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: normalIntensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: MainVelocity_text
       value: 
