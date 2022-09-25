@@ -33,6 +33,8 @@ public class GrabbableItem : MonoBehaviour
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaTorreta);
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaMotor);
 
+        AudioManager_PK.instance.Play("PickUp", Random.Range(0.9f, 1.1f));
+
         playerGrabbingThis = playerGrabbingThis_;
 
         rb.isKinematic = true;

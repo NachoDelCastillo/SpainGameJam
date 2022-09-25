@@ -178,3 +178,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: PickUp
+    clip: {fileID: 8300000, guid: 77077f87e288821469da36a87ed15cbe, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
