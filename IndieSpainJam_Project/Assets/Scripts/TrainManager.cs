@@ -111,7 +111,7 @@ public class TrainManager : MonoBehaviour
         derWagon = wagons[2];
 
 
-           cameraShake = GetComponent<CameraShake>();
+        cameraShake = GetComponent<CameraShake>();
         gameLost = false;
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
@@ -226,36 +226,74 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator MoveWagonsHorizontally()
     {
-        int posibilidad = Random.Range(0, 2);
-
-        if (posibilidad == 0)
+        for (int i = 0; i < 3; i++)
         {
-            // Los dos de la izquierda
-            izqWagon.transform.DOMoveX(columns[1].position.x, 1);
-            midWagon.transform.DOMoveX(columns[0].position.x, 1);
+            int posibilidad = Random.Range(0, 3);
 
-            izqWagon.RailColumn = 1;
-            midWagon.RailColumn = 0;
+            if (posibilidad == 0)
+            {
+                if (izqWagon.RailRow == midWagon.RailRow)
+                    continue;
 
-            WagonLogic auxWagon = izqWagon;
-            izqWagon = midWagon;
-            midWagon = auxWagon;
+                // Los dos de la izquierda
+                izqWagon.transform.DOMoveX(columns[1].position.x, 1);
+                midWagon.transform.DOMoveX(columns[0].position.x, 1);
+
+                izqWagon.RailColumn = 1;
+                midWagon.RailColumn = 0;
+
+                WagonLogic auxWagon = izqWagon;
+                izqWagon = midWagon;
+                midWagon = auxWagon;
+
+                yield break;
+            }
+
+            else if (posibilidad == 1)
+            {
+                if (derWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+                // Los dos de la derecha
+                midWagon.transform.DOMoveX(columns[2].position.x, 1);
+                derWagon.transform.DOMoveX(columns[1].position.x, 1);
+
+                midWagon.RailColumn = 2;
+                derWagon.RailColumn = 1;
+
+                WagonLogic auxWagon = derWagon;
+                derWagon = midWagon;
+                midWagon = auxWagon;
+
+                yield break;
+            }
+
+            else if (posibilidad == 2)
+            {
+                if (izqWagon.RailRow == derWagon.RailRow)
+                    continue;
+
+                if (izqWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+                if (derWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+
+                // Los dos de la derecha
+                izqWagon.transform.DOMoveX(columns[2].position.x, 1);
+                derWagon.transform.DOMoveX(columns[0].position.x, 1);
+
+                izqWagon.RailColumn = 2;
+                derWagon.RailColumn = 0;
+
+                WagonLogic auxWagon = derWagon;
+                derWagon = izqWagon;
+                izqWagon = auxWagon;
+
+                yield break;
+            }
         }
-
-        else if (posibilidad == 1)
-        {
-            // Los dos de la derecha
-            midWagon.transform.DOMoveX(columns[2].position.x, 1);
-            derWagon.transform.DOMoveX(columns[1].position.x, 1);
-
-            midWagon.RailColumn = 2;
-            derWagon.RailColumn = 1;
-
-            WagonLogic auxWagon = derWagon;
-            derWagon = midWagon;
-            midWagon = auxWagon;
-        }
-
 
         yield return new WaitForSeconds(1);
     }
