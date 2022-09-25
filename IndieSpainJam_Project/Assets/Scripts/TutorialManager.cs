@@ -58,8 +58,10 @@ public class TutorialManager : MonoBehaviour
             ShowTutorialItems((tutPhases)0);
 
             // Joder vagon de agua
+            TrainManager.Instance.currentWater = 1;
 
             // Joder Torreta
+            FindObjectOfType<Turret>().currentAmmo = 0;
         }
         else
         {

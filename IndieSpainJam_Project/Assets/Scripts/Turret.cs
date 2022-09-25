@@ -33,7 +33,7 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject ammoIndicator;
     [SerializeField] int maxAmmo;
     CameraShake cameraShake;
-    int currentAmmo;
+    [HideInInspector] public int currentAmmo;
     Image imageToFill;
 
     void Start()
