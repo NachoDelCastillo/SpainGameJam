@@ -13,7 +13,7 @@ public class TrainManager : MonoBehaviour
 
     float elapsedTime = 0;
     float timeToMuteExplosions = 5f;
-    public bool gameLost = false;
+    public bool gameLost = false, letterOfFinalWhenLoseAlreadyOut = false;
     bool showingResults;
 
     [SerializeField]
@@ -360,6 +360,8 @@ public class TrainManager : MonoBehaviour
                     AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 }
             }
+            if((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
+                GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
         }
 
@@ -774,17 +776,11 @@ public class TrainManager : MonoBehaviour
 
             yield return new WaitForSeconds(1);
 
+            letterOfFinalWhenLoseAlreadyOut = true;
             ShowAnyKeyButton();
 
-            pressAnything_b = false;
-
-            pressAnything_b = Input.anyKey;
-
-            while (!pressAnything_b)
-                yield return 0;
-
             CancelInvoke();
-            GameManager.instance.ChangeScene("MainMenu_Scene");
+            yield return 0;
         }
 
 
