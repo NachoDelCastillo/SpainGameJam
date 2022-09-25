@@ -65,15 +65,12 @@ public class TrainManager : MonoBehaviour
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
     [SerializeField] Image waterFillImage;
-<<<<<<< Updated upstream
-=======
     [SerializeField] float timeForWaterDown;
     [SerializeField] Transform waterDanger, waterDangerIniPos, waterDangerFinalPos;
     Vector3 waterDangerTarget;
     bool rotateRight;
     public bool waterDown;
     float waterTimer;
->>>>>>> Stashed changes
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -268,10 +265,8 @@ public class TrainManager : MonoBehaviour
 
         currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-<<<<<<< Updated upstream
         if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
         TakeDamage(0);
-=======
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
             if(currentWater >= maxWater * 0.5f)
@@ -313,13 +308,12 @@ public class TrainManager : MonoBehaviour
 
 
             waterSlider.value = currentWater;
-        }
->>>>>>> Stashed changes
 
         ColorWater();
 
         waterSlider.value = currentWater;
     }
+  
 
     [SerializeField] SpriteRenderer dangerSprite;
     public void ColorWater()
