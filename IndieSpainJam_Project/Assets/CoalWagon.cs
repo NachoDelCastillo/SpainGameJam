@@ -50,7 +50,7 @@ public class CoalWagon : MonoBehaviour
     {
         coal.GetComponent<Rigidbody2D>().isKinematic = true;
 
-        while (Mathf.Abs(coal.transform.position.y - finalPos.position.y) >= 0.3f)
+        while (Mathf.Abs(coal.transform.position.y - finalPos.position.y) > 0.3f)
         {
             coal.transform.Translate(coal.transform.up * speed * Time.deltaTime);
             Debug.Log(coal.transform.position);
