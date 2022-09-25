@@ -11,7 +11,6 @@ public class PlayerController_2D : MonoBehaviour
     [HideInInspector] public int playerIndex;
 
     [SerializeField] float speed = 10;
-    public bool beingUsed;
 
     // Components
     Rigidbody2D rb;
@@ -84,7 +83,6 @@ public class PlayerController_2D : MonoBehaviour
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
         killable = true;
-        beingUsed = false;
 
     }
 
@@ -108,7 +106,7 @@ public class PlayerController_2D : MonoBehaviour
         }
 
 
-
+        turretControl.beingUsed = false;
         transform.SetParent(null);
         rb.isKinematic = false;
         usingTurret = false;
@@ -121,6 +119,17 @@ public class PlayerController_2D : MonoBehaviour
     public void GotKilled()
     {
         LeaveTurret(true);
+
+        //si teiene un objeto lo suelta
+        if (grabbedItem != null)
+        {
+            // Lanzar el objeto
+            grabbedItem.ItemDropped();
+            grabbedItem.rb.velocity = new Vector2(10 * dir, 15);
+            grabbedItem.transform.SetParent(null);
+            grabbedItem = null;
+            droppingAnItem = false;
+        }
     }
 
     public SpriteRenderer GetGFX()
@@ -231,7 +240,7 @@ public class PlayerController_2D : MonoBehaviour
         if (enteringTurret) return;
 
         // Si está en el vagón de la torreta pero NO la está usando, se sube y no agarra nada más
-        if (currentlyInTurretWagon && !usingTurret && !enteringTurret)
+        if (currentlyInTurretWagon && !usingTurret && !enteringTurret && !turretControl.beingUsed)
         {
             if (TutorialManager.GetInstance().duringTutorial &&
             TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterseEnTorreta)
@@ -239,17 +248,12 @@ public class PlayerController_2D : MonoBehaviour
 
             //Debug.Log("Entra en torreta");
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterseEnTorreta);
-
+            turretControl.beingUsed = true;
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
             enteringTurret = true;
             return;
         }
-
-
-
-
-
 
 
 
@@ -259,13 +263,6 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-
-
-        // Si está USANDO la torreta pero no la está usando, dispara
-
-
-
-        //
 
         // Si ya se tiene un objeto en las manos
         if (grabbedItem != null)
