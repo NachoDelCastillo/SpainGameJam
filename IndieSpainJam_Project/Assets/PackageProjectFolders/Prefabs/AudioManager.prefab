@@ -136,3 +136,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: TurretUp
+    clip: {fileID: 8300000, guid: c4673b985e022a1479bb083cb9964c03, type: 3}
+    volume: 1
+    maxVolume: 0.75
+    pitch: 1
+    music: 0
+    source: {fileID: 0}

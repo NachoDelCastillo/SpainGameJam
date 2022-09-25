@@ -252,6 +252,7 @@ public class PlayerController_2D : MonoBehaviour
             rb.isKinematic = true;
             rb.velocity = new Vector2(0, 0);
             enteringTurret = true;
+            AudioManager_PK.instance.Play("TurretUp", 1f);
             return;
         }
 
