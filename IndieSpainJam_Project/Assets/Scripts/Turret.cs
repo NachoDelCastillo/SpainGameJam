@@ -93,8 +93,6 @@ public class Turret : MonoBehaviour
             {
                 if (timeElaspedSinceLastShot >= timeBetweenShots * 4f)
                 {
-                    ParticleSystem partSys = (shootRight) ? shootPartRight : shootPartLeft;
-                    partSys.Play();
                     AudioManager_PK.instance.Play("NoAmmo", Random.Range(0.8f, 0.85f));
                     timeElaspedSinceLastShot = 0;
                     shootRight = !shootRight;

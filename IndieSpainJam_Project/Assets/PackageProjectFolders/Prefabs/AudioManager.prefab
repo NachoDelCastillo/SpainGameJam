@@ -171,3 +171,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: BigLaser
+    clip: {fileID: 8300000, guid: cd96fb769783040439608dc151f6805b, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
