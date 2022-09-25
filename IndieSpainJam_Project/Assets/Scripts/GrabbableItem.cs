@@ -12,9 +12,11 @@ public class GrabbableItem : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     public BoxCollider2D col;
 
-    public bool coalReady, inWagon;
+    public bool coalReady;
 
     public Transform initialParent;
+
+    public CoalWagon wagon;
 
     private void Awake()
     {
@@ -25,8 +27,8 @@ public class GrabbableItem : MonoBehaviour
     private void Start()
     {
         col.isTrigger = true;
-        inWagon = true;
     }
+
 
     public void ItemGrabbed(PlayerController_2D playerGrabbingThis_)
     {
@@ -39,6 +41,8 @@ public class GrabbableItem : MonoBehaviour
 
         rb.isKinematic = true;
         col.isTrigger = true;
+
+        if (wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
     }
 
     public void ItemDropped()
@@ -47,5 +51,7 @@ public class GrabbableItem : MonoBehaviour
 
         rb.isKinematic = false;
         col.isTrigger = false;
+
+        if(wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class CoalWagon : MonoBehaviour
 {
-    [SerializeField] GameObject coal;
+    public GameObject coal;
 
     [SerializeField] Transform iniPos, finalPos;
 
     [SerializeField] float speed;
 
-    public bool coalStarted, coalReady;
+    public bool coalStarted, coalReady, inWagon;
 
     [HideInInspector] public GameObject clon;
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class CoalWagon : MonoBehaviour
     {
         coalStarted = false;
         coalReady = false;
+        inWagon = true;
     }
 
     // Update is called once per frame
@@ -26,15 +27,18 @@ public class CoalWagon : MonoBehaviour
     {
         if (!coalStarted && !coalReady) CreateCoal();
 
-        if (!clon.GetComponent<GrabbableItem>().inWagon) coalReady = false;
+
+        if (coal == null || !inWagon) coalReady = false;
     }
 
     void CreateCoal()
     {
         coalStarted = true;
+        inWagon = true;
 
         clon = Instantiate(coal, transform.parent);
         clon.GetComponent<GrabbableItem>().initialParent = transform.parent;
+        clon.GetComponent<GrabbableItem>().wagon = this;
         clon.transform.position = iniPos.position;
 
         // Smooooooooooooooooooooth

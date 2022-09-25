@@ -342,7 +342,6 @@ public class PlayerController_2D : MonoBehaviour
                     if (!nearestItem.coalReady) return;
 
                     nearestItem.transform.SetParent(grabSpot);
-                    grabbedItem.inWagon = false;
                     grabbedItem = nearestItem;
                     grabbedItem.ItemGrabbed(this);
 
@@ -359,17 +358,17 @@ public class PlayerController_2D : MonoBehaviour
             // Comprobar si se esta intentando agarrar uno del vagon del carbon
             else if (currentlyInCoalWagon)
             {
-                if (!coalWagon.coalReady) return;
+                //if (!coalWagon.coalReady) return;
 
-                coalWagon.clon.transform.parent = grabSpot;
-                StartCoroutine(Utils.MoveItemSmooth(coalWagon.clon.transform, grabSpot.transform, 0.2f));
-                grabbedItem = coalWagon.clon.GetComponent<GrabbableItem>();
-                grabbedItem.inWagon = false;
-                grabbedItem.col.isTrigger = false;
-                grabbedItem.ItemGrabbed(this);
-                coalWagon.coalReady = false;
-                grabbingAnItem = true;
-                Invoke("EndGrabbing", 0.2f + .1f);
+                //coalWagon.clon.transform.parent = grabSpot;
+                //StartCoroutine(Utils.MoveItemSmooth(coalWagon.clon.transform, grabSpot.transform, 0.2f));
+                //grabbedItem = coalWagon.clon.GetComponent<GrabbableItem>();
+                //grabbedItem.inWagon = false;
+                //grabbedItem.col.isTrigger = false;
+                //grabbedItem.ItemGrabbed(this);
+                //coalWagon.coalReady = false;
+                //grabbingAnItem = true;
+                //Invoke("EndGrabbing", 0.2f + .1f);
             }
 
             else if (currentlyInWaterWagon)
