@@ -47,7 +47,10 @@ public class TutorialManager : MonoBehaviour
         HideEverything();
 
         //StartCoroutine(DoTutorial());
+    }
 
+    private void Start()
+    {
         doTutorial = true;
 
         if (doTutorial)
@@ -57,11 +60,13 @@ public class TutorialManager : MonoBehaviour
             // Empezar primera parte del tutorial
             ShowTutorialItems((tutPhases)0);
 
-            // Joder vagon de agua
-            TrainManager.Instance.currentWater = 1;
+            //// Joder vagon de agua
+            //TrainManager.Instance.currentWater = 1;
 
             // Joder Torreta
-            FindObjectOfType<Turret>().currentAmmo = 0;
+            Turret turret = FindObjectOfType<Turret>();
+            turret.currentAmmo = 0;
+            turret.UpdateAmmoSlider();
         }
         else
         {
