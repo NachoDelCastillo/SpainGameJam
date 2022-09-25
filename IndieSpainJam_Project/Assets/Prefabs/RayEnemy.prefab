@@ -5548,6 +5548,13 @@ MonoBehaviour:
   rotationSpeed: 1
   eyesSpriteRenderer: {fileID: 1398598680}
   shieldGO: {fileID: 2043408488}
+  timeGlowHit: 0.5
+  curveGlowingShield:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   timeToLoad: 3
   loadingLaser: {fileID: 3330685883569148297}
   loadingSphere: {fileID: 4303165074325188409}

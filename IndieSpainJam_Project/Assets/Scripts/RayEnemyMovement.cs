@@ -31,6 +31,9 @@ public class RayEnemyMovement : MonoBehaviour
 
     //Shield 
     [SerializeField] GameObject shieldGO;
+    [SerializeField] float timeGlowHit = 0;
+    [SerializeField] AnimationCurve curveGlowingShield;
+    float elapsedTimeShieldGlowing = 0;
 
     // GoingLocation variables
     GameObject currentDestination;
@@ -83,6 +86,9 @@ public class RayEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!player) player = GameObject.FindGameObjectWithTag("Player");
+
+        updateShield();
         switch (state)
         {
             case State.GoingLocation:
@@ -144,6 +150,22 @@ public class RayEnemyMovement : MonoBehaviour
         Debug.Log("Current State = " + state);
     }
 
+    void updateShield()
+    {
+        if (!player) return;
+
+        Debug.Log("Apunta player");
+        Vector2 direction = player.transform.position - shieldGO.transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
+        shieldGO.transform.rotation = newRot;
+
+
+        SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
+        pSysShield.material.SetFloat("_Intensity", pSysShield.material.GetFloat("_Intensity") + 1);
+        
+    }
 
     private void GoingLocationState()
     {
@@ -151,14 +173,14 @@ public class RayEnemyMovement : MonoBehaviour
         {
             Vector2 dir = currentDestination.transform.position - transform.transform.position; 
             rb.position = Vector2.Lerp(rb.position, rb.position + dir*velocity * Time.fixedDeltaTime, 0.3f);
-            
+
 
             // Mirar al player
             //Vector2 direction = player.transform.position - transform.position;
             //direction.Normalize();
             //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle)); 
+            //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
             //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
         else ChangeState(State.Loading);
@@ -247,11 +269,11 @@ public class RayEnemyMovement : MonoBehaviour
         Bullet b = collision.GetComponent<Bullet>();
         if (b)
         {
-            Vector2 direction = collision.transform.position - shieldGO.transform.position;
-            direction.Normalize();
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
-            shieldGO.transform.rotation = newRot;
+            //Vector2 direction = collision.transform.position - shieldGO.transform.position;
+            //direction.Normalize();
+            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
+            //shieldGO.transform.rotation = newRot;
             b.ShieldImpacted();
             
 
