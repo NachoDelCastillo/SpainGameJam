@@ -212,6 +212,13 @@ public class TrainManager : MonoBehaviour
         StartCoroutine(SpawnChangeRail());
     }
 
+    IEnumerator MoveWagonsHorizontally()
+    {
+
+
+        yield return new WaitForSeconds(5);
+    }
+
     void RandomRail(ref bool railway_b)
     {
         if (Random.Range(0, 2) == 0)
