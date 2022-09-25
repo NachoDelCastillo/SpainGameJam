@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BasicEnemy : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class BasicEnemy : MonoBehaviour
         initialScale = transform.localScale.x;
 
         attackCD = attackFrecuency;
+
+        SpriteRenderer sp = GetComponentInChildren<SpriteRenderer>();
+        Color colorBruhhhh = sp.color;
+        sp.color = new Color(colorBruhhhh.r, colorBruhhhh.g, colorBruhhhh.b, 0);
+        GetComponentInChildren<SpriteRenderer>().DOFade(1, 1);
     }
 
     // Update is called once per frame
