@@ -64,6 +64,13 @@ public class EnemySpawner : MonoBehaviour
         switch (TrainManager.Instance.GetmainVelocity())
         {
             case 10:
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 3, 0.8f);
                 break;
             case 20:
                 break;

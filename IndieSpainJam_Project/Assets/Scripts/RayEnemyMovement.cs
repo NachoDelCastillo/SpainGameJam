@@ -7,6 +7,9 @@ public class RayEnemyMovement : MonoBehaviour
 
     private enum State {GoingLocation, Loading, Shooting, Leaving}
 
+    static bool[] railDisponible = { true, true, true };
+    int indexRailEscogido;
+
     bool odioMiVida = true;
 
     // Start is called before the first frame update
@@ -72,7 +75,7 @@ public class RayEnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        ChangeState(State.GoingLocation);
+        StartCoroutine(ChangeState(State.GoingLocation));
         player = GameObject.FindGameObjectWithTag("Player");
         loadingLaser.SetActive(false);
         startingRadius = loadingSphere.transform.localScale.x;
@@ -83,13 +86,18 @@ public class RayEnemyMovement : MonoBehaviour
         cameraShake = GetComponent<CameraShake>();
 
         spriteRenderer.sprite = defaultSprite;
-        eyesSpriteRenderer.sprite = defaultEyesSprite; ;
+        eyesSpriteRenderer.sprite = defaultEyesSprite;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!player) player = GameObject.FindGameObjectWithTag("Player");
+        //if(!player) player = GameObject.FindGameObjectWithTag("Player");
+
+        //Si no hay un rail en el que esté -> está esperando a la derecha a que se le asigne uno
+        if (indexRailEscogido == -1)
+            return;
+
 
         updateShield();
         switch (state)
@@ -113,19 +121,29 @@ public class RayEnemyMovement : MonoBehaviour
         }
     }
 
-    private void ChangeState(State newState)
+    IEnumerator ChangeState(State newState)
     {
         switch (newState)
         {
             case State.GoingLocation:
+                indexRailEscogido = -1;
                 GameObject randomDestination;
+                int rnd;
+                while(!railDisponible[0] && !railDisponible[1] && !railDisponible[2])
+                {
+                    yield return 0;
+                }
+
                 do
                 {
-                    int rnd = Random.Range(0, railsParent.transform.childCount);
+                    rnd = Random.Range(0, railsParent.transform.childCount);
                     randomDestination = railsParent.transform.GetChild(rnd).gameObject;
-                } while (currentDestination == randomDestination);
+                } while (!railDisponible[rnd]);
 
+                railDisponible[rnd] = false;
+                indexRailEscogido = rnd;
                 currentDestination = randomDestination;
+                Debug.Log("Selecciona camino " + rnd);
                 
                 break;
             case State.Loading:
@@ -150,6 +168,7 @@ public class RayEnemyMovement : MonoBehaviour
         }
 
         state = newState;
+
     }
 
     void updateShield()
@@ -200,7 +219,7 @@ public class RayEnemyMovement : MonoBehaviour
             //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
             //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
-        else ChangeState(State.Loading);
+        else StartCoroutine(ChangeState(State.Loading));
     }
 
 
@@ -240,7 +259,7 @@ public class RayEnemyMovement : MonoBehaviour
             //Dispare
             cameraShake.ShakeIt();
 
-            ChangeState(State.Shooting);
+            StartCoroutine(ChangeState(State.Shooting));
         }
 
 
@@ -254,6 +273,9 @@ public class RayEnemyMovement : MonoBehaviour
 
     }
 
+
+    
+
     private void RayEnemyShootinState()
     {
 
@@ -265,11 +287,11 @@ public class RayEnemyMovement : MonoBehaviour
             loadingSphere.SetActive(false);
             if (timesShot >= timesToShoot)
             {
-                ChangeState(State.Leaving);
+                StartCoroutine(ChangeState(State.Leaving));
             }
             else
             {
-                ChangeState(State.GoingLocation);
+                StartCoroutine(ChangeState(State.GoingLocation));
             }
             spriteRenderer.sprite = defaultSprite;
             eyesSpriteRenderer.sprite = defaultEyesSprite;
@@ -297,6 +319,7 @@ public class RayEnemyMovement : MonoBehaviour
         }
         else
         {
+            railDisponible[indexRailEscogido] = true;
             Destroy(gameObject);
         }
     }
