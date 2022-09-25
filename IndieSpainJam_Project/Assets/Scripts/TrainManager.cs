@@ -214,9 +214,60 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator MoveWagonsHorizontally()
     {
+        // Elegir un vagon aleatoriamente
+        WagonLogic wagon = wagons[Random.Range(0, 4)];
 
+        int currentwWagonIndex = wagon.wagonIndex;
+
+        // Elegir direccion a la que se puede mover
+        int wagonColumn = wagon.RailColumn;
+
+        // Averiguar si este vagon no tiene posibilidad de moverse
+        bool canGoLeft, canGoRight;
+
+        // Bordes
+        if (wagonColumn == 0) canGoLeft = false;
+        if (wagonColumn == 3) canGoRight = false;
+
+        foreach (WagonLogic thisWagon in wagons)
+        {
+            // Comprobar que no es el mismo
+            if (wagon != thisWagon)
+            {
+                // Misma linea
+                if (wagon.RailRow == thisWagon.RailRow)
+                {
+                    // Los dos lados
+                    if (wagonColumn - 1 == thisWagon.RailColumn)
+                        canGoLeft = false;
+                    if (wagonColumn + 1 == thisWagon.RailColumn)
+                        canGoRight = false;
+                }
+            }
+        }
+
+
+
+
+        int moveToThisColumn;
+        if (wagonColumn == 0)
+            moveToThisColumn = 1;
+        else if (wagonColumn == 3)
+            moveToThisColumn = 2;
+        else
+        {
+            // Elegir uno de los dos lados aleatoriamente
+            int k;
+            if (Random.Range(0, 2) == 0)
+                k = 1;
+            else k = -1;
+            moveToThisColumn = wagonColumn + k;
+        }
+            
 
         yield return new WaitForSeconds(5);
+
+        StartCoroutine(MoveWagonsHorizontally());
     }
 
     void RandomRail(ref bool railway_b)
