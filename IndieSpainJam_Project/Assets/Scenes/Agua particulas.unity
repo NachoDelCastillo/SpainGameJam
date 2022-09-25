@@ -14375,6 +14375,10 @@ MonoBehaviour:
   - {r: 0.96862745, g: 0, b: 0.65882355, a: 1}
   waterFillImage: {fileID: 120161032}
   timeForWaterDown: 0
+  waterDanger: {fileID: 0}
+  waterDangerIniPos: {fileID: 0}
+  waterDangerFinalPos: {fileID: 0}
+  waterParticles: {fileID: 0}
   waterDown: 0
   sparkSys: {fileID: 5961624223375900008, guid: 6e4926bc0f7d3a049bdb45dc7de1fa35, type: 3}
   dangerSprite: {fileID: 0}
@@ -15107,11 +15111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9
+      value: 4.49
       objectReference: {fileID: 0}
     - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.522
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: 6334325534931937563, guid: 06b0eeb7a9932494491a7258d7eccee4, type: 3}
       propertyPath: m_LocalPosition.z

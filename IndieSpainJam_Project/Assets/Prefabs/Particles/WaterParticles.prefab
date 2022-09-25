@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6334325534931937636}
-  m_LocalRotation: {x: -0.70696247, y: -0.014286844, z: 0.014286848, w: 0.70696247}
+  m_LocalRotation: {x: -0.7069625, y: -0.014284165, z: 0.014284165, w: 0.7069625}
   m_LocalPosition: {x: 2.9, y: 1.522, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.28
+      scalar: 4.09
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.9528427, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.7340565, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -668,7 +668,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: -30.03, z: 0}
+    m_Rotation: {x: 0, y: -40.1, z: -30.3}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -748,7 +748,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.35526967
+      value: 0.99
       mode: 0
       spread: 0
       speed:
@@ -805,7 +805,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 339.62
+      value: 360
       mode: 0
       spread: 0
       speed:
@@ -992,8 +992,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.5882332
         - serializedVersion: 3
-          time: 0.26351115
-          value: 0.80128396
+          time: 0.22160289
+          value: 0.82051384
           inSlope: 0.61701053
           outSlope: 0.61701053
           tangentMode: 0

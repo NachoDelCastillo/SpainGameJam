@@ -68,6 +68,7 @@ public class TrainManager : MonoBehaviour
     [SerializeField] Image waterFillImage;
     [SerializeField] float timeForWaterDown;
     [SerializeField] Transform waterDanger, waterDangerIniPos, waterDangerFinalPos;
+    [SerializeField] ParticleSystem waterParticles;
     Vector3 waterDangerTarget;
     bool rotateRight;
     public bool waterDown;
@@ -114,6 +115,7 @@ public class TrainManager : MonoBehaviour
         //currentWater = 0;
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
+        waterParticles.gameObject.SetActive(false);
 
         smoke.Pause();
 
@@ -306,6 +308,15 @@ public class TrainManager : MonoBehaviour
                 }
                 //si la rotacion en z no es 0 hacer rotacion volver a 0 en z smooth
             }
+
+            if (currentWater >= maxWater * 0.85f)
+            {
+                if(!waterParticles.gameObject.activeInHierarchy) waterParticles.gameObject.SetActive(true);
+
+                var main = waterParticles.main;
+                main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
+            }
+            else waterParticles.gameObject.SetActive(false);
 
             if (currentWater >= maxWater)
             {
