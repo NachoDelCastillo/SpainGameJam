@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
 public class TrainManager : MonoBehaviour
 {
+    [SerializeField] Light2D globalLight;
     public static TrainManager Instance { get; private set; }
 
     float elapsedTime = 0;
@@ -63,6 +65,7 @@ public class TrainManager : MonoBehaviour
     //Agua
     [SerializeField] public Slider waterSlider;
     [SerializeField] AnimationCurve waterCurve;
+    [SerializeField] AnimationCurve waterCurveMax;
     //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
@@ -121,6 +124,8 @@ public class TrainManager : MonoBehaviour
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
         waterParticles.Stop();
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
 
         AudioManager_PK.instance.sounds[6].source.mute = false;
         AudioManager_PK.instance.sounds[7].source.mute = false;
@@ -386,7 +391,6 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-
         if (health <= 0)
         {
             elapsedTime += Time.deltaTime;
@@ -403,7 +407,6 @@ public class TrainManager : MonoBehaviour
                 GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
         }
-
 
         UpdateWater();
 
@@ -430,7 +433,6 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-
         if (waterDown)
         {
             WaterDown();
@@ -438,6 +440,8 @@ public class TrainManager : MonoBehaviour
         else
         {
             if (TutorialManager.GetInstance().duringTutorial) return;
+            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+            waterSlider.maxValue = maxWater;
             //Updated upstream
             // Si el tren esta quieto no joder el vagon de agua
             //if (MainVelocity <= 0) return;
@@ -451,6 +455,7 @@ public class TrainManager : MonoBehaviour
             if (currentWater >= maxWater)
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                setGlobalLightColor(Color.red);
                 cameraShake.ShakeIt();
                 //Loop audio cuando se sale
                 if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
@@ -503,7 +508,11 @@ public class TrainManager : MonoBehaviour
                 TakeDamage(0);
                 WaterDanger();
             }
-            else waterDanger.gameObject.SetActive(false);
+            else
+            {
+                waterDanger.gameObject.SetActive(false);
+                TutorialManager.GetInstance().HideTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
+            }
 
 
             waterSlider.value = currentWater;
@@ -512,6 +521,10 @@ public class TrainManager : MonoBehaviour
         ColorWater();
     }
 
+    public void setGlobalLightColor(Color color)
+    {
+        globalLight.color = color;
+    }
 
     [SerializeField] SpriteRenderer dangerSprite;
     public void ColorWater()
@@ -543,6 +556,8 @@ public class TrainManager : MonoBehaviour
     {
         if (!waterDanger.gameObject.activeInHierarchy)
         {
+            TutorialManager.GetInstance().ShowTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
+
             waterDanger.gameObject.SetActive(true);
             StartCoroutine(AppearDanger());
         }
@@ -894,6 +909,7 @@ public class TrainManager : MonoBehaviour
 
         health -= amount;
 
+        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1); 
         if (health <= 0) health = 0;
 
         healthSlider.value = health;

@@ -289,7 +289,7 @@ public class PlayerController_2D : MonoBehaviour
         {
             int operativeCoals = 0;
             foreach (GrabbableItem item in reachableItems)
-                if (item != null && (Vector3.Distance(item.createdPos, item.transform.position) >= 0.25f))
+                if (item != null)
                     operativeCoals++;
 
             //GrabbableItem deleteThis = null;
@@ -358,16 +358,17 @@ public class PlayerController_2D : MonoBehaviour
             // Comprobar si se esta intentando agarrar uno del vagon del carbon
             else if (currentlyInCoalWagon)
             {
-                if (!coalWagon.coalReady) return;
+                //if (!coalWagon.coalReady) return;
 
-                coalWagon.clon.transform.parent = grabSpot;
-                StartCoroutine(Utils.MoveItemSmooth(coalWagon.clon.transform, grabSpot.transform, 0.2f));
-                grabbedItem = coalWagon.clon.GetComponent<GrabbableItem>();
-                grabbedItem.col.isTrigger = false;
-                grabbedItem.ItemGrabbed(this);
-                coalWagon.coalReady = false;
-                grabbingAnItem = true;
-                Invoke("EndGrabbing", 0.2f + .1f);
+                //coalWagon.clon.transform.parent = grabSpot;
+                //StartCoroutine(Utils.MoveItemSmooth(coalWagon.clon.transform, grabSpot.transform, 0.2f));
+                //grabbedItem = coalWagon.clon.GetComponent<GrabbableItem>();
+                //grabbedItem.inWagon = false;
+                //grabbedItem.col.isTrigger = false;
+                //grabbedItem.ItemGrabbed(this);
+                //coalWagon.coalReady = false;
+                //grabbingAnItem = true;
+                //Invoke("EndGrabbing", 0.2f + .1f);
             }
 
             else if (currentlyInWaterWagon)
@@ -381,6 +382,7 @@ public class PlayerController_2D : MonoBehaviour
                 //TrainManager.Instance.RechargeWater();
 
                 TrainManager.Instance.waterDown = true;
+                TrainManager.Instance.setGlobalLightColor(Color.white);
                 AudioManager_PK.instance.Stop("WaterExplosion");
                 AudioManager_PK.instance.Play("WaterDown", Random.Range(0.9f, 1f));
             }

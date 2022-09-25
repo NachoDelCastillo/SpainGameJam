@@ -13,25 +13,36 @@ public class GrabbableItem : MonoBehaviour
     public BoxCollider2D col;
 
     public bool coalReady;
-    public Vector3 createdPos;
+
+    public Transform initialParent;
+
+    public CoalWagon wagon;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+    }
 
+    private void Start()
+    {
         col.isTrigger = true;
     }
+
 
     public void ItemGrabbed(PlayerController_2D playerGrabbingThis_)
     {
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaTorreta);
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.agarrarCarbonParaMotor);
 
+        AudioManager_PK.instance.Play("PickUp", Random.Range(0.9f, 1.1f));
+
         playerGrabbingThis = playerGrabbingThis_;
 
         rb.isKinematic = true;
         col.isTrigger = true;
+
+        if (wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
     }
 
     public void ItemDropped()
@@ -40,5 +51,7 @@ public class GrabbableItem : MonoBehaviour
 
         rb.isKinematic = false;
         col.isTrigger = false;
+
+        if(wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
     }
 }

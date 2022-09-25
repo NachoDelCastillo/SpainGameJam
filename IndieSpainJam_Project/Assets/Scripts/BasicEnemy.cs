@@ -14,6 +14,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] GameObject sparksPrefab, bloodPrefab;
     [SerializeField] CircleCollider2D colliderDetection;
 
+
     [HideInInspector] public EnemySpawner enemySpawner;
 
     enum States { Chase, Attack, Death }
@@ -74,6 +75,9 @@ public class BasicEnemy : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
+    void globalLightColorChange() { 
+
+    }
 
     void Attack()
     {
@@ -81,6 +85,7 @@ public class BasicEnemy : MonoBehaviour
         {
             attacked = true;
             TrainManager.Instance.TakeDamage(damage);
+
 
             GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
             var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
