@@ -14547,7 +14547,7 @@ MonoBehaviour:
   waterDangerFinalPos: {fileID: 1289533047}
   waterDown: 0
   sparkSys: {fileID: 5961624223375900008, guid: 6e4926bc0f7d3a049bdb45dc7de1fa35, type: 3}
-  dangerSprite: {fileID: 0}
+  dangerSprite: {fileID: 730226457}
   wheel: {fileID: 4965670692278705106}
   innerWheel: {fileID: 2709263098891028647}
   initialWheelVelocity: 30
