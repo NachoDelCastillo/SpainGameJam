@@ -16,7 +16,7 @@ public class TrainManager : MonoBehaviour
 
     bool showingResults;
 
-    [SerializeField]
+    [SerializeField] 
     int MainVelocity = 0;
 
     Vector3[] initialPosOfWagons;
@@ -61,7 +61,7 @@ public class TrainManager : MonoBehaviour
 
     //Agua
     [SerializeField] Slider waterSlider;
-    [SerializeField] float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
+    [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
