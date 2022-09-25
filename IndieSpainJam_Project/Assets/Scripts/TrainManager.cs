@@ -92,9 +92,6 @@ public class TrainManager : MonoBehaviour
             Instance = this;
         }
 
-        AudioManager_PK.instance.sounds[6].source.mute = false;
-        AudioManager_PK.instance.sounds[7].source.mute = false;
-
         changeRail_Lists = new List<ChangeRail>[3];
 
         changeRail_Lists[0] = new List<ChangeRail>();
@@ -115,7 +112,10 @@ public class TrainManager : MonoBehaviour
         //currentWater = 0;
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
-        waterParticles.gameObject.SetActive(false);
+        waterParticles.Stop();
+
+        AudioManager_PK.instance.sounds[6].source.mute = false;
+        AudioManager_PK.instance.sounds[7].source.mute = false;
 
         smoke.Pause();
 
@@ -316,12 +316,12 @@ public class TrainManager : MonoBehaviour
 
             if (currentWater >= maxWater * 0.85f)
             {
-                if (!waterParticles.gameObject.activeInHierarchy) waterParticles.gameObject.SetActive(true);
+                if (!waterParticles.isPlaying) waterParticles.Play();
 
                 var main = waterParticles.main;
                 main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
             }
-            else waterParticles.gameObject.SetActive(false);
+            else if(waterParticles.isPlaying) waterParticles.Stop();
 
             if (currentWater >= maxWater)
             {
@@ -355,7 +355,7 @@ public class TrainManager : MonoBehaviour
     void WaterDown()
     {
         waterTimer += Time.deltaTime;
-        currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
+        if(waterCurve.Evaluate(waterTimer) * maxWater <= currentWater) currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
         waterSlider.value = currentWater;
 
         if (waterTimer >= timeForWaterDown)
