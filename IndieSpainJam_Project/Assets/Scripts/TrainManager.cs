@@ -63,6 +63,7 @@ public class TrainManager : MonoBehaviour
     //Agua
     [SerializeField] public Slider waterSlider;
     [SerializeField] AnimationCurve waterCurve;
+    [SerializeField] AnimationCurve waterCurveMax;
     //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
@@ -386,7 +387,6 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-
         if (health <= 0)
         {
             elapsedTime += Time.deltaTime;
@@ -404,7 +404,8 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-
+        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+        waterSlider.maxValue = maxWater;
         UpdateWater();
 
 
