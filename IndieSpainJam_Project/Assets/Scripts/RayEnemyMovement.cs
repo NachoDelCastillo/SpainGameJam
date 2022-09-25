@@ -222,6 +222,9 @@ public class RayEnemyMovement : MonoBehaviour
         {
             loadingSphere.transform.localScale = Vector2.one * (startingRadius) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad));
             
+            if (AudioManager_PK.instance.sounds[17].source.isPlaying)
+                AudioManager_PK.instance.Play("Charging", 0.3f + 
+                    (loadingSpehereScaleoverTime.Evaluate(1) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload))) * 1f);
         }
         else if (elapsedTimeToReload >= timeToLoad)
         {
