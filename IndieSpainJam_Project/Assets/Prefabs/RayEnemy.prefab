@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1398598679}
   - component: {fileID: 1398598680}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NeonEyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1520726505}
   - component: {fileID: 1520726504}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: force_shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,14 +108,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520726503}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7353145, w: -0.677726}
-  m_LocalPosition: {x: 3.94, y: -0.05, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.74663824, w: -0.6652303}
+  m_LocalPosition: {x: 1.8, y: -0.21, z: 0}
   m_LocalScale: {x: 14.047567, y: 16.251234, z: 16.25123}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2043408489}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 265.332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 263.4}
 --- !u!212 &1520726504
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2043408489}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RotShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,15 +191,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043408488}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0761121, w: 0.99709934}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.046234757, w: 0.99893063}
+  m_LocalPosition: {x: 1.51, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1520726505}
   m_Father: {fileID: 4303165075218013580}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.73}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.3}
 --- !u!1 &1006753961420609265
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 8901904117377847258}
   - component: {fileID: 1004926969895598816}
   - component: {fileID: 3229870417576901364}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2526487165148241020}
   - component: {fileID: 121999932386949341}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: NeonEyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 5283024234890671129}
   - component: {fileID: 7343239125389817977}
   - component: {fileID: 6396767477828312243}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ChargeLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 9081840503113217441}
   - component: {fileID: 496755049436395385}
   - component: {fileID: 100341041354584794}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5357,7 +5357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303165074325188411}
   - component: {fileID: 7272636577656294198}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LoadingSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5445,7 +5445,7 @@ GameObject:
   - component: {fileID: 4303165075218013553}
   - component: {fileID: 4303165075218013552}
   - component: {fileID: 2289875339474678972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RayEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5547,6 +5547,7 @@ MonoBehaviour:
   velocity: 2
   rotationSpeed: 1
   eyesSpriteRenderer: {fileID: 1398598680}
+  shieldGO: {fileID: 2043408488}
   timeToLoad: 3
   loadingLaser: {fileID: 3330685883569148297}
   loadingSphere: {fileID: 4303165074325188409}
@@ -5630,9 +5631,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2.1576605, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.6576605
 --- !u!114 &2289875339474678972
 MonoBehaviour:
   m_ObjectHideFlags: 0

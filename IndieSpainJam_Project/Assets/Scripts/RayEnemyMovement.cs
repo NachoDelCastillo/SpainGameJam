@@ -28,6 +28,10 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField]SpriteRenderer eyesSpriteRenderer;
 
 
+
+    //Shield 
+    [SerializeField] GameObject shieldGO;
+
     // GoingLocation variables
     GameObject currentDestination;
 
@@ -233,6 +237,24 @@ public class RayEnemyMovement : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Bullet b = collision.GetComponent<Bullet>();
+        if (b)
+        {
+            Vector2 direction = collision.transform.position - shieldGO.transform.position;
+            direction.Normalize();
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
+            shieldGO.transform.rotation = newRot;
+            b.ShieldImpacted();
+            
+
         }
     }
 }

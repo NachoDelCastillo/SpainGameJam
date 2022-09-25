@@ -124,7 +124,7 @@ public class BasicEnemy : MonoBehaviour
         if (wagon != null && wagon.transform.GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
         else if(bullet != null)
         {
-            Destroy(bullet.gameObject);
+            bullet.EnemyImpacted();
             states = States.Death;
         }
     }
