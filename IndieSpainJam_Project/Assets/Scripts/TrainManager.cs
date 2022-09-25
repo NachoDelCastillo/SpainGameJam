@@ -112,7 +112,7 @@ public class TrainManager : MonoBehaviour
         //currentWater = 0;
         //waterSlider.value = currentWater;
         waterDanger.gameObject.SetActive(false);
-        waterParticles.gameObject.SetActive(false);
+        waterParticles.Stop();
 
         AudioManager_PK.instance.sounds[6].source.mute = false;
         AudioManager_PK.instance.sounds[7].source.mute = false;
@@ -316,12 +316,12 @@ public class TrainManager : MonoBehaviour
 
             if (currentWater >= maxWater * 0.85f)
             {
-                if (!waterParticles.gameObject.activeInHierarchy) waterParticles.gameObject.SetActive(true);
+                if (!waterParticles.isPlaying) waterParticles.Play();
 
                 var main = waterParticles.main;
                 main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
             }
-            else waterParticles.gameObject.SetActive(false);
+            else if(waterParticles.isPlaying) waterParticles.Stop();
 
             if (currentWater >= maxWater)
             {
