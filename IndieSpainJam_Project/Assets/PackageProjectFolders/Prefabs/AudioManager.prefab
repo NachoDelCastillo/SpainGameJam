@@ -192,3 +192,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: Respawn
+    clip: {fileID: 8300000, guid: a383e99873a208d439ee73ed44a7470c, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
