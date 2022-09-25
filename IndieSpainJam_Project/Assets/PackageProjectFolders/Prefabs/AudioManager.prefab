@@ -185,3 +185,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: PDeath
+    clip: {fileID: 8300000, guid: 16e30d75e99e9b444b7bfc0e147e6b44, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}

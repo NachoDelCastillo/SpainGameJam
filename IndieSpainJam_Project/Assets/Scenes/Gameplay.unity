@@ -4707,7 +4707,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 8252471614491044087}
   respawnTime: 3
   pSystem: {fileID: 482642055}
-  sangrePart: {fileID: 0}
+  sangrePart: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
 --- !u!4 &1884531411
 Transform:
   m_ObjectHideFlags: 0
