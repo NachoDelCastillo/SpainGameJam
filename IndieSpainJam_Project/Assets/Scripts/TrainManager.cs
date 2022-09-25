@@ -639,11 +639,13 @@ public class TrainManager : MonoBehaviour
 
             pressAnything_b = false;
 
+            pressAnything_b = Input.anyKey;
+
             while (!pressAnything_b)
                 yield return 0;
 
             CancelInvoke();
-            GameManager.instance.ChangeScene("Gameplay");
+            GameManager.instance.ChangeScene("MainMenu_Scene");
         }
 
 
