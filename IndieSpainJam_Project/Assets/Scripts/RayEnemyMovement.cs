@@ -33,7 +33,10 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] GameObject shieldGO;
     [SerializeField] float timeGlowHit = 0;
     [SerializeField] AnimationCurve curveGlowingShield;
+
+    bool glowing;
     float elapsedTimeShieldGlowing = 0;
+
 
     // GoingLocation variables
     GameObject currentDestination;
@@ -159,9 +162,22 @@ public class RayEnemyMovement : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
         shieldGO.transform.rotation = newRot;
 
+        if (glowing)
+        {
+            elapsedTimeShieldGlowing += Time.deltaTime;
+            SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
+            var a = pSysShield.color.a;
+            a = curveGlowingShield.Evaluate(timeGlowHit - elapsedTimeShieldGlowing);
 
-        SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
-        pSysShield.material.SetFloat("_Intensity", pSysShield.material.GetFloat("_Intensity") + 1);
+            if (elapsedTimeShieldGlowing >= timeGlowHit)
+            {
+                glowing = false;
+                elapsedTimeShieldGlowing = 0;
+                a = 0;
+            }
+        }
+        //SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
+        //pSysShield.material.SetFloat("_Intensity", pSysShield.material.GetFloat("_Intensity") + 1);
         
     }
 

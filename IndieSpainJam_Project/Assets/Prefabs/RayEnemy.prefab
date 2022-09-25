@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: a9d5c010fdd104841bddff5d03d360e9, type: 3}
-  m_Color: {r: 0.81568635, g: 0.3372549, b: 0.882353, a: 0.74509805}
+  m_Color: {r: 0.81568635, g: 0.3372549, b: 0.882353, a: 0.7647059}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5466,10 +5466,38 @@ MonoBehaviour:
   timeGlowHit: 0.5
   curveGlowingShield:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.056900207
+      value: 161.51987
+      inSlope: 664.4926
+      outSlope: 664.4926
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.27549627
+    - serializedVersion: 3
+      time: 0.17160009
+      value: 249.00298
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.98678875
+      value: 171.81895
+      inSlope: -163.3405
+      outSlope: -163.3405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1943231
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  shieldAlphas: []
   timeToLoad: 3
   loadingLaser: {fileID: 3330685883569148297}
   loadingSphere: {fileID: 4303165074325188409}
