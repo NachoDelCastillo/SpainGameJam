@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
 public class TrainManager : MonoBehaviour
 {
+    [SerializeField] Light2D globalLight;
     public static TrainManager Instance { get; private set; }
 
     float elapsedTime = 0;
@@ -453,6 +455,7 @@ public class TrainManager : MonoBehaviour
             if (currentWater >= maxWater)
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                setGlobalLightColor(255, 0, 0, 255);
                 cameraShake.ShakeIt();
                 //Loop audio cuando se sale
                 if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
@@ -516,6 +519,11 @@ public class TrainManager : MonoBehaviour
         }
 
         ColorWater();
+    }
+
+    public void setGlobalLightColor(int v1, int v2, int v3, int v4)
+    {
+        globalLight.color = new Color(v1, v2, v3, v4);
     }
 
     [SerializeField] SpriteRenderer dangerSprite;
@@ -901,6 +909,7 @@ public class TrainManager : MonoBehaviour
 
         health -= amount;
 
+        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1); 
         if (health <= 0) health = 0;
 
         healthSlider.value = health;
