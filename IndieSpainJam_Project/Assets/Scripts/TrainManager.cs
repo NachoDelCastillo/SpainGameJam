@@ -60,14 +60,11 @@ public class TrainManager : MonoBehaviour
     List<ChangeRail>[] changeRail_Lists;
 
     //Agua
-    [SerializeField] Slider waterSlider;
-<<<<<<< Updated upstream
+    [SerializeField] public Slider waterSlider;
+    //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
-=======
-    [SerializeField] float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
     [SerializeField] Image waterFillImage;
->>>>>>> Stashed changes
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -223,12 +220,9 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-<<<<<<< Updated upstream
         if (!TutorialManager.GetInstance().duringTutorial)
-            RestWater();
-=======
-        UpdateWater();
->>>>>>> Stashed changes
+            UpdateWater();
+
 
         RotateWheel();
 
@@ -252,14 +246,12 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-<<<<<<< Updated upstream
+        //Updated upstream
         // Si el tren esta quieto no joder el vagon de agua
         if (MainVelocity <= 0) return;
 
-        currentWater -= waterSubstracPerSecond * Time.deltaTime;
-=======
         currentWater += waterSubstracPerSecond * Time.deltaTime;
->>>>>>> Stashed changes
+
         currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
         if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
