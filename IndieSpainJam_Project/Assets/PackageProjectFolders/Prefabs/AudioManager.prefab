@@ -111,7 +111,7 @@ MonoBehaviour:
   - name: Shoot
     clip: {fileID: 8300000, guid: 57c9e9dabea54214aa2180c9032a27be, type: 3}
     volume: 1
-    maxVolume: 0.1
+    maxVolume: 0.05
     pitch: 1
     music: 0
     source: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   - name: NoAmmo
     clip: {fileID: 8300000, guid: 77f720a38e22f6540a8ea3a78c647912, type: 3}
     volume: 1
-    maxVolume: 0.75
+    maxVolume: 0.3
     pitch: 1
     music: 0
     source: {fileID: 0}
@@ -140,6 +140,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c4673b985e022a1479bb083cb9964c03, type: 3}
     volume: 1
     maxVolume: 0.75
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
+  - name: Shield
+    clip: {fileID: 8300000, guid: b12a0eca82d8ef14c9ef01de57d2e3f2, type: 3}
+    volume: 1
+    maxVolume: 0.7
     pitch: 1
     music: 0
     source: {fileID: 0}

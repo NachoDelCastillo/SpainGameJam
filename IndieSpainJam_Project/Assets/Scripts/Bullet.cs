@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         rb.isKinematic = true;
         pSys.Play();
+        AudioManager_PK.instance.Play("Shield", Random.Range(0.5f, 0.7f));
     }
 
 
