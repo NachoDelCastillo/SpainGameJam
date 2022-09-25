@@ -63,6 +63,7 @@ public class TutorialManager : MonoBehaviour
             // Joder vagon de agua
             TrainManager.Instance.currentWater = TrainManager.Instance.maxWater;
             TrainManager.Instance.waterSlider.value = TrainManager.Instance.maxWater;
+            TrainManager.Instance.ColorWater();
 
             // Joder Torreta
             Turret turret = FindObjectOfType<Turret>();
