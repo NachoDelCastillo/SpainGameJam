@@ -4976,6 +4976,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: maxWater
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1428882617}
@@ -4988,9 +4992,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 255504361}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: maxIntensity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: pressAnything
       value: 
       objectReference: {fileID: 1137582939}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: normalIntensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: MainVelocity_text
       value: 
