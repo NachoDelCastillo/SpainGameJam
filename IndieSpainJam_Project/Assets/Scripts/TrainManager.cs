@@ -455,7 +455,7 @@ public class TrainManager : MonoBehaviour
             if (currentWater >= maxWater)
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
-                setGlobalLightColor(255, 0, 0, 255);
+                setGlobalLightColor(Color.red);
                 cameraShake.ShakeIt();
                 //Loop audio cuando se sale
                 if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
@@ -521,9 +521,9 @@ public class TrainManager : MonoBehaviour
         ColorWater();
     }
 
-    public void setGlobalLightColor(int v1, int v2, int v3, int v4)
+    public void setGlobalLightColor(Color color)
     {
-        globalLight.color = new Color(v1, v2, v3, v4);
+        globalLight.color = color;
     }
 
     [SerializeField] SpriteRenderer dangerSprite;
