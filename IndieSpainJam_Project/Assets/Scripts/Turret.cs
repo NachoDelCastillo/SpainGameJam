@@ -73,16 +73,19 @@ public class Turret : MonoBehaviour
                 timeElaspedSinceLastShot = 0;
                 shootRight = !shootRight;
 
-                imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
-
-                imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+                UpdateAmmoSlider();
             }
 
             turretSprite.transform.localPosition = new Vector2(-knockbackCurve.Evaluate(timeElaspedSinceLastShot / timeBetweenShots), 0);
         }
-
-
     }
+
+    public void UpdateAmmoSlider()
+    {
+        imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
+        imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
+    }
+
 
     public void changeShooting(bool newValue)
     {
