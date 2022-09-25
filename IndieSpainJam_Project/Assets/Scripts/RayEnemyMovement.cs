@@ -131,7 +131,7 @@ public class RayEnemyMovement : MonoBehaviour
                 int rnd;
                 while(!railDisponible[0] && !railDisponible[1] && !railDisponible[2])
                 {
-                    yield return 0;
+                    yield return null;
                 }
 
                 do
