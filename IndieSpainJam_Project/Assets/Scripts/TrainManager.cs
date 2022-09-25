@@ -267,7 +267,6 @@ public class TrainManager : MonoBehaviour
         waterSlider.value = currentWater;
     }
 
-
     [SerializeField] SpriteRenderer dangerSprite;
     public void ColorWater()
     {
