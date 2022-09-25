@@ -660,7 +660,8 @@ public class TrainManager : MonoBehaviour
             smoke.Play();
         }
 
-        MainVelocity += velocityGainedByCoal;
+        StartCoroutine(UpdateTextSpeed());
+
         GameObject clon = Instantiate(sparkSys, wheel.position, Quaternion.identity);
         clon.transform.parent = wheel;
         StartCoroutine(GlowWheel());
@@ -673,10 +674,23 @@ public class TrainManager : MonoBehaviour
         var aux2 = smoke.velocityOverLifetime;
         aux2.x = a;
 
-        MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
-
         EnemySpawner.myDelegate?.Invoke();
 
+    }
+
+    IEnumerator UpdateTextSpeed()
+    {
+        int lastMainVel = MainVelocity;
+        MainVelocity += velocityGainedByCoal;
+        float add = 0;
+
+        while(add <= velocityGainedByCoal)
+        {
+            add += Time.deltaTime / 2 * velocityGainedByCoal;
+            int text = lastMainVel + Mathf.RoundToInt(add);
+            MainVelocity_text.text = text.ToString() + " / 100 Km";
+            yield return null;
+        }
     }
 
     public void TakeDamage(float amount)
