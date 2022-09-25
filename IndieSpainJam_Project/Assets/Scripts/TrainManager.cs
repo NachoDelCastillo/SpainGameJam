@@ -262,10 +262,17 @@ public class TrainManager : MonoBehaviour
         if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
         TakeDamage(0);
 
-        float value = currentWater / maxWater;
-        waterFillImage.color = (value > 0.5) ? Color.Lerp(waterColorSlider[1], waterColorSlider[2], (value - 0.5f) * 2) : Color.Lerp(waterColorSlider[1], waterColorSlider[0], Mathf.Abs(value - 0.5f) * 2);
+        ColorWater();
 
         waterSlider.value = currentWater;
+    }
+
+
+    [SerializeField] SpriteRenderer dangerSprite;
+    public void ColorWater()
+    {
+        float value = currentWater / maxWater;
+        waterFillImage.color = (value > 0.5) ? Color.Lerp(waterColorSlider[1], waterColorSlider[2], (value - 0.5f) * 2) : Color.Lerp(waterColorSlider[1], waterColorSlider[0], Mathf.Abs(value - 0.5f) * 2);
     }
 
     public void RechargeWater()
