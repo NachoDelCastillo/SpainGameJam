@@ -14,7 +14,7 @@ public class TrainManager : MonoBehaviour
     float elapsedTime = 0;
     float timeToMuteExplosions = 5f;
     public bool gameLost = false, letterOfFinalWhenLoseAlreadyOut = false;
-    bool showingResults;
+    bool showingResults, waterTankExploding = false;
 
     [SerializeField]
     int MainVelocity = 0;
@@ -452,6 +452,9 @@ public class TrainManager : MonoBehaviour
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
                 cameraShake.ShakeIt();
+                //Loop audio cuando se sale
+                if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
+                    AudioManager_PK.instance.Play("WaterExplosion", Random.Range(0.7f, 0.75f));
             }
             TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);

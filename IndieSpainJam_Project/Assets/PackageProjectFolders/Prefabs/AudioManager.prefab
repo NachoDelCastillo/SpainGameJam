@@ -157,3 +157,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: WaterExplosion
+    clip: {fileID: 8300000, guid: 1a6e4828271d9504aaf731384536419b, type: 3}
+    volume: 1
+    maxVolume: 0.7
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
