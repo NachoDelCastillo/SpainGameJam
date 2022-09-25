@@ -123,7 +123,12 @@ public class TrainManager : MonoBehaviour
 
         initialPosOfWagons = new Vector3[4];
         for (int i = 0; i < wagons.Length; i++)
+        {
             initialPosOfWagons[i] = wagons[i].transform.position;
+            wagons[i].RailColumn = i;
+        }
+
+        wagons[3].locomotora = true;
 
         wheelMaterial = wheelNeon.material;
         wheelBaseColor = wheelMaterial.GetColor("_Color");
