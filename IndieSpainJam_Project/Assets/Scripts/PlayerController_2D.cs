@@ -11,6 +11,7 @@ public class PlayerController_2D : MonoBehaviour
     [HideInInspector] public int playerIndex;
 
     [SerializeField] float speed = 10;
+    public bool beingUsed;
 
     // Components
     Rigidbody2D rb;
@@ -83,6 +84,7 @@ public class PlayerController_2D : MonoBehaviour
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         screenLimit = screenBounds.x - screenMargin;
         killable = true;
+        beingUsed = false;
 
     }
 

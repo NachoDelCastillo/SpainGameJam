@@ -18,6 +18,7 @@ public class Turret : MonoBehaviour
     [SerializeField] GameObject turretSprite;
     [SerializeField] AnimationCurve knockbackCurve;
     [SerializeField] Color[] colorFadeHUD;
+    public bool beingUsed;
 
     bool shooting, drawBack;
     bool shootRight;
