@@ -121,9 +121,9 @@ public class LocalMultiplayerManager : MonoBehaviour
         player.enabled = true;
         player.GetComponent<BoxCollider2D>().enabled = true;
 
+        StartCoroutine(player.RespawnColor(1.5f));
 
-        yield return new WaitForSeconds(1.5f);
-        player.killable = true;
+
 
     }
 

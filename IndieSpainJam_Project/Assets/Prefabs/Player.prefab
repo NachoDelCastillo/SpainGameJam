@@ -5147,6 +5147,7 @@ MonoBehaviour:
   gfx: {fileID: 4391568662358387163}
   anim: {fileID: 3995636423522328657}
   grabSpot: {fileID: 1837162518}
+  colorRespawn: {r: 0, g: 1, b: 0.98097944, a: 1}
   jumpForce: 2800
   turret: {fileID: 0}
   groundCheck_tr: {fileID: 3995636422682302807}
