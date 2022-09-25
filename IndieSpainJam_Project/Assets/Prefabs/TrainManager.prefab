@@ -6415,8 +6415,8 @@ MonoBehaviour:
   MainVelocity: 0
   cameraShake: {fileID: 0}
   wheelNeon: {fileID: 8770769216860560678}
-  maxIntensity: 500
-  normalIntensity: 30
+  maxIntensity: 100
+  normalIntensity: 10
   timeToReachMax: 0.5
   smoke: {fileID: 2349758451666518682}
   deliverCoal: {fileID: 4355813151630644650}
@@ -6474,8 +6474,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  waterCurveMax:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 8
+      inSlope: -12
+      outSlope: -12
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   currentWater: 0
-  maxWater: 8
+  maxWater: 12
   waterSubstracPerSecond: 1
   dmgWhenWater0PerSecond: 1
   waterColorSlider:
