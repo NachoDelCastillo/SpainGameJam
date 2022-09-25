@@ -6399,6 +6399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4355813152788421226}
   - component: {fileID: 4355813152788421227}
+  - component: {fileID: 581589685401405750}
   m_Layer: 0
   m_Name: TrainManager
   m_TagString: Untagged
@@ -6437,6 +6438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030897bfd4ebd514caaedefd7bba8a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLost: 0
   MainVelocity: 0
   wheelNeon: {fileID: 8770769216860560678}
   maxIntensity: 500
@@ -6520,6 +6522,21 @@ MonoBehaviour:
   innerWheel: {fileID: 6638644831449946995}
   initialWheelVelocity: 30
   maxWheelVelocity: 200
+--- !u!114 &581589685401405750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4355813152788421224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b2adbe59a9954285e187e436451de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeMagnitude: 0.02
+  shakeTime: 0.5
+  mainCamera: {fileID: 0}
 --- !u!1 &5088380762160443043
 GameObject:
   m_ObjectHideFlags: 0

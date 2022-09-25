@@ -20,6 +20,7 @@ public class TrainManager : MonoBehaviour
     int MainVelocity = 0;
 
     Vector3[] initialPosOfWagons;
+    [SerializeField] CameraShake cameraShake;
 
     [SerializeField] SpriteRenderer wheelNeon;
     Material wheelMaterial;
@@ -105,6 +106,7 @@ public class TrainManager : MonoBehaviour
 
     private void Start()
     {
+        cameraShake = GetComponent<CameraShake>();
         gameLost = false; 
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
@@ -289,7 +291,11 @@ public class TrainManager : MonoBehaviour
 
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-            if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
+            if (currentWater >= maxWater)
+            {
+                health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                cameraShake.ShakeIt();
+            }
             TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
