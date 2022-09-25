@@ -1510,6 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793df6d8cafeb854dacea2923c6787dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonIndex: 0
   dead: {fileID: 0}
   RailRow: 1
   RailColumn: 1
@@ -1730,6 +1731,10 @@ PrefabInstance:
     - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_Name
       value: RayEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303165075218013580, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
       propertyPath: m_RootOrder
@@ -4942,7 +4947,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c3dc48c5963190c4081b6e49817acc17, type: 2}
     - target: {fileID: 8770769216966187859, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.x

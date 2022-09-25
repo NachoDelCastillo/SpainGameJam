@@ -10,7 +10,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] Animator anim;
 
     [SerializeField] float speed, detectionRadius, destroyTime, damage, attackFrecuency;
-    [SerializeField] GameObject sparksPrefab;
+    [SerializeField] GameObject sparksPrefab, bloodPrefab;
     [SerializeField] CircleCollider2D colliderDetection;
 
     [HideInInspector] public EnemySpawner enemySpawner;
@@ -125,6 +125,8 @@ public class BasicEnemy : MonoBehaviour
         if (wagon != null && wagon.transform.GetChild(0).GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
         else if(bullet != null)
         {
+            Instantiate(bloodPrefab, transform.position, bullet.transform.rotation);
+
             bullet.EnemyImpacted();
             states = States.Death;
         }
