@@ -7289,6 +7289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3248124563058833523, guid: ea12a86540f21084d9db73af597e0260, type: 3}
+  - {fileID: 4303165075218013559, guid: 4462ce4734c033d4182f22970ff8aa36, type: 3}
+  rayEnemyDestination: {fileID: 184793721}
+  rayEnemyLeavingPoint: {fileID: 1047064077}
   animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -7480,6 +7483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bfddd62c78a14d95b7f40f8ebf0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doTutorial: 0
   duringTutorial: 0
   tutorialElements:
   - phase: 0

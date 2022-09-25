@@ -539,6 +539,8 @@ public class TrainManager : MonoBehaviour
 
         MainVelocity_text.text = MainVelocity.ToString() + " / 100 Km";
 
+        EnemySpawner.myDelegate?.Invoke();
+
     }
 
     public void TakeDamage(float amount)
