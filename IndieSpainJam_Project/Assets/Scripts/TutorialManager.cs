@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = false;
+        doTutorial = true;
 
         if (doTutorial)
         {
@@ -60,8 +60,9 @@ public class TutorialManager : MonoBehaviour
             // Empezar primera parte del tutorial
             ShowTutorialItems((tutPhases)0);
 
-            //// Joder vagon de agua
-            //TrainManager.Instance.currentWater = 1;
+            // Joder vagon de agua
+            TrainManager.Instance.currentWater = TrainManager.Instance.maxWater;
+            TrainManager.Instance.waterSlider.value = TrainManager.Instance.maxWater;
 
             // Joder Torreta
             Turret turret = FindObjectOfType<Turret>();

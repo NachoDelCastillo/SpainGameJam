@@ -92,7 +92,11 @@ public class TrainManager : MonoBehaviour
         changeRail_Lists[0] = new List<ChangeRail>();
         changeRail_Lists[1] = new List<ChangeRail>();
         changeRail_Lists[2] = new List<ChangeRail>();
+
+
+        waterSlider.maxValue = maxWater;
     }
+
 
     private void Start()
     {
@@ -100,9 +104,8 @@ public class TrainManager : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
 
-        currentWater = 0;
-        waterSlider.maxValue = maxWater;
-        waterSlider.value = currentWater;
+        //currentWater = 0;
+        //waterSlider.value = currentWater;
 
         smoke.Pause();
 
