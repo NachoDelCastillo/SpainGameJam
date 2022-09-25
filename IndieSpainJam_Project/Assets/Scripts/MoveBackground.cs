@@ -18,7 +18,7 @@ public class MoveBackground : MonoBehaviour
 		for (int i = 0; i < transform.childCount; i++)
 		{
 			childrenTransforms[i] = transform.GetChild(i).gameObject.transform;
-			spriteWidths[i] = transform.GetChild(i).GetComponent <SpriteRenderer>().bounds.size.x;
+			spriteWidths[i] = transform.GetChild(i).GetComponent<SpriteRenderer>().bounds.size.x;
 		}
 	}
 	void LateUpdate()

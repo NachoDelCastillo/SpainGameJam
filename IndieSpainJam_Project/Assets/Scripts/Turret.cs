@@ -176,6 +176,9 @@ public class Turret : MonoBehaviour
         {
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
 
+            if (!AudioManager_PK.instance.sounds[11].source.isPlaying)
+                AudioManager_PK.instance.Play("Reload", Random.Range(0.9f, 1f));
+
             collision.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
             collision.transform.GetChild(0).DOScale(0, 1);
             collision.transform.DOMove(cannonPivot.transform.position, 1);
