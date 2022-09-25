@@ -370,7 +370,9 @@ public class PlayerController_2D : MonoBehaviour
 
                 TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.repararVagonAgua);
 
-                TrainManager.Instance.RechargeWater();
+                //TrainManager.Instance.RechargeWater();
+
+                TrainManager.Instance.waterDown = true;
             }
         }
     }
