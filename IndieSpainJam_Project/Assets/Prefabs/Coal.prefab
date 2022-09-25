@@ -52,8 +52,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   col: {fileID: 0}
   coalReady: 0
-  inWagon: 0
   initialParent: {fileID: 0}
+  wagon: {fileID: 0}
 --- !u!61 &6603382460719470894
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 using UnityEngine.InputSystem;
 
 public class LocalMultiplayerManager : MonoBehaviour
@@ -24,8 +25,8 @@ public class LocalMultiplayerManager : MonoBehaviour
     [SerializeField] float respawnTime;
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] GameObject sangrePart;
-    
-    //[SerializeField] TMP_Text
+
+    [SerializeField] TMP_Text numPlayers;
 
     private void Awake()
     {
@@ -53,7 +54,8 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         allPlayers.Add(newPlayerController);
 
-
+        numPlayers.text = allPlayers.Count + " / " + playerInputManager.maxPlayerCount + " Jugadores";
+        //numPlayers.transform.DOScale(Vector3.one * 1.2f, .5f);
     }
 
     public void Respawn(PlayerController_2D player)
