@@ -16,7 +16,7 @@ public class TrainManager : MonoBehaviour
 
     bool showingResults;
 
-    [SerializeField] 
+    [SerializeField]
     int MainVelocity = 0;
 
     Vector3[] initialPosOfWagons;
@@ -259,18 +259,18 @@ public class TrainManager : MonoBehaviour
     void UpdateWater()
     {
 
-        if(waterDown)
+        if (waterDown)
         {
             WaterDown();
         }
-        else 
+        else
         {
             if (TutorialManager.GetInstance().duringTutorial) return;
-                //Updated upstream
-                // Si el tren esta quieto no joder el vagon de agua
-                //if (MainVelocity <= 0) return;
+            //Updated upstream
+            // Si el tren esta quieto no joder el vagon de agua
+            //if (MainVelocity <= 0) return;
 
-                Debug.Log("currentWater = " + currentWater);
+            // Debug.Log("currentWater = " + currentWater);
 
             currentWater += waterSubstracPerSecond * Time.deltaTime;
 
@@ -311,7 +311,7 @@ public class TrainManager : MonoBehaviour
 
             if (currentWater >= maxWater * 0.85f)
             {
-                if(!waterParticles.gameObject.activeInHierarchy) waterParticles.gameObject.SetActive(true);
+                if (!waterParticles.gameObject.activeInHierarchy) waterParticles.gameObject.SetActive(true);
 
                 var main = waterParticles.main;
                 main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
@@ -332,7 +332,7 @@ public class TrainManager : MonoBehaviour
 
         ColorWater();
     }
-  
+
 
     [SerializeField] SpriteRenderer dangerSprite;
     public void ColorWater()
@@ -353,7 +353,7 @@ public class TrainManager : MonoBehaviour
         currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
         waterSlider.value = currentWater;
 
-        if(waterTimer >= timeForWaterDown)
+        if (waterTimer >= timeForWaterDown)
         {
             waterTimer = 0;
             waterDown = false;
@@ -362,7 +362,7 @@ public class TrainManager : MonoBehaviour
 
     void WaterDanger()
     {
-        if(!waterDanger.gameObject.activeInHierarchy)
+        if (!waterDanger.gameObject.activeInHierarchy)
         {
             waterDanger.gameObject.SetActive(true);
             StartCoroutine(AppearDanger());
@@ -376,7 +376,7 @@ public class TrainManager : MonoBehaviour
     IEnumerator AppearDanger()
     {
         waterDanger.localScale = Vector3.zero;
-        while(waterDanger.localScale.x < 1)
+        while (waterDanger.localScale.x < 1)
         {
             waterDanger.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
             yield return null;
