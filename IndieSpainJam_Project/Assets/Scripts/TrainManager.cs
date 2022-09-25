@@ -433,8 +433,6 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
-        waterSlider.maxValue = maxWater;
         if (waterDown)
         {
             WaterDown();
@@ -442,6 +440,8 @@ public class TrainManager : MonoBehaviour
         else
         {
             if (TutorialManager.GetInstance().duringTutorial) return;
+            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+            waterSlider.maxValue = maxWater;
             //Updated upstream
             // Si el tren esta quieto no joder el vagon de agua
             //if (MainVelocity <= 0) return;
