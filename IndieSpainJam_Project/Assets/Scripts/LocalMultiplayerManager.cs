@@ -22,6 +22,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     [SerializeField] Transform respawnPoint;
     [SerializeField] float respawnTime;
     [SerializeField] ParticleSystem pSystem;
+    [SerializeField] GameObject sangrePart;
     
 
     private void Awake()
@@ -105,7 +106,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         //invencibilidad al reaparecer
         player.killable = false;
 
-
+        Instantiate(sangrePart, player.transform.position, Quaternion.identity);
         //Crear marcador en la UI con el tiempo que queda
         UIManager.GetInstance().CreateSpawnTimer(player.gameObject.transform, time);
 
