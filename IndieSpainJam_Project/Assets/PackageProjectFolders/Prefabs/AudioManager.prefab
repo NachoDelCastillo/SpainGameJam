@@ -150,3 +150,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: WaterDown
+    clip: {fileID: 8300000, guid: 6a2b94fa00148824f81acc244a55736a, type: 3}
+    volume: 1
+    maxVolume: 0.7
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
