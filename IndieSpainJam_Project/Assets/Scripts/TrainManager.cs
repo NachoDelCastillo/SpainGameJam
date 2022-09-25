@@ -406,7 +406,7 @@ public class TrainManager : MonoBehaviour
                     AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 }
             }
-            if((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
+            if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
                 GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
         }
@@ -942,4 +942,5 @@ public class TrainManager : MonoBehaviour
         }
 
     }
+}
     #endregion
