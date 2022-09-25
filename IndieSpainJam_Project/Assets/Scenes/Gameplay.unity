@@ -1502,6 +1502,7 @@ MonoBehaviour:
   dead: {fileID: 0}
   RailRow: 1
   RailColumn: 1
+  locomotora: 0
 --- !u!4 &514796534
 Transform:
   m_ObjectHideFlags: 0
@@ -4691,6 +4692,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3337171315973414225, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337171315973414225, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421224, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Name
       value: TrainManager
@@ -4763,6 +4772,22 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
+    - target: {fileID: 8770769216959207524, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217654460640, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Color.a
+      value: 0.43137255
+      objectReference: {fileID: 0}
     - target: {fileID: 8770769217846926932, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Camera
       value: 
