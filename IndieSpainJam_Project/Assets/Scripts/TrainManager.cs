@@ -60,11 +60,18 @@ public class TrainManager : MonoBehaviour
     List<ChangeRail>[] changeRail_Lists;
 
     //Agua
+    [Header("Agua")]
     [SerializeField] public Slider waterSlider;
+    [SerializeField] AnimationCurve waterCurve;
     //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
     [SerializeField] Image waterFillImage;
+    [SerializeField] float timeForWaterDown;
+    [SerializeField] Transform waterDanger, waterDangerIniPos, waterDangerFinalPos;
+    Vector3 waterDangerTarget;
+    public bool waterDown;
+    float waterTimer;
 
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
@@ -106,6 +113,9 @@ public class TrainManager : MonoBehaviour
 
         //currentWater = 0;
         //waterSlider.value = currentWater;
+        waterTimer = 0;
+        waterDangerTarget = waterDangerIniPos.position;
+        waterDanger.gameObject.SetActive(false);
 
         smoke.Pause();
 
@@ -222,8 +232,8 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-        if (!TutorialManager.GetInstance().duringTutorial)
-            UpdateWater();
+        
+        UpdateWater();
 
 
         RotateWheel();
@@ -253,18 +263,46 @@ public class TrainManager : MonoBehaviour
         // Si el tren esta quieto no joder el vagon de agua
         //if (MainVelocity <= 0) return;
 
-        Debug.Log("currentWater = " + currentWater);
+        if (waterDown)
+        {
+            WaterDown();
+        }
+        else
+        {
+            if (TutorialManager.GetInstance().duringTutorial) return;
 
-        currentWater += waterSubstracPerSecond * Time.deltaTime;
+            Debug.Log("currentWater = " + currentWater);
 
-        currentWater = Mathf.Clamp(currentWater, 0, maxWater);
+            currentWater += waterSubstracPerSecond * Time.deltaTime;
 
-        if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
-        TakeDamage(0);
+            currentWater = Mathf.Clamp(currentWater, 0, maxWater);
+
+            if (currentWater >= maxWater)
+            {
+                health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                TakeDamage(0);
+                WaterDanger();
+            }
+            else waterDanger.gameObject.SetActive(false);
+
+
+            waterSlider.value = currentWater;
+        }
 
         ColorWater();
+    }
 
+    void WaterDown()
+    {
+        waterTimer += Time.deltaTime;
+        currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
         waterSlider.value = currentWater;
+        if (waterTimer >= timeForWaterDown)
+        {
+            currentWater = 0;
+            waterTimer = 0;     
+            waterDown = false;
+        }
     }
 
     [SerializeField] SpriteRenderer dangerSprite;
@@ -279,6 +317,39 @@ public class TrainManager : MonoBehaviour
         currentWater = 0;
         waterSlider.value = currentWater;
     }
+
+
+    void WaterDanger()
+    {
+        if(!waterDanger.gameObject.activeInHierarchy)
+        {
+            waterDanger.gameObject.SetActive(true);
+            StartCoroutine(AppearWaterDanger());
+        }
+        else
+        {
+            if (waterDanger.transform.position.y - waterDangerTarget.y >= 0.1)
+            {
+                waterDanger.transform.position = Vector3.Lerp(waterDanger.transform.position, waterDangerTarget, 6 * Time.deltaTime);
+            }
+            else
+            {
+                if (waterDangerTarget == waterDangerIniPos.position) waterDangerTarget = waterDangerFinalPos.position;
+                else waterDangerTarget = waterDangerIniPos.position;
+            }
+        }
+    }
+
+    IEnumerator AppearWaterDanger()
+    {
+        waterDanger.localScale = Vector3.zero;
+        while(waterDanger.localScale.x < 1)
+        {
+            waterDanger.localScale = new Vector3(waterDanger.localScale.x + Time.deltaTime * 2, waterDanger.localScale.y + Time.deltaTime * 2, waterDanger.localScale.z + Time.deltaTime * 2);
+            yield return null; 
+        }
+    }
+
 
     [SerializeField]
 
