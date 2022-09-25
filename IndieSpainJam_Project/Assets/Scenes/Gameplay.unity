@@ -14364,9 +14364,9 @@ MonoBehaviour:
   waterSubstracPerSecond: 1
   dmgWhenWater0PerSecond: 5
   waterColorSlider:
-  - {r: 0.09803922, g: 0.94509804, b: 0.96862745, a: 1}
-  - {r: 0.98039216, g: 0.8862745, b: 0.35686275, a: 1}
-  - {r: 0.96862745, g: 0, b: 0.65882355, a: 1}
+  - {r: 0, g: 1, b: 0.9300573, a: 1}
+  - {r: 1, g: 0.80093634, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
   waterFillImage: {fileID: 120161032}
   sparkSys: {fileID: 5961624223375900008, guid: 6e4926bc0f7d3a049bdb45dc7de1fa35, type: 3}
   wheel: {fileID: 4965670692278705106}
