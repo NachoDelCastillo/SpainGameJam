@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         multiplier = animationCurve.Evaluate(TrainManager.Instance.GetmainVelocity() / 100);
     }
 
-    void CreateEnemys()
+    public void CreateEnemys()
     {
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
 

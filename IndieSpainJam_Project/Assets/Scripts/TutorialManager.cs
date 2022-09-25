@@ -7,6 +7,10 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
+    // Si esta a true, haces el tutorial
+    bool doTutorial = true;
+
+
     static TutorialManager instance;
     public static TutorialManager GetInstance()
     { return instance; }
@@ -44,10 +48,18 @@ public class TutorialManager : MonoBehaviour
 
         //StartCoroutine(DoTutorial());
 
-        duringTutorial = true;
 
-        // Empezar primera parte del tutorial
-        ShowTutorialItems((tutPhases)0);
+        if (doTutorial)
+        {
+            duringTutorial = true;
+
+            // Empezar primera parte del tutorial
+            ShowTutorialItems((tutPhases)0);
+        }
+        else
+        {
+            EndTutorial();
+        }
     }
 
     void HideEverything()
@@ -71,24 +83,6 @@ public class TutorialManager : MonoBehaviour
                 item.color = new Color(itemColor.r, itemColor.g, itemColor.b, 0);
             }
         }
-    }
-
-    IEnumerator DoTutorial()
-    {
-        ShowTutorialItems((tutPhases)0);
-
-        yield return new WaitForSeconds(1);
-
-        // TUTORIAL DE AGARRAR EL CARBON
-
-        yield return new WaitUntil(() => currentPhase == tutPhases.meterCarbonEnTorreta);
-
-        // TUTORIAL DE METER CARBON EN LA TORRETA
-
-        yield return new WaitUntil(() => currentPhase == tutPhases.meterseEnTorreta);
-
-        // TUTORIAL DE COMO METERSE EN LA TORRETA
-
     }
 
     private void Update()
@@ -128,6 +122,7 @@ public class TutorialManager : MonoBehaviour
             if (currentPhase == tutPhases.trenEnMarcha)
             {
                 duringTutorial = false;
+                EndTutorial();
                 yield break;
             }
 
@@ -222,5 +217,12 @@ public class TutorialManager : MonoBehaviour
         // Position
         Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
+    }
+
+
+
+    void EndTutorial()
+    {
+        FindObjectOfType<EnemySpawner>().CreateEnemys();
     }
 }
