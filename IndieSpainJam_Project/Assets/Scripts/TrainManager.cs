@@ -79,6 +79,8 @@ public class TrainManager : MonoBehaviour
     float waterTimer;
 
     [SerializeField] GameObject sparkSys;
+
+    float thisText_InitScale;
     public float GetmainVelocity()
     {
         return MainVelocity;
@@ -113,6 +115,7 @@ public class TrainManager : MonoBehaviour
         midWagon = wagons[1];
         derWagon = wagons[2];
 
+        thisText_InitScale = MainVelocity_text.transform.localScale.x;
 
         cameraShake = GetComponent<CameraShake>();
         gameLost = false;
@@ -889,6 +892,7 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator UpdateTextSpeed()
     {
+        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale * 1.3f, 0.2f).SetUpdate(true);
         int lastMainVel = MainVelocity;
         MainVelocity += velocityGainedByCoal;
         float add = 0;
@@ -900,7 +904,10 @@ public class TrainManager : MonoBehaviour
             MainVelocity_text.text = text.ToString() + " / 100 Km";
             yield return null;
         }
+
+        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale, 0.2f).SetUpdate(true);
     }
+}
 
     public void TakeDamage(float amount)
     {
