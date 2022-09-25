@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20 / 100 Km
+  m_text: 0 / 100 Km
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -14189,6 +14189,7 @@ MonoBehaviour:
   - {fileID: 5029109945894259551}
   - {fileID: 5029109945121299087}
   - {fileID: 5029109945881225947}
+  velocityGainedByCoal: 10
   health: 0
   maxHealth: 100
   healthSlider: {fileID: 255504361}
