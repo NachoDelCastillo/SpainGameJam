@@ -78,7 +78,7 @@ public class BasicEnemy : MonoBehaviour
 
             GameObject sparks = Instantiate(sparksPrefab, target.transform.position, Quaternion.identity);
             var velosidad = sparks.GetComponent<ParticleSystem>().velocityOverLifetime.x;
-            velosidad.curveMultiplier = velosidad.curveMultiplier * TrainManager.Instance.GetmainVelocity() / 100f;
+            velosidad.curveMultiplier = velosidad.curveMultiplier * TrainManager.Instance.GetmainVelocity() / 100f *20;
 
             AudioManager_PK.instance.Play("EnemyHit", UnityEngine.Random.Range(0.9f, 1.2f));
         }
