@@ -6410,6 +6410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameLost: 0
+  letterOfFinalWhenLoseAlreadyOut: 0
   MainVelocity: 0
   cameraShake: {fileID: 0}
   wheelNeon: {fileID: 8770769216860560678}
@@ -6505,7 +6506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1b2adbe59a9954285e187e436451de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeMagnitude: 0.02
+  shakeMagnitude: 0.03
   shakeTime: 0.5
   mainCamera: {fileID: 0}
 --- !u!1 &5088380762160443043
