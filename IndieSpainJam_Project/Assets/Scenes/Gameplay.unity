@@ -4692,6 +4692,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2667453025500928410, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ee8d16caa57942a4e927b5a3ccf4d80a, type: 2}
+    - target: {fileID: 3845361761820933603, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ee8d16caa57942a4e927b5a3ccf4d80a, type: 2}
     - target: {fileID: 4355813152788421224, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Name
       value: TrainManager
@@ -4741,10 +4749,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: maxWater
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1428882617}
@@ -4764,14 +4768,46 @@ PrefabInstance:
       propertyPath: MainVelocity_text
       value: 
       objectReference: {fileID: 373835953}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: dmgWhenWater0PerSecond
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5910312318434763212, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
+    - target: {fileID: 8770769216440773833, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.446
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769216440773833, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769216472625428, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769216472625429, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769216472625429, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 4.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217323911488, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217323911488, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217338223481, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217338223481, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4779,6 +4815,18 @@ PrefabInstance:
     - target: {fileID: 8770769217430376659, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217663579918, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_Intensity
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217663579918, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770769217663579918, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5.12
       objectReference: {fileID: 0}
     - target: {fileID: 8770769217846926932, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Camera

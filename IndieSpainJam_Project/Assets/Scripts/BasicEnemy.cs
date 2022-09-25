@@ -122,7 +122,7 @@ public class BasicEnemy : MonoBehaviour
 
         if (wagon == null && bullet == null) return;
 
-        if (wagon != null && wagon.transform.GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
+        if (wagon != null && wagon.transform.GetChild(0).GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
         else if(bullet != null)
         {
             bullet.EnemyImpacted();
