@@ -6,6 +6,8 @@ public class WagonLogic : MonoBehaviour
 {
     [SerializeField] ParticleSystem dead;
     public int RailRow = 1;
+    public int RailColumn = 1;
+
     private void Update()
     {
         //GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
