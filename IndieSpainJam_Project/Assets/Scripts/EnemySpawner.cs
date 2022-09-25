@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
+    [SerializeField] GameObject rayEnemyDestination;
+    [SerializeField] GameObject rayEnemyLeavingPoint;
 
     [SerializeField] AnimationCurve animationCurve;
 
@@ -51,10 +53,57 @@ public class EnemySpawner : MonoBehaviour
         Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
     }
 
+
+    public void CheckEnemiesOnSpeedChange()
+    {
+        switch (TrainManager.Instance.GetmainVelocity())
+        {
+            case <= 10:
+                break;
+            case <= 20:
+                break;
+            case <= 30:
+                CreateRayEnemy(1, 3, 0.8f);
+                break;
+            case <= 40:
+                break;
+            case <= 50:
+                break;
+            case <= 60:
+                CreateRayEnemy(3, 2, 1.2f);
+                break;
+            case <= 70:
+                break;
+            case <= 80:
+                CreateRayEnemy(3, 1.8f, 1.2f);
+                break;
+            case <= 90:
+                CreateRayEnemy(5, 1.5f, 1.5f);
+
+                break;
+        }
+
+
+    }
+
+    private void CreateRayEnemy(int timesToShot, float loadTime, float rayTime)
+    {
+        Vector3 position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + enemyPrefabs[1].transform.localScale.x * 2, Random.Range(Camera.main.orthographicSize, -Camera.main.orthographicSize), 0);
+
+        GameObject rayEnemy = Instantiate(enemyPrefabs[1], position, Quaternion.identity);
+        RayEnemyMovement enemigoScript = rayEnemy.GetComponent<RayEnemyMovement>();
+        enemigoScript.railsParent = rayEnemyDestination;
+        enemigoScript.leavingPoint = rayEnemyLeavingPoint;
+        enemigoScript.timeFiring = rayTime;
+        enemigoScript.timeToLoad = loadTime;
+        enemigoScript.timesToShoot = timesToShot;
+        rayEnemy.GetComponent<CameraShake>().mainCamera = Camera.main;
+    }
+
     BasicEnemy AddEnemy(int targetIndex)
     {
         int rand = Random.Range(0, enemyPrefabs.Length);
-        GameObject clon = Instantiate(enemyPrefabs[rand]);
+        GameObject clon = Instantiate(enemyPrefabs[0]);
 
         BasicEnemy basicEnemy = clon.GetComponent<BasicEnemy>();
         if (basicEnemy != null)

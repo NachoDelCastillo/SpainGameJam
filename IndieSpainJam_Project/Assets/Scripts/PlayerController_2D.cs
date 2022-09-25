@@ -105,6 +105,8 @@ public class PlayerController_2D : MonoBehaviour
             groundRememberTimer = 1;
         }
 
+
+
         transform.SetParent(null);
         rb.isKinematic = false;
         usingTurret = false;
