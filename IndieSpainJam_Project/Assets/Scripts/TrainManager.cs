@@ -14,7 +14,7 @@ public class TrainManager : MonoBehaviour
     float elapsedTime = 0;
     float timeToMuteExplosions = 5f;
     public bool gameLost = false, letterOfFinalWhenLoseAlreadyOut = false;
-    bool showingResults;
+    bool showingResults, waterTankExploding = false;
 
     [SerializeField]
     int MainVelocity = 0;
@@ -106,6 +106,11 @@ public class TrainManager : MonoBehaviour
 
     private void Start()
     {
+        izqWagon = wagons[0];
+        midWagon = wagons[1];
+        derWagon = wagons[2];
+
+
         cameraShake = GetComponent<CameraShake>();
         gameLost = false;
         health = maxHealth;
@@ -122,7 +127,7 @@ public class TrainManager : MonoBehaviour
 
         smoke.Pause();
 
-       // StartCoroutine(SpawnChangeRail());
+        // StartCoroutine(SpawnChangeRail());
 
         initialPosOfWagons = new Vector3[4];
         for (int i = 0; i < wagons.Length; i++)
@@ -213,13 +218,93 @@ public class TrainManager : MonoBehaviour
 
         newChangeRail.SetRailWays(selectedRow, railsways_b);
 
-        StartCoroutine(SpawnChangeRail());
+
+        StartCoroutine(MoveWagonsHorizontally());
     }
+
+
+    WagonLogic izqWagon, midWagon, derWagon;
 
     IEnumerator MoveWagonsHorizontally()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            int posibilidad = Random.Range(0, 3);
 
-        int currentwWagonIndex = Random.Range(0, 4);
+            if (posibilidad == 0)
+            {
+                if (izqWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+                // Los dos de la izquierda
+                izqWagon.transform.DOMoveX(columns[1].position.x, 1);
+                midWagon.transform.DOMoveX(columns[0].position.x, 1);
+
+                izqWagon.RailColumn = 1;
+                midWagon.RailColumn = 0;
+
+                WagonLogic auxWagon = izqWagon;
+                izqWagon = midWagon;
+                midWagon = auxWagon;
+
+                yield break;
+            }
+
+            else if (posibilidad == 1)
+            {
+                if (derWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+                // Los dos de la derecha
+                midWagon.transform.DOMoveX(columns[2].position.x, 1);
+                derWagon.transform.DOMoveX(columns[1].position.x, 1);
+
+                midWagon.RailColumn = 2;
+                derWagon.RailColumn = 1;
+
+                WagonLogic auxWagon = derWagon;
+                derWagon = midWagon;
+                midWagon = auxWagon;
+
+                yield break;
+            }
+
+            else if (posibilidad == 2)
+            {
+                if (izqWagon.RailRow == derWagon.RailRow)
+                    continue;
+
+                if (izqWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+                if (derWagon.RailRow == midWagon.RailRow)
+                    continue;
+
+
+                // Los dos de la derecha
+                izqWagon.transform.DOMoveX(columns[2].position.x, 1);
+                derWagon.transform.DOMoveX(columns[0].position.x, 1);
+
+                izqWagon.RailColumn = 2;
+                derWagon.RailColumn = 0;
+
+                WagonLogic auxWagon = derWagon;
+                derWagon = izqWagon;
+                izqWagon = auxWagon;
+
+                yield break;
+            }
+        }
+
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(SpawnChangeRail()); ;
+    }
+
+    IEnumerator MoveWagonsHorizontally_()
+    {
+
+        int currentwWagonIndex = Random.Range(0, 3);
         int numberOfWagonsTried = 0;
 
         // Informacion importante
@@ -232,7 +317,7 @@ public class TrainManager : MonoBehaviour
             numberOfWagonsTried++;
 
             currentwWagonIndex++;
-            if (currentwWagonIndex >= 4)
+            if (currentwWagonIndex >= 3)
                 currentwWagonIndex = 0;
 
             wagon = wagons[currentwWagonIndex];
@@ -245,7 +330,7 @@ public class TrainManager : MonoBehaviour
 
             // Bordes
             if (wagonColumn == 0) canGoLeft = false;
-            if (wagonColumn == 3) canGoRight = false;
+            if (wagonColumn == 2) canGoRight = false;
 
             foreach (WagonLogic thisWagon in wagons)
             {
@@ -260,7 +345,6 @@ public class TrainManager : MonoBehaviour
                             canGoLeft = false;
                         if (wagonColumn + 1 == thisWagon.RailColumn)
                             canGoRight = false;
-
                     }
                 }
             }
@@ -279,15 +363,13 @@ public class TrainManager : MonoBehaviour
             }
 
             // Si el vagon tiene direccion y no se han llegado a intentar todos los vagones, seguir
-        } while (finalDirectionOfTheWagon != 0 || numberOfWagonsTried <= 3);
-
+        } while (finalDirectionOfTheWagon == 0 && numberOfWagonsTried <= 3);
 
         int goToThisColumnIndex = wagonColumn + finalDirectionOfTheWagon;
         Vector3 goToThisPosition = columns[goToThisColumnIndex].position;
 
         // Con el vagon ya seleccionado, lo movemos
         wagon.transform.DOMoveX(goToThisPosition.x, 1);
-
 
         yield return new WaitForSeconds(1);
 
@@ -304,8 +386,6 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-            StartCoroutine(MoveWagonsHorizontally());
 
         if (health <= 0)
         {
@@ -372,6 +452,9 @@ public class TrainManager : MonoBehaviour
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
                 cameraShake.ShakeIt();
+                //Loop audio cuando se sale
+                if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
+                    AudioManager_PK.instance.Play("WaterExplosion", Random.Range(0.7f, 0.75f));
             }
             TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
@@ -531,17 +614,40 @@ public class TrainManager : MonoBehaviour
 
                     if (selectedRow != wagonRailRow)
                     {
+                        bool canGoThatDirection = true;
+                        //foreach (WagonLogic otherWagon in wagons)
+                        //{
+                        //    if (otherWagon != thisWagon)
+                        //    {
+                        //        // Si no es la locomotora
+                        //        if (otherWagon.wagonIndex != 3)
+                        //        {
+                        //            // Si estan en la misma columna
+                        //            if (otherWagon.RailColumn == thisWagon.RailColumn)
+                        //            {
+                        //                // Si hay un vagon justo donde se planea ir, no ir
+                        //                if (otherWagon.RailRow == selectedRow)
+                        //                    canGoThatDirection = false;
+                        //            }
+                        //        }
+                        //    }
+                        //}
+
                         //if (selectedRow == 2) Debug.Log("dv");
                         //else
-                        thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 4);
+
+                        if (canGoThatDirection)
+                        {
+                            thisWagon.transform.DOMoveY(rows[selectedRow].position.y, 4);
+                            thisWagon.RailRow = selectedRow;
+                            changeRail.wagonsThatAlreadyUsedThis.Add(thisWagon);
+                        }
                     }
 
                     // Informar al vagon de que ha cambiado de via
-                    thisWagon.RailRow = selectedRow;
 
                     // Como este vagon ya ha usado este cambio de via,
                     // informarselo al cambio de via para que no lo vuelva a usar
-                    changeRail.wagonsThatAlreadyUsedThis.Add(thisWagon);
                 }
             }
         }

@@ -34,8 +34,8 @@ public class WagonLogic : MonoBehaviour
 
         if (player != null)
             player.transform.SetParent(null);
-
-        collision.transform.SetParent(null);
+            
+        //collision.transform.SetParent(null);
     }
 
     public void Died()

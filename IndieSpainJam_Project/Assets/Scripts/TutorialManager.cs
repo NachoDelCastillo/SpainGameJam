@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = false;
 
         if (doTutorial)
         {
@@ -239,6 +239,13 @@ public class TutorialManager : MonoBehaviour
 
     void EndTutorial()
     {
+        StartCoroutine(EndTutorial_IEnumerator());
+    }
+
+    IEnumerator EndTutorial_IEnumerator()
+    {
+        yield return new WaitUntil(() => TrainManager.Instance.GetmainVelocity() != 0);
+
         FindObjectOfType<EnemySpawner>().CreateEnemys();
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
     }
