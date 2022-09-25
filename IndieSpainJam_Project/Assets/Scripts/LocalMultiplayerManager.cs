@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class LocalMultiplayerManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] GameObject sangrePart;
     
+    [SerializeField] TMP_Text
 
     private void Awake()
     {
@@ -66,7 +68,6 @@ public class LocalMultiplayerManager : MonoBehaviour
     //}
     IEnumerator Respawn2(PlayerController_2D player, float time)
     {
-
         if (!player.killable)
         {
             yield break;
