@@ -237,6 +237,9 @@ public class TutorialManager : MonoBehaviour
 
 
 
+    [SerializeField] TMP_Text[] playerJoinTexts;
+    [SerializeField] SpriteRenderer[] sprites;
+
     void EndTutorial()
     {
         StartCoroutine(EndTutorial_IEnumerator());
@@ -245,6 +248,15 @@ public class TutorialManager : MonoBehaviour
     IEnumerator EndTutorial_IEnumerator()
     {
         yield return new WaitUntil(() => TrainManager.Instance.GetmainVelocity() != 0);
+
+        foreach (TMP_Text ThisText in playerJoinTexts)
+            ThisText.DOFade(0, 1);
+
+        foreach (SpriteRenderer ThisSprite in sprites)
+            ThisSprite.DOFade(0, 1);
+
+        tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhases.repararVagonAgua);
+        tutItem.panel.transform.parent.position = new Vector3(tutItem.panel.transform.parent.position.x, tutItem.panel.transform.parent.position.y - 3, 0);
 
         FindObjectOfType<EnemySpawner>().CreateEnemys();
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());

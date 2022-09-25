@@ -92,7 +92,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         dur.startLifetime = respawnTime;
         pSystem.Play();
 
-
+        AudioManager_PK.instance.Play("PDeath", Random.Range(0.8f, 1f));
 
         //Desactivar renderer, movimiento y collider del player
         
