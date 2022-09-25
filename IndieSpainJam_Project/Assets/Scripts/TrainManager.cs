@@ -907,7 +907,7 @@ public class TrainManager : MonoBehaviour
 
         MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale, 0.2f).SetUpdate(true);
     }
-}
+
 
     public void TakeDamage(float amount)
     {
@@ -916,7 +916,7 @@ public class TrainManager : MonoBehaviour
 
         health -= amount;
 
-        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1); 
+        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1);
         if (health <= 0) health = 0;
 
         healthSlider.value = health;
@@ -940,7 +940,6 @@ public class TrainManager : MonoBehaviour
                 wagon.Died();
             }
         }
-    }
 
+    }
     #endregion
-}
