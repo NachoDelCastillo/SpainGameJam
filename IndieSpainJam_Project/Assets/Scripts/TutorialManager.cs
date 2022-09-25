@@ -87,11 +87,6 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            for (int i = ((int)tutPhases.trenEnMarcha) - 1; i >= 0; i--)
-                TryToChangePhase((tutPhases)i);
-        }
     }
 
     public tutPhases GetCurrentPhase()
