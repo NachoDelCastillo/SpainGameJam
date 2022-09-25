@@ -7,7 +7,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     private enum State {GoingLocation, Loading, Shooting, Leaving}
 
-   
+    bool odioMiVida = true;
 
     // Start is called before the first frame update
     public GameObject railsParent;
@@ -222,12 +222,20 @@ public class RayEnemyMovement : MonoBehaviour
         {
             loadingSphere.transform.localScale = Vector2.one * (startingRadius) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad));
             
-            if (AudioManager_PK.instance.sounds[17].source.isPlaying)
-                AudioManager_PK.instance.Play("Charging", 0.3f + 
-                    (loadingSpehereScaleoverTime.Evaluate(1) * loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload))) * 1f);
+            if (!AudioManager_PK.instance.sounds[17].source.isPlaying && odioMiVida)
+                AudioManager_PK.instance.Play("Charging", Random.Range(0.9f, 1f));
+
+            if (odioMiVida && loadingSpehereScaleoverTime.Evaluate((elapsedTimeToReload) / (timeToLoad)) < loadingSpehereScaleoverTime.Evaluate(((elapsedTimeToReload) / (timeToLoad)) - 0.01f))
+            {
+                AudioManager_PK.instance.Stop("Charging");
+                odioMiVida = false;
+            }
+
         }
         else if (elapsedTimeToReload >= timeToLoad)
         {
+            odioMiVida = true;
+
             particlesLoading.SetActive(false);
             //Dispare
             cameraShake.ShakeIt();
