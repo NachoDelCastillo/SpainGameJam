@@ -8,7 +8,7 @@ using TMPro;
 public class TutorialManager : MonoBehaviour
 {
     // Si esta a true, haces el tutorial
-    [HideInInspector] public bool doTutorial = false;
+    [HideInInspector] public bool doTutorial;
 
 
     static TutorialManager instance;
@@ -48,6 +48,7 @@ public class TutorialManager : MonoBehaviour
 
         //StartCoroutine(DoTutorial());
 
+        doTutorial = false;
 
         if (doTutorial)
         {
