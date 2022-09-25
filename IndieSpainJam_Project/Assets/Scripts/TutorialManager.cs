@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = false;
 
         if (doTutorial)
         {
@@ -147,7 +147,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void ShowTutorialItems(tutPhases tutPhase)
+    public void ShowTutorialItems(tutPhases tutPhase)
     {
         if (changingPhase) return;
 
@@ -193,7 +193,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void HideTutorialItems(tutPhases tutPhase)
+    public void HideTutorialItems(tutPhases tutPhase)
     {
         if (changingPhase) return;
 

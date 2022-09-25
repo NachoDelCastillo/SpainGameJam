@@ -505,7 +505,11 @@ public class TrainManager : MonoBehaviour
                 TakeDamage(0);
                 WaterDanger();
             }
-            else waterDanger.gameObject.SetActive(false);
+            else
+            {
+                waterDanger.gameObject.SetActive(false);
+                TutorialManager.GetInstance().HideTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
+            }
 
 
             waterSlider.value = currentWater;
@@ -513,7 +517,6 @@ public class TrainManager : MonoBehaviour
 
         ColorWater();
     }
-
 
     [SerializeField] SpriteRenderer dangerSprite;
     public void ColorWater()
@@ -545,6 +548,8 @@ public class TrainManager : MonoBehaviour
     {
         if (!waterDanger.gameObject.activeInHierarchy)
         {
+            TutorialManager.GetInstance().ShowTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
+
             waterDanger.gameObject.SetActive(true);
             StartCoroutine(AppearDanger());
         }
