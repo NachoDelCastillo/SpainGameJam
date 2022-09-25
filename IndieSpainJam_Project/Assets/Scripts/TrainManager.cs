@@ -218,7 +218,8 @@ public class TrainManager : MonoBehaviour
 
         newChangeRail.SetRailWays(selectedRow, railsways_b);
 
-        StartCoroutine(SpawnChangeRail());
+
+        StartCoroutine(MoveWagonsHorizontally());
     }
 
 
@@ -295,7 +296,9 @@ public class TrainManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(SpawnChangeRail()); ;
     }
 
     IEnumerator MoveWagonsHorizontally_()
@@ -383,8 +386,6 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-            StartCoroutine(MoveWagonsHorizontally());
 
         if (health <= 0)
         {
