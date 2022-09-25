@@ -125,7 +125,10 @@ public class BasicEnemy : MonoBehaviour
         if (wagon != null && wagon.transform.GetChild(0).GetChild(0).GetComponent<Turret>() == null) states = States.Attack;
         else if(bullet != null)
         {
-            Instantiate(bloodPrefab, transform.position, bullet.transform.rotation);
+
+           
+
+            Instantiate(bloodPrefab, transform.position, Quaternion.identity);
 
             bullet.EnemyImpacted();
             states = States.Death;
