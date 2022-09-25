@@ -332,6 +332,11 @@ public class PlayerController_2D : MonoBehaviour
                 grabbedItem.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
                 grabbedItem.transform.GetChild(0).DOScale(1, 1);
             }
+
+            else if(currentlyInWaterWagon)
+            {
+                TrainManager.Instance.RechargeWater();
+            }
         }
     }
 
@@ -382,6 +387,7 @@ public class PlayerController_2D : MonoBehaviour
     // Comporbar si se entra en el vagon del carbon
 
     bool currentlyInCoalWagon;
+    bool currentlyInWaterWagon;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Turret>())
@@ -389,6 +395,9 @@ public class PlayerController_2D : MonoBehaviour
 
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = true;
+
+        if (collision.CompareTag("WaterWagon"))
+            currentlyInWaterWagon = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -399,6 +408,9 @@ public class PlayerController_2D : MonoBehaviour
 
         if (collision.CompareTag("CoalWagon"))
             currentlyInCoalWagon = false;
+
+        if (collision.CompareTag("WaterWagon"))
+            currentlyInWaterWagon = false;
     }
 
     #endregion
