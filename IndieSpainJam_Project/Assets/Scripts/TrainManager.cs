@@ -66,7 +66,7 @@ public class TrainManager : MonoBehaviour
     [SerializeField] GameObject sparkSys;
     public float GetmainVelocity()
     {
-        return MainVelocity;    
+        return MainVelocity;
     }
     private void Awake()
     {
@@ -217,7 +217,8 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-        RestWater();
+        if (!TutorialManager.GetInstance().duringTutorial)
+            RestWater();
 
         RotateWheel();
 
@@ -241,6 +242,9 @@ public class TrainManager : MonoBehaviour
 
     void RestWater()
     {
+        // Si el tren esta quieto no joder el vagon de agua
+        if (MainVelocity <= 0) return;
+
         currentWater -= waterSubstracPerSecond * Time.deltaTime;
         currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
@@ -256,7 +260,7 @@ public class TrainManager : MonoBehaviour
         waterSlider.value = currentWater;
     }
 
-    [SerializeField] 
+    [SerializeField]
 
     // Se encarga de comprobar cada una de las posiciones de los vagones
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
@@ -365,12 +369,12 @@ public class TrainManager : MonoBehaviour
         {
             wheelColor = new Vector4(wheelBaseColor.x * i, wheelBaseColor.y * i, wheelBaseColor.z * i, wheelBaseColor.w);
             wheelMaterial.SetColor("_Color", wheelColor);
-            i += (maxIntensity-normalIntensity) / 10;
+            i += (maxIntensity - normalIntensity) / 10;
             yield return new WaitForSeconds(timeToReachMax / 10);
         }
 
         i = maxIntensity;
-        while(i > normalIntensity)
+        while (i > normalIntensity)
         {
             wheelColor = new Vector4(wheelBaseColor.x * i, wheelBaseColor.y * i, wheelBaseColor.z * i, wheelBaseColor.w);
             wheelMaterial.SetColor("_Color", wheelColor);

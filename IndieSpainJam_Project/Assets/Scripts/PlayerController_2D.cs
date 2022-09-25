@@ -363,6 +363,12 @@ public class PlayerController_2D : MonoBehaviour
 
             else if (currentlyInWaterWagon)
             {
+                if (TutorialManager.GetInstance().duringTutorial &&
+                TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.repararVagonAgua)
+                    return;
+
+                TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.repararVagonAgua);
+
                 TrainManager.Instance.RechargeWater();
             }
         }

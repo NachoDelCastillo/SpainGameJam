@@ -56,6 +56,10 @@ public class TutorialManager : MonoBehaviour
 
             // Empezar primera parte del tutorial
             ShowTutorialItems((tutPhases)0);
+
+            // Joder vagon de agua
+
+            // Joder Torreta
         }
         else
         {
