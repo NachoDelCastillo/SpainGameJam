@@ -20,8 +20,6 @@ public class Utils : MonoBehaviour
             c = Mathf.Clamp(c, 0, 1);
             yield return new WaitForSeconds(0);
         }
-
-        item.transform.position = finalSpot.position;
     }
 
     static public IEnumerator WriteThis(string fulltext, TMP_Text text_, float secondsBetweenLetters)
