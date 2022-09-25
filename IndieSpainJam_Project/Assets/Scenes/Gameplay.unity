@@ -1723,8 +1723,8 @@ MonoBehaviour:
   timeBetweenEnemys: 0.5
   minTimeForNextWave: 10
   maxTimeForNextWave: 15
-  minEnemys: 5
-  maxEnemys: 10
+  minEnemys: 4
+  maxEnemys: 8
   targetWagons:
   - {fileID: 5029109946061427909}
   - {fileID: 5029109946302092072}
