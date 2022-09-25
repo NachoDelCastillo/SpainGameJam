@@ -116,6 +116,10 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             changingPhase = false;
 
+
+            if (currentPhase == tutPhases.matarEnemigoTorreta)
+                FindObjectOfType<EnemySpawner>().AddEnemy(1).transform.position = new Vector3(4, 10, 0);
+
             //STOP
             if (currentPhase == tutPhases.trenEnMarcha)
             {
