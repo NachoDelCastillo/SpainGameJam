@@ -154,6 +154,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     void updateShield()
     {
+
         if (!player) return;
 
         Vector2 direction = player.transform.position - shieldGO.transform.position;
@@ -161,19 +162,21 @@ public class RayEnemyMovement : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
         shieldGO.transform.rotation = newRot;
-
         if (glowing)
         {
+
             elapsedTimeShieldGlowing += Time.deltaTime;
             SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
-            var a = pSysShield.color.a;
-            a = curveGlowingShield.Evaluate(timeGlowHit - elapsedTimeShieldGlowing);
+            Color colorShield = new Color(pSysShield.color.r, pSysShield.color.g, pSysShield.color.b, curveGlowingShield.Evaluate(elapsedTimeShieldGlowing/timeGlowHit)/255f);
+            pSysShield.color = colorShield;
+            Debug.Log(pSysShield.color.a/255f);
 
             if (elapsedTimeShieldGlowing >= timeGlowHit)
             {
                 glowing = false;
                 elapsedTimeShieldGlowing = 0;
-                a = 0;
+                pSysShield.color = new Color(pSysShield.color.r, pSysShield.color.g, pSysShield.color.b, 0);
+
             }
         }
         //SpriteRenderer pSysShield = shieldGO.GetComponentInChildren<SpriteRenderer>();
@@ -288,6 +291,8 @@ public class RayEnemyMovement : MonoBehaviour
             //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
             //shieldGO.transform.rotation = newRot;
+            elapsedTimeShieldGlowing = 0;
+            glowing = true;
             b.ShieldImpacted();
             
 
