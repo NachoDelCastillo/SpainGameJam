@@ -944,7 +944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0 / 100 Km
+  m_text: 0 / 100 KmH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}

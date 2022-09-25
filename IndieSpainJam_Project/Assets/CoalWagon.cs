@@ -61,7 +61,7 @@ public class CoalWagon : MonoBehaviour
         {
             Debug.Log("en corrutina");
             coal.transform.Translate(coal.transform.up * speed * Time.deltaTime);
-            Debug.Log(coal.transform.position);
+            //Debug.Log(coal.transform.position);
             yield return null;
         }
 

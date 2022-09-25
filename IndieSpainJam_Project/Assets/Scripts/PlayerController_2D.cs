@@ -382,6 +382,7 @@ public class PlayerController_2D : MonoBehaviour
                 //TrainManager.Instance.RechargeWater();
 
                 TrainManager.Instance.waterDown = true;
+                TrainManager.Instance.setGlobalLightColor(Color.white);
                 AudioManager_PK.instance.Stop("WaterExplosion");
                 AudioManager_PK.instance.Play("WaterDown", Random.Range(0.9f, 1f));
             }

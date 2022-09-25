@@ -79,6 +79,8 @@ public class TrainManager : MonoBehaviour
     float waterTimer;
 
     [SerializeField] GameObject sparkSys;
+
+    float thisText_InitScale;
     public float GetmainVelocity()
     {
         return MainVelocity;
@@ -113,6 +115,7 @@ public class TrainManager : MonoBehaviour
         midWagon = wagons[1];
         derWagon = wagons[2];
 
+        thisText_InitScale = MainVelocity_text.transform.localScale.x;
 
         cameraShake = GetComponent<CameraShake>();
         gameLost = false;
@@ -403,7 +406,7 @@ public class TrainManager : MonoBehaviour
                     AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
                 }
             }
-            if((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
+            if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
                 GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
         }
@@ -433,8 +436,6 @@ public class TrainManager : MonoBehaviour
 
     void UpdateWater()
     {
-        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
-        waterSlider.maxValue = maxWater;
         if (waterDown)
         {
             WaterDown();
@@ -442,6 +443,8 @@ public class TrainManager : MonoBehaviour
         else
         {
             if (TutorialManager.GetInstance().duringTutorial) return;
+            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+            waterSlider.maxValue = maxWater;
             //Updated upstream
             // Si el tren esta quieto no joder el vagon de agua
             //if (MainVelocity <= 0) return;
@@ -455,7 +458,7 @@ public class TrainManager : MonoBehaviour
             if (currentWater >= maxWater)
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
-                setGlobalLightColor(255, 0, 0, 255);
+                setGlobalLightColor(Color.red);
                 cameraShake.ShakeIt();
                 //Loop audio cuando se sale
                 if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
@@ -521,9 +524,9 @@ public class TrainManager : MonoBehaviour
         ColorWater();
     }
 
-    public void setGlobalLightColor(int v1, int v2, int v3, int v4)
+    public void setGlobalLightColor(Color color)
     {
-        globalLight.color = new Color(v1, v2, v3, v4);
+        globalLight.color = color;
     }
 
     [SerializeField] SpriteRenderer dangerSprite;
@@ -889,6 +892,7 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator UpdateTextSpeed()
     {
+        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale * 1.3f, 0.2f).SetUpdate(true);
         int lastMainVel = MainVelocity;
         MainVelocity += velocityGainedByCoal;
         float add = 0;
@@ -900,7 +904,10 @@ public class TrainManager : MonoBehaviour
             MainVelocity_text.text = text.ToString() + " / 100 Km";
             yield return null;
         }
+
+        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale, 0.2f).SetUpdate(true);
     }
+
 
     public void TakeDamage(float amount)
     {
@@ -909,7 +916,7 @@ public class TrainManager : MonoBehaviour
 
         health -= amount;
 
-        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1); 
+        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1);
         if (health <= 0) health = 0;
 
         healthSlider.value = health;
@@ -933,7 +940,7 @@ public class TrainManager : MonoBehaviour
                 wagon.Died();
             }
         }
-    }
 
-    #endregion
+    }
 }
+    #endregion
