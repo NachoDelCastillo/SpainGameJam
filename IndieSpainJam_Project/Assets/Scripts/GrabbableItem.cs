@@ -10,12 +10,17 @@ public class GrabbableItem : MonoBehaviour
     [HideInInspector] public PlayerController_2D playerGrabbingThis;
 
     [HideInInspector] public Rigidbody2D rb;
-    BoxCollider2D col;
+    public BoxCollider2D col;
+
+    public bool coalReady;
+    public Vector3 createdPos;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+
+        col.isTrigger = true;
     }
 
     public void ItemGrabbed(PlayerController_2D playerGrabbingThis_)
