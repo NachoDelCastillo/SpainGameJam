@@ -5075,6 +5075,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1428882617}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 8770769217448825813}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: globalLight
+      value: 
+      objectReference: {fileID: 45928727}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: resultPanel
       value: 
       objectReference: {fileID: 978823979}
@@ -5108,3 +5116,14 @@ PrefabInstance:
       objectReference: {fileID: 750174532}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+--- !u!114 &8770769217448825813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 581589685401405750, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b2adbe59a9954285e187e436451de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
