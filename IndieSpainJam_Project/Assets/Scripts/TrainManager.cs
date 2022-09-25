@@ -61,6 +61,7 @@ public class TrainManager : MonoBehaviour
 
     //Agua
     [SerializeField] public Slider waterSlider;
+    [SerializeField] AnimationCurve waterCurve;
     //Updated upstream
     [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
     [SerializeField] Color[] waterColorSlider;
@@ -112,6 +113,7 @@ public class TrainManager : MonoBehaviour
 
         //currentWater = 0;
         //waterSlider.value = currentWater;
+        waterDanger.gameObject.SetActive(false);
 
         smoke.Pause();
 
@@ -228,8 +230,8 @@ public class TrainManager : MonoBehaviour
             return;
         }
 
-        if (!TutorialManager.GetInstance().duringTutorial)
-            UpdateWater();
+
+        UpdateWater();
 
 
         RotateWheel();
@@ -255,34 +257,41 @@ public class TrainManager : MonoBehaviour
     void UpdateWater()
     {
 
-        //Updated upstream
-        // Si el tren esta quieto no joder el vagon de agua
-        //if (MainVelocity <= 0) return;
+        if(waterDown)
+        {
+            WaterDown();
+        }
+        else 
+        {
+            if (TutorialManager.GetInstance().duringTutorial) return;
+                //Updated upstream
+                // Si el tren esta quieto no joder el vagon de agua
+                //if (MainVelocity <= 0) return;
 
-        Debug.Log("currentWater = " + currentWater);
+                Debug.Log("currentWater = " + currentWater);
 
-        currentWater += waterSubstracPerSecond * Time.deltaTime;
+            currentWater += waterSubstracPerSecond * Time.deltaTime;
 
-        currentWater = Mathf.Clamp(currentWater, 0, maxWater);
-
-        if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
-        TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-            if(currentWater >= maxWater * 0.5f)
+            if (currentWater >= maxWater) health -= dmgWhenWater0PerSecond * Time.deltaTime;
+            TakeDamage(0);
+            currentWater = Mathf.Clamp(currentWater, 0, maxWater);
+
+            if (currentWater >= maxWater * 0.5f)
             {
                 //rotacion slider -5 -- 5 en z 
                 if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 85)
                 {
                     rotateRight = true;
-                    
+
                 }
                 else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 95)
                 {
                     rotateRight = false;
                 }
 
-                if(rotateRight) waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 2));
+                if (rotateRight) waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 2));
                 else waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 2));
             }
             else
@@ -308,10 +317,9 @@ public class TrainManager : MonoBehaviour
 
 
             waterSlider.value = currentWater;
+        }
 
         ColorWater();
-
-        waterSlider.value = currentWater;
     }
   
 
@@ -326,6 +334,42 @@ public class TrainManager : MonoBehaviour
     {
         currentWater = 0;
         waterSlider.value = currentWater;
+    }
+
+    void WaterDown()
+    {
+        waterTimer += Time.deltaTime;
+        currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
+        waterSlider.value = currentWater;
+
+        if(waterTimer >= timeForWaterDown)
+        {
+            waterTimer = 0;
+            waterDown = false;
+        }
+    }
+
+    void WaterDanger()
+    {
+        if(!waterDanger.gameObject.activeInHierarchy)
+        {
+            waterDanger.gameObject.SetActive(true);
+            StartCoroutine(AppearDanger());
+        }
+        else
+        {
+            //Mover
+        }
+    }
+
+    IEnumerator AppearDanger()
+    {
+        waterDanger.localScale = Vector3.zero;
+        while(waterDanger.localScale.x < 1)
+        {
+            waterDanger.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
+            yield return null;
+        }
     }
 
     [SerializeField]
