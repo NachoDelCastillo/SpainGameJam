@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = GameManager.GetInstance().firstTimePlaying;
 
         if (doTutorial && !menu)
         {
@@ -267,6 +267,8 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
             yield return new WaitForSeconds((TrainManager.Instance.moveIntensity * 5) / 6);
             //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
+
+            GameManager.GetInstance().firstTimePlaying = false;
         }
     }
 }

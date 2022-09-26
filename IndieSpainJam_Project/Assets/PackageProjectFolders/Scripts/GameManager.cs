@@ -8,6 +8,9 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+
+    public bool firstTimePlaying;
+
     static public int numPlayersPlaying = 1;
 
     // TRANSITION STUFF
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
         level_Text.gameObject.SetActive(false);
         levelNum_Text.gameObject.SetActive(false);
         icon.gameObject.SetActive(false);
+
+        firstTimePlaying = true;
     }
 
     #region Change Scene
