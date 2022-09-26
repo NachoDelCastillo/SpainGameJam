@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         levelNum_Text.gameObject.SetActive(false);
         icon.gameObject.SetActive(false);
 
+        AudioManager_PK.GetInstance().AudioVolume(0.5f, true);
         firstTimePlaying = true;
     }
 
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
         if (sceneName != "")
         {
             AudioManager_PK.GetInstance().ChangeBackgroundMusic(sceneName);
+            AudioManager_PK.GetInstance().AudioVolume(0.5f, true);
             SceneManager.LoadScene(sceneName);
         }
         else

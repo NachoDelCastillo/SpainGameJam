@@ -354,7 +354,7 @@ public class TrainManager : MonoBehaviour
             {
                 if (!GameManager.GetInstance().duringTransition)
                 {
-                    AudioManager_PK.instance.Stop("GameMusic");
+                    //AudioManager_PK.instance.Stop("GameMusic");
                     GameManager.instance.ChangeScene("MainMenu_Scene");
                 }
             }
@@ -367,8 +367,8 @@ public class TrainManager : MonoBehaviour
             StartCoroutine(MoveWagonsHorizontally());
         }
 
-        if (!AudioManager_PK.instance.sounds[24].source.isPlaying)
-            AudioManager_PK.instance.Play("GameMusic", Random.Range(0.7f, 0.75f));
+        //if (!AudioManager_PK.instance.sounds[24].source.isPlaying)
+        //    AudioManager_PK.instance.Play("GameMusic", Random.Range(0.7f, 0.75f));
 
         UpdateWater();
 
@@ -759,7 +759,7 @@ public class TrainManager : MonoBehaviour
         {
             // WIN
             yield return new WaitForSeconds(1);
-            AudioManager_PK.instance.Stop("GameMusic");
+            //AudioManager_PK.instance.Stop("GameMusic");
             GameManager.instance.ChangeScene("MainMenu_Scene");
         }
         else

@@ -80,7 +80,7 @@ public class TrainManagerMenu : MonoBehaviour
         AudioManager_PK.instance.sounds[7].source.mute = false;
 
         smoke.Pause();
-
+        AudioManager_PK.GetInstance().AudioVolume(0.5f, true);
         // StartCoroutine(SpawnChangeRail());
 
         initialPosOfWagons = new Vector3[4];
