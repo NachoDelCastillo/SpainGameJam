@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = false;
+        doTutorial = true;
 
         if (doTutorial)
         {
@@ -262,6 +262,6 @@ public class TutorialManager : MonoBehaviour
         FindObjectOfType<EnemySpawner>().CreateEnemys();
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
         yield return new WaitForSeconds((TrainManager.Instance.moveIntensity*5)/6);
-        StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
+        //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
     }
 }

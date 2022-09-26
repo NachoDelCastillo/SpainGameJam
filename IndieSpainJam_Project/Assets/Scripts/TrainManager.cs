@@ -83,6 +83,8 @@ public class TrainManager : MonoBehaviour
 
     float thisText_InitScale;
     [SerializeField] Color textHighlight, textDefault;
+
+    bool over50 = false;
     public float GetmainVelocity()
     {
         return MainVelocity;
@@ -346,6 +348,12 @@ public class TrainManager : MonoBehaviour
             if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
                 GameManager.instance.ChangeScene("MainMenu_Scene");
             return;
+        }
+
+        if(!over50 && MainVelocity >= 50)
+        {
+            over50 = true;
+            StartCoroutine(MoveWagonsHorizontally());
         }
 
         UpdateWater();
@@ -853,7 +861,7 @@ public class TrainManager : MonoBehaviour
         if (showingResults)
             return;
 
-        //health -= amount;
+        health -= amount;
 
         globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1);
         if (health <= 0) health = 0;
