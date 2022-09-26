@@ -40,17 +40,17 @@ public class CoalWagon : MonoBehaviour
         clon.GetComponent<GrabbableItem>().initialParent = transform.parent;
         clon.GetComponent<GrabbableItem>().wagon = this;
         clon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-        clon.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        //clon.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         clon.transform.position = iniPos.position;
 
         // Smooooooooooooooooooooth
         SpriteRenderer sp = coal.GetComponentInChildren<SpriteRenderer>();
         sp.color = new Color(1, 1, 1, 0);
-        sp.DOFade(1, 1);
+        sp.DOFade(1, 2);
 
-        clon.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
+        clon.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 2, RotateMode.FastBeyond360);
         clon.transform.GetChild(0).localScale = new Vector3(0, 0, 0);
-        clon.transform.GetChild(0).DOScale(1, 1);
+        clon.transform.GetChild(0).DOScale(1, 2);
 
         StartCoroutine(MoveCoal(clon));
     }
@@ -59,7 +59,7 @@ public class CoalWagon : MonoBehaviour
     {
         coal.GetComponent<Rigidbody2D>().isKinematic = true;
 
-        while (Mathf.Abs(coal.transform.position.y - finalPos.position.y) > 0.3f)
+        while (coal.transform.position.y < finalPos.position.y - 0.2f)
         {
             Debug.Log("en corrutina");
             coal.transform.Translate(coal.transform.up * speed * Time.deltaTime);
