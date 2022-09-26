@@ -5085,6 +5085,8 @@ MonoBehaviour:
   respawnTime: 3
   pSystem: {fileID: 482642055}
   sangrePart: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
+  player1: {r: 0.8490566, g: 0.62131876, b: 0.043253757, a: 1}
+  player2: {r: 0, g: 0.8235294, b: 1, a: 1}
   numPlayers: {fileID: 1371107811}
 --- !u!4 &1884531411
 Transform:
@@ -6046,7 +6048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436907953557433478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.21, y: -12.1, z: 0.06621417}
+  m_LocalPosition: {x: 22.68, y: 2.87, z: 0.06621417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -679,7 +679,7 @@ public class PlayerController_2D : MonoBehaviour
 
     #endregion
 
-
+    public SpriteRenderer triangulo;
 
     public IEnumerator RespawnColor(float respawnTime, int timesToBlink)
     {
