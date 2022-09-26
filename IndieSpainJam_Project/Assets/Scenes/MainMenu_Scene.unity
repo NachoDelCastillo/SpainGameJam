@@ -849,7 +849,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7707667169429182344, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_text
-      value: MUSIC
+      value: MUSICA
       objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_Name
@@ -1934,7 +1934,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: CREDITS
+      value: CREDITOS
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -3609,7 +3609,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: QUIT
+      value: SALIR
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -3937,6 +3937,8 @@ MonoBehaviour:
   respawnTime: 3
   pSystem: {fileID: 8770769217893233341}
   sangrePart: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
+  player1: {r: 0, g: 0, b: 0, a: 0}
+  player2: {r: 0, g: 0, b: 0, a: 0}
   numPlayers: {fileID: 1126540063}
 --- !u!4 &1518268788
 Transform:
@@ -4147,9 +4149,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nCREDITS:\n\nDEVELOPMENT TEAM\nNacho Castillo\nDaniel Martin Gomez\nManuel
-    Adeli\xF1o\nJavier Villegas\nRuben Vidorreta\n\nTESTERS\nEscu\nJudit\nTr1ckk\nMelee\nJavih90\nMaria\nMarta\nSergio\nLaura1\nLaura2\n\nVISUAL
-    REFERENCES\nEye Of Cthulhu Resprite, Matthieu Rappeneu\nMonsters Creature Fantasy\nIrina
+  m_text: "\nCREDITOS:\n\nEQUIPO DE DESARROLLO\nNacho Castillo\nDaniel Martin Gomez\nManuel
+    Adeli\xF1o\nJavier Villegas\nRuben Vidorreta\n\nTESTERS\nEscu\nJudit\nTr1ckk\nMelee\nJavih90\nMaria\nMarta\nSergio\nLaura1\nLaura2\n\nREFERENCIAS
+    VISUALES\nEye Of Cthulhu Resprite, Matthieu Rappeneu\nMonsters Creature Fantasy\nIrina
     Vedernikova\n\nSFX\nLeszlk szary\nBrickdeveloper171\nKastenfrosch\nMichel88\nBeezlefm\nAliedsvwyk\nTcpp\nCusconauta\nRomeo
     Kaleikau\nPatrick Corra\nRyanesnook\nKierankeegan\nPorphyr\n\nPARALLAX\n\nEdermunizz"
   m_isRightToLeft: 0
@@ -4237,7 +4239,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: BACK
+      value: VOLVER
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -4554,7 +4556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: SETTINGS
+      value: AJUSTES
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -66165,7 +66167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: PLAY
+      value: JUGAR
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -66264,6 +66266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977531011}
     m_Modifications:
+    - target: {fileID: 7707667169429182344, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
+      propertyPath: m_text
+      value: SONIDO
+      objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_Name
       value: SoundSlider
