@@ -21,7 +21,7 @@ public class RayDamage : MonoBehaviour
         PlayerController_2D playerC = collision.GetComponent<PlayerController_2D>();
         if (playerC)
         {
-            Debug.Log("entra en trigger rayo");
+            //Debug.Log("entra en trigger rayo");
             LocalMultiplayerManager.GetInstance().Respawn(playerC);
         }
     }
