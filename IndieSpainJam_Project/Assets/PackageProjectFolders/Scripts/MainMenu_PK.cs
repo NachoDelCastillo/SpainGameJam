@@ -20,9 +20,8 @@ public class MainMenu_PK : MenuManager_PK
         //if (index == 0) allMenuManager.PressPlay();
         if (index == 0) GameManager.GetInstance().ChangeScene("Gameplay");
         else if (index == 1) allMenuManager.PressSettings();
-        else if (index == 2) allMenuManager.PressControls();
-        else if (index == 3) allMenuManager.PressCredits();
-        else if (index == 4) PressQuit();
+        else if (index == 2) allMenuManager.PressCredits();
+        else if (index == 3) PressQuit();
     }
 
     void PressQuit()

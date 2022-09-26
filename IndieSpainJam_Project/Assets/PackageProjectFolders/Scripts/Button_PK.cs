@@ -62,7 +62,7 @@ public class Button_PK : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             return;
 
         // Sound
-        AudioManager_PK.GetInstance().Play("ButtonOnselect", 1);
+        //AudioManager_PK.GetInstance().Play("ButtonOnselect", 1);
 
         // Animation
         thisText.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale * 1.3f, buttonScaleVel).SetUpdate(true);

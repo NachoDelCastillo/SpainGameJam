@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class AllMenuManager_PK : MonoBehaviour
@@ -19,6 +20,8 @@ public class AllMenuManager_PK : MonoBehaviour
     SettingsMenu_PK settingsMenu;
     LevelselectorMenu_PK levelSelectorMenu;
 
+    [SerializeField] GameObject creditsPanel;
+
     private void Awake()
     {
         mainMenu = FindObjectOfType<MainMenu_PK>();
@@ -28,6 +31,8 @@ public class AllMenuManager_PK : MonoBehaviour
         mainMenu.enabled = true;
         settingsMenu.enabled = false;
         levelSelectorMenu.enabled = false;
+
+        creditsPanel.SetActive(false);
     }
 
 
@@ -35,6 +40,7 @@ public class AllMenuManager_PK : MonoBehaviour
     {
         if (Input.anyKeyDown && Mathf.Abs(cameraObj.position.x) == cameraDistanceX) 
         {
+            creditsPanel.SetActive(false);
             // Sound
             AudioManager_PK.GetInstance().Play("ButtonPress", 1);
 
@@ -81,7 +87,14 @@ public class AllMenuManager_PK : MonoBehaviour
     {
         mainMenu.enabled = false;
 
+        Invoke("ActiveCredits", 0.1f);
+
         cameraObj.DOMoveX(cameraDistanceX, cameraSpeed);
+    }
+
+    void ActiveCredits()
+    {
+        creditsPanel.SetActive(true);
     }
 
     #endregion
