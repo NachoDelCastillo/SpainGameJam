@@ -218,5 +218,5 @@ MonoBehaviour:
     volume: 1
     maxVolume: 1
     pitch: 1
-    music: 0
+    music: 1
     source: {fileID: 0}
