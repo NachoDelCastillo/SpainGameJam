@@ -67,21 +67,21 @@ public class EnemySpawner : MonoBehaviour
             case 10:
                 break;
             case 20:
-                CreateRayEnemy(2, 2.5f, 0.8f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1f);
                 break;
             case 30:
                 
                 break;
             case 40:
-                CreateRayEnemy(1, 2.5f, 0.8f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.5f);
                 break;
             case 50:
                 if(LocalMultiplayerManager.GetInstance().GetNumPlayers() > 1)
-                    CreateRayEnemy(1, 2.5f, 0.8f);
+                    CreateRayEnemy(1, 2.5f, 0.8f, 2f);
                 break;
             case 60:
                 if (LocalMultiplayerManager.GetInstance().GetNumPlayers() > 1)
-                    CreateRayEnemy(1, 2.5f, 0.8f);
+                    CreateRayEnemy(1, 2.5f, 0.8f,2.25f);
                 CreateRayEnemy(3, 3, 1f, 1.5f);
                 break;
             case 70:
