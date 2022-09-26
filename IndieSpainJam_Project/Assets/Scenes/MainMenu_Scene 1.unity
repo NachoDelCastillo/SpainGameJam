@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Steampunk ride  '
+  m_text: Steampunk Override
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.7
+  m_fontSize: 26.2
   m_fontSizeBase: 42.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4871,7 +4871,7 @@ RectTransform:
   m_GameObject: {fileID: 1760223477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.78308076, y: 0.78308076, z: 0.78308076}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1160474034}
@@ -4879,7 +4879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 616.41, y: -198.75}
+  m_AnchoredPosition: {x: 594.9, y: -339}
   m_SizeDelta: {x: 209.99, y: -32.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760223479
@@ -62183,7 +62183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &5809097618633540025
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62538,7 +62538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &5856351548524581911
 SpriteRenderer:
   m_ObjectHideFlags: 0

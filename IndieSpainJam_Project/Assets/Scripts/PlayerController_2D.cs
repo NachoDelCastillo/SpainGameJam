@@ -327,7 +327,10 @@ public class PlayerController_2D : MonoBehaviour
                     {
                         if (reachableItems[i] == null) continue;
 
-                        float shortestDistance = Vector3.Distance(nearestItem.transform.position, transform.position);
+                        float shortestDistance = 200;
+
+                        if (nearestItem != null)
+                            shortestDistance = Vector3.Distance(nearestItem.transform.position, transform.position);
 
                         float newDistance = Vector3.Distance(reachableItems[i].transform.position, transform.position);
 
