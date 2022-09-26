@@ -1970,8 +1970,12 @@ MonoBehaviour:
   playerJoinTexts:
   - {fileID: 1855336829}
   - {fileID: 1371107811}
+  - {fileID: 6436907952544979987}
   sprites:
   - {fileID: 1077128808}
+  - {fileID: 6436907952460065359}
+  - {fileID: 6436907952603739073}
+  - {fileID: 4695087922190573281}
 --- !u!114 &648766882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5809097620097853524, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
@@ -5798,7 +5802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &6436907952544979984
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6042,7 +6046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436907953557433478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.18, y: -10.05, z: 0.06621417}
+  m_LocalPosition: {x: 22.06, y: 1.83, z: 0.06621417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
