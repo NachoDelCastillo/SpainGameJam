@@ -51,6 +51,8 @@ public class TutorialManager : MonoBehaviour
     {
         doTutorial = GameManager.GetInstance().firstTimePlaying;
 
+        doTutorial = false;
+
         if (doTutorial)
         {
             STartTutorialValues();

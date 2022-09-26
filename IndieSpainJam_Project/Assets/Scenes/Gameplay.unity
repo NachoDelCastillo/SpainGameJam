@@ -451,6 +451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 294586105}
     m_Modifications:
+    - target: {fileID: 7707667169429182344, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
+      propertyPath: m_text
+      value: SONIDO
+      objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_Name
       value: SoundSlider
@@ -3573,7 +3577,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7707667169429182344, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_text
-      value: MUSIC
+      value: MUSICA
       objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: m_Name
@@ -4355,7 +4359,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: RESTART
+      value: REINICIAR
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -4497,7 +4501,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: BACK
+      value: VOLVER
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -5383,7 +5387,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: MAIN MENU
+      value: MENU PRINCIPAL
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
