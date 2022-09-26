@@ -156,8 +156,10 @@ public class TrainManager : MonoBehaviour
     float spawnTimer;
     public IEnumerator SpawnChangeRail()
     {
+        Debug.Log("SpawnChangeRail");
+
         //spawnTimer = Random.Range(8, 10);
-        spawnTimer = 3;
+        spawnTimer = 10;
 
         while (spawnTimer > 0)
         {
@@ -228,14 +230,16 @@ public class TrainManager : MonoBehaviour
         newChangeRail.SetRailWays(selectedRow, railsways_b);
 
 
-        StartCoroutine(MoveWagonsHorizontally());
+        StartCoroutine(SpawnChangeRail());
     }
 
 
     WagonLogic izqWagon, midWagon, derWagon;
 
-    IEnumerator MoveWagonsHorizontally()
+    public IEnumerator MoveWagonsHorizontally()
     {
+        Debug.Log("MoveWagonsHorizontally");
+
         for (int i = 0; i < 3; i++)
         {
             int posibilidad = Random.Range(0, 3);
@@ -305,9 +309,9 @@ public class TrainManager : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
 
-        StartCoroutine(SpawnChangeRail()); ;
+        StartCoroutine(MoveWagonsHorizontally()); ;
     }
 
     IEnumerator MoveWagonsHorizontally_()
@@ -443,7 +447,7 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
-            if (TutorialManager.GetInstance().duringTutorial) return;
+            if (TutorialManager.GetInstance().duringTutorial || MainVelocity <= 0) return;
             maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
             waterSlider.maxValue = maxWater;
             //Updated upstream
