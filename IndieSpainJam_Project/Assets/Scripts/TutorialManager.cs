@@ -10,7 +10,6 @@ public class TutorialManager : MonoBehaviour
     // Si esta a true, haces el tutorial
     [HideInInspector] public bool doTutorial;
 
-    [SerializeField] bool menu = false;
     static TutorialManager instance;
     public static TutorialManager GetInstance()
     { return instance; }
@@ -43,16 +42,16 @@ public class TutorialManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        if(!menu) HideEverything();
+        HideEverything();
 
         //StartCoroutine(DoTutorial());
     }
 
     private void Start()
     {
-        doTutorial = GameManager.GetInstance().firstTimePlaying;
+        doTutorial = true;
 
-        if (doTutorial && !menu)
+        if (doTutorial)
         {
             duringTutorial = true;
 
@@ -202,39 +201,39 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator HideTutorialItems(tutItems phaseItem)
     {
-        if (!menu)
-        {
-            // Tiempo que tarda en aparecer el panel
-            float panelHideTime = 1;
+        
+        
+        // Tiempo que tarda en aparecer el panel
+        float panelHideTime = 1;
 
-            // Tiempo que tarda en aparecer la informacion del panel (texxtos e imagenes)
-            float infoHideTime = .5f;
-
-
-            // INFO IN THE PANEL
-            SpriteRenderer[] infoImages = phaseItem.infoImages;
-            TMP_Text[] infoTexts = phaseItem.infoTexts;
-
-            foreach (SpriteRenderer infoImage in infoImages)
-                infoImage.DOFade(0, infoHideTime);
-
-            foreach (TMP_Text infoText in infoTexts)
-                infoText.DOFade(0, infoHideTime);
+        // Tiempo que tarda en aparecer la informacion del panel (texxtos e imagenes)
+        float infoHideTime = .5f;
 
 
+        // INFO IN THE PANEL
+        SpriteRenderer[] infoImages = phaseItem.infoImages;
+        TMP_Text[] infoTexts = phaseItem.infoTexts;
 
-            yield return new WaitForSeconds(infoHideTime);
+        foreach (SpriteRenderer infoImage in infoImages)
+            infoImage.DOFade(0, infoHideTime);
 
-            // PANEL
+        foreach (TMP_Text infoText in infoTexts)
+            infoText.DOFade(0, infoHideTime);
 
-            // Fade
-            SpriteRenderer panel = phaseItem.panel;
-            panel.DOFade(0, panelHideTime);
 
-            // Position
-            Vector3 panelPosition = panel.transform.position;
-            phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
-        }
+
+        yield return new WaitForSeconds(infoHideTime);
+
+        // PANEL
+
+        // Fade
+        SpriteRenderer panel = phaseItem.panel;
+        panel.DOFade(0, panelHideTime);
+
+        // Position
+        Vector3 panelPosition = panel.transform.position;
+        phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
+        
     }
 
 
@@ -249,26 +248,24 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator EndTutorial_IEnumerator()
     {
-        if (!menu)
-        {
-            yield return new WaitUntil(() => TrainManager.Instance.GetmainVelocity() != 0);
+     
+       
+        yield return new WaitUntil(() => TrainManager.Instance.GetmainVelocity() != 0);
 
-            foreach (TMP_Text ThisText in playerJoinTexts)
-                ThisText.DOFade(0, 1);
+        foreach (TMP_Text ThisText in playerJoinTexts)
+            ThisText.DOFade(0, 1);
 
-            foreach (SpriteRenderer ThisSprite in sprites)
-                ThisSprite.DOFade(0, 1);
+        foreach (SpriteRenderer ThisSprite in sprites)
+            ThisSprite.DOFade(0, 1);
 
-            tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhases.repararVagonAgua);
-            tutItem.panel.transform.parent.position = new Vector3(tutItem.panel.transform.parent.position.x, tutItem.panel.transform.parent.position.y - 3, 0);
-            //tutItem.panel.transform.gameObject.SetActive(false);
+        tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhases.repararVagonAgua);
+        tutItem.panel.transform.parent.position = new Vector3(tutItem.panel.transform.parent.position.x, tutItem.panel.transform.parent.position.y - 3, 0);
+        //tutItem.panel.transform.gameObject.SetActive(false);
 
-            FindObjectOfType<EnemySpawner>().CreateEnemys();
-            StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
-            yield return new WaitForSeconds((TrainManager.Instance.moveIntensity * 5) / 6);
-            //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
-
-            GameManager.GetInstance().firstTimePlaying = false;
-        }
+        FindObjectOfType<EnemySpawner>().CreateEnemys();
+        StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
+        yield return new WaitForSeconds((TrainManager.Instance.moveIntensity * 5) / 6);
+        //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
+        
     }
 }
