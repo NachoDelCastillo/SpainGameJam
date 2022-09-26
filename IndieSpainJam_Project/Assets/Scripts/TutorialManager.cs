@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = false;
 
         if (doTutorial)
         {
@@ -78,6 +78,8 @@ public class TutorialManager : MonoBehaviour
 
     void HideEverything()
     {
+        transform.GetChild(0).gameObject.SetActive(true);
+
         foreach (var tutElement in tutorialElements)
         {
             Color panelColor = tutElement.panel.color;
@@ -257,6 +259,7 @@ public class TutorialManager : MonoBehaviour
 
         tutItems tutItem = Array.Find(tutorialElements, tutItem => tutItem.phase == tutPhases.repararVagonAgua);
         tutItem.panel.transform.parent.position = new Vector3(tutItem.panel.transform.parent.position.x, tutItem.panel.transform.parent.position.y - 3, 0);
+        //tutItem.panel.transform.gameObject.SetActive(false);
 
         FindObjectOfType<EnemySpawner>().CreateEnemys();
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
