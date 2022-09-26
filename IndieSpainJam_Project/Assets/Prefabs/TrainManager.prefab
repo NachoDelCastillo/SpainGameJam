@@ -5734,6 +5734,7 @@ MonoBehaviour:
   speed: 4
   coalStarted: 0
   coalReady: 0
+  inWagon: 0
   clon: {fileID: 0}
 --- !u!1 &4355813151052657058
 GameObject:
@@ -6494,13 +6495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030897bfd4ebd514caaedefd7bba8a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalLight: {fileID: 0}
   gameLost: 0
   letterOfFinalWhenLoseAlreadyOut: 0
   MainVelocity: 0
-  cameraShake: {fileID: 0}
+  cameraShake: {fileID: 581589685401405750}
   wheelNeon: {fileID: 8770769216860560678}
-  maxIntensity: 100
-  normalIntensity: 10
+  maxIntensity: 10
+  normalIntensity: 3
   timeToReachMax: 0.5
   smoke: {fileID: 2349758451666518682}
   deliverCoal: {fileID: 4355813151630644650}
@@ -6598,6 +6600,8 @@ MonoBehaviour:
   waterParticles: {fileID: 3337171315973414224}
   waterDown: 0
   sparkSys: {fileID: 5961624223375900008, guid: 6e4926bc0f7d3a049bdb45dc7de1fa35, type: 3}
+  textHighlight: {r: 0.8396226, g: 0.12198288, b: 0.12198288, a: 1}
+  textDefault: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   dangerSprite: {fileID: 0}
   wheel: {fileID: 4418474394681133062}
   innerWheel: {fileID: 6638644831449946995}
@@ -13754,6 +13758,7 @@ Transform:
   - {fileID: 8770769216633192663}
   - {fileID: 8770769217034475830}
   - {fileID: 3337171315973414225}
+  - {fileID: 5809097618823190720}
   m_Father: {fileID: 8770769218428269254}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15628,6 +15633,80 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3978658045501465023, guid: cc2ed8e5e551f064e8c048bf4c7148b9, type: 3}
   m_PrefabInstance: {fileID: 8770769217208084245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8770769217416952679
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8770769217629132580}
+    m_Modifications:
+    - target: {fileID: 2965065803891172262, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_Name
+      value: RepararVagonAgua
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.431798
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9478483
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06621417
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_text
+      value: REPARAR VAGON DE AGUA
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_margin.x
+      value: -114.99703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+      propertyPath: m_margin.z
+      value: -114.01048
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+--- !u!4 &5809097618823190720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
+  m_PrefabInstance: {fileID: 8770769217416952679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8770769217516188088
 PrefabInstance:
