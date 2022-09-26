@@ -372,75 +372,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3556215983890715073, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
   m_PrefabInstance: {fileID: 532761747}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &132556979
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1927173453}
-    m_Modifications:
-    - target: {fileID: 2965065803891172262, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_Name
-      value: RepararVagonAgua
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.431798
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.9478483
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.06621417
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_text
-      value: REPARAR VAGON DE AGUA
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_margin.x
-      value: -114.99703
-      objectReference: {fileID: 0}
-    - target: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_margin.z
-      value: -114.01048
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
 --- !u!1 &171901967
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,8 +659,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &288001145 stripped
 SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2965065804853230817, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-  m_PrefabInstance: {fileID: 132556979}
+  m_CorrespondingSourceObject: {fileID: 5809097620022249350, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &293666166
 GameObject:
@@ -2160,8 +2091,8 @@ MonoBehaviour:
   - {fileID: 1077128808}
 --- !u!114 &648766882 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2965065804895130419, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-  m_PrefabInstance: {fileID: 132556979}
+  m_CorrespondingSourceObject: {fileID: 5809097620097853524, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -4365,8 +4296,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1613266165 stripped
 SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3556215983890715073, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-  m_PrefabInstance: {fileID: 132556979}
+  m_CorrespondingSourceObject: {fileID: 5251830186706348710, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1618606200
 GameObject:
@@ -4819,8 +4750,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1825668505 stripped
 SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2965065804980086127, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-  m_PrefabInstance: {fileID: 132556979}
+  m_CorrespondingSourceObject: {fileID: 5809097619878682120, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+  m_PrefabInstance: {fileID: 8770769217448825812}
   m_PrefabAsset: {fileID: 0}
 --- !u!212 &1829019217 stripped
 SpriteRenderer:
@@ -5178,11 +5109,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1927173453 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8770769217629132580, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-  m_PrefabInstance: {fileID: 8770769217448825812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1934526130
 GameObject:
   m_ObjectHideFlags: 0
@@ -5631,10 +5557,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1428882617}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: cameraShake
-      value: 
-      objectReference: {fileID: 8770769217448825813}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: globalLight
       value: 
       objectReference: {fileID: 45928727}
@@ -5647,49 +5569,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 255504361}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: maxIntensity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: pressAnything
       value: 
       objectReference: {fileID: 1137582939}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textDefault.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textDefault.b
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textDefault.g
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textDefault.r
-      value: 0.9056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: normalIntensity
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textHighlight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textHighlight.b
-      value: 0.12198288
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textHighlight.g
-      value: 0.12198288
-      objectReference: {fileID: 0}
-    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: textHighlight.r
-      value: 0.8396226
-      objectReference: {fileID: 0}
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: MainVelocity_text
       value: 
@@ -5712,14 +5594,3 @@ PrefabInstance:
       objectReference: {fileID: 750174532}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
---- !u!114 &8770769217448825813 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 581589685401405750, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-  m_PrefabInstance: {fileID: 8770769217448825812}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1b2adbe59a9954285e187e436451de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
