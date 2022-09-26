@@ -104,7 +104,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void CreateRayEnemy(int timesToShot, float loadTime, float rayTime, float speed = 2.5f)
     {
-        Vector3 position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + enemyPrefabs[1].transform.localScale.x * 2, Random.Range(Camera.main.orthographicSize, -Camera.main.orthographicSize), 0);
+        Vector3 position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + enemyPrefabs[1].transform.localScale.x * 2 + 5, Random.Range(Camera.main.orthographicSize, -Camera.main.orthographicSize), 0);
 
         GameObject rayEnemy = Instantiate(enemyPrefabs[1], position, Quaternion.identity);
         RayEnemyMovement enemigoScript = rayEnemy.GetComponent<RayEnemyMovement>();

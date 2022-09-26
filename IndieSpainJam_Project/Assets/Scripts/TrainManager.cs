@@ -730,7 +730,7 @@ public class TrainManager : MonoBehaviour
         string fullString;
         if (win)
         {
-            fullString = "SIUUUUUU";
+            fullString = "100 km / h";
             resultPanel.color = winColor;
 
             AudioManager_PK.instance.Play("Win", Random.Range(0.95f, 1.05f));
@@ -741,7 +741,7 @@ public class TrainManager : MonoBehaviour
         else
         {
             gameLost = true;
-            fullString = "CAGASTE";
+            fullString = "";
             resultPanel.color = loseColor;
         }
 
@@ -761,18 +761,20 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
-            // LOSE
-            float timeBetweenLetters = .05f;
-            string s = "Press anything to try again";
-            StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
-            yield return new WaitForSeconds(timeBetweenLetters * s.Length);
+            if (!GameManager.GetInstance().duringTransition)
+            {            // LOSE
+                float timeBetweenLetters = .05f;
+                string s = "Presiona cualquier boton para reiniciar";
+                StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
+                yield return new WaitForSeconds(timeBetweenLetters * s.Length);
 
-            yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(1);
 
-            letterOfFinalWhenLoseAlreadyOut = true;
-            ShowAnyKeyButton();
+                letterOfFinalWhenLoseAlreadyOut = true;
+                ShowAnyKeyButton();
 
-            CancelInvoke();
+                CancelInvoke();
+            }
             yield return 0;
         }
 
