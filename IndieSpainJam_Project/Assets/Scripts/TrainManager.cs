@@ -612,7 +612,7 @@ public class TrainManager : MonoBehaviour
 
         foreach (ChangeRail thisChangeRail in changeRailsInThisRow)
         {
-            if (thisChangeRail.transform.position.x < -40)
+            if (thisChangeRail.transform.position.x < -100)
                 deleteThisChange = thisChangeRail;
         }
 
