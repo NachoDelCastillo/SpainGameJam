@@ -114,6 +114,8 @@ public class BasicEnemy : MonoBehaviour
 
     void Death()
     {
+        AudioManager_PK.instance.Play("EDeath", Random.Range(0.9f, 1.1f));
+
         TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.matarEnemigoTorreta);
 
         rb.velocity = Vector2.zero;
