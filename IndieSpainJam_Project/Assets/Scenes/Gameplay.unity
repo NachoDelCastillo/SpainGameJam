@@ -5504,14 +5504,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 750174532}
-    - target: {fileID: 2667453025500928410, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6a32bcf526d3148a63136907f61b8b, type: 2}
-    - target: {fileID: 3845361761820933603, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: df6a32bcf526d3148a63136907f61b8b, type: 2}
     - target: {fileID: 4355813152788421224, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_Name
       value: TrainManager
