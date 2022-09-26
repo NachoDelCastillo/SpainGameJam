@@ -10,7 +10,10 @@ using UnityEngine.UI;
 
 public class TrainManager : MonoBehaviour
 {
+    public List<GrabbableItem> coalsInScreen = new List<GrabbableItem>();
+
     [SerializeField] Light2D globalLight;
+    [SerializeField] bool takeDamage = true;
     public static TrainManager Instance { get; private set; }
 
     float elapsedTime = 0;
@@ -718,6 +721,7 @@ public class TrainManager : MonoBehaviour
         float deliverTime = .05f;
         StartCoroutine(Utils.MoveItemSmooth(coal.transform, deliverCoal, deliverTime));
         StartCoroutine(DestroyCoal(coal, deliverTime));
+        coalsInScreen.Remove(coal.GetComponent<GrabbableItem>());
     }
 
     IEnumerator DestroyCoal(GrabbableItem coal, float seconds)
@@ -859,6 +863,10 @@ public class TrainManager : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (!takeDamage) return;
+
+        if (TutorialManager.GetInstance().duringTutorial) return;
+
         if (showingResults)
             return;
 

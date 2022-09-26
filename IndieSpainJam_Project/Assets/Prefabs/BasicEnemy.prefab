@@ -4963,7 +4963,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1477872235
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 14
   m_Sprite: {fileID: -1567966608, guid: ce3326307819d6e4497038e63e070108, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5044,7 +5044,7 @@ MonoBehaviour:
   speed: 3
   detectionRadius: 1
   destroyTime: 0.5
-  damage: 2
+  damage: 1
   attackFrecuency: 1
   sparksPrefab: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   bloodPrefab: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}

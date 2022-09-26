@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = false;
 
         if (doTutorial && menu)
         {
