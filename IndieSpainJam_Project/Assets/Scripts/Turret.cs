@@ -198,6 +198,9 @@ public class Turret : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coal"))
         {
+            if (collision.transform.GetComponentInParent<PlayerController_2D>())
+                collision.transform.GetComponentInParent<PlayerController_2D>().RemoveReachableItem(collision.GetComponent<GrabbableItem>());
+
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
 
             if (!AudioManager_PK.instance.sounds[11].source.isPlaying)
