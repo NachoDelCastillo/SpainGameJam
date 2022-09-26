@@ -5081,6 +5081,8 @@ MonoBehaviour:
   respawnTime: 3
   pSystem: {fileID: 482642055}
   sangrePart: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
+  player1: {r: 0.8490566, g: 0.62131876, b: 0.043253757, a: 1}
+  player2: {r: 0, g: 0.8235294, b: 1, a: 1}
   numPlayers: {fileID: 1371107811}
 --- !u!4 &1884531411
 Transform:
