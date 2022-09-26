@@ -6525,7 +6525,7 @@ MonoBehaviour:
   - {fileID: 4355813150803531915}
   - {fileID: 4355813151642552667}
   - {fileID: 4355813150781978895}
-  velocityGainedByCoal: 10
+  velocityGainedByCoal: 5
   health: 0
   maxHealth: 100
   healthSlider: {fileID: 0}

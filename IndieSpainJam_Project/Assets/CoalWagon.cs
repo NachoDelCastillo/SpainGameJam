@@ -39,6 +39,8 @@ public class CoalWagon : MonoBehaviour
         clon = Instantiate(coal, transform.parent);
         clon.GetComponent<GrabbableItem>().initialParent = transform.parent;
         clon.GetComponent<GrabbableItem>().wagon = this;
+        clon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        clon.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         clon.transform.position = iniPos.position;
 
         // Smooooooooooooooooooooth

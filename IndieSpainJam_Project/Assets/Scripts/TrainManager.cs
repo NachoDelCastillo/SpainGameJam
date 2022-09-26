@@ -47,7 +47,7 @@ public class TrainManager : MonoBehaviour
 
 
 
-    [SerializeField] int velocityGainedByCoal = 5;
+    [SerializeField] int velocityGainedByCoal;
 
     //Health
     [SerializeField] float health, maxHealth;
@@ -154,13 +154,14 @@ public class TrainManager : MonoBehaviour
         wheelMaterial.SetColor("_Color", wheelColor);
     }
 
+    [SerializeField] public float moveIntensity = 8;
     float spawnTimer;
     public IEnumerator SpawnChangeRail()
     {
         Debug.Log("SpawnChangeRail");
 
         //spawnTimer = Random.Range(8, 10);
-        spawnTimer = 10;
+        spawnTimer = moveIntensity;
 
         while (spawnTimer > 0)
         {
@@ -195,6 +196,7 @@ public class TrainManager : MonoBehaviour
             else if (selectedRow == 2)
                 railsways_b[2] = false;
 
+            railsways_b[1] = true;
 
             bool selectedRowIsOccupied = false;
             int numOfWays = 0;
@@ -241,6 +243,8 @@ public class TrainManager : MonoBehaviour
     {
         Debug.Log("MoveWagonsHorizontally");
 
+        float moveTime = 3;
+
         for (int i = 0; i < 3; i++)
         {
             int posibilidad = Random.Range(0, 3);
@@ -251,8 +255,8 @@ public class TrainManager : MonoBehaviour
                     continue;
 
                 // Los dos de la izquierda
-                izqWagon.transform.DOMoveX(columns[1].position.x, 1);
-                midWagon.transform.DOMoveX(columns[0].position.x, 1);
+                izqWagon.transform.DOMoveX(columns[1].position.x, moveTime);
+                midWagon.transform.DOMoveX(columns[0].position.x, moveTime);
 
                 izqWagon.RailColumn = 1;
                 midWagon.RailColumn = 0;
@@ -261,7 +265,7 @@ public class TrainManager : MonoBehaviour
                 izqWagon = midWagon;
                 midWagon = auxWagon;
 
-                yield break;
+                goto suuuu;
             }
 
             else if (posibilidad == 1)
@@ -270,8 +274,8 @@ public class TrainManager : MonoBehaviour
                     continue;
 
                 // Los dos de la derecha
-                midWagon.transform.DOMoveX(columns[2].position.x, 1);
-                derWagon.transform.DOMoveX(columns[1].position.x, 1);
+                midWagon.transform.DOMoveX(columns[2].position.x, moveTime);
+                derWagon.transform.DOMoveX(columns[1].position.x, moveTime);
 
                 midWagon.RailColumn = 2;
                 derWagon.RailColumn = 1;
@@ -279,8 +283,8 @@ public class TrainManager : MonoBehaviour
                 WagonLogic auxWagon = derWagon;
                 derWagon = midWagon;
                 midWagon = auxWagon;
-
-                yield break;
+                
+                goto suuuu;
             }
 
             else if (posibilidad == 2)
@@ -296,8 +300,8 @@ public class TrainManager : MonoBehaviour
 
 
                 // Los dos de la derecha
-                izqWagon.transform.DOMoveX(columns[2].position.x, 1);
-                derWagon.transform.DOMoveX(columns[0].position.x, 1);
+                izqWagon.transform.DOMoveX(columns[2].position.x, moveTime);
+                derWagon.transform.DOMoveX(columns[0].position.x, moveTime);
 
                 izqWagon.RailColumn = 2;
                 derWagon.RailColumn = 0;
@@ -306,88 +310,15 @@ public class TrainManager : MonoBehaviour
                 derWagon = izqWagon;
                 izqWagon = auxWagon;
 
-                yield break;
+                goto suuuu;
             }
         }
 
-        yield return new WaitForSeconds(10);
+        suuuu:
+
+        yield return new WaitForSeconds(moveIntensity);
 
         StartCoroutine(MoveWagonsHorizontally()); ;
-    }
-
-    IEnumerator MoveWagonsHorizontally_()
-    {
-
-        int currentwWagonIndex = Random.Range(0, 3);
-        int numberOfWagonsTried = 0;
-
-        // Informacion importante
-        WagonLogic wagon;
-        int finalDirectionOfTheWagon = 0;
-        int wagonColumn;
-
-        do
-        {
-            numberOfWagonsTried++;
-
-            currentwWagonIndex++;
-            if (currentwWagonIndex >= 3)
-                currentwWagonIndex = 0;
-
-            wagon = wagons[currentwWagonIndex];
-
-            // Elegir direccion a la que se puede mover
-            wagonColumn = wagon.RailColumn;
-
-            // Averiguar si este vagon no tiene posibilidad de moverse
-            bool canGoLeft = true, canGoRight = true;
-
-            // Bordes
-            if (wagonColumn == 0) canGoLeft = false;
-            if (wagonColumn == 2) canGoRight = false;
-
-            foreach (WagonLogic thisWagon in wagons)
-            {
-                // Comprobar que no es el mismo
-                if (wagon != thisWagon)
-                {
-                    // Misma linea
-                    if (wagon.RailRow == thisWagon.RailRow)
-                    {
-                        // Comprobar los dos lados
-                        if (wagonColumn - 1 == thisWagon.RailColumn)
-                            canGoLeft = false;
-                        if (wagonColumn + 1 == thisWagon.RailColumn)
-                            canGoRight = false;
-                    }
-                }
-            }
-
-            // Si se puede para alguno de los lados, seleccionarlo
-            if (canGoLeft && !canGoRight)
-                finalDirectionOfTheWagon = -1;
-            else if (!canGoLeft && canGoRight)
-                finalDirectionOfTheWagon = 1;
-            else if (canGoLeft && canGoRight)
-            {
-                // Si se puede ir para los dos lados, elegir uno aleatoriamente
-                if (Random.Range(0, 2) == 0)
-                    finalDirectionOfTheWagon = 1;
-                else finalDirectionOfTheWagon = -1;
-            }
-
-            // Si el vagon tiene direccion y no se han llegado a intentar todos los vagones, seguir
-        } while (finalDirectionOfTheWagon == 0 && numberOfWagonsTried <= 3);
-
-        int goToThisColumnIndex = wagonColumn + finalDirectionOfTheWagon;
-        Vector3 goToThisPosition = columns[goToThisColumnIndex].position;
-
-        // Con el vagon ya seleccionado, lo movemos
-        wagon.transform.DOMoveX(goToThisPosition.x, 1);
-
-        yield return new WaitForSeconds(1);
-
-        //StartCoroutine(MoveWagonsHorizontally());
     }
 
     void RandomRail(ref bool railway_b)
@@ -922,7 +853,7 @@ public class TrainManager : MonoBehaviour
         if (showingResults)
             return;
 
-        health -= amount;
+        //health -= amount;
 
         globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1);
         if (health <= 0) health = 0;
