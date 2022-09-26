@@ -3583,6 +3583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727854, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: isMusicSlider
       value: 1
@@ -5283,34 +5287,6 @@ PrefabInstance:
     - target: {fileID: 7349765566202119486, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.size
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ff31b35f578c1de41a5011825328d66e, type: 3}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].name
-      value: GameMusic
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].music
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
-      propertyPath: sounds.Array.data[24].maxVolume
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
