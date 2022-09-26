@@ -678,20 +678,32 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-    public IEnumerator RespawnColor(float respawnTime)
+    public IEnumerator RespawnColor(float respawnTime, int timesToBlink)
     {
-        float timePassed = 0;
-        gfx.color = colorRespawn;
-        while (timePassed < respawnTime)
-        {
-            // Code to go left here
-            timePassed += Time.deltaTime;
-            gfx.color = Color.Lerp(gfx.color, Color.white, timePassed/respawnTime);
 
-            yield return null;
+        while(timesToBlink > 0)
+        {
+            gfx.enabled = false;
+            yield return new WaitForSeconds(respawnTime / 5  *0.75f);
+            gfx.enabled = true;
+            yield return new WaitForSeconds(respawnTime / 5 *0.75f);
+            timesToBlink--;
+            
         }
 
         killable = true;
+        //float timePassed = 0;
+        //gfx.color = colorRespawn;
+        //while (timePassed < respawnTime)
+        //{
+        //    // Code to go left here
+        //    timePassed += Time.deltaTime;
+        //    gfx.color = Color.Lerp(gfx.color, Color.white, timePassed/respawnTime);
+
+        //    yield return null;
+        //}
+
+        //killable = true;
 
     }
 }
