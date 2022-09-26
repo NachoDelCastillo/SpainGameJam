@@ -49,7 +49,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        doTutorial = true;
+        doTutorial = GameManager.GetInstance().firstTimePlaying;
 
         if (doTutorial)
         {
@@ -248,8 +248,6 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator EndTutorial_IEnumerator()
     {
-     
-       
         yield return new WaitUntil(() => TrainManager.Instance.GetmainVelocity() != 0);
 
         foreach (TMP_Text ThisText in playerJoinTexts)
@@ -266,6 +264,7 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
         yield return new WaitForSeconds((TrainManager.Instance.moveIntensity * 5) / 6);
         //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
-        
+
+        GameManager.GetInstance().firstTimePlaying = false;
     }
 }
