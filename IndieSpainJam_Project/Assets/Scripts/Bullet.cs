@@ -38,10 +38,12 @@ public class Bullet : MonoBehaviour
 
     public void EnemyImpacted()
     {
-        dead = true;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        rb.isKinematic = true;
+        //dead = true;
+        //GetComponent<SpriteRenderer>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
+        //rb.isKinematic = true;
+
+        Destroy(gameObject);
     }
 
     
