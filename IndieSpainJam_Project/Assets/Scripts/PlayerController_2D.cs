@@ -63,6 +63,7 @@ public class PlayerController_2D : MonoBehaviour
 
     [Header("Particle Systems")]
     [SerializeField] ParticleSystem jumping;
+    [SerializeField] ParticleSystem doubleJumping;
     [SerializeField] ParticleSystem landing1;
     [SerializeField] ParticleSystem landing2;
 
@@ -650,7 +651,8 @@ public class PlayerController_2D : MonoBehaviour
             rb.AddForce(new Vector2(0f, 3000));
 
             AudioManager_PK.instance.Play("Jump", Random.Range(1.3f, 1.5f));
-            //jumping.Play(true);
+            jumping.Play(true);
+            doubleJumping.Play(true);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
