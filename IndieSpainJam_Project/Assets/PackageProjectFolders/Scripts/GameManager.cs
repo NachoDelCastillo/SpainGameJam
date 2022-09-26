@@ -9,7 +9,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
 
-    public bool firstTimePlaying;
+    [SerializeField] public bool firstTimePlaying;
 
     static public int numPlayersPlaying = 1;
 
@@ -123,6 +123,11 @@ public class GameManager : MonoBehaviour
     {
         left.anchoredPosition = new Vector3(-transitionsMove, left.anchoredPosition.y);
         right.anchoredPosition = new Vector3(transitionsMove, right.anchoredPosition.y);
+    }
+
+    private void Update()
+    {
+        Debug.Log("firstTimePlaying = " + firstTimePlaying);
     }
 
     #endregion

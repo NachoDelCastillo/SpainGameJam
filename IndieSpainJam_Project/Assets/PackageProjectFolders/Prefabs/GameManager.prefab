@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64700a725e5a2e64297b9afa7d2e4b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTimePlaying: 0
+  firstTimePlaying: 1
   left: {fileID: 8485692226985410821}
   right: {fileID: 1895215293}
   level_Text: {fileID: 8621253407450473402}

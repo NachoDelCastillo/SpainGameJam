@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class TutorialManager : MonoBehaviour
     {
         doTutorial = GameManager.GetInstance().firstTimePlaying;
 
+
+        //doTutorial = true;
         if (doTutorial)
         {
             STartTutorialValues();
@@ -207,8 +210,8 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator HideTutorialItems(tutItems phaseItem)
     {
-        
-        
+
+
         // Tiempo que tarda en aparecer el panel
         float panelHideTime = 1;
 
@@ -239,7 +242,7 @@ public class TutorialManager : MonoBehaviour
         // Position
         Vector3 panelPosition = panel.transform.position;
         phaseItem.panel.transform.DOMoveY(panelPosition.y - 1, panelHideTime);
-        
+
     }
 
 
@@ -250,6 +253,9 @@ public class TutorialManager : MonoBehaviour
     void EndTutorial()
     {
         StartCoroutine(EndTutorial_IEnumerator());
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            GameManager.GetInstance().firstTimePlaying = false;
     }
 
     IEnumerator EndTutorial_IEnumerator()
@@ -270,7 +276,5 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
         yield return new WaitForSeconds((TrainManager.Instance.moveIntensity * 5) / 6);
         //StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
-
-        GameManager.GetInstance().firstTimePlaying = false;
     }
 }

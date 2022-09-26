@@ -190,7 +190,6 @@ public class TrainManagerMenu : MonoBehaviour
 
     public IEnumerator MoveWagonsHorizontally()
     {
-        Debug.Log("MoveWagonsHorizontally");
 
         float moveTime = 3;
 
