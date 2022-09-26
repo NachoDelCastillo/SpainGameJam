@@ -44,9 +44,7 @@ public class Turret : MonoBehaviour
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
         outline.SetActive(false);
-        beingUsed = false;
-
-       
+        beingUsed = false;     
     }
 
     // Update is called once per frame
