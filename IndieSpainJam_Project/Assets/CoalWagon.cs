@@ -33,7 +33,7 @@ public class CoalWagon : MonoBehaviour
 
     void CreateCoal()
     {
-        if (TrainManager.Instance.coalsInScreen.Count >= 5) return;
+        if (TrainManager.Instance.coalsInScreen.Count >= 2) return;
 
         coalStarted = true;
         inWagon = true;

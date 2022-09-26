@@ -40,9 +40,11 @@ public class LocalMultiplayerManager : MonoBehaviour
       
     }
 
+
     // This function is called everytime a player joined
     public void PlayerJoined(PlayerInput newplayer)
     {
+        if (allPlayers.Count >= 2) allPlayers.Clear();
         Debug.Log("NEW PLAYER = " + newplayer);
 
         // Get a reference
@@ -51,6 +53,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         // Set player index
         int playerIndex = playerInputManager.playerCount - 1;
         allPlayers.Add(newPlayerController);
+
         if (playerIndex == 0)
             newPlayerController.triangulo.color = player1;
         else
@@ -66,8 +69,6 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         newPlayerController.playerIndex = playerIndex;
         newPlayerController.transform.SetParent(playerContainer);
-
-        allPlayers.Add(newPlayerController);
 
 
         numPlayers.text = allPlayers.Count + " / " + playerInputManager.maxPlayerCount + " Jugadores";
