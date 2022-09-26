@@ -5424,7 +5424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doTutorial: 0
-  menu: 1
   duringTutorial: 0
   tutorialElements:
   - phase: 0
