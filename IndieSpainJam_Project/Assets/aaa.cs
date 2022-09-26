@@ -18,7 +18,7 @@ public class aaa : MonoBehaviour
 
         ParticleSystem.MinMaxCurve a = new();
         a = sys.velocityOverLifetime.x;
-        a.curveMultiplier = 0.5f + (((float)speed / 100f) * 30f);
+        a.curveMultiplier = ((float)speed / 100f) * 30f;
         var aux2 = sys.velocityOverLifetime;
         aux2.x = a;
     }
