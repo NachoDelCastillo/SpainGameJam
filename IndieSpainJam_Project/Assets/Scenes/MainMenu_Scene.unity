@@ -3168,7 +3168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -314.7, y: 310.3}
+  m_AnchoredPosition: {x: -346, y: 176}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1176296098 stripped
@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 40 / 100 Km/h
+  m_text: 15 / 100 Km/h
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -16792,7 +16792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3804357819032461510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17531,7 +17531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc84bf1116e15747a554e1f6d016f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainVelocity: 40
+  MainVelocity: 15
   cameraShake: {fileID: 581589685145854168}
   wheelNeon: {fileID: 8770769218281944264}
   maxIntensity: 2
