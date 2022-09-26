@@ -5044,7 +5044,7 @@ MonoBehaviour:
   speed: 3
   detectionRadius: 1
   destroyTime: 0.5
-  damage: 1
+  damage: 0.75
   attackFrecuency: 1
   sparksPrefab: {fileID: 5483449197282775203, guid: f68d77ec977834446b97ac939fae582b, type: 3}
   bloodPrefab: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
