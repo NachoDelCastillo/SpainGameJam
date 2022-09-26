@@ -447,7 +447,7 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
-            if (TutorialManager.GetInstance().duringTutorial) return;
+            if (TutorialManager.GetInstance().duringTutorial || MainVelocity <= 0) return;
             maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
             waterSlider.maxValue = maxWater;
             //Updated upstream
