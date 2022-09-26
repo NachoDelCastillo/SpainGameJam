@@ -5297,6 +5297,10 @@ PrefabInstance:
       value: GameMusic
       objectReference: {fileID: 0}
     - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
+      propertyPath: sounds.Array.data[24].music
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349765566202119487, guid: cb90c28cbf6adc0429ecc9a1822fe6fd, type: 3}
       propertyPath: sounds.Array.data[24].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -6214,6 +6218,10 @@ PrefabInstance:
     - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: velocityGainedByCoal
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355813152788421227, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: dmgWhenWater0PerSecond
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5660743581741287079, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: m_IsActive
