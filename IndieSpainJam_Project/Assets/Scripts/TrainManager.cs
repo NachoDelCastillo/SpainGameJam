@@ -120,6 +120,7 @@ public class TrainManager : MonoBehaviour
         derWagon = wagons[2];
 
         thisText_InitScale = MainVelocity_text.transform.localScale.x;
+        StartCoroutine(UpdateTextSpeed());
 
         cameraShake = GetComponent<CameraShake>();
         gameLost = false;
