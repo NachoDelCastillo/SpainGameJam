@@ -802,7 +802,7 @@ public class TrainManager : MonoBehaviour
             fullString = "SIUUUUUU";
             resultPanel.color = winColor;
 
-            // Poner todos los vagones en fila
+            AudioManager_PK.instance.Play("Win", Random.Range(0.95f, 1.05f));
 
             for (int j = 0; j < wagons.Length; j++)
                 wagons[j].transform.DOMove(initialPosOfWagons[j], 1);

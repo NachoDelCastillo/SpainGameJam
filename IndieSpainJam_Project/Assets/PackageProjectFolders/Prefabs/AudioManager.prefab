@@ -206,3 +206,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 68b5ecc940a138445bd2ed3b8493acb6, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
