@@ -261,7 +261,7 @@ public class TutorialManager : MonoBehaviour
 
         FindObjectOfType<EnemySpawner>().CreateEnemys();
         StartCoroutine(FindObjectOfType<TrainManager>().SpawnChangeRail());
-        yield return new WaitForSeconds(TrainManager.Instance.moveIntensity/2);
+        yield return new WaitForSeconds((TrainManager.Instance.moveIntensity*5)/6);
         StartCoroutine(FindObjectOfType<TrainManager>().MoveWagonsHorizontally());
     }
 }

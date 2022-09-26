@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 58771
+  controlID: 59482
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 58772
+  controlID: 59483
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 58773
+  controlID: 59484
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,8 +187,8 @@ MonoBehaviour:
     y: 0
     width: 733.6
     height: 503.2
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -245,8 +245,8 @@ MonoBehaviour:
     y: 0
     width: 317.59998
     height: 503.2
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -500,9 +500,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.142056, y: -3.7907658, z: 115.86556}
+    m_Target: {x: 6.709744, y: -9.4255905, z: 130.91768}
     speed: 2
-    m_Value: {x: 6.142056, y: -3.7907658, z: 115.86556}
+    m_Value: {x: 6.709744, y: -9.4255905, z: 130.91768}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -553,9 +553,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 29.718378
+    m_Target: 38.62929
     speed: 2
-    m_Value: 29.718378
+    m_Value: 38.62929
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -761,7 +761,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 115.80002}
     m_SelectedIDs: 1a880000
     m_LastClickedID: 34842
-    m_ExpandedIDs: 00000000e0790000e2790000e4790000e6790000227a000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e0790000e2790000e4790000e679000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -892,8 +892,8 @@ MonoBehaviour:
     y: 0
     width: 228.80005
     height: 770.8
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -932,7 +932,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: a23ff6ff9649f6ff5c62f6ff123ff7ff3e01f8ff8e28f8ffc231f9ffa22ffaff7e80faffb280faffba80faffc080faffca80faffb881faff3c84faffd284faff9e36fcffc036fcffce36fcffe036fcffe636fcfff036fcffd037fcffd637fcff723afcffca3afcffe83afcffea3afcff2c70fcfff66afeff885dffff8e5dffff985dffff785effff7e5effff8e5effffc060ffff7461ffffdc8cffff888dffff3e95fffffa96ffff24e9ffff28e9ffff30e9ffff4ee9ffffd4e9ffffdae9ffffc4eaffffcaeaffffc0edffff44780000dc7b00009ac50000d8d4000014d5000056d50000bed500008a6f0100c66f01000870010092f1010010f20100e68d02009af80200dcf8020014f9020082f90200
+      m_ExpandedIDs: a42bf4ffa23ff6ff9649f6ff5c62f6ff123ff7ff3e01f8ff8e28f8ffc231f9ffa22ffaff7e80faffb280faffba80faffc080faffca80faffb881faff3c84faffd284faff9e36fcffc036fcffce36fcffe036fcffe636fcfff036fcffd037fcffd637fcff723afcffca3afcffe83afcffea3afcff2c70fcfff66afeff885dffff8e5dffff985dffff785effff7e5effff8e5effffc060ffff7461ffffdc8cffff888dffff3e95fffffa96ffff24e9ffff28e9ffff30e9ffff4ee9ffffd4e9ffffdae9ffffc4eaffffcaeaffffc0edffff44780000dc7b00009ac50000d8d4000014d5000056d50000bed500008a6f0100c66f01000870010092f1010010f20100e68d02009af80200dcf8020014f9020082f90200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -975,8 +975,8 @@ MonoBehaviour:
     y: 0
     width: 256
     height: 770.8
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}

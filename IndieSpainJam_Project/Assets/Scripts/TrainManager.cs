@@ -195,6 +195,7 @@ public class TrainManager : MonoBehaviour
             else if (selectedRow == 2)
                 railsways_b[2] = false;
 
+            railsways_b[1] = true;
 
             bool selectedRowIsOccupied = false;
             int numOfWays = 0;
