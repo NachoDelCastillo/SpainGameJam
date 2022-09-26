@@ -1970,8 +1970,12 @@ MonoBehaviour:
   playerJoinTexts:
   - {fileID: 1855336829}
   - {fileID: 1371107811}
+  - {fileID: 6436907952544979987}
   sprites:
   - {fileID: 1077128808}
+  - {fileID: 6436907952460065359}
+  - {fileID: 6436907952603739073}
+  - {fileID: 4695087922190573281}
 --- !u!114 &648766882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5809097620097853524, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
@@ -5725,7 +5729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436907952460065361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.21, y: 3.92, z: -0.06621417}
+  m_LocalPosition: {x: -1.36, y: 3.47, z: -0.06621417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5773,7 +5777,7 @@ SpriteRenderer:
   m_SortingLayerID: 2047470109
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7cd7b4e2a93d44144be978a408d2b679, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1a959355fdbd6a49a60c8ee8aa46a3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6044,7 +6048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436907953557433478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.18, y: -10.05, z: 0.06621417}
+  m_LocalPosition: {x: -8.21, y: -12.1, z: 0.06621417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
