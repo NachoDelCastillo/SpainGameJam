@@ -33,10 +33,13 @@ public class CoalWagon : MonoBehaviour
 
     void CreateCoal()
     {
+        if (TrainManager.Instance.coalsInScreen.Count >= 5) return;
+
         coalStarted = true;
         inWagon = true;
 
         clon = Instantiate(coal, transform.parent);
+        TrainManager.Instance.coalsInScreen.Add(clon.GetComponent<GrabbableItem>());
         clon.GetComponent<GrabbableItem>().initialParent = transform.parent;
         clon.GetComponent<GrabbableItem>().wagon = this;
         clon.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "MidTrain";

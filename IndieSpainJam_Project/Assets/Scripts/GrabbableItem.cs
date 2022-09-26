@@ -29,6 +29,14 @@ public class GrabbableItem : MonoBehaviour
         col.isTrigger = true;
     }
 
+    private void Update()
+    {
+        if(transform.position.y <= -20)
+        {
+            Destroy(gameObject);
+            TrainManager.Instance.coalsInScreen.Remove(this);
+        }
+    }
 
     public void ItemGrabbed(PlayerController_2D playerGrabbingThis_)
     {
