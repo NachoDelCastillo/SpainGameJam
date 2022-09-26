@@ -199,3 +199,10 @@ MonoBehaviour:
     pitch: 1
     music: 0
     source: {fileID: 0}
+  - name: EDeath
+    clip: {fileID: 8300000, guid: a996eb7cd140c2542a81eba03fc51ee6, type: 3}
+    volume: 1
+    maxVolume: 1
+    pitch: 1
+    music: 0
+    source: {fileID: 0}
