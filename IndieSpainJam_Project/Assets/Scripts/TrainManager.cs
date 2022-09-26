@@ -55,6 +55,8 @@ public class TrainManager : MonoBehaviour
     //Health
     [SerializeField] float health, maxHealth;
     [SerializeField] Slider healthSlider;
+    [SerializeField] Image fillHealth;
+    [SerializeField] Color defaultHealth, redHealth;
 
 
     // Manager
@@ -416,35 +418,6 @@ public class TrainManager : MonoBehaviour
             TakeDamage(0);
             currentWater = Mathf.Clamp(currentWater, 0, maxWater);
 
-            if (currentWater >= maxWater * 0.5f)
-            {
-                //rotacion slider -5 -- 5 en z 
-                if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 85)
-                {
-                    rotateRight = true;
-
-                }
-                else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 95)
-                {
-                    rotateRight = false;
-                }
-
-                if (rotateRight) waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 2));
-                else waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 2));
-            }
-            else
-            {
-                if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 90)
-                {
-                    waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 1.5f));
-                }
-                else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 90)
-                {
-                    waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 1.5f));
-                }
-                //si la rotacion en z no es 0 hacer rotacion volver a 0 en z smooth
-            }
-
             if (currentWater >= maxWater * 0.85f)
             {
                 if (!waterParticles.isPlaying) waterParticles.Play();
@@ -457,11 +430,13 @@ public class TrainManager : MonoBehaviour
             if (currentWater >= maxWater)
             {
                 health -= dmgWhenWater0PerSecond * Time.deltaTime;
+                fillHealth.color = redHealth;
                 TakeDamage(0);
                 WaterDanger();
             }
             else
             {
+                fillHealth.color = defaultHealth;
                 waterDanger.gameObject.SetActive(false);
                 TutorialManager.GetInstance().HideTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
             }
@@ -898,6 +873,11 @@ public class TrainManager : MonoBehaviour
             }
         }
 
+    }
+
+    void ResetHealthColor()
+    {
+        fillHealth.color = defaultHealth;
     }
 }
     #endregion
