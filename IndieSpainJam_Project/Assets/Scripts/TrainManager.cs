@@ -351,7 +351,10 @@ public class TrainManager : MonoBehaviour
                 }
             }
             if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
+            {
+                AudioManager_PK.instance.Stop("GameMusic");
                 GameManager.instance.ChangeScene("MainMenu_Scene");
+            }
             return;
         }
 
@@ -360,6 +363,9 @@ public class TrainManager : MonoBehaviour
             over50 = true;
             StartCoroutine(MoveWagonsHorizontally());
         }
+
+        if (!AudioManager_PK.instance.sounds[24].source.isPlaying)
+            AudioManager_PK.instance.Play("GameMusic", Random.Range(0.7f, 0.75f));
 
         UpdateWater();
 
@@ -750,6 +756,7 @@ public class TrainManager : MonoBehaviour
         {
             // WIN
             yield return new WaitForSeconds(1);
+            AudioManager_PK.instance.Stop("GameMusic");
             GameManager.instance.ChangeScene("MainMenu_Scene");
         }
         else
