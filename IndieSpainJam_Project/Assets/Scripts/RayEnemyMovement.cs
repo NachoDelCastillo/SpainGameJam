@@ -96,6 +96,8 @@ public class RayEnemyMovement : MonoBehaviour
     {
         //if(!player) player = GameObject.FindGameObjectWithTag("Player");
 
+        for (int x = 0; x < railsParent.transform.childCount; x++)
+            railsParent.transform.GetChild(x).GetComponent<SpriteRenderer>().color = (railDisponible[x]) ? Color.green : Color.red; ;
         //Si no hay un rail en el que esté -> está esperando a la derecha a que se le asigne uno
         if (indexRailEscogido == -1)
             return;
@@ -209,8 +211,8 @@ public class RayEnemyMovement : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, currentDestination.transform.position) > 0.5f)
         {
-            Vector2 dir = currentDestination.transform.position - transform.transform.position; 
-            rb.position = Vector2.Lerp(rb.position, rb.position + dir*velocity * Time.fixedDeltaTime, 0.3f);
+            Vector2 dir = currentDestination.transform.position - transform.transform.position;
+            rb.position = Vector2.Lerp(rb.position, rb.position + dir * velocity * Time.fixedDeltaTime, 0.3f);
 
 
             // Mirar al player
@@ -221,7 +223,10 @@ public class RayEnemyMovement : MonoBehaviour
             //Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
             //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
-        else StartCoroutine(ChangeState(State.Loading));
+        else {
+            railDisponible[indexRailEscogido] = true;
+            StartCoroutine(ChangeState(State.Loading));
+        }
     }
 
 
