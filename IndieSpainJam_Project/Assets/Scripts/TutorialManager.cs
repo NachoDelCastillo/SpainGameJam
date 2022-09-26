@@ -52,7 +52,7 @@ public class TutorialManager : MonoBehaviour
     {
         doTutorial = false;
 
-        if (doTutorial && menu)
+        if (doTutorial && !menu)
         {
             duringTutorial = true;
 
