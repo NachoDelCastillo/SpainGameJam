@@ -25,6 +25,7 @@ public class LocalMultiplayerManager : MonoBehaviour
     [SerializeField] float respawnTime;
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] GameObject sangrePart;
+    [SerializeField] Color player1, player2;
 
     [SerializeField] TMP_Text numPlayers;
 
@@ -49,6 +50,12 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         // Set player index
         int playerIndex = playerInputManager.playerCount - 1;
+        if (playerIndex == 0)
+            newPlayerController.triangulo.color = player1;
+        else
+            newPlayerController.triangulo.color = player2;
+
+
         newPlayerController.playerIndex = playerIndex;
         newPlayerController.transform.SetParent(playerContainer);
 
