@@ -439,7 +439,7 @@ public class PlayerController_2D : MonoBehaviour
         reachableItems.Add(g);
     }
 
-    void RemoveReachableItem(GrabbableItem g)
+    public void RemoveReachableItem(GrabbableItem g)
     {
         reachableItems.Remove(g);
     }

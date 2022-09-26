@@ -8,18 +8,9 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
-public class TrainManager : MonoBehaviour
+public class TrainManagerMenu : MonoBehaviour
 {
-    public List<GrabbableItem> coalsInScreen = new List<GrabbableItem>();
-
-    [SerializeField] Light2D globalLight;
-    [SerializeField] bool takeDamage = true;
-    public static TrainManager Instance { get; private set; }
-
-    float elapsedTime = 0;
-    float timeToMuteExplosions = 5f;
-    public bool gameLost = false, letterOfFinalWhenLoseAlreadyOut = false;
-    bool showingResults, waterTankExploding = false;
+    public static TrainManagerMenu Instance { get; private set; }
 
     [SerializeField]
     int MainVelocity = 0;
@@ -37,25 +28,12 @@ public class TrainManager : MonoBehaviour
     [SerializeField] Transform deliverCoal;
     [SerializeField] TMP_Text MainVelocity_text;
 
-    [SerializeField] TMP_Text resultText;
-    [SerializeField] Image resultPanel;
-    [SerializeField] TMP_Text pressAnything;
-    [SerializeField] Color winColor;
-    [SerializeField] Color loseColor;
-
 
     [SerializeField] WagonLogic[] wagons;
     [SerializeField] Transform[] columns;
     [SerializeField] Transform[] rows;
 
-
-
     [SerializeField] int velocityGainedByCoal;
-
-    //Health
-    [SerializeField] float health, maxHealth;
-    [SerializeField] Slider healthSlider;
-
 
     // Manager
     [SerializeField] Transform changeRail_Prefab;
@@ -65,37 +43,14 @@ public class TrainManager : MonoBehaviour
     // Listas con los cambios de vias
     List<ChangeRail>[] changeRail_Lists;
 
-    //Agua
-    [Header("Agua")]
-    [SerializeField] public Slider waterSlider;
-    [SerializeField] AnimationCurve waterCurve;
-    [SerializeField] AnimationCurve waterCurveMax;
-    //Updated upstream
-    [SerializeField] public float currentWater, maxWater, waterSubstracPerSecond, dmgWhenWater0PerSecond;
-    [SerializeField] Color[] waterColorSlider;
-    [SerializeField] Image waterFillImage;
-    [SerializeField] float timeForWaterDown;
-    [SerializeField] Transform waterDanger, waterDangerIniPos, waterDangerFinalPos;
-    [SerializeField] ParticleSystem waterParticles;
-    Vector3 waterDangerTarget;
-    bool rotateRight;
-    public bool waterDown;
-    float waterTimer;
-
     [SerializeField] GameObject sparkSys;
 
-    float thisText_InitScale;
-    [SerializeField] Color textHighlight, textDefault;
-
-    bool over50 = false;
     public float GetmainVelocity()
     {
         return MainVelocity;
     }
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -110,9 +65,6 @@ public class TrainManager : MonoBehaviour
         changeRail_Lists[0] = new List<ChangeRail>();
         changeRail_Lists[1] = new List<ChangeRail>();
         changeRail_Lists[2] = new List<ChangeRail>();
-
-
-        waterSlider.maxValue = maxWater;
     }
 
 
@@ -122,21 +74,7 @@ public class TrainManager : MonoBehaviour
         midWagon = wagons[1];
         derWagon = wagons[2];
 
-        thisText_InitScale = MainVelocity_text.transform.localScale.x;
-        StartCoroutine(UpdateTextSpeed());
-
         cameraShake = GetComponent<CameraShake>();
-        gameLost = false;
-        health = maxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = health;
-
-        //currentWater = 0;
-        //waterSlider.value = currentWater;
-        waterDanger.gameObject.SetActive(false);
-        waterParticles.Stop();
-        maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
-        waterSlider.maxValue = maxWater;
 
         AudioManager_PK.instance.sounds[6].source.mute = false;
         AudioManager_PK.instance.sounds[7].source.mute = false;
@@ -158,13 +96,18 @@ public class TrainManager : MonoBehaviour
         wheelBaseColor = wheelMaterial.GetColor("_Color");
         wheelColor = new Vector4(wheelBaseColor.x * normalIntensity, wheelBaseColor.y * normalIntensity, wheelBaseColor.z * normalIntensity, wheelBaseColor.w);
         wheelMaterial.SetColor("_Color", wheelColor);
+
+
+        UpdateTextSpeed();
+        SpawnChangeRail();
+        StartCoroutine(MoveWagonsHorizontally());
     }
 
     [SerializeField] public float moveIntensity = 8;
     float spawnTimer;
     public IEnumerator SpawnChangeRail()
     {
-        //Debug.Log("SpawnChangeRail");
+        Debug.Log("SpawnChangeRail");
 
         //spawnTimer = Random.Range(8, 10);
         spawnTimer = moveIntensity;
@@ -337,38 +280,14 @@ public class TrainManager : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > 0.1f)
-            {
-                timeToMuteExplosions -= elapsedTime;
-                elapsedTime = 0;
-                if (timeToMuteExplosions > 0)
-                {
-                    AudioManager_PK.instance.Play("SmallExplosion", Random.Range(0.8f, 1.1f));
-                }
-            }
-            if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
-                GameManager.instance.ChangeScene("MainMenu_Scene");
-            return;
-        }
 
-        if(!over50 && MainVelocity >= 50)
-        {
-            over50 = true;
-            StartCoroutine(MoveWagonsHorizontally());
-        }
-
-        UpdateWater();
+        StartCoroutine(MoveWagonsHorizontally());
 
 
         RotateWheel();
 
         if (Input.anyKeyDown)
             pressAnything_b = true;
-
-        if (showingResults) return;
 
         // Mover vagones
         CheckWagons();
@@ -382,154 +301,6 @@ public class TrainManager : MonoBehaviour
         //DebugRow(1);
         //DebugRow(2);
     }
-
-    void UpdateWater()
-    {
-        if (waterDown)
-        {
-            WaterDown();
-        }
-        else
-        {
-            if (TutorialManager.GetInstance().duringTutorial || MainVelocity <= 0) return;
-            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity / LocalMultiplayerManager.GetInstance().GetNumPlayers());
-            waterSlider.maxValue = maxWater;
-            //Updated upstream
-            // Si el tren esta quieto no joder el vagon de agua
-            //if (MainVelocity <= 0) return;
-
-            // Debug.Log("currentWater = " + currentWater);
-
-            currentWater += waterSubstracPerSecond * Time.deltaTime;
-
-            currentWater = Mathf.Clamp(currentWater, 0, maxWater);
-
-            if (currentWater >= maxWater)
-            {
-                health -= dmgWhenWater0PerSecond * Time.deltaTime;
-                setGlobalLightColor(Color.red);
-                cameraShake.ShakeIt();
-                //Loop audio cuando se sale
-                if (!AudioManager_PK.instance.sounds[16].source.isPlaying)
-                    AudioManager_PK.instance.Play("WaterExplosion", Random.Range(0.7f, 0.75f));
-            }
-            TakeDamage(0);
-            currentWater = Mathf.Clamp(currentWater, 0, maxWater);
-
-            //if (currentWater >= maxWater * 0.5f)
-            //{
-            //    //rotacion slider -5 -- 5 en z 
-            //    if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 85)
-            //    {
-            //        rotateRight = true;
-
-            //    }
-            //    else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 95)
-            //    {
-            //        rotateRight = false;
-            //    }
-
-            //    if (rotateRight) waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 2));
-            //    else waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 2));
-            //}
-            //else
-            //{
-            //    if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z < 90)
-            //    {
-            //        waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Time.deltaTime * 1.5f));
-            //    }
-            //    else if (waterFillImage.GetComponent<RectTransform>().rotation.eulerAngles.z > 90)
-            //    {
-            //        waterFillImage.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, -Time.deltaTime * 1.5f));
-            //    }
-                //si la rotacion en z no es 0 hacer rotacion volver a 0 en z smooth
-            //}
-
-            if (currentWater >= maxWater * 0.85f)
-            {
-                if (!waterParticles.isPlaying) waterParticles.Play();
-
-                var main = waterParticles.main;
-                main.startColor = new ParticleSystem.MinMaxGradient(waterFillImage.color);
-            }
-            else if (waterParticles.isPlaying) waterParticles.Stop();
-
-            if (currentWater >= maxWater)
-            {
-                health -= dmgWhenWater0PerSecond * Time.deltaTime;
-                TakeDamage(0);
-                WaterDanger();
-            }
-            else
-            {
-                waterDanger.gameObject.SetActive(false);
-                TutorialManager.GetInstance().HideTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
-            }
-
-
-            waterSlider.value = currentWater;
-        }
-
-        ColorWater();
-    }
-
-    public void setGlobalLightColor(Color color)
-    {
-        globalLight.color = color;
-    }
-
-    [SerializeField] SpriteRenderer dangerSprite;
-    public void ColorWater()
-    {
-        float value = currentWater / maxWater;
-        waterFillImage.color = (value > 0.5) ? Color.Lerp(waterColorSlider[1], waterColorSlider[2], (value - 0.5f) * 2) : Color.Lerp(waterColorSlider[1], waterColorSlider[0], Mathf.Abs(value - 0.5f) * 2);
-    }
-
-    public void RechargeWater()
-    {
-        currentWater = 0;
-        waterSlider.value = currentWater;
-    }
-
-    void WaterDown()
-    {
-        waterTimer += Time.deltaTime;
-        if (waterCurve.Evaluate(waterTimer) * maxWater <= currentWater) currentWater = waterCurve.Evaluate(waterTimer) * maxWater;
-        waterSlider.value = currentWater;
-
-        if (waterTimer >= timeForWaterDown)
-        {
-            waterTimer = 0;
-            waterDown = false;
-        }
-    }
-
-    void WaterDanger()
-    {
-        if (!waterDanger.gameObject.activeInHierarchy)
-        {
-            TutorialManager.GetInstance().ShowTutorialItems(TutorialManager.tutPhases.repararVagonAgua);
-
-            waterDanger.gameObject.SetActive(true);
-            StartCoroutine(AppearDanger());
-        }
-        else
-        {
-            //Mover
-        }
-    }
-
-    IEnumerator AppearDanger()
-    {
-        waterDanger.localScale = Vector3.zero;
-        while (waterDanger.localScale.x < 1)
-        {
-            waterDanger.localScale += new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, Time.deltaTime * 2);
-            yield return null;
-        }
-    }
-
-    [SerializeField]
 
     // Se encarga de comprobar cada una de las posiciones de los vagones
     // para ver si estan en un cambio de via, elegir su via y cambiarlo
@@ -696,127 +467,13 @@ public class TrainManager : MonoBehaviour
     {
         innerWheel.DORotate(new Vector3(0, 0, -1080), 3 - (maxWheelVelocity / 100), RotateMode.FastBeyond360);
     }
-
-    public void CoalDelivered(OnTriggerDelegation delegation)
-    {
-        if (!delegation.Other.CompareTag("Coal")) return;
-
-
-        if (TutorialManager.GetInstance().duringTutorial &&
-        TutorialManager.GetInstance().GetCurrentPhase() != TutorialManager.tutPhases.meterCarbonEnMotor)
-            return;
-
-        TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnMotor);
-
-
-        RotateWheelFast();
-
-        GrabbableItem coal = delegation.Other.transform.GetComponent<GrabbableItem>();
-        coal.ItemGrabbed(null);
-
-        coal.transform.GetChild(0).DORotate(new Vector3(0, 0, -720), 1, RotateMode.FastBeyond360);
-        coal.transform.GetChild(0).DOScale(0, 1);
-
-        // Deliver time
-        float deliverTime = .05f;
-        StartCoroutine(Utils.MoveItemSmooth(coal.transform, deliverCoal, deliverTime));
-        StartCoroutine(DestroyCoal(coal, deliverTime));
-        coalsInScreen.Remove(coal.GetComponent<GrabbableItem>());
-    }
-
-    IEnumerator DestroyCoal(GrabbableItem coal, float seconds)
-    {
-        yield return new WaitForSeconds(.05f);
-        if (coal != null)
-            Destroy(coal.gameObject);
-
-        AddVelocity();
-
-        AudioManager_PK.instance.Play("Combust", 0.8f + ((float)MainVelocity / 100f) * 0.5f);
-
-        if (MainVelocity >= 100 && !showingResults)
-        {
-            //yield return new WaitForSeconds(1);
-            StartCoroutine(ShowResult(true));
-        }
-    }
-
-    IEnumerator ShowResult(bool win)
-    {
-        showingResults = true;
-
-        string fullString;
-        if (win)
-        {
-            fullString = "SIUUUUUU";
-            resultPanel.color = winColor;
-
-            AudioManager_PK.instance.Play("Win", Random.Range(0.95f, 1.05f));
-
-            for (int j = 0; j < wagons.Length; j++)
-                wagons[j].transform.DOMove(initialPosOfWagons[j], 1);
-        }
-        else
-        {
-            gameLost = true;
-            fullString = "CAGASTE";
-            resultPanel.color = loseColor;
-        }
-
-        resultPanel.DOFade(.1f, 1);
-        yield return new WaitForSeconds(1);
-
-        StartCoroutine(Utils.WriteThis(fullString, resultText, .15f));
-
-        yield return new WaitForSeconds(1);
-
-        if (win)
-        {
-            // WIN
-            yield return new WaitForSeconds(1);
-            GameManager.instance.ChangeScene("MainMenu_Scene");
-        }
-        else
-        {
-            // LOSE
-            float timeBetweenLetters = .05f;
-            string s = "Press anything to try again";
-            StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
-            yield return new WaitForSeconds(timeBetweenLetters * s.Length);
-
-            yield return new WaitForSeconds(1);
-
-            letterOfFinalWhenLoseAlreadyOut = true;
-            ShowAnyKeyButton();
-
-            CancelInvoke();
-            yield return 0;
-        }
-
-
-        showingResults = false;
-    }
-
     bool pressAnything_b;
 
-    void ShowAnyKeyButton()
-    {
-        pressAnything.gameObject.SetActive(true);
-
-        Invoke("RemoveAnyKeyButton", .5f);
-    }
-
-    void RemoveAnyKeyButton()
-    {
-        pressAnything.gameObject.SetActive(false);
-
-        Invoke("ShowAnyKeyButton", .5f);
-    }
+    
+   
 
     void AddVelocity()
     {
-        if (showingResults) return;
-
         if (MainVelocity == 0)
         {
             smoke.Play();
@@ -842,8 +499,6 @@ public class TrainManager : MonoBehaviour
 
     IEnumerator UpdateTextSpeed()
     {
-        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale * 1.3f, 0.2f).SetUpdate(true);
-        MainVelocity_text.color = textHighlight;
         int lastMainVel = MainVelocity;
         MainVelocity += velocityGainedByCoal;
         float add = 0;
@@ -855,48 +510,6 @@ public class TrainManager : MonoBehaviour
             MainVelocity_text.text = text.ToString() + " / 100 Km/h";
             yield return null;
         }
-
-        MainVelocity_text.GetComponent<Transform>().DOScale(Vector3.one * thisText_InitScale, 0.2f).SetUpdate(true);
-        MainVelocity_text.color = textDefault;
-    }
-
-
-    public void TakeDamage(float amount)
-    {
-        if (!takeDamage) return;
-
-        if (TutorialManager.GetInstance().duringTutorial) return;
-
-        if (showingResults)
-            return;
-
-        health -= amount;
-
-        globalLight.color = new Color(1, globalLight.color.g, globalLight.color.b, 1);
-        if (health <= 0) health = 0;
-
-        healthSlider.value = health;
-
-        if (health <= 0 && !showingResults)
-        {
-            StartCoroutine(ShowResult(false));
-
-            MainVelocity = 0;
-
-            AudioManager_PK.instance.sounds[6].source.mute = true;
-
-            ParticleSystem.MinMaxCurve a = new();
-            a = smoke.velocityOverLifetime.x;
-            a.curveMultiplier = 0;
-            var aux2 = smoke.velocityOverLifetime;
-            aux2.x = a;
-
-            foreach (WagonLogic wagon in wagons)
-            {
-                wagon.Died();
-            }
-        }
-
     }
 }
     #endregion

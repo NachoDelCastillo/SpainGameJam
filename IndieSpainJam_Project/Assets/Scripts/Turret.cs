@@ -44,9 +44,7 @@ public class Turret : MonoBehaviour
         currentAmmo = (int)(maxAmmo * 1);
         cameraShake = GetComponent<CameraShake>();
         outline.SetActive(false);
-        beingUsed = false;
-
-       
+        beingUsed = false;     
     }
 
     // Update is called once per frame
@@ -200,6 +198,9 @@ public class Turret : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coal"))
         {
+            if (collision.transform.GetComponentInParent<PlayerController_2D>())
+                collision.transform.GetComponentInParent<PlayerController_2D>().RemoveReachableItem(collision.GetComponent<GrabbableItem>());
+
             TutorialManager.GetInstance().TryToChangePhase(TutorialManager.tutPhases.meterCarbonEnTorreta);
 
             if (!AudioManager_PK.instance.sounds[11].source.isPlaying)
@@ -217,6 +218,7 @@ public class Turret : MonoBehaviour
             //imageToFill.fillAmount = (float)currentAmmo / (float)maxAmmo;
             //imageToFill.color = (imageToFill.fillAmount > 0.5) ? Color.Lerp(colorFadeHUD[1], colorFadeHUD[0], (imageToFill.fillAmount - 0.5f) * 2) : Color.Lerp(colorFadeHUD[1], colorFadeHUD[2], Mathf.Abs(imageToFill.fillAmount - 0.5f) * 2);
             Destroy(collision.gameObject, 1);
+            TrainManager.Instance.coalsInScreen.Remove(collision.gameObject.GetComponent<GrabbableItem>());
         }
     }
 }
