@@ -132,7 +132,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         player.GetComponent<BoxCollider2D>().enabled = true;
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
-        StartCoroutine(player.RespawnColor(1.5f));
+        StartCoroutine(player.RespawnColor(1.5f, 5));
 
 
 
