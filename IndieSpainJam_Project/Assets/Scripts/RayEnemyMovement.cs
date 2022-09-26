@@ -224,7 +224,6 @@ public class RayEnemyMovement : MonoBehaviour
             //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
         else {
-            railDisponible[indexRailEscogido] = true;
             StartCoroutine(ChangeState(State.Loading));
         }
     }
@@ -292,6 +291,8 @@ public class RayEnemyMovement : MonoBehaviour
         {
             rayTrigger.SetActive(false);
             loadingSphere.SetActive(false);
+            railDisponible[indexRailEscogido] = true;
+
             if (timesShot >= timesToShoot)
             {
                 StartCoroutine(ChangeState(State.Leaving));
