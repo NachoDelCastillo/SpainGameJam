@@ -5,7 +5,7 @@ using UnityEngine;
 public class RayEnemyMovement : MonoBehaviour
 {
 
-    private enum State {WaitingToEnter, GoingLocation, Loading, Shooting, Leaving}
+    private enum State {WaitingToEnter, GoingLocation, Loading, Shooting, WaitingToShoot, Leaving}
 
     //Semáfoross
     static bool[] railDisponible = { true, true, true };
@@ -137,13 +137,14 @@ public class RayEnemyMovement : MonoBehaviour
             yield return 0;
         }
         rayEnemiesInside++;
-        Debug.Log("Sale state esperando: " + rayEnemiesInside + " enemigos dentro");
+        //Debug.Log("Sale state esperando: " + rayEnemiesInside + " enemigos dentro");
 
         ChangeState(State.GoingLocation);
     }
     IEnumerator WaitUntilRailAvaible()
     {
-        Debug.Log("Intenta seleccionar camino");
+        //Debug.Log("Intenta seleccionar camino");
+        int indexAnterior = indexRailEscogido;
         indexRailEscogido = -1;
         GameObject randomDestination;
         int rnd;
@@ -158,13 +159,28 @@ public class RayEnemyMovement : MonoBehaviour
             randomDestination = railsParent.transform.GetChild(rnd).gameObject;
         } while (!railDisponible[rnd]);
 
+       
+
         railDisponible[rnd] = false;
         indexRailEscogido = rnd;
         currentDestination = randomDestination;
 
-        Debug.Log("Sale selecciona camino ");
+
+        //if (indexAnterior == rnd)
+        //{
+        //    ChangeState(State.WaitingToShoot);
+        //}
+
+        //Debug.Log("Sale selecciona camino ");
     }
 
+
+    IEnumerator WaitingToShootState()
+    {
+        Debug.Log("EsperandoDisparar");
+        yield return new WaitForSeconds(Random.Range(1,3));
+        ChangeState(State.Shooting);
+    }
     private void ChangeState(State newState)
     {
         switch (newState)
@@ -194,6 +210,10 @@ public class RayEnemyMovement : MonoBehaviour
                 loadingSphere.SetActive(true);
                 elapsedTimeToFire = 0f;
                 timesShot++;
+                break;
+            case State.WaitingToShoot:
+                state = newState;
+                StartCoroutine(WaitingToShootState());
                 break;
             case State.Leaving:
                 state = newState;
