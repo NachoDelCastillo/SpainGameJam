@@ -211,7 +211,7 @@ public class Turret : MonoBehaviour
             collision.transform.DOMove(cannonPivot.transform.position, 1);
 
             currentAmmo += maxAmmo / 3;
-            if (currentAmmo > maxAmmo / LocalMultiplayerManager.GetInstance().GetNumPlayers())
+            if (currentAmmo > maxAmmo)
             {
                 currentAmmo = maxAmmo;
             }
