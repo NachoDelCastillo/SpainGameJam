@@ -644,7 +644,7 @@ public class PlayerController_2D : MonoBehaviour
 
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(0f, jumpForce));
+            rb.AddForce(new Vector2(0f, 3000));
 
             AudioManager_PK.instance.Play("Jump", Random.Range(1.3f, 1.5f));
             //jumping.Play(true);
