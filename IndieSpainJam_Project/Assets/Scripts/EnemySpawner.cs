@@ -50,12 +50,12 @@ public class EnemySpawner : MonoBehaviour
         //Debug.Log("CreateEnemys()");
         int nPlayers = LocalMultiplayerManager.GetInstance().GetNumPlayers();
 
-        int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier * nPlayers)); ;
+        int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier * nPlayers * 0.75f)); ;
 
         for (int i = 0; i < numEnmy; i++)
             AddEnemy(-1);
 
-        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1.25f / (multiplier * nPlayers)), maxTimeForNextWave * (1 / multiplier)));
+        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1f / (multiplier * nPlayers)), maxTimeForNextWave * (1 / multiplier)));
         //Invoke("CreateEnemys", 5);
     }
 
