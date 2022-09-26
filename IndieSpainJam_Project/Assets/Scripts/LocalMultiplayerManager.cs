@@ -50,16 +50,25 @@ public class LocalMultiplayerManager : MonoBehaviour
 
         // Set player index
         int playerIndex = playerInputManager.playerCount - 1;
+        allPlayers.Add(newPlayerController);
         if (playerIndex == 0)
             newPlayerController.triangulo.color = player1;
         else
+        {
+            foreach (PlayerController_2D playerController in allPlayers)
+            {
+                playerController.triangulo.enabled = true;
+            }
             newPlayerController.triangulo.color = player2;
+        }
+            
 
 
         newPlayerController.playerIndex = playerIndex;
         newPlayerController.transform.SetParent(playerContainer);
 
         allPlayers.Add(newPlayerController);
+
 
         numPlayers.text = allPlayers.Count + " / " + playerInputManager.maxPlayerCount + " Jugadores";
         Respawn(newPlayerController);
