@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class TrainManager : MonoBehaviour
 {
     [SerializeField] Light2D globalLight;
+    [SerializeField] bool takeDamage = true;
     public static TrainManager Instance { get; private set; }
 
     float elapsedTime = 0;
@@ -858,6 +859,8 @@ public class TrainManager : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (!takeDamage) return;
+
         if (showingResults)
             return;
 
