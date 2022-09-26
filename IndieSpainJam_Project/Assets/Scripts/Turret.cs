@@ -45,6 +45,8 @@ public class Turret : MonoBehaviour
         cameraShake = GetComponent<CameraShake>();
         outline.SetActive(false);
         beingUsed = false;
+
+       
     }
 
     // Update is called once per frame
@@ -208,7 +210,7 @@ public class Turret : MonoBehaviour
             collision.transform.DOMove(cannonPivot.transform.position, 1);
 
             currentAmmo += maxAmmo / 3;
-            if (currentAmmo > maxAmmo)
+            if (currentAmmo > maxAmmo / LocalMultiplayerManager.GetInstance().GetNumPlayers())
             {
                 currentAmmo = maxAmmo;
             }

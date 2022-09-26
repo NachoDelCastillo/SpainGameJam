@@ -63,6 +63,7 @@ public class TrainManager : MonoBehaviour
     List<ChangeRail>[] changeRail_Lists;
 
     //Agua
+    [Header("Agua")]
     [SerializeField] public Slider waterSlider;
     [SerializeField] AnimationCurve waterCurve;
     [SerializeField] AnimationCurve waterCurveMax;
@@ -448,7 +449,7 @@ public class TrainManager : MonoBehaviour
         else
         {
             if (TutorialManager.GetInstance().duringTutorial || MainVelocity <= 0) return;
-            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity);
+            maxWater = waterCurveMax.Evaluate(MainVelocity / maxWheelVelocity / LocalMultiplayerManager.GetInstance().GetNumPlayers());
             waterSlider.maxValue = maxWater;
             //Updated upstream
             // Si el tren esta quieto no joder el vagon de agua

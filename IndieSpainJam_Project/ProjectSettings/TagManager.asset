@@ -8,6 +8,7 @@ TagManager:
   - Coal
   - Animator
   - WaterWagon
+  - Turret
   layers:
   - Default
   - TransparentFX

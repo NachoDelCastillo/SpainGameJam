@@ -27,11 +27,13 @@ public class Bullet : MonoBehaviour
 
     public void ShieldImpacted()
     {
-        dead = true;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        rb.isKinematic = true;
-        pSys.Play();
+        //dead = true;
+        //GetComponent<SpriteRenderer>().enabled = false;
+        //GetComponent<BoxCollider2D>().enabled = false;
+        //rb.isKinematic = true;
+        //pSys.Play();
+
+        Destroy(gameObject);
         AudioManager_PK.instance.Play("Shield", Random.Range(0.5f, 0.7f));
     }
 

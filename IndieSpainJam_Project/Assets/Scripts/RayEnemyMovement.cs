@@ -27,6 +27,7 @@ public class RayEnemyMovement : MonoBehaviour
     State state;
     Rigidbody2D rb;
     GameObject player;
+    GameObject turret;
     SpriteRenderer spriteRenderer;
     [SerializeField]SpriteRenderer eyesSpriteRenderer;
 
@@ -77,6 +78,7 @@ public class RayEnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(ChangeState(State.GoingLocation));
         player = GameObject.FindGameObjectWithTag("Player");
+        turret = GameObject.FindGameObjectWithTag("Turret");
         loadingLaser.SetActive(false);
         startingRadius = loadingSphere.transform.localScale.x;
         loadingSphere.SetActive(false);
@@ -176,7 +178,7 @@ public class RayEnemyMovement : MonoBehaviour
 
         if (!player) return;
 
-        Vector2 direction = player.transform.position - shieldGO.transform.position;
+        Vector2 direction = turret.transform.position - shieldGO.transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion newRot = Quaternion.Euler(Vector3.forward * (angle));
