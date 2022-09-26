@@ -71,9 +71,7 @@ public class TutorialManager : MonoBehaviour
             turret.UpdateAmmoSlider();
         }
         else
-        {
             EndTutorial();
-        }
     }
 
     void HideEverything()
