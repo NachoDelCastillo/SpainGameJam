@@ -10,7 +10,7 @@ public class TutorialManager : MonoBehaviour
     // Si esta a true, haces el tutorial
     [HideInInspector] public bool doTutorial;
 
-
+    [SerializeField] bool menu = false;
     static TutorialManager instance;
     public static TutorialManager GetInstance()
     { return instance; }
@@ -43,8 +43,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
-        HideEverything();
+        if(!menu) HideEverything();
 
         //StartCoroutine(DoTutorial());
     }
@@ -53,7 +52,7 @@ public class TutorialManager : MonoBehaviour
     {
         doTutorial = false;
 
-        if (doTutorial)
+        if (doTutorial && menu)
         {
             duringTutorial = true;
 
