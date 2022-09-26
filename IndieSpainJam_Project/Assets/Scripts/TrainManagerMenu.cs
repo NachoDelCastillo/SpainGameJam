@@ -97,7 +97,8 @@ public class TrainManagerMenu : MonoBehaviour
         wheelColor = new Vector4(wheelBaseColor.x * normalIntensity, wheelBaseColor.y * normalIntensity, wheelBaseColor.z * normalIntensity, wheelBaseColor.w);
         wheelMaterial.SetColor("_Color", wheelColor);
 
-        MainVelocity = 10;
+
+        UpdateTextSpeed();
         SpawnChangeRail();
         StartCoroutine(MoveWagonsHorizontally());
     }
@@ -279,8 +280,6 @@ public class TrainManagerMenu : MonoBehaviour
 
     private void Update()
     {
-       
-
 
         StartCoroutine(MoveWagonsHorizontally());
 
