@@ -43,6 +43,8 @@ public class GrabbableItem : MonoBehaviour
         col.isTrigger = true;
 
         if (wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Item";
+        transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Item";
     }
 
     public void ItemDropped()
@@ -53,5 +55,7 @@ public class GrabbableItem : MonoBehaviour
         col.isTrigger = false;
 
         if(wagon.clon != null && wagon.clon == gameObject) wagon.inWagon = false;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Item";
+        transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerName = "Item";
     }
 }
