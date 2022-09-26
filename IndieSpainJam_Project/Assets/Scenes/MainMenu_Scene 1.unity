@@ -1779,7 +1779,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1102, y: 1}
-  m_SizeDelta: {x: 849.35, y: 548.3}
+  m_SizeDelta: {x: 802, y: 449.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607657365
 MonoBehaviour:
@@ -3168,7 +3168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346, y: 176}
+  m_AnchoredPosition: {x: -301.03, y: 310.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1176296098 stripped
@@ -4124,8 +4124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -973.43005}
-  m_SizeDelta: {x: 613.63, y: 2495.16}
+  m_AnchoredPosition: {x: 0, y: -671.745}
+  m_SizeDelta: {x: 613.63, y: 1793.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643520322
 MonoBehaviour:
@@ -4178,7 +4178,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.45
+  m_fontSize: 18
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4214,7 +4214,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 118.58234}
+  m_margin: {x: 0, y: 0, z: 0, w: -490.22308}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4811,10 +4811,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2965065804980086126, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.81
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
 --- !u!114 &1755254811 stripped
@@ -4906,7 +4902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15 / 100 Km/h
+  m_text: 40 / 100 Km/h
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -5098,7 +5094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.27
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2965065803891172263, guid: 2325cdba48aad034f803e71a00791e27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16792,7 +16788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3804357819032461510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17531,7 +17527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc84bf1116e15747a554e1f6d016f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainVelocity: 15
+  MainVelocity: 40
   cameraShake: {fileID: 581589685145854168}
   wheelNeon: {fileID: 8770769218281944264}
   maxIntensity: 2
@@ -62542,7 +62538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &5856351548524581911
 SpriteRenderer:
   m_ObjectHideFlags: 0
