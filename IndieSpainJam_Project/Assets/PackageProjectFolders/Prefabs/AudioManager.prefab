@@ -215,8 +215,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameMusic
     clip: {fileID: 8300000, guid: ff31b35f578c1de41a5011825328d66e, type: 3}
-    volume: 1
-    maxVolume: 1
+    volume: 0.5
+    maxVolume: 0.55
     pitch: 1
-    music: 1
+    music: 0
     source: {fileID: 0}

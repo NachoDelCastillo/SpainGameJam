@@ -3583,6 +3583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 7707667169853727852, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7707667169853727854, guid: dd40a9128c9ea5e45879f927fbeb52da, type: 3}
       propertyPath: isMusicSlider
       value: 1
