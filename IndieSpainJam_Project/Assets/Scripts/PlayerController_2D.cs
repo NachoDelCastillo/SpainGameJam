@@ -188,7 +188,10 @@ public class PlayerController_2D : MonoBehaviour
 
 
 
-
+        if(transform.position.y  < -Camera.main.orthographicSize)
+        {
+            LocalMultiplayerManager.GetInstance().Respawn(this);
+        }
         //Debug.Log("grabbedItem = " + grabbedItem);
     }
 
