@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void CreateEnemys()
     {
-        Debug.Log("CreateEnemys()");
+        //Debug.Log("CreateEnemys()");
         int nPlayers = LocalMultiplayerManager.GetInstance().GetNumPlayers();
 
         int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier * nPlayers)); ;
@@ -65,34 +65,36 @@ public class EnemySpawner : MonoBehaviour
         switch (TrainManager.Instance.GetmainVelocity())
         {
             case 10:
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
-                CreateRayEnemy(1, 2.5f, 0.8f);
+               
+
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.3f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.4f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.5f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.6f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.7f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.8f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 1.9f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 2f);
+                CreateRayEnemy(1, 2.5f, 0.8f, 2.1f);
                 break;
             case 20:
+                CreateRayEnemy(2, 2.5f, 0.8f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.1f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
+                CreateRayEnemy(2, 2.5f, 0.8f, 1.2f);
                 break;
             case 30:
                 CreateRayEnemy(1, 2.5f, 0.8f);
@@ -134,7 +136,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject rayEnemy = Instantiate(enemyPrefabs[1], position, Quaternion.identity);
         RayEnemyMovement enemigoScript = rayEnemy.GetComponent<RayEnemyMovement>();
         enemigoScript.railsParent = rayEnemyDestination;
-        enemigoScript.leavingPoint = rayEnemyLeavingPoint;
         enemigoScript.timeFiring = rayTime;
         enemigoScript.timeToLoad = loadTime;
         enemigoScript.timesToShoot = timesToShot;

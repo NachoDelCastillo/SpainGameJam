@@ -161,7 +161,7 @@ public class TrainManager : MonoBehaviour
     float spawnTimer;
     public IEnumerator SpawnChangeRail()
     {
-        Debug.Log("SpawnChangeRail");
+        //Debug.Log("SpawnChangeRail");
 
         //spawnTimer = Random.Range(8, 10);
         spawnTimer = moveIntensity;

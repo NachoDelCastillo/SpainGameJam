@@ -5,9 +5,11 @@ using UnityEngine;
 public class RayEnemyMovement : MonoBehaviour
 {
 
-    private enum State {GoingLocation, Loading, Shooting, Leaving}
+    private enum State {WaitingToEnter, GoingLocation, Loading, Shooting, Leaving}
 
+    //Semáfoross
     static bool[] railDisponible = { true, true, true };
+    static int rayEnemiesInside = 0;
     int indexRailEscogido;
 
     bool odioMiVida = true;
@@ -64,7 +66,7 @@ public class RayEnemyMovement : MonoBehaviour
 
     // LeavingState
     public int timesToShoot;
-    public GameObject leavingPoint;
+    Vector3 leavingPoint;
     int timesShot;
 
     private void Awake()
@@ -76,7 +78,7 @@ public class RayEnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(ChangeState(State.GoingLocation));
+        ChangeState(State.WaitingToEnter);
         player = GameObject.FindGameObjectWithTag("Player");
         turret = GameObject.FindGameObjectWithTag("Turret");
         loadingLaser.SetActive(false);
@@ -104,6 +106,7 @@ public class RayEnemyMovement : MonoBehaviour
 
 
         updateShield();
+        //Debug.Log(state);
         switch (state)
         {
             case State.GoingLocation:
@@ -121,36 +124,62 @@ public class RayEnemyMovement : MonoBehaviour
             case State.Leaving:
                 LeavingState();
                 break;
+           default:
+                break;
 
         }
     }
 
-    IEnumerator ChangeState(State newState)
+    IEnumerator WaitUntillIsRoom()
+    {
+        while(rayEnemiesInside >= 3)
+        {
+            yield return 0;
+        }
+        rayEnemiesInside++;
+        Debug.Log("Sale state esperando: " + rayEnemiesInside + " enemigos dentro");
+
+        ChangeState(State.GoingLocation);
+    }
+    IEnumerator WaitUntilRailAvaible()
+    {
+        Debug.Log("Intenta seleccionar camino");
+        indexRailEscogido = -1;
+        GameObject randomDestination;
+        int rnd;
+        while (!railDisponible[0] && !railDisponible[1] && !railDisponible[2])
+        {
+            yield return 0;
+        }
+
+        do
+        {
+            rnd = Random.Range(0, railsParent.transform.childCount);
+            randomDestination = railsParent.transform.GetChild(rnd).gameObject;
+        } while (!railDisponible[rnd]);
+
+        railDisponible[rnd] = false;
+        indexRailEscogido = rnd;
+        currentDestination = randomDestination;
+
+        Debug.Log("Sale selecciona camino ");
+    }
+
+    private void ChangeState(State newState)
     {
         switch (newState)
         {
+            case State.WaitingToEnter:
+                state = newState;
+                StartCoroutine(WaitUntillIsRoom());
+                break;
             case State.GoingLocation:
-                indexRailEscogido = -1;
-                GameObject randomDestination;
-                int rnd;
-                while(!railDisponible[0] && !railDisponible[1] && !railDisponible[2])
-                {
-                    yield return null;
-                }
-
-                do
-                {
-                    rnd = Random.Range(0, railsParent.transform.childCount);
-                    randomDestination = railsParent.transform.GetChild(rnd).gameObject;
-                } while (!railDisponible[rnd]);
-
-                railDisponible[rnd] = false;
-                indexRailEscogido = rnd;
-                currentDestination = randomDestination;
-                Debug.Log("Selecciona camino " + rnd);
+                state = newState;
+                StartCoroutine(WaitUntilRailAvaible());
                 
                 break;
             case State.Loading:
+                state = newState;
                 particlesLoading.SetActive(true);
                 loadingSphere.SetActive(true);
                 loadingSphere.transform.localScale = Vector3.zero;
@@ -159,6 +188,7 @@ public class RayEnemyMovement : MonoBehaviour
                 elapsedTimeToReload = 0f;
                 break;
             case State.Shooting:
+                state = newState;
                 loadingLaser.SetActive(false);
                 rayTrigger.SetActive(true);
                 loadingSphere.SetActive(true);
@@ -166,12 +196,21 @@ public class RayEnemyMovement : MonoBehaviour
                 timesShot++;
                 break;
             case State.Leaving:
+                state = newState;
+                rayEnemiesInside--;
+                railDisponible[indexRailEscogido] = true;
                 loadingLaser.SetActive(false);
                 loadingSphere.SetActive(false);spriteRenderer.sprite = defaultSprite;
+
+
+                //decidir por dnde sale
+
+                leavingPoint = new Vector3(-Camera.main.orthographicSize * Camera.main.aspect - 10, Random.Range(Camera.main.orthographicSize, -Camera.main.orthographicSize), 0);
                 break;
         }
 
-        state = newState;
+        //Debug.Log("Se acmbia state: " + state);
+
 
     }
 
@@ -224,7 +263,7 @@ public class RayEnemyMovement : MonoBehaviour
             //transform.rotation = Quaternion.Lerp(transform.rotation, newRot, 0.6f);
         }
         else {
-            StartCoroutine(ChangeState(State.Loading));
+           ChangeState(State.Loading);
         }
     }
 
@@ -265,7 +304,7 @@ public class RayEnemyMovement : MonoBehaviour
             //Dispare
             cameraShake.ShakeIt();
 
-            StartCoroutine(ChangeState(State.Shooting));
+            ChangeState(State.Shooting);
         }
 
 
@@ -295,11 +334,11 @@ public class RayEnemyMovement : MonoBehaviour
 
             if (timesShot >= timesToShoot)
             {
-                StartCoroutine(ChangeState(State.Leaving));
+                ChangeState(State.Leaving);
             }
             else
             {
-                StartCoroutine(ChangeState(State.GoingLocation));
+                ChangeState(State.GoingLocation);
             }
             spriteRenderer.sprite = defaultSprite;
             eyesSpriteRenderer.sprite = defaultEyesSprite;
@@ -312,9 +351,9 @@ public class RayEnemyMovement : MonoBehaviour
 
     private void LeavingState()
     {
-        if (Vector2.Distance(transform.position, leavingPoint.transform.position) > 0.5)
+        if (Vector2.Distance(transform.position, leavingPoint) > 2)
         {
-            Vector2 dir = leavingPoint.transform.position - transform.transform.position;
+            Vector2 dir = leavingPoint - transform.transform.position;
             rb.position = Vector2.Lerp(rb.position, rb.position + dir * velocity * Time.fixedDeltaTime, 0.3f);
 
             // Mirar al player
@@ -327,7 +366,7 @@ public class RayEnemyMovement : MonoBehaviour
         }
         else
         {
-            railDisponible[indexRailEscogido] = true;
+           
             Destroy(gameObject);
         }
     }
