@@ -55,6 +55,8 @@ public class LocalMultiplayerManager : MonoBehaviour
         allPlayers.Add(newPlayerController);
 
         numPlayers.text = allPlayers.Count + " / " + playerInputManager.maxPlayerCount + " Jugadores";
+        Respawn(newPlayerController);
+        newPlayerController.transform.Translate(18f, -25, 0);
         //numPlayers.transform.DOScale(Vector3.one * 1.2f, .5f);
     }
 
