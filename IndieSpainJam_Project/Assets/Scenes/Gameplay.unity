@@ -5576,6 +5576,10 @@ PrefabInstance:
       propertyPath: MainVelocity_text
       value: 
       objectReference: {fileID: 373835953}
+    - target: {fileID: 5660743581741287079, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910312318434763212, guid: 8c1806f5f4b5fc146b0067bc990c9b84, type: 3}
       propertyPath: mainCamera
       value: 

@@ -48,13 +48,14 @@ public class EnemySpawner : MonoBehaviour
     public void CreateEnemys()
     {
         Debug.Log("CreateEnemys()");
+        int nPlayers = LocalMultiplayerManager.GetInstance().GetNumPlayers();
 
-        int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier));
+        int numEnmy = Random.Range(Mathf.RoundToInt(minEnemys * multiplier), Mathf.RoundToInt(maxEnemys * multiplier * nPlayers)); ;
 
         for (int i = 0; i < numEnmy; i++)
             AddEnemy(-1);
 
-        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1 / multiplier), maxTimeForNextWave * (1 / multiplier)));
+        Invoke("CreateEnemys", Random.Range(minTimeForNextWave * (1.25f / (multiplier * nPlayers)), maxTimeForNextWave * (1 / multiplier)));
         //Invoke("CreateEnemys", 5);
     }
 
@@ -68,22 +69,28 @@ public class EnemySpawner : MonoBehaviour
             case 20:
                 break;
             case 30:
-                CreateRayEnemy(1, 3, 0.8f);
+                CreateRayEnemy(1, 2.5f, 0.8f);
                 break;
             case 40:
                 break;
             case 50:
+                if(LocalMultiplayerManager.GetInstance().GetNumPlayers() > 1)
+                    CreateRayEnemy(1, 2.5f, 0.8f);
                 break;
             case 60:
-                CreateRayEnemy(3, 2, 1.2f);
+                if (LocalMultiplayerManager.GetInstance().GetNumPlayers() > 1)
+                    CreateRayEnemy(1, 2.5f, 0.8f);
+                CreateRayEnemy(3, 3, 1f, 1.5f);
                 break;
             case 70:
                 break;
             case 80:
+                if (LocalMultiplayerManager.GetInstance().GetNumPlayers() > 1)
+                    CreateRayEnemy(3, 3, 1f, 1.5f);
                 CreateRayEnemy(3, 1.8f, 1.2f);
                 break;
             case 90:
-                CreateRayEnemy(5, 1.5f, 1.5f);
+                CreateRayEnemy(5, 1.5f, 1.5f, 1);
                 break;
 
             default:
@@ -93,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    private void CreateRayEnemy(int timesToShot, float loadTime, float rayTime)
+    private void CreateRayEnemy(int timesToShot, float loadTime, float rayTime, float speed = 2.5f)
     {
         Vector3 position = new Vector3(Camera.main.orthographicSize * Camera.main.aspect + enemyPrefabs[1].transform.localScale.x * 2, Random.Range(Camera.main.orthographicSize, -Camera.main.orthographicSize), 0);
 
@@ -104,6 +111,7 @@ public class EnemySpawner : MonoBehaviour
         enemigoScript.timeFiring = rayTime;
         enemigoScript.timeToLoad = loadTime;
         enemigoScript.timesToShoot = timesToShot;
+        enemigoScript.velocity = speed;
         rayEnemy.GetComponent<CameraShake>().mainCamera = Camera.main;
     }
 

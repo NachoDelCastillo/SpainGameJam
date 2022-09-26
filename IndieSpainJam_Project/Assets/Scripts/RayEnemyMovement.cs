@@ -20,7 +20,7 @@ public class RayEnemyMovement : MonoBehaviour
     [SerializeField] Sprite loadAndShootingEyesSprite;
 
     [SerializeField] GameObject particlesLoading;
-    [SerializeField] float velocity;
+    public float velocity;
     [SerializeField] float rotationSpeed;
 
     CameraShake cameraShake;

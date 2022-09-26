@@ -60,6 +60,10 @@ public class LocalMultiplayerManager : MonoBehaviour
         //numPlayers.transform.DOScale(Vector3.one * 1.2f, .5f);
     }
 
+    public int GetNumPlayers()
+    {
+       return allPlayers.Count;
+    }
     public void Respawn(PlayerController_2D player)
     { StartCoroutine(Respawn2(player, respawnTime)); }
 
