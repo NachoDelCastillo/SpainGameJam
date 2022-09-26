@@ -528,7 +528,7 @@ public class PlayerController_2D : MonoBehaviour
 
         if (enteringTurret)
         {
-            rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.3f);
+            rb.position = Vector3.Lerp(rb.position, turret.transform.position, 0.45f);
 
             if (Vector2.Distance(rb.position, turret.transform.position) < turretEnteringRadius)
             {
@@ -683,14 +683,15 @@ public class PlayerController_2D : MonoBehaviour
 
         while(timesToBlink > 0)
         {
-            gfx.enabled = false;
-            yield return new WaitForSeconds(respawnTime / 5  *0.75f);
             gfx.enabled = true;
-            yield return new WaitForSeconds(respawnTime / 5 *0.75f);
+            yield return new WaitForSeconds(respawnTime / 5 * 0.5f);
+            gfx.enabled = false;
+            yield return new WaitForSeconds(respawnTime / 5  *0.5f);
+            
             timesToBlink--;
             
         }
-
+        gfx.enabled = true;
         killable = true;
         //float timePassed = 0;
         //gfx.color = colorRespawn;
