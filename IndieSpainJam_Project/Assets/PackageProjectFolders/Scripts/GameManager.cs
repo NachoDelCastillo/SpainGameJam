@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         else
         {
             if (SceneManager.GetActiveScene().name == "MainMenu_Scene")
-                AudioManager_PK.GetInstance().ChangeBackgroundMusic("Gameplay");
+                AudioManager_PK.GetInstance().ChangeBackgroundMusic("GameMusic");
             SceneManager.LoadScene("Level_" + level);
         }
 

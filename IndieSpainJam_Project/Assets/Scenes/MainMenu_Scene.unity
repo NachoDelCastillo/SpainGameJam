@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Steampunk ride  '
+  m_text: Steampunk Override
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -1374,8 +1374,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293984000
+  m_fontColor: {r: 0, g: 1, b: 0.94059396, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.7
+  m_fontSize: 28.55
   m_fontSizeBase: 42.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -114.105576, y: -70.09695, z: -137.27318, w: 0}
+  m_margin: {x: -154.27106, y: -70.09695, z: -137.27318, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1934,7 +1934,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: CREDITS
+      value: CREDITOS
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -3609,7 +3609,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: QUIT
+      value: SALIR
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -3937,6 +3937,8 @@ MonoBehaviour:
   respawnTime: 3
   pSystem: {fileID: 8770769217893233341}
   sangrePart: {fileID: 5483449197282775203, guid: 888384812e6c06c47bac93d1b2acabe5, type: 3}
+  player1: {r: 0, g: 0, b: 0, a: 0}
+  player2: {r: 0, g: 0, b: 0, a: 0}
   numPlayers: {fileID: 1126540063}
 --- !u!4 &1518268788
 Transform:
@@ -4147,11 +4149,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nCREDITS:\n\nDEVELOPMENT TEAM\nNacho Castillo\nDaniel Martin Gomez\nManuel
-    Adeli\xF1o\nJavier Villegas\nRuben Vidorreta\n\nTESTERS\nEscu\nJudit\nTr1ckk\nMelee\nJavih90\nMaria\nMarta\nSergio\nLaura1\nLaura2\n\nVISUAL
-    REFERENCES\nEye Of Cthulhu Resprite, Matthieu Rappeneu\nMonsters Creature Fantasy\nIrina
-    Vedernikova\n\nSFX\nLeszlk szary\nBrickdeveloper171\nKastenfrosch\nMichel88\nBeezlefm\nAliedsvwyk\nTcpp\nCusconauta\nRomeo
-    Kaleikau\nPatrick Corra\nRyanesnook\nKierankeegan\nPorphyr\n\nPARALLAX\n\nEdermunizz"
+  m_text: "\n<color=#00D2FF>CREDITS:</color>\n\n<color=#00D2FF>DEVELOPMENT TEAM</color>\nNacho
+    Castillo\nDaniel Martin Gomez\nManuel Adeli\xF1o\nJavier Villegas\nRuben Vidorreta\n\n<color=#00D2FF>TESTERS</color>\nEscu\nJudit\nTr1ckk\nMelee\nJavih90\nMaria\nMarta\nSergio\nLaura1\nLaura2\n\n<color=#00D2FF>VISUAL
+    REFERENCES</color>\nEye Of Cthulhu Resprite, Matthieu Rappeneu\nMonsters Creature
+    Fantasy\nIrina Vedernikova\n\n<color=#00D2FF>SFX</color>\nLeszlk szary\nBrickdeveloper171\nKastenfrosch\nMichel88\nBeezlefm\nAliedsvwyk\nTcpp\nCusconauta\nRomeo
+    Kaleikau\nPatrick Corra\nRyanesnook\nKierankeegan\nPorphyr\n\n<color=#00D2FF>PARALLAX</color>\n\nEdermunizz"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
   m_sharedMaterial: {fileID: 572635584491725194, guid: 52e5da1066f22aa49bb4a2beffc42c5c, type: 2}
@@ -4554,7 +4556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: SETTINGS
+      value: AJUSTES
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
@@ -66165,7 +66167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7679616428674263910, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_text
-      value: PLAY
+      value: JUGAR
       objectReference: {fileID: 0}
     - target: {fileID: 7679616429283868812, guid: c4b676f72b17b40499f23935f7abb96b, type: 3}
       propertyPath: m_Pivot.x
