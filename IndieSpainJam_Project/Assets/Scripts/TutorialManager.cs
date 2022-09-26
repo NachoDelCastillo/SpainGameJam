@@ -53,24 +53,29 @@ public class TutorialManager : MonoBehaviour
 
         if (doTutorial)
         {
-            duringTutorial = true;
-
-            // Empezar primera parte del tutorial
-            ShowTutorialItems((tutPhases)0);
-
-            // Joder vagon de agua
-            TrainManager.Instance.currentWater = TrainManager.Instance.maxWater;
-            TrainManager.Instance.waterSlider.value = TrainManager.Instance.waterSlider.maxValue;
-
-            TrainManager.Instance.ColorWater();
-
-            // Joder Torreta
-            Turret turret = FindObjectOfType<Turret>();
-            turret.currentAmmo = 0;
-            turret.UpdateAmmoSlider();
+            STartTutorialValues();
         }
         else
             EndTutorial();
+    }
+
+    public void STartTutorialValues()
+    {
+        duringTutorial = true;
+
+        // Empezar primera parte del tutorial
+        ShowTutorialItems((tutPhases)0);
+
+        // Joder vagon de agua
+        TrainManager.Instance.currentWater = TrainManager.Instance.maxWater;
+        TrainManager.Instance.waterSlider.value = TrainManager.Instance.waterSlider.maxValue;
+
+        TrainManager.Instance.ColorWater();
+
+        // Joder Torreta
+        Turret turret = FindObjectOfType<Turret>();
+        turret.currentAmmo = 0;
+        turret.UpdateAmmoSlider();
     }
 
     void HideEverything()
