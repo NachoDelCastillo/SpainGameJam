@@ -290,7 +290,7 @@ public class TrainManager : MonoBehaviour
                 WagonLogic auxWagon = derWagon;
                 derWagon = midWagon;
                 midWagon = auxWagon;
-                
+
                 goto suuuu;
             }
 
@@ -321,7 +321,7 @@ public class TrainManager : MonoBehaviour
             }
         }
 
-        suuuu:
+    suuuu:
 
         yield return new WaitForSeconds(moveIntensity);
 
@@ -352,13 +352,16 @@ public class TrainManager : MonoBehaviour
             }
             if ((Input.anyKey || Input.anyKeyDown) && letterOfFinalWhenLoseAlreadyOut)
             {
-                AudioManager_PK.instance.Stop("GameMusic");
-                GameManager.instance.ChangeScene("MainMenu_Scene");
+                if (!GameManager.GetInstance().duringTransition)
+                {
+                    AudioManager_PK.instance.Stop("GameMusic");
+                    GameManager.instance.ChangeScene("MainMenu_Scene");
+                }
             }
             return;
         }
 
-        if(!over50 && MainVelocity >= 50)
+        if (!over50 && MainVelocity >= 50)
         {
             over50 = true;
             StartCoroutine(MoveWagonsHorizontally());
@@ -761,26 +764,26 @@ public class TrainManager : MonoBehaviour
         }
         else
         {
-            if (!GameManager.GetInstance().duringTransition)
-            {            // LOSE
-                float timeBetweenLetters = .05f;
-                string s = "Presiona cualquier boton para reiniciar";
-                StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
-                yield return new WaitForSeconds(timeBetweenLetters * s.Length);
+            // LOSE
+            float timeBetweenLetters = .05f;
+            string s = "Presiona cualquier boton para reiniciar";
+            StartCoroutine(Utils.WriteThis(s, pressAnything, timeBetweenLetters));
+            yield return new WaitForSeconds(timeBetweenLetters * s.Length);
 
-                yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
 
-                letterOfFinalWhenLoseAlreadyOut = true;
-                ShowAnyKeyButton();
+            letterOfFinalWhenLoseAlreadyOut = true;
+            ShowAnyKeyButton();
 
-                CancelInvoke();
-            }
+            CancelInvoke();
             yield return 0;
         }
 
 
         showingResults = false;
     }
+
+    bool losethisss = false;
 
     bool pressAnything_b;
 
@@ -889,4 +892,4 @@ public class TrainManager : MonoBehaviour
         fillHealth.color = defaultHealth;
     }
 }
-    #endregion
+#endregion
